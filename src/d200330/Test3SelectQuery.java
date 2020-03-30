@@ -15,13 +15,15 @@ public class Test3SelectQuery {
 		String sql;
 		try {
 			stmt = conn.createStatement();
-			sql = "SELECT name, TO_CHAR(birth,'YYYY-MM-DD') birth, kor, eng, mat, kor+eng+mat tot FROM score WHERE hak = '1111'";
-//			sql = "SELECT name, birth, kor, eng, mat, kor+eng+mat tot FROM score WHERE hak = '1111'";
+//			sql = "SELECT name, TO_CHAR(birth,'YYYY-MM-DD') birth, kor, eng, mat, kor+eng+mat tot FROM score WHERE hak = '1111'";
+			sql = "SELECT name, birth, kor, eng, mat, kor+eng+mat tot FROM score WHERE hak = '1111'";
 			rs = stmt.executeQuery(sql);
 
 			if(rs.next()) {//결괏값이 2개 이상이어도 1개만 반환된다.
 				String name = rs.getString("name");//또는 rs.getString(1);
-				String birth = rs.getString("birth");//날짜이지만 String형으로도 변환되어 저장이 가능하다. rs.getString(2);
+//				String birth = rs.getString("birth");//날짜이지만 String형으로도 변환되어 저장이 가능하다. rs.getString(2);
+				//참고: getDate는 java.sql.Date 클래스를 이용한다.
+				String birth = rs.getDate("birth").toString();
 				int kor = rs.getInt("kor");
 				int eng = rs.getInt("eng");
 				int mat = rs.getInt("mat");
