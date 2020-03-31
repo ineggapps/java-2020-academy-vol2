@@ -44,27 +44,89 @@ public class ScoreDAOImpl implements ScoreDAO {
 
 	@Override
 	public int updateScore(ScoreDTO dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		StringBuilder sb = new StringBuilder();
+		sb.append("UPDATE score SET ");
+		sb.append("name = '" + dto.getName() + "', ");
+		sb.append("birth = '" + dto.getBirth() + "', ");
+		sb.append("kor  = " + dto.getKor() + ", ");
+		sb.append("eng = " + dto.getEng() + ", ");
+		sb.append("mat = " + dto.getMat());
+		sb.append("WHERE hak='" + dto.getHak() + "' ");
+		int result = 0;
+		try (Statement stmt = conn.createStatement()) {
+			result = stmt.executeUpdate(sb.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
 	public int deleteScore(String hak) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql;
+		int result = 0;
+		try (Statement stmt = conn.createStatement()) {
+			sql = "DELETE FROM score WHERE hak='" + hak + "' ";
+			result = stmt.executeUpdate(sql);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 
 	@Override
 	public ScoreDTO readScore(String hak) {
-		// TODO Auto-generated method stub
-		return null;
+		ScoreDTO dto = null;
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT hak, name,");
+		sb.append("TO_CHAR(birth,'YYYY-MM-DD') birth, kor, eng, mat, ");
+		sb.append("kor+eng+mat tot, (kor+eng+mat)/3 ave ");
+		sb.append("FROM score ");
+		sb.append("WHERE hak='" + hak + "'");
+		try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sb.toString())) {
+			if (rs.next()) {
+				dto = new ScoreDTO();
+				dto.setHak(rs.getString("hak"));
+				dto.setName(rs.getString("name"));
+				dto.setBirth(rs.getString("birth"));
+				dto.setKor(rs.getInt("kor"));
+				dto.setEng(rs.getInt("eng"));
+				dto.setMat(rs.getInt("mat"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
 	}
 
 	@Override
 	public List<ScoreDTO> listScore(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		List<ScoreDTO> list = new ArrayList<ScoreDTO>();
+		StringBuilder sb = new StringBuilder();
+		sb.append("SELECT hak, name, birth, kor, eng, mat, ");
+		sb.append("kor+eng+mat tot, (kor+eng+mat)/3 ave ");
+		sb.append("FROM score ");
+		sb.append("WHERE INSTR(name, '"+name+"')=1");
+//		sb.append("WHERE name like '"+name+"%'");
+//		sb.append("WHERE name like '%' || '"+name+"' || '%' "); // 이렇게 작성할 수도 있음.
+		try(Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sb.toString())) {
+			while(rs.next()) {
+				ScoreDTO dto = new ScoreDTO();
+				dto.setHak(rs.getString("hak"));
+				dto.setName(rs.getString("name"));
+				dto.setBirth(rs.getDate("birth").toString());
+				dto.setKor(rs.getInt("kor"));
+				dto.setEng(rs.getInt("eng"));
+				dto.setMat(rs.getInt("mat"));
+				dto.setTot(rs.getInt("tot"));
+				dto.setAve(rs.getInt("ave"));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}	
 
 	@Override
 	public List<ScoreDTO> listScore() {
@@ -90,7 +152,7 @@ public class ScoreDAOImpl implements ScoreDAO {
 				dto.setTot(rs.getInt("tot"));
 				dto.setAve(rs.getInt("ave"));
 				dto.setRank(rs.getInt("rank"));
-				list.add(dto);//ArrayList에 저장
+				list.add(dto);// ArrayList에 저장
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
