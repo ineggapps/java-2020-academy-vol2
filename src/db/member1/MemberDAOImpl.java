@@ -30,11 +30,33 @@ public class MemberDAOImpl implements MemberDAO {
 		sql2.append("'" + dto.getEmail() + "', ");
 		sql2.append("'" + dto.getTel() + "' ");
 		sql2.append(") ");
+		
+		
 		try {
 			stmt = conn.createStatement();
 			if (stmt.executeUpdate(sql1.toString()) > 0 && stmt.executeUpdate(sql2.toString()) > 0) {
 				result = 1;
 			}
+			
+			/*
+			 한 번에 insert작업 수행하기
+			StringBuilder sb=new StringBuilder();
+			sb.append("INSERT ALL ");
+			sb.append(" INTO member1(id,pwd,name) VALUES(");
+			sb.append(" '"+dto.getId()+"'");
+			sb.append(" ,'"+dto.getPwd()+"'");
+			sb.append(" ,'"+dto.getName()+"'");
+			sb.append(" )");
+			sb.append(" INTO member2(id,birth,email,tel) VALUES(");
+			sb.append(" '"+dto.getId()+"'");
+			sb.append(" ,'"+dto.getBirth()+"'");
+			sb.append(" ,'"+dto.getEmail()+"'");
+			sb.append(" ,'"+dto.getTel()+"'");
+			sb.append(" )");
+			sb.append(" SELECT * FROM dual");
+			
+			result=stmt.executeUpdate(sb.toString());
+			 */
 		} catch (Exception e) {
 			e.printStackTrace();
 			// 만약에 member1에선 성공했지만 member2테이블에서 결괏값을 넣기를 실패했다면?
@@ -57,8 +79,7 @@ public class MemberDAOImpl implements MemberDAO {
 		Statement stmt = null;
 		StringBuilder sql1 = new StringBuilder();
 		sql1.append("UPDATE " + TABLE_MEMBER1 + " SET ");
-		sql1.append("pwd='" + dto.getPwd() + "', ");
-		sql1.append("name='" + dto.getName() + "' ");
+		sql1.append("pwd='" + dto.getPwd() + "' ");
 		sql1.append("WHERE id='" + dto.getId() + "'");
 		StringBuilder sql2 = new StringBuilder();
 		sql2.append("UPDATE " + TABLE_MEMBER2 + " SET ");
@@ -120,7 +141,7 @@ public class MemberDAOImpl implements MemberDAO {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT m1.id, name, TO_CHAR(birth,'YYYY-MM-DD') birth, email, tel ");
 		sql.append("FROM " + TABLE_MEMBER1 + " m1 ");
-		sql.append("JOIN " + TABLE_MEMBER2 + " m2 ON m2.id=m1.id ");
+		sql.append("LEFT OUTER JOIN " + TABLE_MEMBER2 + " m2 ON m2.id=m1.id ");
 		sql.append("WHERE m1.id='" + id + "'");
 		try {
 			stmt = conn.createStatement();
@@ -159,7 +180,7 @@ public class MemberDAOImpl implements MemberDAO {
 		ResultSet rs = null;
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT m1.id, name, TO_CHAR(birth,'YYYY-MM-DD') birth, email, tel FROM " + TABLE_MEMBER1 + " m1 ");
-		sql.append("JOIN " + TABLE_MEMBER2 + " m2 ON m1.id=m2.id ");
+		sql.append("LEFT OUTER JOIN " + TABLE_MEMBER2 + " m2 ON m1.id=m2.id ");
 		sql.append("WHERE INSTR(name,'" + name + "') >= 1");
 		try {
 			stmt = conn.createStatement();
@@ -200,7 +221,7 @@ public class MemberDAOImpl implements MemberDAO {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT m1.id, name, TO_CHAR(birth,'YYYY-MM-DD') birth, email, tel ");
 		sql.append("FROM " + TABLE_MEMBER1 + " m1 ");
-		sql.append("JOIN " + TABLE_MEMBER2 + " m2 ON m2.id=m1.id ");
+		sql.append("LEFT OUTER JOIN " + TABLE_MEMBER2 + " m2 ON m2.id=m1.id ");
 		try {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(sql.toString());

@@ -28,7 +28,7 @@ public class Member {
 				if (dao.readMember(dto.getId()) == null) {
 					break;
 				}
-				System.out.println(id + "는 사용하실 수 없습니다.");
+				System.out.println("￣へ ￣ "+id + "는 사용하실 수 없습니다.");
 				System.out.println();
 			}
 
@@ -56,14 +56,17 @@ public class Member {
 	}
 
 	public void updateMember() {
-		MemberDTO dto = new MemberDTO();
+		MemberDTO dto = null;
 		printTitle("회원 수정");
 		try {
 
 			while (true) {
 				System.out.print("수정할 회원 아이디 > ");
-				dto.setId(br.readLine());
-				if (dao.readMember(dto.getId()) != null) {
+				String id = br.readLine();
+				dto = dao.readMember(id);
+				
+				if (dto!= null) {
+					printDTO(dto);
 					break;
 				}
 				System.out.println("￣へ ￣ 등록된 아이디가 아닙니다.");
@@ -71,8 +74,6 @@ public class Member {
 			System.out.println("##### 변경 작업을 시작합니다.");
 			System.out.print("비밀번호 > ");
 			dto.setPwd(br.readLine());
-			System.out.print("이름 > ");
-			dto.setName(br.readLine());
 			System.out.print("생일 > ");
 			dto.setBirth(br.readLine());
 			System.out.print("이메일 > ");
