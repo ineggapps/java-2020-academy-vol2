@@ -19,17 +19,15 @@ public class Member {
 		MemberDTO dto = new MemberDTO();
 		try {
 
-			while (true) {
-				System.out.print("신규 아이디 입력 > ");
-				String id = br.readLine();
-				dto.setId(id);
+			System.out.print("신규 아이디 입력 > ");
+			String id = br.readLine();
+			dto.setId(id);
 
-				// 아이디 중복체크
-				if (dao.readMember(dto.getId()) == null) {
-					break;
-				}
-				System.out.println("￣へ ￣ "+id + "는 사용하실 수 없습니다.");
+			// 아이디 중복체크
+			if (dao.readMember(dto.getId()) != null) {
+				System.out.println("￣へ ￣ " + id + "는 사용하실 수 없습니다.");
 				System.out.println();
+				return;
 			}
 
 			System.out.print("이름 입력 > ");
@@ -59,18 +57,16 @@ public class Member {
 		MemberDTO dto = null;
 		printTitle("회원 수정");
 		try {
+			System.out.print("수정할 회원 아이디 > ");
+			String id = br.readLine();
+			dto = dao.readMember(id);
 
-			while (true) {
-				System.out.print("수정할 회원 아이디 > ");
-				String id = br.readLine();
-				dto = dao.readMember(id);
-				
-				if (dto!= null) {
-					printDTO(dto);
-					break;
-				}
+			if (dto == null) {
 				System.out.println("￣へ ￣ 등록된 아이디가 아닙니다.");
+				return;
 			}
+			printDTO(dto);
+
 			System.out.println("##### 변경 작업을 시작합니다.");
 			System.out.print("비밀번호 > ");
 			dto.setPwd(br.readLine());
@@ -83,7 +79,9 @@ public class Member {
 
 			int result = dao.updateMember(dto);
 			System.out.println("(^人^) 회원정보가 변경되었습니다.");
-		} catch (Exception e) {
+		} catch (
+
+		Exception e) {
 			e.printStackTrace();
 		}
 	}
