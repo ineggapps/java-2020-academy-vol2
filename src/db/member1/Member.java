@@ -48,7 +48,8 @@ public class Member {
 			dto.setTel(br.readLine());
 
 			int result = dao.insertMember(dto);
-			System.out.println(result + "건 등록 완료!");
+//			System.out.println(result + "건 등록 완료!");
+			System.out.println("○( ＾皿＾)っ 회원 등록 성공...");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -65,7 +66,7 @@ public class Member {
 				if (dao.readMember(dto.getId()) != null) {
 					break;
 				}
-				System.out.println("회원 정보가 존재하지 않습니다. 아이디를 확인해주세요.");
+				System.out.println("￣へ ￣ 등록된 아이디가 아닙니다.");
 			}
 			System.out.println("##### 변경 작업을 시작합니다.");
 			System.out.print("비밀번호 > ");
@@ -80,7 +81,7 @@ public class Member {
 			dto.setTel(br.readLine());
 
 			int result = dao.updateMember(dto);
-			System.out.println("회원정보가 변경되었습니다.");
+			System.out.println("(^人^) 회원정보가 변경되었습니다.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -94,10 +95,10 @@ public class Member {
 			String id = br.readLine();
 			int result = dao.deleteMember(id);
 			if (result == 0) {
-				System.out.println("아이디가 존재하지 않습니다. (" + id + ")");
+				System.out.println("￣へ￣ 아이디가 존재하지 않습니다. (" + id + ")");
 				return;
 			}
-			System.out.println(id + " 계정을 삭제하였습니다.");
+			System.out.println(id + "d=====(￣▽￣*)b 계정을 삭제하였습니다.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
