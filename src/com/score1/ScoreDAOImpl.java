@@ -1,4 +1,4 @@
-package score1;
+package com.score1;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

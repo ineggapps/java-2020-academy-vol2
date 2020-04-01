@@ -1,4 +1,4 @@
-package score1;
+package com.score1;
 /*
  	- DTO(Data Transfer Object): 데이터 전송 객체, VO(Value Object)와 유사
  	- DAO(Data Access Object): 데이터 처리를 주 목적으로 하는 클래스
