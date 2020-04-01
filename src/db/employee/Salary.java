@@ -168,7 +168,7 @@ public class Salary {
 		try {
 			System.out.print("사원번호 입력 > ");
 			sabeon = sc.next();
-			System.out.print("급여년월 입력 > ");
+			System.out.print("급여년월[yyyymm] 입력 > ");
 			payDate = sc.next();
 
 			Map<String, Object> map = new HashMap<String, Object>();
@@ -213,6 +213,10 @@ public class Salary {
 		System.out.print("[");
 		System.out.print(dto.getSalaryNum() + ", ");
 		System.out.print(dto.getSabeon() + ", ");
+		String name = dto.getName();
+		if(name!=null && name.length()>0) {			
+			System.out.print(name + ", ");
+		}
 		System.out.print(dto.getPayDate() + ", ");
 		System.out.print(dto.getPaymentDate() + ", ");
 		System.out.print(dto.getPay() + ", ");

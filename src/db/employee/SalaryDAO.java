@@ -115,7 +115,8 @@ public class SalaryDAO {
 		SalaryDTO dto = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT salarynum, sabeon, paydate, paymentdate, pay, sudang, tax, memo FROM salary WHERE salarynum=?";
+		String sql = "SELECT salarynum, name, e.sabeon, paydate, paymentdate, pay, sudang, tax, memo FROM salary s "
+				+ "JOIN employee e on s.sabeon = e.sabeon " + "WHERE salarynum=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, salaryNum);
@@ -124,6 +125,7 @@ public class SalaryDAO {
 				dto = new SalaryDTO();
 				dto.setSalaryNum(rs.getInt("salarynum"));
 				dto.setSabeon(rs.getString("sabeon"));
+				dto.setName(rs.getString("name"));
 				dto.setPayDate(rs.getString("paydate"));
 				dto.setPaymentDate(rs.getDate("paymentdate").toString());
 				dto.setPay(rs.getInt("pay"));
@@ -156,7 +158,8 @@ public class SalaryDAO {
 		List<SalaryDTO> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT salarynum, sabeon, paydate, paymentdate, pay, sudang, tax, memo FROM salary WHERE paydate=? "
+		String sql = "SELECT salarynum, name, s.sabeon, paydate, paymentdate, pay, sudang, tax, memo FROM salary s "
+				+ "JOIN employee e ON s.sabeon = e.sabeon " + "WHERE paydate=? "
 				+ "ORDER BY sabeon, paydate desc";
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -166,6 +169,7 @@ public class SalaryDAO {
 				SalaryDTO dto = new SalaryDTO();
 				dto.setSalaryNum(rs.getInt("salarynum"));
 				dto.setSabeon(rs.getString("sabeon"));
+				dto.setName(rs.getString("name"));
 				dto.setPayDate(rs.getString("paydate"));
 				dto.setPaymentDate(rs.getDate("paymentdate").toString());
 				dto.setPay(rs.getInt("pay"));
@@ -199,7 +203,8 @@ public class SalaryDAO {
 		List<SalaryDTO> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT salarynum, sabeon, paydate, paymentdate, pay, sudang, tax, memo FROM salary WHERE sabeon=? and paydate=?";
+		String sql = "SELECT salarynum, name, s.sabeon, paydate, paymentdate, pay, sudang, tax, memo FROM salary s "
+				+ "JOIN employee e ON s.sabeon = e.sabeon " + "WHERE s.sabeon=? and paydate=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, (String) map.get(INPUT_SABEON));
@@ -209,6 +214,7 @@ public class SalaryDAO {
 				SalaryDTO dto = new SalaryDTO();
 				dto.setSalaryNum(rs.getInt("salarynum"));
 				dto.setSabeon(rs.getString("sabeon"));
+				dto.setName(rs.getString("name"));
 				dto.setPayDate(rs.getString("paydate"));
 				dto.setPaymentDate(rs.getDate("paymentdate").toString());
 				dto.setPay(rs.getInt("pay"));
@@ -242,7 +248,7 @@ public class SalaryDAO {
 		List<SalaryDTO> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT salarynum, sabeon, paydate, paymentdate, pay, sudang, tax, memo FROM salary";
+		String sql = "SELECT salarynum, name, s.sabeon, paydate, paymentdate, pay, sudang, tax, memo FROM salary s JOIN employee e ON s.sabeon = e.sabeon";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -250,6 +256,7 @@ public class SalaryDAO {
 				SalaryDTO dto = new SalaryDTO();
 				dto.setSalaryNum(rs.getInt("salarynum"));
 				dto.setSabeon(rs.getString("sabeon"));
+				dto.setName(rs.getString("name"));
 				dto.setPayDate(rs.getString("paydate"));
 				dto.setPaymentDate(rs.getDate("paymentdate").toString());
 				dto.setPay(rs.getInt("pay"));
