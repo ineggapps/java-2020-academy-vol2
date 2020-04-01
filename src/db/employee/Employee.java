@@ -45,7 +45,14 @@ public class Employee {
 		EmployeeDTO dto = new EmployeeDTO();
 		try {
 			System.out.print("사원번호 > ");
-			dto.setSabeon(sc.next());
+			String sabeon = sc.next();
+			
+			if(dao.readEmployee(sabeon)!=null) {
+				System.out.println("이미 존재하는 사번입니다.");
+				return;
+			}
+			
+			dto.setSabeon(sabeon);
 
 			System.out.print("이름 > ");
 			dto.setName(sc.next());
