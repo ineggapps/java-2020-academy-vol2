@@ -19,11 +19,11 @@ public class Salary {
 		while (true) {
 			System.out.println("\n[급여관리]");
 			do {
-				System.out.print("1.지급 2.수정 3.삭제 4.월별리스트 5.사번검색 6.리스트 7.사원리스트 8.메인 => ");
+				System.out.print("1.지급 2.수정 3.삭제 4.월별리스트 5.사번검색 6.리스트 7.사원리스트 8.연월별 급여현황 9.피벗 10.메인 => ");
 				ch = sc.nextInt();
-			} while (ch < 1 || ch > 8);
+			} while (ch < 1 || ch > 10);
 
-			if (ch == 8)
+			if (ch == 10)
 				return;
 
 			switch (ch) {
@@ -47,6 +47,12 @@ public class Salary {
 				break;
 			case 7:
 				emp.list();
+				break;
+			case 8:
+				listGroupBy();
+				break;
+			case 9:
+				listPivot();
 				break;
 			}
 		}
@@ -199,6 +205,34 @@ public class Salary {
 		printAllDTO(dao.listSalary());
 	}
 
+	public void listGroupBy() {
+		System.out.println("\n 연도/월별 급여 리스트");
+		List<GroupByDTO> list = dao.listGroupBy();
+		for (GroupByDTO dto : list) {
+			System.out.print("[");
+			System.out.print(dto.getYear() + "년도 " + dto.getMonth() + "월 급여 정부 ▶ ");
+			System.out.print("합: " + dto.getSum() + ", ");
+			System.out.print("평균: " + dto.getAverage() + "]");
+			System.out.println();
+		}
+	}
+
+	public void listPivot() {
+		System.out.println("\n 연도별 급여 리스트 피벗테이블");
+
+		try {
+			System.out.print("연도 입력> ");
+			Map<String, Integer> map = dao.listPivot(sc.next());
+			for (int i = 1; i <= 12; i++) {
+				String key = String.format("M%02d", i);
+				Integer value = map.get(key);
+				System.out.println(i + "월: " + value);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	private void printAllDTO(List<SalaryDTO> list) {
 		for (SalaryDTO dto : list) {
 			printDTO(dto);
@@ -214,7 +248,7 @@ public class Salary {
 		System.out.print(dto.getSalaryNum() + ", ");
 		System.out.print(dto.getSabeon() + ", ");
 		String name = dto.getName();
-		if(name!=null && name.length()>0) {			
+		if (name != null && name.length() > 0) {
 			System.out.print(name + ", ");
 		}
 		System.out.print(dto.getPayDate() + ", ");

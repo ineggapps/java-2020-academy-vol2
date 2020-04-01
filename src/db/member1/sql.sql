@@ -13,8 +13,14 @@ CREATE TABLE member2(
 );
 
 select * from member1
-JOIN member2 USING(id);
+LEFT OUTER JOIN member2 USING(id);
 
 delete from member2;
-delete from member1;
+delete from member1 WHERE id='fkiller';
 commit;
+
+desc score;
+
+SELECT name, s.sabeon, TO_CHAR(paymentdate, 'YYYY'), TO_CHAR(paymentdate, 'MM'), pay, sudang, tax, memo
+FROM salary s JOIN employee e ON s.sabeon = e.sabeon
+GROUP BY TO_CHAR(paymentdate,'YYYY'), TO_CHAR(paymentdate,'MM'), (s.sabeon, name ,pay, sudang, tax, memo);
