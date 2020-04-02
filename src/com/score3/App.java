@@ -11,11 +11,11 @@ public class App {
 		try {
 			while (true) {
 				do {
-					System.out.print("1.추가 2.수정 3.삭제 4.학번검색 5.이름검색 6.리스트 7.종료 > ");
+					System.out.print("1.추가 2.수정 3.삭제 4.학번검색 5.이름검색 6.리스트 7.과목평균 8.종료 > ");
 					ch = sc.nextInt();
-				} while (ch < 1 || ch > 7);
+				} while (ch < 1 || ch > 8);
 
-				if(ch==7) {
+				if(ch==8) {
 					break;
 				}
 
@@ -26,6 +26,7 @@ public class App {
 				case 4: ss.findByHak();break;
 				case 5: ss.findByName();break;
 				case 6: ss.listAll();break;
+				case 7: ss.average();break;
 				}
 			}
 		} finally {

@@ -2,11 +2,12 @@ package com.score3;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.util.DBConn;
 
@@ -33,10 +34,10 @@ public class ScoreDAOImpl implements ScoreDAO {
 			cstmt.setInt(6, dto.getMat());
 			// 쿼리 실행
 			cstmt.executeUpdate(/* 쿼리 삽입하지 않는다 */);
-			//CallableStatement의 executeUpdate() 리턴 값은 
-			//INSERT문 등을 실행 후 실행된 행 수를 반환하지 않고
-			//프로시저 실행여부를 반환한다.
-			result=1;
+			// CallableStatement의 executeUpdate() 리턴 값은
+			// INSERT문 등을 실행 후 실행된 행 수를 반환하지 않고
+			// 프로시저 실행여부를 반환한다.
+			result = 1;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -99,7 +100,7 @@ public class ScoreDAOImpl implements ScoreDAO {
 			cstmt = conn.prepareCall(sql);
 			cstmt.setString(1, hak);
 			cstmt.executeUpdate();
-			result =1;
+			result = 1;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -122,14 +123,14 @@ public class ScoreDAOImpl implements ScoreDAO {
 		try {
 			sql = "{CALL findByHakScore(?,?)}";
 			cstmt = conn.prepareCall(sql);
-			//OUT 파라미터는 JDBC 타입을 설정
-			//SYS_REFCURSOR=> OracleTypes.CURSOR (oracle.jdbc.OracleTypes)
-			//정수형 => OracleTypes.INTEGER
+			// OUT 파라미터는 JDBC 타입을 설정
+			// SYS_REFCURSOR=> OracleTypes.CURSOR (oracle.jdbc.OracleTypes)
+			// 정수형 => OracleTypes.INTEGER
 			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
 			cstmt.setString(2, hak);
-			//모든 프로시저는 executeUpdate()로 실행한다
+			// 모든 프로시저는 executeUpdate()로 실행한다
 			cstmt.executeUpdate();
-			//OUT파라미터 값을 넘겨 받기
+			// OUT파라미터 값을 넘겨 받기
 			rs = (ResultSet) cstmt.getObject(1);
 			if (rs.next()) {
 				dto = new ScoreDTO();
@@ -187,13 +188,13 @@ public class ScoreDAOImpl implements ScoreDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			if(rs!=null) {
+			if (rs != null) {
 				try {
 					rs.close();
 				} catch (Exception e2) {
 				}
 			}
-			if(cstmt!=null) {
+			if (cstmt != null) {
 				try {
 					cstmt.close();
 				} catch (Exception e2) {
@@ -245,6 +246,39 @@ public class ScoreDAOImpl implements ScoreDAO {
 			}
 		}
 		return list;
+	}
+
+	@Override
+	public Map<String, Integer> averageScore() {
+		Map<String, Integer> map = new HashMap<>();
+		CallableStatement cstmt = null;
+		String sql;
+		try {
+			sql = "{CALL averageScore(?, ?, ?)}";
+			cstmt = conn.prepareCall(sql);
+			cstmt.registerOutParameter(1, OracleTypes.INTEGER);
+			cstmt.registerOutParameter(2, OracleTypes.INTEGER);
+			cstmt.registerOutParameter(3, OracleTypes.INTEGER);
+			cstmt.executeUpdate();
+//			Integer korean = (Integer)cstmt.getObject(1);
+			int kor = cstmt.getInt(1);
+			int eng = cstmt.getInt(2);
+			int mat = cstmt.getInt(3);
+			
+			map.put("kor",kor);
+			map.put("eng",eng);
+			map.put("mat",mat);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (cstmt != null) {
+				try {
+					cstmt.close();
+				} catch (Exception e2) {
+				}
+			}
+		}
+		return map;
 	}
 
 }

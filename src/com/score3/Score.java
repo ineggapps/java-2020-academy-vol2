@@ -2,10 +2,9 @@ package com.score3;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
+import java.util.Map;
 
 public class Score {
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -103,7 +102,6 @@ public class Score {
 			System.out.print(dto.getMat() + "\t\t");
 			System.out.print(dto.getTot() + "\t\t");
 			System.out.print(dto.getAve() + "\t\t");
-			System.out.print(dto.getRank());
 			System.out.println();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -149,5 +147,18 @@ public class Score {
 			System.out.print(dto.getRank());
 			System.out.println();
 		}
+	}
+
+	public void average() {
+		System.out.println("\n°ú¸ñº° Æò±Õ");
+		Map<String, Integer> map = new HashMap<>();
+		map = dao.averageScore();
+		int kor = map.get("kor");
+		int eng = map.get("eng");
+		int mat = map.get("mat");
+		System.out.println("±¹¾î Æò±Õ: " + kor);
+		System.out.println("¿µ¾î Æò±Õ: " + eng);
+		System.out.println("¼öÇÐ Æò±Õ: " + mat);
+		System.out.println();
 	}
 }
