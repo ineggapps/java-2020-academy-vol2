@@ -9,6 +9,7 @@ import com.util.DBConn;
 
 public class Test2 {
 	public static void main(String[] args) {
+		//스크롤 예제
 		Connection conn = DBConn.getConnection();
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -19,7 +20,17 @@ public class Test2 {
 		try {
 			sql = "SELECT hak, name, birth, kor, eng, mat FROM score";
 			// 순방향만 가능
-			stmt = conn.createStatement();
+//			stmt = conn.createStatement(); //순방향만 가능하다
+			//순/역방향 가능 변경된 결과가 바로 반영됨. 단, 데이터는 수정 불가능
+			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			//결과집합유형 (첫 번째 인자)
+//			TYPE_FORWARD_ONLY:기본, 순방향만
+//			TYPE_SCROLL_SENSITIVE: 순/역방향 가능, 데이터 변경사항 감지
+//			TYPE_SCROLL_INSENSITIVE: 순/역방향 가능, 데이터 변경사항을 감지하지 않음.
+			
+			//동시성 유형 (두 번째 인자)
+//			CONCUR_READ_ONLY: 읽기만 가능
+//			CONCUR_UPDATEABLE: 수정도 가능 
 			rs = stmt.executeQuery(sql);
 			while (true) {
 				do {
@@ -31,12 +42,12 @@ public class Test2 {
 				}
 				switch (ch) {
 				case 1:
-					if (rs.first()) {//java.sql.SQLException: 전방향 전용 결과 집합에 부적합한 작업이 수행되었습니다 : first
+					if (rs.first()) {
 						System.out.println("처음: " + rs.getString(1) + ", " + rs.getString(2));
 					}
 					break;
 				case 2:
-					if (rs.previous()) {//java.sql.SQLException: 전방향 전용 결과 집합에 부적합한 작업이 수행되었습니다 : previous
+					if (rs.previous()) {
 						System.out.println("이전: " + rs.getString(1) + ", " + rs.getString(2));
 					}
 					break;
@@ -46,7 +57,7 @@ public class Test2 {
 					}
 					break;
 				case 4:
-					if (rs.last()) {//java.sql.SQLException: 전방향 전용 결과 집합에 부적합한 작업이 수행되었습니다 : last
+					if (rs.last()) {
 						System.out.println("끝: " + rs.getString(1) + ", " + rs.getString(2));
 					}
 					break;
