@@ -112,7 +112,7 @@ public class MemberDAOImpl implements MemberDAO {
 				dto = new MemberDTO();
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
-				dto.setBirth(rs.getString("birth"));
+				dto.setBirth(rs.getDate("birth").toString());
 				dto.setEmail(rs.getString("email"));
 				dto.setTel(rs.getString("tel"));
 			}
@@ -152,7 +152,7 @@ public class MemberDAOImpl implements MemberDAO {
 				MemberDTO dto = new MemberDTO();
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
-				dto.setBirth(rs.getString("birth"));
+				dto.setBirth(rs.getDate("birth").toString());
 				dto.setEmail(rs.getString("email"));
 				dto.setTel(rs.getString("tel"));
 				list.add(dto);
@@ -192,7 +192,7 @@ public class MemberDAOImpl implements MemberDAO {
 				MemberDTO dto = new MemberDTO();
 				dto.setId(rs.getString("id"));
 				dto.setName(rs.getString("name"));
-				dto.setBirth(rs.getString("birth"));
+				dto.setBirth(rs.getDate("birth").toString());
 				dto.setEmail(rs.getString("email"));
 				dto.setTel(rs.getString("tel"));
 				list.add(dto);
