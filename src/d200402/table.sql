@@ -1,0 +1,18 @@
+--테이블 작성
+
+CREATE TABLE test1(
+    id VARCHAR2(30) PRIMARY KEY,
+    name VARCHAR2(30) NOT NULL
+);
+
+CREATE TABLE test2(
+    id VARCHAR2(30) PRIMARY KEY,
+    birth VARCHAR2(30) NOT NULL,
+    FOREIGN KEY(id) REFERENCES test1(id)
+);
+
+CREATE TABLE test3(
+    id VARCHAR2(30) PRIMARY KEY,
+    tel VARCHAR2(30) NOT NULL,
+    FOREIGN KEY(id) REFERENCES test1(id)
+);
