@@ -10,6 +10,8 @@ import java.util.List;
 
 import com.util.DBConn;
 
+import oracle.jdbc.OracleTypes;
+
 //CallableStatement: 프로시저 실행
 public class ScoreDAOImpl implements ScoreDAO {
 	private Connection conn = DBConn.getConnection();
@@ -114,18 +116,21 @@ public class ScoreDAOImpl implements ScoreDAO {
 	@Override
 	public ScoreDTO readScore(String hak) {
 		ScoreDTO dto = null;
-		PreparedStatement pstmt = null;
+		CallableStatement cstmt = null;
 		ResultSet rs = null;
-		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT hak, name,");
-		sb.append("TO_CHAR(birth,'YYYY-MM-DD') birth, kor, eng, mat, ");
-		sb.append("kor+eng+mat tot, (kor+eng+mat)/3 ave ");
-		sb.append("FROM score ");
-		sb.append("WHERE hak=?");
+		String sql;
 		try {
-			pstmt = conn.prepareStatement(sb.toString());
-			pstmt.setString(1, hak);
-			rs = pstmt.executeQuery();
+			sql = "{CALL findByHakScore(?,?)}";
+			cstmt = conn.prepareCall(sql);
+			//OUT 파라미터는 JDBC 타입을 설정
+			//SYS_REFCURSOR=> OracleTypes.CURSOR (oracle.jdbc.OracleTypes)
+			//정수형 => OracleTypes.INTEGER
+			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+			cstmt.setString(2, hak);
+			//모든 프로시저는 executeUpdate()로 실행한다
+			cstmt.executeUpdate();
+			//OUT파라미터 값을 넘겨 받기
+			rs = (ResultSet) cstmt.getObject(1);
 			if (rs.next()) {
 				dto = new ScoreDTO();
 				dto.setHak(rs.getString("hak"));
@@ -144,9 +149,9 @@ public class ScoreDAOImpl implements ScoreDAO {
 				} catch (Exception e2) {
 				}
 			}
-			if (pstmt != null) {
+			if (cstmt != null) {
 				try {
-					pstmt.close();
+					cstmt.close();
 				} catch (Exception e2) {
 				}
 			}
@@ -157,19 +162,16 @@ public class ScoreDAOImpl implements ScoreDAO {
 	@Override
 	public List<ScoreDTO> listScore(String name) {
 		List<ScoreDTO> list = new ArrayList<ScoreDTO>();
-		PreparedStatement pstmt = null;
+		CallableStatement cstmt = null;
 		ResultSet rs = null;
-		StringBuilder sb = new StringBuilder();
-		sb.append("SELECT hak, name, birth, kor, eng, mat, ");
-		sb.append("kor+eng+mat tot, (kor+eng+mat)/3 ave ");
-		sb.append("FROM score ");
-		sb.append("WHERE INSTR(name, ?)=1");
-//		sb.append("WHERE name like ? || '%'");
-//		sb.append("WHERE name like '%' || ? || '%' "); // 이렇게 작성할 수도 있음.
+		String sql;
 		try {
-			pstmt = conn.prepareStatement(sb.toString());
-			pstmt.setString(1, name);
-			rs = pstmt.executeQuery();
+			sql = "{CALL findByNameScore(?,?)}";
+			cstmt = conn.prepareCall(sql);
+			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+			cstmt.setString(2, name);
+			cstmt.executeUpdate();
+			rs = (ResultSet) cstmt.getObject(1);
 			while (rs.next()) {
 				ScoreDTO dto = new ScoreDTO();
 				dto.setHak(rs.getString("hak"));
@@ -191,9 +193,9 @@ public class ScoreDAOImpl implements ScoreDAO {
 				} catch (Exception e2) {
 				}
 			}
-			if(pstmt!=null) {
+			if(cstmt!=null) {
 				try {
-					pstmt.close();
+					cstmt.close();
 				} catch (Exception e2) {
 				}
 			}
@@ -204,16 +206,15 @@ public class ScoreDAOImpl implements ScoreDAO {
 	@Override
 	public List<ScoreDTO> listScore() {
 		List<ScoreDTO> list = new ArrayList<ScoreDTO>();
-		PreparedStatement pstmt = null;
+		CallableStatement cstmt = null;
 		ResultSet rs = null;
-		StringBuilder sb = new StringBuilder();
+		String sql;
 		try {
-			sb.append("SELECT hak, name, birth, kor, eng, mat, ");
-			sb.append("kor+eng+mat tot, (kor+eng+mat)/3 ave, ");
-			sb.append("RANK() OVER(ORDER BY kor+eng+mat DESC) rank ");
-			sb.append("FROM score ");
-			pstmt = conn.prepareStatement(sb.toString());
-			rs = pstmt.executeQuery();
+			sql = "{CALL listScore(?)}";
+			cstmt = conn.prepareCall(sql);
+			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+			cstmt.executeUpdate();
+			rs = (ResultSet) cstmt.getObject(1);
 			while (rs.next()) {
 				ScoreDTO dto = new ScoreDTO();
 				dto.setHak(rs.getString("hak"));
@@ -236,9 +237,9 @@ public class ScoreDAOImpl implements ScoreDAO {
 				} catch (Exception e2) {
 				}
 			}
-			if (pstmt != null) {
+			if (cstmt != null) {
 				try {
-					pstmt.close();
+					cstmt.close();
 				} catch (Exception e2) {
 				}
 			}
