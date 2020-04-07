@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 
-public class FileDeleteEx {
+public class Ex1FileDelete {
 	public static void removeDir(String pathname) {
 		try {
 			File f = new File(pathname);
