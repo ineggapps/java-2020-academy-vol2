@@ -28,3 +28,4 @@ hs_err_pid*
 
 #Except file
 /src/test0403/**
+*.txt
