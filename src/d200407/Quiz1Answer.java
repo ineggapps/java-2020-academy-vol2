@@ -16,7 +16,8 @@ public class Quiz1Answer {
 	public static void main(String[] args) {
 		Score s = new Score();
 		s.loadFile("score1.txt");
-		s.saveOrderByTot("score2.txt");
+//		s.saveOrderByTot("score2.txt");
+		s.saveOrderByName("score2.txt");
 		System.out.println("작업 완료...");
 	}
 }
@@ -119,6 +120,46 @@ class Score {
 			}
 		}
 	}
+	public void saveOrderByName(String pathname) {
+		if (list.size() == 0) {
+			System.out.println("등록된 자료가 없습니다.");
+			return;
+		}
+
+		BufferedWriter bw = null;
+		try {
+			bw = new BufferedWriter(new FileWriter(pathname));
+			// 총점 내림차순 정렬하기
+			// (+심화) 총점이 같으면 국어 내림차순 정렬하기
+			Comparator<ScoreVO> comp = new Comparator<ScoreVO>() {
+				@Override
+				public int compare(ScoreVO o1, ScoreVO o2) {
+					return o1.getName().compareTo(o2.getName());
+				}
+			};
+			Collections.sort(list, comp);
+			String s;
+			for (ScoreVO vo : list) {
+				s = vo.getName() + "\t" + vo.getKor() + "\t" + vo.getEng() + "\t" + vo.getMat() + "\t" + vo.getTot()
+						+ "\t" + vo.getAve() + "\n";
+				bw.write(s);
+				System.out.print(s);// 디버깅
+			}
+			bw.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (bw != null) {
+				try {
+					bw.close();
+				} catch (Exception e2) {
+				}
+			}
+		}
+	}
+
 }
 
 class ScoreVO {
