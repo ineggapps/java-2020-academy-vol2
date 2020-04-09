@@ -1,4 +1,4 @@
-package d200409;
+package chat;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -13,10 +13,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-//1:1 클라이언트 
 //Ex4ChatServer 먼저 실행하고 Ex5ChatClient실행!
 //둘 중에 하나 종료 시 전부 끄고 다시 Server부터 실행하기
-public class Ex5ChatClient extends JFrame implements Runnable, ActionListener {
+public class ChatClient extends JFrame implements Runnable, ActionListener {
 	/**
 	 * 
 	 */
@@ -27,9 +26,9 @@ public class Ex5ChatClient extends JFrame implements Runnable, ActionListener {
 	private Socket sc = null;
 	private String host = "127.0.0.1";
 	private int port = 8000; 
-	private String nickName = "라이언";
+	private String nickName = "dfsadfs";
 
-	public Ex5ChatClient() {
+	public ChatClient() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		ta.setEditable(false);
@@ -47,7 +46,7 @@ public class Ex5ChatClient extends JFrame implements Runnable, ActionListener {
 	}
 
 	public static void main(String[] args) {
-		new Ex5ChatClient().connect();
+		new ChatClient().connect();
 	}
 
 	public void connect() {
@@ -77,9 +76,9 @@ public class Ex5ChatClient extends JFrame implements Runnable, ActionListener {
 				}
 				// 서버에 정보 보내기
 				PrintWriter pw = new PrintWriter(sc.getOutputStream(), true);
-				pw.println(nickName + " > " + s);
+				pw.println(nickName + " > " + s );
 
-				ta.append("나 > " + s);
+				ta.append("나 > " + s+ "\n");
 				ta.setCaretPosition(ta.getDocument().getLength());
 				tf.setText("");
 				tf.requestFocus();
