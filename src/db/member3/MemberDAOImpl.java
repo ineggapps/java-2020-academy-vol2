@@ -2,7 +2,6 @@ package db.member3;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +11,8 @@ import com.util.DBConn;
 import oracle.jdbc.OracleTypes;
 
 public class MemberDAOImpl implements MemberDAO {
-	private final static String TABLE_MEMBER1 = "member1";
-	private final static String TABLE_MEMBER2 = "member2";
+//	private final static String TABLE_MEMBER1 = "member1";
+//	private final static String TABLE_MEMBER2 = "member2";
 	private Connection conn = DBConn.getConnection();
 
 	@Override
