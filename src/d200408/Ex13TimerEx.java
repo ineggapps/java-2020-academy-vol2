@@ -1,4 +1,4 @@
-package d200408;
+ï»¿package d200408;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -7,15 +7,15 @@ import java.util.TimerTask;
 
 public class Ex13TimerEx {
 	public static void main(String[] args) {
-		System.out.println("main() È£Ãâ ½Ã°£ " + String.format("%1$tT %1$tA %1$tT", new Date()));
+		System.out.println("main() í˜¸ì¶œ ì‹œê°„ " + String.format("%1$tT %1$tA %1$tT", new Date()));
 		new MyTimer();
 	}
 }
 
 class MyTimer {
 	public MyTimer() {
-		// TimerTask: Timer¿¡ ÀÇÇØ ¹İº¹ ½ÇÇàÇÏµµ·Ï ÅÂ½ºÅ©µÇ´Â ½ºÄÉÁÙ
-		// BUT 0.001ÃÊ Á¤µµÀÇ ¿ÀÂ÷´Â ¹ß»ıÇÒ ¼ö ÀÖ´Ù´Â °ÍÀ» À¯ÀÇÇÑ´Ù.
+		// TimerTask: Timerì— ì˜í•´ ë°˜ë³µ ì‹¤í–‰í•˜ë„ë¡ íƒœìŠ¤í¬ë˜ëŠ” ìŠ¤ì¼€ì¤„
+		// BUT 0.001ì´ˆ ì •ë„ì˜ ì˜¤ì°¨ëŠ” ë°œìƒí•  ìˆ˜ ìˆë‹¤ëŠ” ê²ƒì„ ìœ ì˜í•œë‹¤.
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
@@ -24,15 +24,15 @@ class MyTimer {
 		};
 
 		Timer t = new Timer();
-		// ÇöÀç ½Ã°£ºÎÅÍ 1ÃÊ¸¶´Ù ÇÑ ¹ø¾¿ ¹İº¹ ½ÇÇàÇÑ´Ù.
-//		t.schedule(task, new Date(), 1000);//ÇöÀçºÎÅÍ 1ÃÊ¸¶´Ù ½ÇÇà
-//		t.schedule(task, 100);// 100ms ÈÄ ÇÑ ¹ø¸¸ ½ÇÇà
-		t.schedule(task, 2000, 1000);// 2ÃÊ ÈÄ 1ÃÊ¸¶´Ù ¹İº¹ÇÏ¿© ½ÇÇà
-//		t.cancel();//Å¸ÀÌ¸Ó ÁßÁö
+		// í˜„ì¬ ì‹œê°„ë¶€í„° 1ì´ˆë§ˆë‹¤ í•œ ë²ˆì”© ë°˜ë³µ ì‹¤í–‰í•œë‹¤.
+//		t.schedule(task, new Date(), 1000);//í˜„ì¬ë¶€í„° 1ì´ˆë§ˆë‹¤ ì‹¤í–‰
+//		t.schedule(task, 100);// 100ms í›„ í•œ ë²ˆë§Œ ì‹¤í–‰
+		t.schedule(task, 2000, 1000);// 2ì´ˆ í›„ 1ì´ˆë§ˆë‹¤ ë°˜ë³µí•˜ì—¬ ì‹¤í–‰
+//		t.cancel();//íƒ€ì´ë¨¸ ì¤‘ì§€
 
-		// ´ÙÀ½³¯ 0½Ã 0ºĞ 0:000ÃÊ¿¡ ½ÃÀÛÇÏ¿© ÇÏ·ç¿¡ ÇÑ ¹ø¸¸ ½ÇÇà
+		// ë‹¤ìŒë‚  0ì‹œ 0ë¶„ 0:000ì´ˆì— ì‹œì‘í•˜ì—¬ í•˜ë£¨ì— í•œ ë²ˆë§Œ ì‹¤í–‰
 		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, 1); // Á¤È®È÷ 24½Ã°£ ¹Ì·¡·Î ÀÌµ¿
+		cal.add(Calendar.DATE, 1); // ì •í™•íˆ 24ì‹œê°„ ë¯¸ë˜ë¡œ ì´ë™
 		cal.set(Calendar.HOUR_OF_DAY, 0);
 		cal.set(Calendar.MINUTE, 0);
 		cal.set(Calendar.SECOND, 0);

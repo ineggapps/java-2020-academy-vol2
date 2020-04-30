@@ -1,4 +1,4 @@
-package com.line2;
+ï»¿package com.line2;
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -59,22 +59,22 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 		tfIp = new JTextField(7);
 		tfIp.setText("127.0.0.1");
 		tfName = new JTextField(7);
-		conn = new JButton("¼­¹ö Á¢¼Ó");
+		conn = new JButton("ì„œë²„ ì ‘ì†");
 		conn.addActionListener(this);
-		disConn = new JButton("¿¬°á ÇØÁ¦");
+		disConn = new JButton("ì—°ê²° í•´ì œ");
 		disConn.addActionListener(this);
 		disConn.setEnabled(false);
 		
-		gameStart = new JButton("°ÔÀÓ½ÃÀÛ");
+		gameStart = new JButton("ê²Œì„ì‹œì‘");
 		gameStart.addActionListener(this);
 		gameStart.setEnabled(false);
-		gameStop = new JButton("°ÔÀÓÁ¾·á");
+		gameStop = new JButton("ê²Œì„ì¢…ë£Œ");
 		gameStop.addActionListener(this);
 		gameStop.setEnabled(false);
 		
-		p.add(new JLabel("¼­¹öÁÖ¼Ò: ", JLabel.LEFT));
+		p.add(new JLabel("ì„œë²„ì£¼ì†Œ: ", JLabel.LEFT));
 		p.add(tfIp);
-		p.add(new JLabel(" ´Ğ³×ÀÓ: ", JLabel.LEFT));
+		p.add(new JLabel(" ë‹‰ë„¤ì„: ", JLabel.LEFT));
 		p.add(tfName);
 		p.add(conn);
 		p.add(disConn);
@@ -103,7 +103,7 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 		
 		add(p, BorderLayout.CENTER);
 		
-		setTitle("±×¸² ¸ÂÃß±â °ÔÀÓ...");
+		setTitle("ê·¸ë¦¼ ë§ì¶”ê¸° ê²Œì„...");
 		setResizable(false);
 		setSize(700, 480);
 		setVisible(true);
@@ -143,7 +143,7 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 	public void connect() {
 		try {
 			sc=new Socket(host, port);
-			System.out.println("¼­¹ö¿¡ Á¢¼Ó...");
+			System.out.println("ì„œë²„ì— ì ‘ì†...");
 			
 			oos = new ObjectOutputStream(sc.getOutputStream());
 			oos.flush();
@@ -165,30 +165,30 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 				if(data instanceof MsgLogin) {
 					MsgLogin login = (MsgLogin) data;
 					
-					if(login.getCode() == 110) { // ·Î±×ÀÎ ¼º°ø
-						taMsg.setText("¼­¹ö¿¡ ·Î±×ÀÎ Çß½À´Ï´Ù. !!!");
+					if(login.getCode() == 110) { // ë¡œê·¸ì¸ ì„±ê³µ
+						taMsg.setText("ì„œë²„ì— ë¡œê·¸ì¸ í–ˆìŠµë‹ˆë‹¤. !!!");
 						
 						connInit(true);
 						
 						tfMsg.requestFocus();
 					
-					} else if (login.getCode() == 111) { // ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®°¡ ·Î±×ÀÎ ÇÑ °æ¿ì
-						taMsg.append("\r\n"+login.getUserName()+"´ÔÀÌ ÀÔÀåÇß½À´Ï´Ù. !!!");
+					} else if (login.getCode() == 111) { // ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ê°€ ë¡œê·¸ì¸ í•œ ê²½ìš°
+						taMsg.append("\r\n"+login.getUserName()+"ë‹˜ì´ ì…ì¥í–ˆìŠµë‹ˆë‹¤. !!!");
 						tfMsg.requestFocus();
 
-					} else if (login.getCode() == 120 || login.getCode() == 121) { // ·Î±×ÀÎ ½ÇÆĞ
+					} else if (login.getCode() == 120 || login.getCode() == 121) { // ë¡œê·¸ì¸ ì‹¤íŒ¨
 						if(login.getCode() == 120)
-						   taMsg.setText("¾ÆÀÌµğ Áßº¹À¸·Î ·Î±×ÀÎ ½ÇÆĞ Çß½À´Ï´Ù. !!!");
+						   taMsg.setText("ì•„ì´ë”” ì¤‘ë³µìœ¼ë¡œ ë¡œê·¸ì¸ ì‹¤íŒ¨ í–ˆìŠµë‹ˆë‹¤. !!!");
 						else 
-						   taMsg.setText("Á¤¿ø ÃÊ°ú·Î  ·Î±×ÀÎ ½ÇÆĞ Çß½À´Ï´Ù. !!!");
+						   taMsg.setText("ì •ì› ì´ˆê³¼ë¡œ  ë¡œê·¸ì¸ ì‹¤íŒ¨ í–ˆìŠµë‹ˆë‹¤. !!!");
 							
 						sc.close();
 						
 						connInit(false);
 
 						break;
-					} else if (login.getCode() == 201) { // ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®°¡ ·Î±× ¾Æ¿ô ÇÑ °æ¿ì
-						taMsg.append("\r\n"+login.getUserName()+"´ÔÀÌ ÅğÀåÇß½À´Ï´Ù. !!!");
+					} else if (login.getCode() == 201) { // ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ê°€ ë¡œê·¸ ì•„ì›ƒ í•œ ê²½ìš°
+						taMsg.append("\r\n"+login.getUserName()+"ë‹˜ì´ í‡´ì¥í–ˆìŠµë‹ˆë‹¤. !!!");
 						tfMsg.requestFocus();
 					}
 				} 
@@ -206,7 +206,7 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 					MsgGame game=(MsgGame)data;
 					
 					if(game.getCode()==201) {
-						// °ÔÀÓ ¿äÃ»ÀÌ ¼ö¶ôµÈ °æ¿ì
+						// ê²Œì„ ìš”ì²­ì´ ìˆ˜ë½ëœ ê²½ìš°
 						bGame=true;
 						list1.clear();
 						list2.clear();
@@ -216,10 +216,10 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 						gameStart.setEnabled(false);
 						gameStop.setEnabled(true);
 						
-						taMsg.append("\r\n °ÔÀÓÀ» ½ÃÀÛ ÇÕ´Ï´Ù.");
+						taMsg.append("\r\n ê²Œì„ì„ ì‹œì‘ í•©ë‹ˆë‹¤.");
 						
 					} else if(game.getCode()==210) {
-						// ´Ù¸¥ »ç¶÷ÀÌ °ÔÀÓÁß(½ÃÀÛ)ÀÓÀ» Àü´Ş ¹ŞÀº °æ¿ì
+						// ë‹¤ë¥¸ ì‚¬ëŒì´ ê²Œì„ì¤‘(ì‹œì‘)ì„ì„ ì „ë‹¬ ë°›ì€ ê²½ìš°
 						bGame=false;
 						list1.clear();
 						list2.clear();
@@ -229,15 +229,15 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 						gameStart.setEnabled(false);
 						gameStop.setEnabled(false);
 						
-						taMsg.append("\r\n"+game.getUserName()+"´ÔÀÌ °ÔÀÓÀ» ½ÃÀÛ Çß½À´Ï´Ù.\r\n¹«½¼ ±×¸²À» ±×¸®´ÂÁö ¸ÂÃçº¸¼¼¿ä !!!");
+						taMsg.append("\r\n"+game.getUserName()+"ë‹˜ì´ ê²Œì„ì„ ì‹œì‘ í–ˆìŠµë‹ˆë‹¤.\r\në¬´ìŠ¨ ê·¸ë¦¼ì„ ê·¸ë¦¬ëŠ”ì§€ ë§ì¶°ë³´ì„¸ìš” !!!");
 						
 					} else if(game.getCode()==211) {
-						// °ÔÀÓ ÁßÁö¸¦ Àü´Ş ¹ŞÀº °æ¿ì
+						// ê²Œì„ ì¤‘ì§€ë¥¼ ì „ë‹¬ ë°›ì€ ê²½ìš°
 						bGame=false;
 						gameStart.setEnabled(true);
 						gameStop.setEnabled(false);
 						
-						taMsg.append("\r\n"+game.getUserName()+"´ÔÀÌ °ÔÀÓÀ» ÁßÁö Çß½À´Ï´Ù.");
+						taMsg.append("\r\n"+game.getUserName()+"ë‹˜ì´ ê²Œì„ì„ ì¤‘ì§€ í–ˆìŠµë‹ˆë‹¤.");
 					}
 					
 				}
@@ -249,7 +249,7 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 			
 			connInit(false);
 
-			taMsg.append("\r\nÁ¢¼Ó Á¾·á. !!!");
+			taMsg.append("\r\nì ‘ì† ì¢…ë£Œ. !!!");
 		}
 	}
 	
@@ -260,7 +260,7 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 		if(ob instanceof JTextField) {
 			sendMsg();
 		} else if(ob instanceof JButton) {
-			// ¼­¹ö ¿¬°á ¹öÆ°
+			// ì„œë²„ ì—°ê²° ë²„íŠ¼
 			if(ob == conn) {
 				host = tfIp.getText().trim();
 				if(host.equals("")) {
@@ -274,21 +274,21 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 					return;
 				}
 				
-				// ¼­¹ö¿¡ Á¢¼Ó
+				// ì„œë²„ì— ì ‘ì†
 				try {
 					sc = new Socket(host, port);
 					
 					oos = new ObjectOutputStream(sc.getOutputStream());
-					oos.flush(); // Áß¿ä(»ı·« ºÒ°¡)
+					oos.flush(); // ì¤‘ìš”(ìƒëµ ë¶ˆê°€)
 					ois = new ObjectInputStream(sc.getInputStream());
 					
-					// ·Î±×ÀÎ ¿äÃ»
+					// ë¡œê·¸ì¸ ìš”ì²­
 					MsgLogin loginReq = new MsgLogin();
 					loginReq.setCode(100);
 					loginReq.setUserName(userName);
 					oos.writeObject(loginReq);
 					
-					// ½º·¹µå »ı¼º
+					// ìŠ¤ë ˆë“œ ìƒì„±
 					Thread th = new Thread(this);
 					th.start();
 				} catch(Exception ex) {
@@ -300,7 +300,7 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 			} else if(ob == disConn) {
 				try {
 					if(sc != null) {
-						// ¼­¹ö¿¡ ·Î±×¾Æ¿ô Á¤º¸¸¦ º¸³¿(º¸³»Áö ¾Ê¾Æµµ µÊ)
+						// ì„œë²„ì— ë¡œê·¸ì•„ì›ƒ ì •ë³´ë¥¼ ë³´ëƒ„(ë³´ë‚´ì§€ ì•Šì•„ë„ ë¨)
 						sc.close();
 					}
 				} catch(Exception ex) {
@@ -345,7 +345,7 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 		}
 	}
 	
-	// ¼­¹ö¿¡ Ã¤ÆÃ ¸Ş½ÃÁö Àü¼Û
+	// ì„œë²„ì— ì±„íŒ… ë©”ì‹œì§€ ì „ì†¡
 	private void sendMsg() {
 		String msg =tfMsg.getText().trim(); 
 		if(msg.equals(""))
@@ -354,14 +354,14 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 		if(sc == null)
 			return;
 		
-		// ¼­¹ö¿¡ ¸Ş½ÃÁö Àü¼Û
+		// ì„œë²„ì— ë©”ì‹œì§€ ì „ì†¡
 		MsgChat chatMsg = new MsgChat();
 		chatMsg.setUserName(userName);
 		chatMsg.setMsg(msg);
 		
 		try {
 			oos.writeObject(chatMsg);
-			taMsg.append("\r\nº¸³¿] "+msg);
+			taMsg.append("\r\në³´ëƒ„] "+msg);
 		} catch(Exception e) {
 			System.out.println(e.toString());
 			
@@ -385,11 +385,11 @@ public class LineClient extends JFrame implements Runnable, ActionListener {
 	     }
 
 	     public void paint(Graphics g) {
-				// Graphics2D °´Ã¼·Î Çü º¯È¯.
+				// Graphics2D ê°ì²´ë¡œ í˜• ë³€í™˜.
 				Graphics2D g2=(Graphics2D)g;
-				// ¾ÈÆ¼¾ó¶óÀÌ½Ì(ºÎµå·´°Ô)
+				// ì•ˆí‹°ì–¼ë¼ì´ì‹±(ë¶€ë“œëŸ½ê²Œ)
 				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-				// ¼±µÎ²². ½Ç¼±
+				// ì„ ë‘ê»˜. ì‹¤ì„ 
 				g2.setStroke(new BasicStroke(3.0f));
 
 				for(int i=0; i<list1.size(); i++) {

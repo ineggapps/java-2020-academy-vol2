@@ -1,15 +1,15 @@
-package d200408;
+ï»¿package d200408;
 
 import java.io.Serializable;
 
 public class UserVO implements Serializable {
 	/**
-	 * but... Á÷·ÄÈ­ ´ë»ó¿¡¼­ Á¦¿ÜµÇ´Â °Íµé (method, static º¯¼ö, transient º¯¼ö)
+	 * but... ì§ë ¬í™” ëŒ€ìƒì—ì„œ ì œì™¸ë˜ëŠ” ê²ƒë“¤ (method, static ë³€ìˆ˜, transient ë³€ìˆ˜)
 	 */
 	private static final long serialVersionUID = 1L;
 	private String name;
 	private int age;
-	private transient String tel; //transient Å°¿öµå¸¦ ÀûÀ¸¸é ÀúÀåµÇÁö ¾Ê´Â °ÍÀ» È®ÀÎÇÒ ¼ö ÀÖ´Ù. (EX3, EX4)
+	private transient String tel; //transient í‚¤ì›Œë“œë¥¼ ì ìœ¼ë©´ ì €ì¥ë˜ì§€ ì•ŠëŠ” ê²ƒì„ í™•ì¸í•  ìˆ˜ ìˆë‹¤. (EX3, EX4)
 //	private String tel; 
 
 	public UserVO() {

@@ -1,4 +1,4 @@
-package d200407;
+ï»¿package d200407;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -9,7 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-//¡á¡á¡á¡á¡á ÆÄÀÏ º¹»çÇÏ´Â ÄÚµå´Â µû·Î ¾Ï±âÇÒ ÇÊ¿ä°¡ ÀÖ´Ù.
+//â– â– â– â– â–  íŒŒì¼ ë³µì‚¬í•˜ëŠ” ì½”ë“œëŠ” ë”°ë¡œ ì•”ê¸°í•  í•„ìš”ê°€ ìˆë‹¤.
 public class Ex2FileCopy {
 	public static void main(String[] args) {
 		String s1, s2;
@@ -19,24 +19,24 @@ public class Ex2FileCopy {
 		byte b[] = new byte[2048];
 
 		try {
-			System.out.print("º¹»çÇÒ ¿øº» ? ");
+			System.out.print("ë³µì‚¬í•  ì›ë³¸ ? ");
 			s1 = br.readLine();
-			System.out.print("»õ·Î¿î ÆÄÀÏ ? ");
+			System.out.print("ìƒˆë¡œìš´ íŒŒì¼ ? ");
 			s2 = br.readLine();
 
 			long start = System.currentTimeMillis();
-			// ¹öÆÛ¸¦ »ç¿ëÇÑ´Ù´Â °Í ÀÌ¿Ü¿¡´Â »õ·Î¿î ³»¿ëÀÌ ¾øÀ½.
+			// ë²„í¼ë¥¼ ì‚¬ìš©í•œë‹¤ëŠ” ê²ƒ ì´ì™¸ì—ëŠ” ìƒˆë¡œìš´ ë‚´ìš©ì´ ì—†ìŒ.
 			bis = new BufferedInputStream(new FileInputStream(new File(s1)));
 			bos = new BufferedOutputStream(new FileOutputStream(new File(s2)));
-			//¡á¡á¡á¡á¡á¡á¡á¡á¡áHIGHLIGHT¡á¡á¡á¡á¡á¡á¡á¡á¡á
+			//â– â– â– â– â– â– â– â– â– HIGHLIGHTâ– â– â– â– â– â– â– â– â– 
 			int len;
 			while ((len = bis.read(b)) != -1) {
-				bos.write(b, 0, len);// lenÀº ÀĞ¾îµéÀÎ ±æÀÌ¸¦ ÀÇ¹ÌÇÑ´Ù.
+				bos.write(b, 0, len);// lenì€ ì½ì–´ë“¤ì¸ ê¸¸ì´ë¥¼ ì˜ë¯¸í•œë‹¤.
 			}
-			bos.flush();// ÀúÀåÇÏ±â À§ÇØ¼­´Â flush()¸¦ ¸í½ÃÇØÁÖ´Â °ÍÀ» ±ÇÀåÇÑ´Ù.
-			//¡á¡á¡á¡á¡á¡á¡á¡á¡áHIGHLIGHT¡á¡á¡á¡á¡á¡á¡á¡á¡á
+			bos.flush();// ì €ì¥í•˜ê¸° ìœ„í•´ì„œëŠ” flush()ë¥¼ ëª…ì‹œí•´ì£¼ëŠ” ê²ƒì„ ê¶Œì¥í•œë‹¤.
+			//â– â– â– â– â– â– â– â– â– HIGHLIGHTâ– â– â– â– â– â– â– â– â– 
 			long end = System.currentTimeMillis();
-			System.out.println("ÀúÀåÇÏ¿´½À´Ï´Ù. " + (end - start) + "ms");
+			System.out.println("ì €ì¥í•˜ì˜€ìŠµë‹ˆë‹¤. " + (end - start) + "ms");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

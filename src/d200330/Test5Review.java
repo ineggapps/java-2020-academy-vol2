@@ -1,4 +1,4 @@
-package d200330;
+ï»¿package d200330;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ CREATE TABLE score_rv(
     eng NUMBER(3) NOT NULL
 );
  
- ÀÌ¸§    ³Î?       À¯Çü           
+ ì´ë¦„    ë„?       ìœ í˜•           
 ----- -------- ------------ 
 HAK   NOT NULL VARCHAR2(30) 
 NAME  NOT NULL VARCHAR2(30) 
@@ -31,9 +31,9 @@ public class Test5Review {
 		DAO dao = new DAO();
 		dao.resetTable();
 		dao.print();
-		dao.insert("1111", "È«±æµ¿", "2020-01-01", 80, 90, 90);
-		dao.insert("2222", "½É½ÉÇØ", "2020-04-03", 99, 80, 100);
-		dao.insert("3333", "¹Ú»çÀå", "2020-02-22", 94, 48, 77);
+		dao.insert("1111", "í™ê¸¸ë™", "2020-01-01", 80, 90, 90);
+		dao.insert("2222", "ì‹¬ì‹¬í•´", "2020-04-03", 99, 80, 100);
+		dao.insert("3333", "ë°•ì‚¬ì¥", "2020-02-22", 94, 48, 77);
 		dao.print();
 	}
 }
@@ -64,10 +64,10 @@ class DAO{
 		Connection conn = DBConn.getConnection();
 		String sql = String.format("INSERT INTO score_rv(hak, name, birth, kor, eng, mat) VALUES('%s','%s','%s',%d,%d,%d)",
 				hak, name, birth, kor, eng, mat);
-		//JDK7ÀÌ»ó try catch±¸¹®
+		//JDK7ì´ìƒ try catchêµ¬ë¬¸
 		try(Statement stmt = conn.createStatement()) {
 			int result = stmt.executeUpdate(sql);
-			System.out.println(result + "Çà ¾÷µ¥ÀÌÆ®°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
+			System.out.println(result + "í–‰ ì—…ë°ì´íŠ¸ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -79,7 +79,7 @@ class DAO{
 		String sql = "truncate table score_rv";
 		try (Statement stmt = conn.createStatement()){
 			stmt.executeUpdate(sql);
-			System.out.println("Å×ÀÌºíÀ» ÃÊ±âÈ­ÇÏ¿´½À´Ï´Ù.");
+			System.out.println("í…Œì´ë¸”ì„ ì´ˆê¸°í™”í•˜ì˜€ìŠµë‹ˆë‹¤.");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

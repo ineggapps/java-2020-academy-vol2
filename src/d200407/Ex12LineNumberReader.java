@@ -1,18 +1,18 @@
-package d200407;
+ï»¿package d200407;
 
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 
-//FilterStreamÀÇ ¶Ç ´Ù¸¥ ¿¹
-//½ºÆ®¸²ÀÌ °¡°øµÇ¾úÀ¸´Ï±î...
+//FilterStreamì˜ ë˜ ë‹¤ë¥¸ ì˜ˆ
+//ìŠ¤íŠ¸ë¦¼ì´ ê°€ê³µë˜ì—ˆìœ¼ë‹ˆê¹Œ...
 public class Ex12LineNumberReader {
 	public static void main(String[] args) {
-		// ÇöÀç ÀÔ·ÂÇÏ°í ÀÖ´Â ¶óÀÎÀÇ ¹øÈ£¸¦ ¾Ë ÇÊ¿ä°¡ ÀÖÀ» ¶§... (±×·² ¶§°¡ ÀÖÀ»±î...)
+		// í˜„ì¬ ì…ë ¥í•˜ê³  ìˆëŠ” ë¼ì¸ì˜ ë²ˆí˜¸ë¥¼ ì•Œ í•„ìš”ê°€ ìˆì„ ë•Œ... (ê·¸ëŸ´ ë•Œê°€ ìˆì„ê¹Œ...)
 		LineNumberReader br = new LineNumberReader(new InputStreamReader(System.in));
 		String s;
 		StringBuilder sb = new StringBuilder();
 		try {
-			System.out.println("¹®ÀÚ¿­ ÀÔ·Â (Á¾·á: Ctrl+Z)...");
+			System.out.println("ë¬¸ìì—´ ì…ë ¥ (ì¢…ë£Œ: Ctrl+Z)...");
 			do {
 				System.out.print((br.getLineNumber() + 1) + ":");
 				s = br.readLine();
@@ -20,7 +20,7 @@ public class Ex12LineNumberReader {
 			} while (s != null);
 
 			System.out.println("\n-----------------------------------------------");
-			System.out.println("ÀÔ·Â ³»¿ë....");
+			System.out.println("ì…ë ¥ ë‚´ìš©....");
 			System.out.println(sb.toString());
 		} catch (Exception e) {
 			e.printStackTrace();

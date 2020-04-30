@@ -1,4 +1,4 @@
-package d200409;
+ï»¿package d200409;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -15,9 +15,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-//1:1 Å¬¶óÀÌ¾ğÆ® 
-//Ex4ChatServer ¸ÕÀú ½ÇÇàÇÏ°í Ex5ChatClient½ÇÇà!
-//µÑ Áß¿¡ ÇÏ³ª Á¾·á ½Ã ÀüºÎ ²ô°í ´Ù½Ã ServerºÎÅÍ ½ÇÇàÇÏ±â
+//1:1 í´ë¼ì´ì–¸íŠ¸ 
+//Ex4ChatServer ë¨¼ì € ì‹¤í–‰í•˜ê³  Ex5ChatClientì‹¤í–‰!
+//ë‘˜ ì¤‘ì— í•˜ë‚˜ ì¢…ë£Œ ì‹œ ì „ë¶€ ë„ê³  ë‹¤ì‹œ Serverë¶€í„° ì‹¤í–‰í•˜ê¸°
 public class Ex4ChatServer extends JFrame implements Runnable, ActionListener {
 	/**
 	 * 
@@ -28,20 +28,20 @@ public class Ex4ChatServer extends JFrame implements Runnable, ActionListener {
 
 	private ServerSocket ss = null;
 	private int port = 8000;
-	private Socket sc = null;// Á¢¼ÓÇÑ Å¬¶óÀÌ¾ğÆ®
+	private Socket sc = null;// ì ‘ì†í•œ í´ë¼ì´ì–¸íŠ¸
 
 	public Ex4ChatServer() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		ta.setEditable(false);
-		// ½ºÅ©·Ñ¹Ù ¸¸µé±â
+		// ìŠ¤í¬ë¡¤ë°” ë§Œë“¤ê¸°
 		JScrollPane sp = new JScrollPane(ta);
 		add(sp, BorderLayout.CENTER);
 
 		tf.addActionListener (this);
 		add(tf, BorderLayout.SOUTH);
 
-		setTitle("Ã¤ÆÃ - ¼­¹ö");
+		setTitle("ì±„íŒ… - ì„œë²„");
 		setSize(500, 500);
 		setResizable(false);
 		setVisible(true);
@@ -55,9 +55,9 @@ public class Ex4ChatServer extends JFrame implements Runnable, ActionListener {
 	public void serverStart() {
 		try {
 			ss = new ServerSocket(port);
-			ta.setText("¼­¹ö ½ÃÀÛ...");
-			sc = ss.accept(); // Å¬¶óÀÌ¾ğÆ® Á¢¼ÓÀ» ±â´Ù¸² (´ë±â) => blocking »óÅÂ·Î µé¾î °¨
-			// Å¬¶óÀÌ¾ğÆ®°¡ Á¢¼ÓÇÏ¸é
+			ta.setText("ì„œë²„ ì‹œì‘...");
+			sc = ss.accept(); // í´ë¼ì´ì–¸íŠ¸ ì ‘ì†ì„ ê¸°ë‹¤ë¦¼ (ëŒ€ê¸°) => blocking ìƒíƒœë¡œ ë“¤ì–´ ê°
+			// í´ë¼ì´ì–¸íŠ¸ê°€ ì ‘ì†í•˜ë©´
 			Thread t = new Thread(this);
 			t.start();
 		} catch (Exception e) {
@@ -73,15 +73,15 @@ public class Ex4ChatServer extends JFrame implements Runnable, ActionListener {
 				return;
 			}
 			try {
-				// Àü¼Û
+				// ì „ì†¡
 				if (sc == null) {
-					// ¿¬°áµÈ »óÅÂ°¡ ¾Æ´Ï¸é Àü¼ÛÇÒ ´ë»óÀÌ ¾øÀ¸¹Ç·Î...
+					// ì—°ê²°ëœ ìƒíƒœê°€ ì•„ë‹ˆë©´ ì „ì†¡í•  ëŒ€ìƒì´ ì—†ìœ¼ë¯€ë¡œ...
 					return;
 				}
-				// Å¬¶óÀÌ¾ğÆ®¿¡ Á¤º¸¸¦ º¸³½´Ù.
+				// í´ë¼ì´ì–¸íŠ¸ì— ì •ë³´ë¥¼ ë³´ë‚¸ë‹¤.
 				PrintWriter pw = new PrintWriter(sc.getOutputStream(), true);
-				pw.println("¼­¹ö > " + s + "\n");
-				ta.append("º¸³¿ | " + s + "\n");
+				pw.println("ì„œë²„ > " + s + "\n");
+				ta.append("ë³´ëƒ„ | " + s + "\n");
 				ta.setCaretPosition(ta.getDocument().getLength());
 				tf.setText("");
 				tf.requestFocus();
@@ -99,21 +99,21 @@ public class Ex4ChatServer extends JFrame implements Runnable, ActionListener {
 
 		try {
 			if (sc == null) {
-				// ¼ÒÄÏÀÌ nullÀÎ °æ¿ì ¿¬°áÀÌ µÇÁö ¾Ê¾Ò´Ù´Â ÀÇ¹ÌÀÌ¹Ç·Î..
+				// ì†Œì¼“ì´ nullì¸ ê²½ìš° ì—°ê²°ì´ ë˜ì§€ ì•Šì•˜ë‹¤ëŠ” ì˜ë¯¸ì´ë¯€ë¡œ..
 				return;
 			}
-			// Á¢¼ÓÇÑ Å¬¶óÀÌ¾î´À¿¡¼­ ÀÔ·Â ½ºÆ®¸²À» ±¸ÇØ Å¬¶óÀÌ¾ğÆ® Á¤º¸¸¦ ÀĞ¾î¿Â´Ù.
+			// ì ‘ì†í•œ í´ë¼ì´ì–´ëŠì—ì„œ ì…ë ¥ ìŠ¤íŠ¸ë¦¼ì„ êµ¬í•´ í´ë¼ì´ì–¸íŠ¸ ì •ë³´ë¥¼ ì½ì–´ì˜¨ë‹¤.
 			BufferedReader br = new BufferedReader(new InputStreamReader(sc.getInputStream()));
-			// Á¢¼ÓÇÑ Å¬¶óÀÌ¾ğÆ® ¾ÆÀÌÇÇ ÁÖ¼Ò
+			// ì ‘ì†í•œ í´ë¼ì´ì–¸íŠ¸ ì•„ì´í”¼ ì£¼ì†Œ
 			ip = sc.getInetAddress().getHostAddress();
-			ta.append("[" + ip + "] ¿¡¼­ Á¢¼Ó...\n");
-			// Å¬¶óÀÌ¾ğÆ®°¡ º¸³½ Á¤º¸ ¹Ş±â
+			ta.append("[" + ip + "] ì—ì„œ ì ‘ì†...\n");
+			// í´ë¼ì´ì–¸íŠ¸ê°€ ë³´ë‚¸ ì •ë³´ ë°›ê¸°
 			while ((s = br.readLine()) != null) {
 				ta.append(s + "\n");
 			}
 		} catch (IOException e) {
-			// Å¬¶óÀÌ¾ğÆ®°¡ Á¢¼ÓÀ» ÁßÁöÇÏ¸é IOExceptionÀÌ ¹ß»ıÇÑ´Ù.
-			ta.append("\n[" + ip + "] ´Ô ÅğÀå...\n");
+			// í´ë¼ì´ì–¸íŠ¸ê°€ ì ‘ì†ì„ ì¤‘ì§€í•˜ë©´ IOExceptionì´ ë°œìƒí•œë‹¤.
+			ta.append("\n[" + ip + "] ë‹˜ í‡´ì¥...\n");
 			sc = null;
 		}
 	}

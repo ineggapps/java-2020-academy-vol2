@@ -1,4 +1,4 @@
-package d200403;
+ï»¿package d200403;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,8 +13,8 @@ public class ManageTextFile {
 	public static void main(String[] args) {
 		ManageTextFile manager = new ManageTextFile();
 		int numberCount = 10;
-		//ÁÖÀÇ: c:\basicjava\text Æú´õ±îÁö »ı¼ºµÅ ÀÖ¾î¾ß ¿À·ù°¡ ¹ß»ıÇÏÁö ¾Ê´Â´Ù.
-		//Æú´õ°¡ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é IOExceptionÀ» ³¯·Á ¹ö¸².
+		//ì£¼ì˜: c:\basicjava\text í´ë”ê¹Œì§€ ìƒì„±ë¼ ìˆì–´ì•¼ ì˜¤ë¥˜ê°€ ë°œìƒí•˜ì§€ ì•ŠëŠ”ë‹¤.
+		//í´ë”ê°€ ì¡´ì¬í•˜ì§€ ì•Šìœ¼ë©´ IOExceptionì„ ë‚ ë ¤ ë²„ë¦¼.
 		String fullPath = "C:\\" + "basicjava" + File.separator + "text" + File.separator + "numbers.txt";
 //		manager.writeFile(fullPath, numberCount);
 //		manager.readFile(fullPath);

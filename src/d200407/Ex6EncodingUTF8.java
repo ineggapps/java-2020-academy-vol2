@@ -1,4 +1,4 @@
-package d200407;
+ï»¿package d200407;
 
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
@@ -8,19 +8,19 @@ import java.io.Writer;
 
 public class Ex6EncodingUTF8 {
 	public static void main(String[] args) {
-		// ÀÎÄÚµù
-		// UTF-8·Î ÀúÀå
+		// ì¸ì½”ë”©
+		// UTF-8ë¡œ ì €ì¥
 		int data;
 		try {
-			// ¹®ÀÚ ÀÔ·Â ½ºÆ®¸²(MS949)
-			Reader rd = new InputStreamReader(System.in, "MS949"); // ¿î¿µÃ¼Á¦ °ü°è¾øÀÌ ¹«Á¶°Ç MS949·Î °íÁ¤!
+			// ë¬¸ì ì…ë ¥ ìŠ¤íŠ¸ë¦¼(MS949)
+			Reader rd = new InputStreamReader(System.in, "MS949"); // ìš´ì˜ì²´ì œ ê´€ê³„ì—†ì´ ë¬´ì¡°ê±´ MS949ë¡œ ê³ ì •!
 
-			// ÆÄÀÏ Ãâ·Â ¹®ÀÚ ½ºÆ®¸² (MS949)
-			// ¹®ÀÚ ÀÎÄÚµùÀ» ÁöÁ¤ÇÏ¿´À¸¹Ç·Î ¹ÙÀÌÆ®½ºÆ®¸²¸¸ °¡Áö°í »ç¿ëÇÒ ¼ö ¾ø´Ù.
+			// íŒŒì¼ ì¶œë ¥ ë¬¸ì ìŠ¤íŠ¸ë¦¼ (MS949)
+			// ë¬¸ì ì¸ì½”ë”©ì„ ì§€ì •í•˜ì˜€ìœ¼ë¯€ë¡œ ë°”ì´íŠ¸ìŠ¤íŠ¸ë¦¼ë§Œ ê°€ì§€ê³  ì‚¬ìš©í•  ìˆ˜ ì—†ë‹¤.
 			FileOutputStream fos = new FileOutputStream("test.txt"); // byte stream
 			Writer wt = new OutputStreamWriter(fos, "UTF-8");
 
-			System.out.println("¹®ÀÚ¿­ ÀÔ·Â(Á¾·á: Ctrl+Z) - º» ÆÄÀÏÀº UTF-8·Î ÀúÀåµÊ");
+			System.out.println("ë¬¸ìì—´ ì…ë ¥(ì¢…ë£Œ: Ctrl+Z) - ë³¸ íŒŒì¼ì€ UTF-8ë¡œ ì €ì¥ë¨");
 			while ((data = rd.read()) != -1) {
 				wt.write(data);
 			}

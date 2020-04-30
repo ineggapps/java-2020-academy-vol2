@@ -1,4 +1,4 @@
-package com.omok;
+ï»¿package com.omok;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -12,16 +12,16 @@ public class MainServer {
 	private int port = 7777;
 
 	// ***************************************************************
-	// »ı¼ºÀÚ
+	// ìƒì„±ì
 	public MainServer() {
 	}
 
 	// ***************************************************************
-	// ¼­¹ö ½ÃÀÛ
+	// ì„œë²„ ì‹œì‘
 	public void serverStart() {
 		try {
 			ss = new ServerSocket(port);
-			System.out.println("¼­¹ö ½ÃÀÛ !!!");
+			System.out.println("ì„œë²„ ì‹œì‘ !!!");
 
 			Socket sc = null;
 			while (true) {
@@ -35,7 +35,7 @@ public class MainServer {
 		}
 	}
 
-	// ÀÛ¾÷ÀÚ ½º·¹µå
+	// ì‘ì—…ì ìŠ¤ë ˆë“œ
 	class WorkerThread extends Thread {
 		private Socket sc;
 		private String userName=null;
@@ -49,16 +49,16 @@ public class MainServer {
 				ObjectOutputStream oos = new ObjectOutputStream(sc.getOutputStream());
 				oos.flush();
 				ObjectInputStream ois = new ObjectInputStream(sc.getInputStream());
-				System.out.println(sc.getInetAddress().getHostAddress() + "Á¢¼Ó !!! ");
+				System.out.println(sc.getInetAddress().getHostAddress() + "ì ‘ì† !!! ");
 				
 				Object ob = null;
 				while((ob = ois.readObject()) != null) {
 					if(ob instanceof UserMsg) {
-						// ·Î±×ÀÎ ¿äÃ»ÀÎ °æ¿ì¿¡ ·Î±×ÀÎ ¼º°ø ¶Ç´Â ½ÇÆĞ¸¦ Àü¼Û
+						// ë¡œê·¸ì¸ ìš”ì²­ì¸ ê²½ìš°ì— ë¡œê·¸ì¸ ì„±ê³µ ë˜ëŠ” ì‹¤íŒ¨ë¥¼ ì „ì†¡
 						UserMsg user = (UserMsg)ob;
 						userName = user.getUserName();
 						
-						// ·Î±×ÀÎ ¿äÃ»
+						// ë¡œê·¸ì¸ ìš”ì²­
 						if(user.getCode() == 1100) {
 							boolean flag = false;
 							for(SocketInfo si : list) {
@@ -69,7 +69,7 @@ public class MainServer {
 							}
 							
 							if(flag || userName == null) {
-								// ·Î±×ÀÎ¿¡ ½ÇÆĞÇÑ »ç½ÇÀ» ¾Ë·ÁÁÜ
+								// ë¡œê·¸ì¸ì— ì‹¤íŒ¨í•œ ì‚¬ì‹¤ì„ ì•Œë ¤ì¤Œ
 								UserMsg loginFail = new UserMsg();
 								loginFail.setCode(1120);
 								loginFail.setUserName(user.getUserName());
@@ -80,13 +80,13 @@ public class MainServer {
 								break;
 							}
 							
-							// ·Î±×ÀÎ¿¡ ¼º°øÇÑ »ç½ÇÀ» ¾Ë·ÁÁÜ
+							// ë¡œê·¸ì¸ì— ì„±ê³µí•œ ì‚¬ì‹¤ì„ ì•Œë ¤ì¤Œ
 							UserMsg loginOk = new UserMsg();
 							loginOk.setCode(1110);
 							loginOk.setUserName(user.getUserName());
 							oos.writeObject(loginOk);
 							
-							// ·Î±×ÀÎ¿¡ ¼º°ø »ç¿ëÀÚ¿¡°Ô Á¢¼ÓÀÚ ¸®½ºÆ® Àü¼Û
+							// ë¡œê·¸ì¸ì— ì„±ê³µ ì‚¬ìš©ìì—ê²Œ ì ‘ì†ì ë¦¬ìŠ¤íŠ¸ ì „ì†¡
 							for(SocketInfo si : list) {
 								if(si.sock == sc)
 									continue;
@@ -99,7 +99,7 @@ public class MainServer {
 								Thread.sleep(10);
 							}
 							
-							// Å¬¶óÀÌ¾ğÆ® Á¤º¸ ÀúÀå
+							// í´ë¼ì´ì–¸íŠ¸ ì •ë³´ ì €ì¥
 							SocketInfo info = new SocketInfo();
 							info.userName = user.getUserName();
 							info.opponentName=null;
@@ -108,9 +108,9 @@ public class MainServer {
 							info.oos = oos;
 							list.add(info);
 							
-							System.out.println(user.getUserName() + " ·Î±×ÀÎ Çã¿ë !!!");
+							System.out.println(user.getUserName() + " ë¡œê·¸ì¸ í—ˆìš© !!!");
 							
-							// ´Ù¸¥ ¸ğµç Å¬¶óÀÌ¾ğÆ®¿¡°Ô Á¢¼Ó »ç½Ç ¾Ë¸²
+							// ë‹¤ë¥¸ ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ì ‘ì† ì‚¬ì‹¤ ì•Œë¦¼
 							UserMsg u = new UserMsg();
 							u.setCode(1112);
 							u.setUserName(user.getUserName());
@@ -124,11 +124,11 @@ public class MainServer {
 								Thread.sleep(10);
 							}
 							
-							// ·Î±× ¾Æ¿ô ¿äÃ»
+							// ë¡œê·¸ ì•„ì›ƒ ìš”ì²­
 						} else if(user.getCode() == 1300) {
 							logout();
 						
-							// »óÅÂ¹æ¿¡°Ô °ÔÀÓÀ» ¿äÃ»
+							// ìƒíƒœë°©ì—ê²Œ ê²Œì„ì„ ìš”ì²­
 						} else if(user.getCode() == 1211) {
 							for(SocketInfo si : list) {
 								if(si.sock == sc) {
@@ -146,7 +146,7 @@ public class MainServer {
 								}
 							}
 							
-							// °ÔÀÓ¿äÃ»¿¡ ´ëÇÑ ÀÀ´ä
+							// ê²Œì„ìš”ì²­ì— ëŒ€í•œ ì‘ë‹µ
 						} else if(user.getCode() == 1212) {
 							for(SocketInfo si : list) {
 								if(si.sock == sc) {
@@ -161,7 +161,7 @@ public class MainServer {
 								if(si.userName.equals(user.getOpponentUserName())) {
 									si.oos.writeObject(user);
 								} else {
-									// ´Ù¸¥ »ç¿ëÀÚ¿¡°Ô´Â º¯°æµÈ °ÔÀÓ »óÅÂ Àü¼Û
+									// ë‹¤ë¥¸ ì‚¬ìš©ìì—ê²ŒëŠ” ë³€ê²½ëœ ê²Œì„ ìƒíƒœ ì „ì†¡
 									Thread.sleep(10);
 									UserMsg u = new UserMsg();
 									u.setCode(1210);
@@ -178,7 +178,7 @@ public class MainServer {
 								}
 							}
 							
-							// ´Ù½Ã ÇÑ°ÔÀÓ ¿äÃ»
+							// ë‹¤ì‹œ í•œê²Œì„ ìš”ì²­
 						} else if(user.getCode() == 1221) {
 							for(SocketInfo si : list) {
 								if(si.sock == sc) {
@@ -195,7 +195,7 @@ public class MainServer {
 								}
 							}
 							
-							// ´Ù½Ã ÇÑ°ÔÀÓ ¿äÃ» ÀÀ´ä
+							// ë‹¤ì‹œ í•œê²Œì„ ìš”ì²­ ì‘ë‹µ
 						} else if(user.getCode() == 1222) {
 							for(SocketInfo si : list) {
 								if(si.sock == sc) {
@@ -209,7 +209,7 @@ public class MainServer {
 								if(si.userName.equals(user.getOpponentUserName())) {
 									si.oos.writeObject(user);
 								} else if(user.getGameState()==false){
-									// ´Ù¸¥ »ç¿ëÀÚ¿¡°Ô´Â º¯°æµÈ °ÔÀÓ »óÅÂ Àü¼Û
+									// ë‹¤ë¥¸ ì‚¬ìš©ìì—ê²ŒëŠ” ë³€ê²½ëœ ê²Œì„ ìƒíƒœ ì „ì†¡
 									Thread.sleep(10);
 									UserMsg u = new UserMsg();
 									u.setCode(1210);
@@ -227,7 +227,7 @@ public class MainServer {
 							}
 						}
 						
-						// Ã¤ÆÃ ÀÎ °æ¿ì
+						// ì±„íŒ… ì¸ ê²½ìš°
 					} else if(ob instanceof ChatMsg) {
 						ChatMsg chatMsg = (ChatMsg)ob;
 						
@@ -241,7 +241,7 @@ public class MainServer {
 							}
 						}
 						
-						// °ÔÀÓ ÁÂÇ¥ÀÎ °æ¿ì
+						// ê²Œì„ ì¢Œí‘œì¸ ê²½ìš°
 					} else if(ob instanceof PointMsg) {
 						PointMsg pointMsg=(PointMsg)ob;
 						
@@ -265,7 +265,7 @@ public class MainServer {
 		}
 		
 		private void logout() {
-			// ´Ù¸¥ ¸ğµç Å¬¶óÀÌ¾ğÆ®¿¡°Ô ·Î±×¾Æ¿ô »ç½Ç ¾Ë¸²
+			// ë‹¤ë¥¸ ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ë¡œê·¸ì•„ì›ƒ ì‚¬ì‹¤ ì•Œë¦¼
 			UserMsg u = new UserMsg();
 			u.setCode(1301);
 			u.setUserName(userName);
@@ -288,7 +288,7 @@ public class MainServer {
 			if(info != null ) {
 				if(info.opponentName!=null) {
 					try {
-						// ·Î±×ÀÎ »ç¿ëÀÚ¿Í »ó´ë °ÔÀÓ »ç¿ëÀÚÀÇ °ÔÀÓ»óÅÂ(´ë±âÁß)¸¦ ´Ù¸¥ »ç¿ëÀÚ¿¡°Ô Àü¼Û
+						// ë¡œê·¸ì¸ ì‚¬ìš©ìì™€ ìƒëŒ€ ê²Œì„ ì‚¬ìš©ìì˜ ê²Œì„ìƒíƒœ(ëŒ€ê¸°ì¤‘)ë¥¼ ë‹¤ë¥¸ ì‚¬ìš©ìì—ê²Œ ì „ì†¡
 						UserMsg uu = new UserMsg();
 						uu.setCode(1210);
 						uu.setUserName(info.opponentName);
@@ -311,7 +311,7 @@ public class MainServer {
 				info.oos = null;
 				list.remove(info);
 
-				System.out.println(userName + " ÅğÀå !!!");
+				System.out.println(userName + " í‡´ì¥ !!!");
 			}
 		}
 		

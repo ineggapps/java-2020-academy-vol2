@@ -1,4 +1,4 @@
-package d200408;
+ï»¿package d200408;
 
 public class Ex12ThreadInterrupt {
 	public static void main(String[] args) {
@@ -6,14 +6,14 @@ public class Ex12ThreadInterrupt {
 		MyThread7 t2 = new MyThread7();
 		MyThread7 t3 = new MyThread7();
 
-		t1.setPriority(Thread.MAX_PRIORITY); // t1½º·¹µåÀÇ ¿ì¼±¼øÀ§¸¦ ÃÖ°í·Î ÁöÁ¤ÇÔ. »ó¼ı°ªÀº 10ÀÓ.
-		t3.setPriority(Thread.MIN_PRIORITY);// t3½º·¹µåÀÇ ¿ì¼±¼øÀ§¸¦ ÃÖÀú·Î ÁöÁ¤ÇÔ. »ó¼ı°ªÀº 1ÀÌ´Ù.
+		t1.setPriority(Thread.MAX_PRIORITY); // t1ìŠ¤ë ˆë“œì˜ ìš°ì„ ìˆœìœ„ë¥¼ ìµœê³ ë¡œ ì§€ì •í•¨. ìƒìˆ«ê°’ì€ 10ì„.
+		t3.setPriority(Thread.MIN_PRIORITY);// t3ìŠ¤ë ˆë“œì˜ ìš°ì„ ìˆœìœ„ë¥¼ ìµœì €ë¡œ ì§€ì •í•¨. ìƒìˆ«ê°’ì€ 1ì´ë‹¤.
 		
 		t1.start();
-		t2.start();// ±âº» ¿ì¼±¼øÀ§´Â 5ÀÌ´Ù.
+		t2.start();// ê¸°ë³¸ ìš°ì„ ìˆœìœ„ëŠ” 5ì´ë‹¤.
 		t3.start();
 
-		System.out.println("main() Á¾·á");
+		System.out.println("main() ì¢…ë£Œ");
 
 	}
 }

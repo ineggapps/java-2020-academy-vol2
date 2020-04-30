@@ -1,4 +1,4 @@
-package d200408;
+ï»¿package d200408;
 
 import java.io.EOFException;
 import java.io.FileInputStream;
@@ -15,9 +15,9 @@ public class Ex4Deserialization {
 				System.out.println(vo.getName() + ", " + vo.getAge() + ", " + vo.getTel());
 			}
 		} catch (EOFException e) {
-			// ObjectInputStreamÀÌ ÆÄÀÏÀÇ ³¡¿¡ µµ´ŞÇÏ¸é EOFException ¿¹¿Ü¸¦ ¹ß»ı½ÃÅ²´Ù.
-			//±×·¯¹Ç·Î ÀÌ °´Ã¼´Â finally ºí·Ï¿¡¼­ closeÇÏµµ·Ï ÇÑ´Ù.
-			System.out.println("ÆÄÀÏÀÇ ³¡...");
+			// ObjectInputStreamì´ íŒŒì¼ì˜ ëì— ë„ë‹¬í•˜ë©´ EOFException ì˜ˆì™¸ë¥¼ ë°œìƒì‹œí‚¨ë‹¤.
+			//ê·¸ëŸ¬ë¯€ë¡œ ì´ ê°ì²´ëŠ” finally ë¸”ë¡ì—ì„œ closeí•˜ë„ë¡ í•œë‹¤.
+			System.out.println("íŒŒì¼ì˜ ë...");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

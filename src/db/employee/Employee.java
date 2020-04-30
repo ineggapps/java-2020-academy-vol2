@@ -1,4 +1,4 @@
-package db.employee;
+ï»¿package db.employee;
 
 import java.util.List;
 import java.util.Scanner;
@@ -10,9 +10,9 @@ public class Employee {
 	public void employeeManage() {
 		int ch;
 		while (true) {
-			System.out.println("\n[»ç¿ø°ü¸®]");
+			System.out.println("\n[ì‚¬ì›ê´€ë¦¬]");
 			do {
-				System.out.print("1.»ç¿øµî·Ï 2.Á¤º¸¼öÁ¤ 3.»ç¹ø°Ë»ö 4.ÀÌ¸§°Ë»ö 5.¸®½ºÆ® 6.¸ŞÀÎ => ");
+				System.out.print("1.ì‚¬ì›ë“±ë¡ 2.ì •ë³´ìˆ˜ì • 3.ì‚¬ë²ˆê²€ìƒ‰ 4.ì´ë¦„ê²€ìƒ‰ 5.ë¦¬ìŠ¤íŠ¸ 6.ë©”ì¸ => ");
 				ch = sc.nextInt();
 			} while (ch < 1 || ch > 6);
 
@@ -40,27 +40,27 @@ public class Employee {
 	}
 
 	public void insert() {
-		System.out.println("\n»ç¿ø µî·Ï...");
+		System.out.println("\nì‚¬ì› ë“±ë¡...");
 
 		EmployeeDTO dto = new EmployeeDTO();
 		try {
-			System.out.print("»ç¿ø¹øÈ£ > ");
+			System.out.print("ì‚¬ì›ë²ˆí˜¸ > ");
 			String sabeon = sc.next();
 			
 			if(dao.readEmployee(sabeon)!=null) {
-				System.out.println("ÀÌ¹Ì Á¸ÀçÇÏ´Â »ç¹øÀÔ´Ï´Ù.");
+				System.out.println("ì´ë¯¸ ì¡´ì¬í•˜ëŠ” ì‚¬ë²ˆì…ë‹ˆë‹¤.");
 				return;
 			}
 			
 			dto.setSabeon(sabeon);
 
-			System.out.print("ÀÌ¸§ > ");
+			System.out.print("ì´ë¦„ > ");
 			dto.setName(sc.next());
 
-			System.out.print("»ıÀÏ >");
+			System.out.print("ìƒì¼ >");
 			dto.setBirth(sc.next());
 
-			System.out.print("ÀüÈ­¹øÈ£ >");
+			System.out.print("ì „í™”ë²ˆí˜¸ >");
 			dto.setTel(sc.next());
 
 			dao.insertEmployee(dto);
@@ -71,32 +71,32 @@ public class Employee {
 	}
 
 	public void update() {
-		System.out.println("\n»ç¿ø Á¤º¸ ¼öÁ¤...");
+		System.out.println("\nì‚¬ì› ì •ë³´ ìˆ˜ì •...");
 
 		try {
 			EmployeeDTO dto = null;
-			System.out.print("¼öÁ¤ÇÒ »ç¿ø¹øÈ£ > ");
+			System.out.print("ìˆ˜ì •í•  ì‚¬ì›ë²ˆí˜¸ > ");
 			String sabeon = sc.next();
 			dto = dao.readEmployee(sabeon);
 			if (dto == null) {
-				System.out.println("»ç¿ø¹øÈ£¸¦ Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù. (" + sabeon + ")");
+				System.out.println("ì‚¬ì›ë²ˆí˜¸ë¥¼ ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤. (" + sabeon + ")");
 				return;
 			}
 			printDTO(dto);
 
-			System.out.print("¼öÁ¤ÇÒ ÀÌ¸§ > ");
+			System.out.print("ìˆ˜ì •í•  ì´ë¦„ > ");
 			dto.setName(sc.next());
 
-			System.out.print("¼öÁ¤ÇÒ »ıÀÏ> ");
+			System.out.print("ìˆ˜ì •í•  ìƒì¼> ");
 			dto.setBirth(sc.next());
 
-			System.out.print("¼öÁ¤ÇÒ ÀüÈ­¹øÈ£ > ");
+			System.out.print("ìˆ˜ì •í•  ì „í™”ë²ˆí˜¸ > ");
 			dto.setTel(sc.next());
 
 			int result = dao.updateEmployee(dto);
 
 			if (result >= 1) {
-				System.out.println("»ç¿ø Á¤º¸°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.");
+				System.out.println("ì‚¬ì› ì •ë³´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				printDTO(dto);
 			}
 		} catch (Exception e) {
@@ -105,14 +105,14 @@ public class Employee {
 	}
 
 	public void searchSabeon() {
-		System.out.println("\n»ç¹ø °Ë»ö...");
+		System.out.println("\nì‚¬ë²ˆ ê²€ìƒ‰...");
 		
 		try {
-			System.out.print("»ç¹ø ÀÔ·Â > ");
+			System.out.print("ì‚¬ë²ˆ ì…ë ¥ > ");
 			String sabeon = sc.next();
 			EmployeeDTO dto = dao.readEmployee(sabeon);
 			if(dto==null) {
-				System.out.println("°Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù. ("+ sabeon + ")");
+				System.out.println("ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤. ("+ sabeon + ")");
 				return;
 			}
 			printDTO(dto);
@@ -122,14 +122,14 @@ public class Employee {
 	}
 
 	public void searchName() {
-		System.out.println("\nÀÌ¸§ °Ë»ö...");
+		System.out.println("\nì´ë¦„ ê²€ìƒ‰...");
 
 		try {
-			System.out.print("°Ë»öÇÒ ÀÌ¸§ > ");
+			System.out.print("ê²€ìƒ‰í•  ì´ë¦„ > ");
 			String name = sc.next();
 			List<EmployeeDTO> list= dao.listEmployee(name);
 			if(list==null || list.size()==0) {
-				System.out.println("°Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù.");
+				System.out.println("ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
 				return;
 			}
 			printAllDTO(list);
@@ -139,7 +139,7 @@ public class Employee {
 	}
 
 	public void list() {
-		System.out.println("\n»ç¿ø ¸®½ºÆ®...");
+		System.out.println("\nì‚¬ì› ë¦¬ìŠ¤íŠ¸...");
 		printAllDTO(dao.listEmployee());
 	}
 	

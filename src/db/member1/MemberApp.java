@@ -1,4 +1,4 @@
-package db.member1;
+ï»¿package db.member1;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -7,11 +7,11 @@ public class MemberApp {
 	public static void main(String[] args) {
 		int ch;
 		Member member = new Member();
-		System.out.println("È¸¿ø°ü¸® ÇÁ·Î±×·¥");
+		System.out.println("íšŒì›ê´€ë¦¬ í”„ë¡œê·¸ëž¨");
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
 			while (true) {
 				do {
-					System.out.print("1.µî·Ï 2.¼öÁ¤ 3.»èÁ¦ 4.¾ÆÀÌµð°Ë»ö 5.ÀÌ¸§°Ë»ö 6.¸®½ºÆ® 7.Á¾·á > ");
+					System.out.print("1.ë“±ë¡ 2.ìˆ˜ì • 3.ì‚­ì œ 4.ì•„ì´ë””ê²€ìƒ‰ 5.ì´ë¦„ê²€ìƒ‰ 6.ë¦¬ìŠ¤íŠ¸ 7.ì¢…ë£Œ > ");
 					ch = Integer.parseInt(br.readLine());
 				} while (ch < 1 || ch > 7);
 

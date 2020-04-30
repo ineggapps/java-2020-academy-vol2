@@ -1,4 +1,4 @@
-package db.member2;
+﻿package db.member2;
 
 public class MemberDTO {
 	private String id;

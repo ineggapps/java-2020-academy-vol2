@@ -1,4 +1,4 @@
-package db.member4;
+ï»¿package db.member4;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -51,7 +51,7 @@ public class MemberDAOImpl implements MemberDAO {
 			 */
 			result = 1;
 		} catch (SQLException e) {
-			System.out.println("SQL Exception ¿À·ù°¡ ¹ß»ı\n" + e.getMessage());
+			System.out.println("SQL Exception ì˜¤ë¥˜ê°€ ë°œìƒ\n" + e.getMessage());
 			try {
 				conn.rollback();
 			} catch (Exception e2) {
@@ -99,7 +99,7 @@ public class MemberDAOImpl implements MemberDAO {
 			conn.commit();
 		} catch (SQLException e) {
 			try {
-				System.out.println("SQL Exception ¿À·ù°¡ ¹ß»ı\n" + e.getMessage());
+				System.out.println("SQL Exception ì˜¤ë¥˜ê°€ ë°œìƒ\n" + e.getMessage());
 				conn.rollback();
 			} catch (Exception e2) {
 			}
@@ -140,7 +140,7 @@ public class MemberDAOImpl implements MemberDAO {
 			conn.commit();
 		} catch (SQLException e) {
 			try {
-				System.out.println("SQL Exception ¿À·ù°¡ ¹ß»ı\n" + e.getMessage());
+				System.out.println("SQL Exception ì˜¤ë¥˜ê°€ ë°œìƒ\n" + e.getMessage());
 				conn.rollback();
 			} catch (Exception e2) {
 			}

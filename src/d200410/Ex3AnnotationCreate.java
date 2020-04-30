@@ -1,4 +1,4 @@
-package d200410;
+ï»¿package d200410;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,26 +7,26 @@ import java.lang.annotation.Target;
 import java.lang.reflect.Method;
 
 /*
- ½ºÇÁ¸µ °úÁ¤¿¡¼­´Â ÀÌ·¯ÇÑ ¹æ½ÄÀ¸·Î °³¹ßÀÚ°¡ ÀÔ·ÂÇÑ ¾î³ëÅ×ÀÌ¼ÇÀÇ ¼Ó¼ºµéÀ» ºĞ¼®ÇÏ¿© µ¿ÀÛÇÑ´Ù.
- ½ºÇÁ¸µ °úÁ¤ µé¾î°¡¸é ¾î³ëÅ×ÀÌ¼Çº° ¿ªÇÒ¿¡ ´ëÇØ¼­ ÀÎÁöÇÏ´Â °ÍÀÌ ÁÖµÈ ¸ñÇ¥
+ ìŠ¤í”„ë§ ê³¼ì •ì—ì„œëŠ” ì´ëŸ¬í•œ ë°©ì‹ìœ¼ë¡œ ê°œë°œìê°€ ì…ë ¥í•œ ì–´ë…¸í…Œì´ì…˜ì˜ ì†ì„±ë“¤ì„ ë¶„ì„í•˜ì—¬ ë™ì‘í•œë‹¤.
+ ìŠ¤í”„ë§ ê³¼ì • ë“¤ì–´ê°€ë©´ ì–´ë…¸í…Œì´ì…˜ë³„ ì—­í• ì— ëŒ€í•´ì„œ ì¸ì§€í•˜ëŠ” ê²ƒì´ ì£¼ëœ ëª©í‘œ
  * */
 
 public class Ex3AnnotationCreate {
 	public static void main(String[] args) {
 		Method[] mm = User3.class.getDeclaredMethods();
 		for (Method m : mm) {
-			// User3Å¬·¡½º¿¡¼­ MyAnno3 ¾î³ëÅ×ÀÌ¼ÇÀÌ Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+			// User3í´ë˜ìŠ¤ì—ì„œ MyAnno3 ì–´ë…¸í…Œì´ì…˜ì´ ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸
 			if (m.isAnnotationPresent(MyAnno3.class)) {
-				// MyAnno3 °´Ã¼ ¾ò±â
+				// MyAnno3 ê°ì²´ ì–»ê¸°
 				MyAnno3 ma = m.getAnnotation(MyAnno3.class);
-				// ¸Ş¼­µå ÀÌ¸§
-				System.out.print("[" + m.getName() + "] ¢º ");
-				// ±¸ºĞ¼±
+				// ë©”ì„œë“œ ì´ë¦„
+				System.out.print("[" + m.getName() + "] â–¶ ");
+				// êµ¬ë¶„ì„ 
 				for (int i = 0; i < ma.number(); i++) {
 					System.out.print(ma.value());
 				}
 				System.out.println(" ... " + ma.number());
-				// ¸Ş¼­µå È£Ãâ
+				// ë©”ì„œë“œ í˜¸ì¶œ
 				try {
 					m.invoke(new User3());
 				} catch (Exception e) {
@@ -37,8 +37,8 @@ public class Ex3AnnotationCreate {
 	}
 }
 
-//¾î³ëÅ×ÀÌ¼Ç ¸¸µé±â
-@Target({ ElementType.METHOD }) // {} ¿©·¯ °³¸¦ ÁöÁ¤ÇÒ ¼ö ÀÖÀ½.
+//ì–´ë…¸í…Œì´ì…˜ ë§Œë“¤ê¸°
+@Target({ ElementType.METHOD }) // {} ì—¬ëŸ¬ ê°œë¥¼ ì§€ì •í•  ìˆ˜ ìˆìŒ.
 @Retention(RetentionPolicy.RUNTIME)
 @interface MyAnno3 {
 	String value() default "-";
@@ -49,16 +49,16 @@ public class Ex3AnnotationCreate {
 class User3 {
 	@MyAnno3
 	public void sub1() {
-		System.out.println("½ÇÇà 1...");
+		System.out.println("ì‹¤í–‰ 1...");
 	}
 
 	@MyAnno3("*")
 	public void sub2() {
-		System.out.println("½ÇÇà 2...");
+		System.out.println("ì‹¤í–‰ 2...");
 	}
 
 	@MyAnno3(value = "#", number = 20)
 	public void sub3() {
-		System.out.println("½ÇÇà 3...");
+		System.out.println("ì‹¤í–‰ 3...");
 	}
 }

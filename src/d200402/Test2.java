@@ -1,4 +1,4 @@
-package d200402;
+ï»¿package d200402;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,7 +9,7 @@ import com.util.DBConn;
 
 public class Test2 {
 	public static void main(String[] args) {
-		//½ºÅ©·Ñ ¿¹Á¦
+		//ìŠ¤í¬ë¡¤ ì˜ˆì œ
 		Connection conn = DBConn.getConnection();
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -19,22 +19,22 @@ public class Test2 {
 		int ch;
 		try {
 			sql = "SELECT hak, name, birth, kor, eng, mat FROM score";
-			// ¼ø¹æÇâ¸¸ °¡´É
-//			stmt = conn.createStatement(); //¼ø¹æÇâ¸¸ °¡´ÉÇÏ´Ù
-			//¼ø/¿ª¹æÇâ °¡´É º¯°æµÈ °á°ú°¡ ¹Ù·Î ¹İ¿µµÊ. ´Ü, µ¥ÀÌÅÍ´Â ¼öÁ¤ ºÒ°¡´É
+			// ìˆœë°©í–¥ë§Œ ê°€ëŠ¥
+//			stmt = conn.createStatement(); //ìˆœë°©í–¥ë§Œ ê°€ëŠ¥í•˜ë‹¤
+			//ìˆœ/ì—­ë°©í–¥ ê°€ëŠ¥ ë³€ê²½ëœ ê²°ê³¼ê°€ ë°”ë¡œ ë°˜ì˜ë¨. ë‹¨, ë°ì´í„°ëŠ” ìˆ˜ì • ë¶ˆê°€ëŠ¥
 			stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			//°á°úÁıÇÕÀ¯Çü (Ã¹ ¹øÂ° ÀÎÀÚ)
-//			TYPE_FORWARD_ONLY:±âº», ¼ø¹æÇâ¸¸
-//			TYPE_SCROLL_SENSITIVE: ¼ø/¿ª¹æÇâ °¡´É, µ¥ÀÌÅÍ º¯°æ»çÇ× °¨Áö
-//			TYPE_SCROLL_INSENSITIVE: ¼ø/¿ª¹æÇâ °¡´É, µ¥ÀÌÅÍ º¯°æ»çÇ×À» °¨ÁöÇÏÁö ¾ÊÀ½.
+			//ê²°ê³¼ì§‘í•©ìœ í˜• (ì²« ë²ˆì§¸ ì¸ì)
+//			TYPE_FORWARD_ONLY:ê¸°ë³¸, ìˆœë°©í–¥ë§Œ
+//			TYPE_SCROLL_SENSITIVE: ìˆœ/ì—­ë°©í–¥ ê°€ëŠ¥, ë°ì´í„° ë³€ê²½ì‚¬í•­ ê°ì§€
+//			TYPE_SCROLL_INSENSITIVE: ìˆœ/ì—­ë°©í–¥ ê°€ëŠ¥, ë°ì´í„° ë³€ê²½ì‚¬í•­ì„ ê°ì§€í•˜ì§€ ì•ŠìŒ.
 			
-			//µ¿½Ã¼º À¯Çü (µÎ ¹øÂ° ÀÎÀÚ)
-//			CONCUR_READ_ONLY: ÀĞ±â¸¸ °¡´É
-//			CONCUR_UPDATEABLE: ¼öÁ¤µµ °¡´É 
+			//ë™ì‹œì„± ìœ í˜• (ë‘ ë²ˆì§¸ ì¸ì)
+//			CONCUR_READ_ONLY: ì½ê¸°ë§Œ ê°€ëŠ¥
+//			CONCUR_UPDATEABLE: ìˆ˜ì •ë„ ê°€ëŠ¥ 
 			rs = stmt.executeQuery(sql);
 			while (true) {
 				do {
-					System.out.print("1.Ã³À½ 2.ÀÌÀü 3.´ÙÀ½ 4.³¡ 5.Á¾·á =>");
+					System.out.print("1.ì²˜ìŒ 2.ì´ì „ 3.ë‹¤ìŒ 4.ë 5.ì¢…ë£Œ =>");
 					ch = sc.nextInt();
 				} while (ch < 1 || ch > 5);
 				if (ch == 5) {
@@ -43,22 +43,22 @@ public class Test2 {
 				switch (ch) {
 				case 1:
 					if (rs.first()) {
-						System.out.println("Ã³À½: " + rs.getString(1) + ", " + rs.getString(2));
+						System.out.println("ì²˜ìŒ: " + rs.getString(1) + ", " + rs.getString(2));
 					}
 					break;
 				case 2:
 					if (rs.previous()) {
-						System.out.println("ÀÌÀü: " + rs.getString(1) + ", " + rs.getString(2));
+						System.out.println("ì´ì „: " + rs.getString(1) + ", " + rs.getString(2));
 					}
 					break;
 				case 3:
 					if (rs.next()) {
-						System.out.println("´ÙÀ½: " + rs.getString(1) + ", " + rs.getString(2));
+						System.out.println("ë‹¤ìŒ: " + rs.getString(1) + ", " + rs.getString(2));
 					}
 					break;
 				case 4:
 					if (rs.last()) {
-						System.out.println("³¡: " + rs.getString(1) + ", " + rs.getString(2));
+						System.out.println("ë: " + rs.getString(1) + ", " + rs.getString(2));
 					}
 					break;
 				}

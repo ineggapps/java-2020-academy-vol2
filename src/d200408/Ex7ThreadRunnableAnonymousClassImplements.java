@@ -1,10 +1,10 @@
-package d200408;
+ï»¿package d200408;
 
 public class Ex7ThreadRunnableAnonymousClassImplements {
-	// ÀÍ¸í Å¬·¡½º·Î Runnable ±¸Çö
+	// ìµëª… í´ë˜ìŠ¤ë¡œ Runnable êµ¬í˜„
 	public static void main(String[] args) {
 		Runnable r = new Runnable() {
-			//½º·¹µå´Â ÇÊ¿äÇÏÁö¸¸ ÀÏÈ¸¼ºÀ¸·Î ÇÑ ¹ø¸¸ »ç¿ëÇÒ ¶§´Â ÀÍ¸íÅ¬·¡½º ±¸Çö ¹æ½ÄÀ» ÀÌ¿ëÇÏ¿© ½º·¹µå¸¦ ½ÇÇàÇÒ ¼ö ÀÖ´Ù.
+			//ìŠ¤ë ˆë“œëŠ” í•„ìš”í•˜ì§€ë§Œ ì¼íšŒì„±ìœ¼ë¡œ í•œ ë²ˆë§Œ ì‚¬ìš©í•  ë•ŒëŠ” ìµëª…í´ë˜ìŠ¤ êµ¬í˜„ ë°©ì‹ì„ ì´ìš©í•˜ì—¬ ìŠ¤ë ˆë“œë¥¼ ì‹¤í–‰í•  ìˆ˜ ìˆë‹¤.
 			@Override
 			public void run() {
 				try {
@@ -21,6 +21,6 @@ public class Ex7ThreadRunnableAnonymousClassImplements {
 
 		Thread t = new Thread(r);
 		t.start();
-		System.out.println("main() Á¾·á");
+		System.out.println("main() ì¢…ë£Œ");
 	}
 }

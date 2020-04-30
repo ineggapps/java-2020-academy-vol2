@@ -1,4 +1,4 @@
-package d200410;
+ï»¿package d200410;
 
 public class Ex5BeforeLambda {
 	public static void main(String[] args) {
@@ -8,7 +8,7 @@ public class Ex5BeforeLambda {
 		Demo1 ob2 = new Demo1() {
 			@Override
 			public void write() {
-				System.out.println("ÀÍ¸íÀ¸·Î ±¸Çö..!!");
+				System.out.println("ìµëª…ìœ¼ë¡œ êµ¬í˜„..!!");
 			}
 		};
 		ob2.write();
@@ -22,6 +22,6 @@ interface Demo1 {
 class DemoImpl1 implements Demo1 {
 	@Override
 	public void write() {
-		System.out.println("Å×½ºÆ®...");
+		System.out.println("í…ŒìŠ¤íŠ¸...");
 	}
 }

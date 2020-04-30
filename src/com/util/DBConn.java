@@ -1,4 +1,4 @@
-package com.util;
+ï»¿package com.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,9 +7,9 @@ import java.sql.SQLException;
 //Singleton Pattern
 public class DBConn {
 	private static Connection conn;
-	private static final String URL = "jdbc:oracle:thin:@sist.sannim.com:1521:xe"; // 11gÀÌÇÏ
-//	private static final String URL="jdbc:oracle:thin:@//sist.sannim.com:1521/xe";//12cÀÌ»ó
-	private static final String USER = "sky";// usernameÀº ´ë¼Ò¹®ÀÚ¸¦ µüÈ÷ ±¸ºĞÇÏÁö ¾ÊÀ½
+	private static final String URL = "jdbc:oracle:thin:@sist.sannim.com:1521:xe"; // 11gì´í•˜
+//	private static final String URL="jdbc:oracle:thin:@//sist.sannim.com:1521/xe";//12cì´ìƒ
+	private static final String USER = "sky";// usernameì€ ëŒ€ì†Œë¬¸ìë¥¼ ë”±íˆ êµ¬ë¶„í•˜ì§€ ì•ŠìŒ
 	private static final String PASSWORD = "java$!";
 
 	private DBConn() {
@@ -18,7 +18,7 @@ public class DBConn {
 	public static Connection getConnection() {
 		if (conn == null) {
 			try {
-				Class.forName("oracle.jdbc.driver.OracleDriver"); // JDK6ºÎÅÍ »ı·« °¡´ÉÇÑ ±¸¹®.
+				Class.forName("oracle.jdbc.driver.OracleDriver"); // JDK6ë¶€í„° ìƒëµ ê°€ëŠ¥í•œ êµ¬ë¬¸.
 				conn = DriverManager.getConnection(URL, USER, PASSWORD);
 			} catch (Exception e) {
 				e.printStackTrace();

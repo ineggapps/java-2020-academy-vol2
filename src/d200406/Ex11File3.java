@@ -1,4 +1,4 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.File;
 
@@ -11,17 +11,17 @@ public class Ex11File3 {
 		for (File f : file) {
 			s = f.getAbsolutePath();
 
-			// ´ÜÀ§´Â byte
-			a = f.getTotalSpace() / Math.pow(1024, 3); // ÀüÃ¼ µğ½ºÅ© °ø°£ÀÇ Å©±â (´ÜÀ§¸¦ byte¿¡¼­ GB·Î °íÃÆÀ½)
-			b = f.getUsableSpace() / Math.pow(1024, 3); // »ç¿ë °¡´ÉÇÑ °ø°£ÀÇ Å©±â (´ÜÀ§¸¦ byte¿¡¼­ GB·Î °íÃÆÀ½)
-			c = f.getFreeSpace() / Math.pow(1024, 3); // ÀÜ¿© °ø°£ÀÇ Å©±â (´ÜÀ§¸¦ byte¿¡¼­ GB·Î °íÃÆÀ½)
-			d = a - b; // »ç¿ëÇÑ ¿ë·® ±¸ÇÏ±â
+			// ë‹¨ìœ„ëŠ” byte
+			a = f.getTotalSpace() / Math.pow(1024, 3); // ì „ì²´ ë””ìŠ¤í¬ ê³µê°„ì˜ í¬ê¸° (ë‹¨ìœ„ë¥¼ byteì—ì„œ GBë¡œ ê³ ì³¤ìŒ)
+			b = f.getUsableSpace() / Math.pow(1024, 3); // ì‚¬ìš© ê°€ëŠ¥í•œ ê³µê°„ì˜ í¬ê¸° (ë‹¨ìœ„ë¥¼ byteì—ì„œ GBë¡œ ê³ ì³¤ìŒ)
+			c = f.getFreeSpace() / Math.pow(1024, 3); // ì”ì—¬ ê³µê°„ì˜ í¬ê¸° (ë‹¨ìœ„ë¥¼ byteì—ì„œ GBë¡œ ê³ ì³¤ìŒ)
+			d = a - b; // ì‚¬ìš©í•œ ìš©ëŸ‰ êµ¬í•˜ê¸°
 
-			System.out.println("µğ½ºÅ© µå¶óÀÌºê: " + s);
-			System.out.println("\tµğ½ºÅ© ÀüÃ¼ ¿ë·®: " + a);
-			System.out.println("\tµğ½ºÅ© »ç¿ë °¡´ÉÇÑ ¿ë·® : " + b);
-			System.out.println("\tµğ½ºÅ© ÀÜ¿© ¿ë·®: " + c);
-			System.out.println("\tµğ½ºÅ© »ç¿ëÇÑ ¿ë·®: " + d);
+			System.out.println("ë””ìŠ¤í¬ ë“œë¼ì´ë¸Œ: " + s);
+			System.out.println("\të””ìŠ¤í¬ ì „ì²´ ìš©ëŸ‰: " + a);
+			System.out.println("\të””ìŠ¤í¬ ì‚¬ìš© ê°€ëŠ¥í•œ ìš©ëŸ‰ : " + b);
+			System.out.println("\të””ìŠ¤í¬ ì”ì—¬ ìš©ëŸ‰: " + c);
+			System.out.println("\të””ìŠ¤í¬ ì‚¬ìš©í•œ ìš©ëŸ‰: " + d);
 		}
 	}
 }

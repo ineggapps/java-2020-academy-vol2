@@ -1,21 +1,21 @@
-package d200407;
+ï»¿package d200407;
 
 public class Ex7Skip {
 	public static void main(String[] args) {
-		// ÀÔ·Â: abcdefg
+		// ì…ë ¥: abcdefg
 		int ch;
-		System.out.println("¹®ÀÚ¿­ ÀÔ·Â[abcdefg]");
+		System.out.println("ë¬¸ìì—´ ì…ë ¥[abcdefg]");
 		try {
-			ch = System.in.read(); // ¹®ÀÚ¿­ ÇÏ³ª¾¿ ÀÔ·Â¹Ş´Â´Ù. a°¡ µé¾î°¡°ÚÁö?
-			System.out.println("ÀÔ·Â1: " + (char) ch);
-			System.in.skip(3); // bcd°¡ ¹ö·ÁÁü
+			ch = System.in.read(); // ë¬¸ìì—´ í•˜ë‚˜ì”© ì…ë ¥ë°›ëŠ”ë‹¤. aê°€ ë“¤ì–´ê°€ê² ì§€?
+			System.out.println("ì…ë ¥1: " + (char) ch);
+			System.in.skip(3); // bcdê°€ ë²„ë ¤ì§
 
-			ch = System.in.read();// e°¡ µé¾î°¨
-			System.out.println("ÀÔ·Â2: " + (char) ch);
+			ch = System.in.read();// eê°€ ë“¤ì–´ê°
+			System.out.println("ì…ë ¥2: " + (char) ch);
 
-			System.in.read();// f°¡ ¹ö·ÁÁü
-			ch = System.in.read(); // g°¡ ch¿¡ µé¾î°¨
-			System.out.println("ÀÔ·Â3: " + (char) ch);
+			System.in.read();// fê°€ ë²„ë ¤ì§
+			ch = System.in.read(); // gê°€ chì— ë“¤ì–´ê°
+			System.out.println("ì…ë ¥3: " + (char) ch);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,4 +1,4 @@
-package db.employee;
+Ôªøpackage db.employee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import com.util.DBConn;
 
 /*
  * desc employee;
-¿Ã∏ß     ≥Œ?       ¿Ø«¸           
+Ïù¥Î¶Ñ     ÎÑê?       Ïú†Ìòï           
 ------ -------- ------------ 
 SABEON NOT NULL VARCHAR2(30) 
 NAME   NOT NULL VARCHAR2(50) 

@@ -1,4 +1,4 @@
-package com.score3;
+ï»¿package com.score3;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -13,7 +13,7 @@ import com.util.DBConn;
 
 import oracle.jdbc.OracleTypes;
 
-//CallableStatement: ÇÁ·Î½ÃÀú ½ÇÇà
+//CallableStatement: í”„ë¡œì‹œì € ì‹¤í–‰
 public class ScoreDAOImpl implements ScoreDAO {
 	private Connection conn = DBConn.getConnection();
 
@@ -25,18 +25,18 @@ public class ScoreDAOImpl implements ScoreDAO {
 		try {
 			sql = "{CALL insertScore(?,?,?,?,?,?)}";
 			cstmt = conn.prepareCall(sql);
-			// IN ÆÄ¶ó¹ÌÅÍ °ª ¼³Á¤
+			// IN íŒŒë¼ë¯¸í„° ê°’ ì„¤ì •
 			cstmt.setString(1, dto.getHak());
 			cstmt.setString(2, dto.getName());
 			cstmt.setString(3, dto.getBirth());
 			cstmt.setInt(4, dto.getKor());
 			cstmt.setInt(5, dto.getEng());
 			cstmt.setInt(6, dto.getMat());
-			// Äõ¸® ½ÇÇà
-			cstmt.executeUpdate(/* Äõ¸® »ğÀÔÇÏÁö ¾Ê´Â´Ù */);
-			// CallableStatementÀÇ executeUpdate() ¸®ÅÏ °ªÀº
-			// INSERT¹® µîÀ» ½ÇÇà ÈÄ ½ÇÇàµÈ Çà ¼ö¸¦ ¹İÈ¯ÇÏÁö ¾Ê°í
-			// ÇÁ·Î½ÃÀú ½ÇÇà¿©ºÎ¸¦ ¹İÈ¯ÇÑ´Ù.
+			// ì¿¼ë¦¬ ì‹¤í–‰
+			cstmt.executeUpdate(/* ì¿¼ë¦¬ ì‚½ì…í•˜ì§€ ì•ŠëŠ”ë‹¤ */);
+			// CallableStatementì˜ executeUpdate() ë¦¬í„´ ê°’ì€
+			// INSERTë¬¸ ë“±ì„ ì‹¤í–‰ í›„ ì‹¤í–‰ëœ í–‰ ìˆ˜ë¥¼ ë°˜í™˜í•˜ì§€ ì•Šê³ 
+			// í”„ë¡œì‹œì € ì‹¤í–‰ì—¬ë¶€ë¥¼ ë°˜í™˜í•œë‹¤.
 			result = 1;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -54,7 +54,7 @@ public class ScoreDAOImpl implements ScoreDAO {
 	}
 
 	/*
-	 * ÀÌ¸§ ³Î? À¯Çü ----- -------- ------------ HAK NOT NULL VARCHAR2(30) NAME NOT NULL
+	 * ì´ë¦„ ë„? ìœ í˜• ----- -------- ------------ HAK NOT NULL VARCHAR2(30) NAME NOT NULL
 	 * VARCHAR2(30) BIRTH NOT NULL DATE KOR NOT NULL NUMBER(3) MAT NOT NULL
 	 * NUMBER(3) ENG NOT NULL NUMBER(3)
 	 */
@@ -67,14 +67,14 @@ public class ScoreDAOImpl implements ScoreDAO {
 		try {
 			sql = "{CALL updateScore(?,?,?,?,?,?)}";
 			cstmt = conn.prepareCall(sql);
-			// IN ÆÄ¶ó¹ÌÅÍ
+			// IN íŒŒë¼ë¯¸í„°
 			cstmt.setString(1, dto.getHak());
 			cstmt.setString(2, dto.getName());
 			cstmt.setString(3, dto.getBirth());
 			cstmt.setInt(4, dto.getKor());
 			cstmt.setInt(5, dto.getEng());
 			cstmt.setInt(6, dto.getMat());
-			// Äõ¸® ½ÇÇà
+			// ì¿¼ë¦¬ ì‹¤í–‰
 			cstmt.executeUpdate();
 			result = 1;
 		} catch (Exception e) {
@@ -123,14 +123,14 @@ public class ScoreDAOImpl implements ScoreDAO {
 		try {
 			sql = "{CALL findByHakScore(?,?)}";
 			cstmt = conn.prepareCall(sql);
-			// OUT ÆÄ¶ó¹ÌÅÍ´Â JDBC Å¸ÀÔÀ» ¼³Á¤
+			// OUT íŒŒë¼ë¯¸í„°ëŠ” JDBC íƒ€ì…ì„ ì„¤ì •
 			// SYS_REFCURSOR=> OracleTypes.CURSOR (oracle.jdbc.OracleTypes)
-			// Á¤¼öÇü => OracleTypes.INTEGER
+			// ì •ìˆ˜í˜• => OracleTypes.INTEGER
 			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
 			cstmt.setString(2, hak);
-			// ¸ğµç ÇÁ·Î½ÃÀú´Â executeUpdate()·Î ½ÇÇàÇÑ´Ù
+			// ëª¨ë“  í”„ë¡œì‹œì €ëŠ” executeUpdate()ë¡œ ì‹¤í–‰í•œë‹¤
 			cstmt.executeUpdate();
-			// OUTÆÄ¶ó¹ÌÅÍ °ªÀ» ³Ñ°Ü ¹Ş±â
+			// OUTíŒŒë¼ë¯¸í„° ê°’ì„ ë„˜ê²¨ ë°›ê¸°
 			rs = (ResultSet) cstmt.getObject(1);
 			if (rs.next()) {
 				dto = new ScoreDTO();
@@ -227,7 +227,7 @@ public class ScoreDAOImpl implements ScoreDAO {
 				dto.setTot(rs.getInt("tot"));
 				dto.setAve(rs.getInt("ave"));
 				dto.setRank(rs.getInt("rank"));
-				list.add(dto);// ArrayList¿¡ ÀúÀå
+				list.add(dto);// ArrayListì— ì €ì¥
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

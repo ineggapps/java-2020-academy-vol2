@@ -1,4 +1,4 @@
-package com.omok;
+ï»¿package com.omok;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -34,7 +34,7 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 	private JTable table;
 	private MyTableModel model;
 	private JToolBar tb;
-	private JLabel lblLogin=new JLabel("·Î±×ÀÎ ÇÏ¼¼¿ä.", JLabel.CENTER);
+	private JLabel lblLogin=new JLabel("ë¡œê·¸ì¸ í•˜ì„¸ìš”.", JLabel.CENTER);
 	private JLabel lblGame=new JLabel("", JLabel.CENTER);
 
 	private Socket sock = null;
@@ -46,9 +46,9 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 	private boolean bLogin=false;
 
 	// ***************************************************************
-	// »ı¼ºÀÚ
+	// ìƒì„±ì
 	public MainClient() {
-		// Åø¹Ù »ı¼º
+		// íˆ´ë°” ìƒì„±
 		createToolBar();
 
 		panel = new JPanel();
@@ -73,17 +73,17 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 		tf.setBounds(10, 495, 380, 20);
 		panel.add(tf);
 
-		// Á¢¼ÓÀÚ ¸®½ºÆ®¸¦ Ãâ·ÂÇÒ JTable
+		// ì ‘ì†ì ë¦¬ìŠ¤íŠ¸ë¥¼ ì¶œë ¥í•  JTable
 		addTable();
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		setTitle("¿À¸ñ°ÔÀÓ");
+		setTitle("ì˜¤ëª©ê²Œì„");
 		setSize(710, 590);
 		setResizable(false);
 		setVisible(true);
 
-		// È­¸éÀÇ Áß¾Ó¿¡ ¹èÄ¡
+		// í™”ë©´ì˜ ì¤‘ì•™ì— ë°°ì¹˜
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Dimension frameSize = getSize();
 		if (frameSize.height > screenSize.height) {
@@ -96,7 +96,7 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 	}
 
 	// ***************************************************************
-	// ·Î±×ÀÎ
+	// ë¡œê·¸ì¸
 	private void login() {
 		try {
 			LoginDialog dlg = new LoginDialog(this);
@@ -109,33 +109,33 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 			userName = dlg.getUserName();
 			opponentUserName=null;
 			
-			// ¼­¹ö¿¡ Á¢¼ÓÇÏ±â
+			// ì„œë²„ì— ì ‘ì†í•˜ê¸°
 			sock = new Socket(host, port);
 			
 			oos = new ObjectOutputStream(sock.getOutputStream());
 			oos.flush();
 			ois = new ObjectInputStream(sock.getInputStream());
 			
-			// ¼­¹ö¿¡ ·Î±×ÀÎ ¿äÃ»
+			// ì„œë²„ì— ë¡œê·¸ì¸ ìš”ì²­
 			UserMsg loginReq = new UserMsg();
 			loginReq.setCode(1100);
 			loginReq.setUserName(userName);
 			oos.writeObject(loginReq);
 			bLogin=true;
 
-			// ½º·¹µå »ı¼º
+			// ìŠ¤ë ˆë“œ ìƒì„±
 			Thread t = new Thread(this);
 			t.start();
 		} catch (Exception e) {
 			// System.out.println(e.toString());
-			JOptionPane.showMessageDialog(this, "¼­¹ö¿¡ ¹®Á¦°¡ ¹ß»ıÇÏ¿© ÇÁ·Î±×·¥À» Á¾·á ÇÕ´Ï´Ù.\n Àá½ÃÈÄ ´Ù½Ã ½ÇÇà ÇÏ¼¼¿ä !!!");
+			JOptionPane.showMessageDialog(this, "ì„œë²„ì— ë¬¸ì œê°€ ë°œìƒí•˜ì—¬ í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œ í•©ë‹ˆë‹¤.\n ì ì‹œí›„ ë‹¤ì‹œ ì‹¤í–‰ í•˜ì„¸ìš” !!!");
 			System.exit(0);
 		}
 		
 	}
 
 	// ***************************************************************
-	// ·Î±×¾Æ¿ô
+	// ë¡œê·¸ì•„ì›ƒ
 	private void logout() {
 		try {
 			UserMsg u = new UserMsg();
@@ -159,10 +159,10 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 		bLogin=false;
 		bGameMe=false;
 		bGameOpponent=false;
-		lblLogin.setText("·Î±×ÀÎ ÇÏ¼¼¿ä.");
+		lblLogin.setText("ë¡œê·¸ì¸ í•˜ì„¸ìš”.");
 		lblGame.setText("");
 		
-		// Å×ÀÌºíÀÇ ¸ğµç ¸ñ·Ï »èÁ¦
+		// í…Œì´ë¸”ì˜ ëª¨ë“  ëª©ë¡ ì‚­ì œ
 		int size = table.getRowCount();
 		for (int index = size - 1; index >= 0; index--) {
 			((MyTableModel) table.getModel()).removeRow(index);
@@ -175,47 +175,47 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 	}
 
 	// ***************************************************************
-	// JTable Ãß°¡
+	// JTable ì¶”ê°€
 	public void addTable() {
-		String[] title = { "´Ğ³×ÀÓ", "°ÔÀÓ»óÅÂ" };
+		String[] title = { "ë‹‰ë„¤ì„", "ê²Œì„ìƒíƒœ" };
 		model = new MyTableModel(title);
 		table = new JTable(model);
 		table.addMouseListener(new MouseHandler());
 		JScrollPane pane = new JScrollPane(table);
 
-		JLabel lbl = new JLabel("´ë±âÁß ´Ğ³×ÀÓÀ» ´õºíÅ¬¸¯ÇÏ¸é °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.");
+		JLabel lbl = new JLabel("ëŒ€ê¸°ì¤‘ ë‹‰ë„¤ì„ì„ ë”ë¸”í´ë¦­í•˜ë©´ ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤.");
 		lbl.setBounds(400, 10, 300, 20);
 		panel.add(lbl);
 		pane.setBounds(400, 30, 300, 480);
 		panel.add(pane);
 
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // ±âº»°ªÀÎ ÀÚµ¿Å©±âº¯°æÀ» OFF
-		for (int i = 0; i < title.length; i++) { // ÄÃ·³Æø º¯°æ
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF); // ê¸°ë³¸ê°’ì¸ ìë™í¬ê¸°ë³€ê²½ì„ OFF
+		for (int i = 0; i < title.length; i++) { // ì»¬ëŸ¼í­ ë³€ê²½
 			TableColumn col = table.getColumnModel().getColumn(i);
-			col.setPreferredWidth(130); // ÁöÁ¤ ÄÃ·³Æø º¯°æ
+			col.setPreferredWidth(130); // ì§€ì • ì»¬ëŸ¼í­ ë³€ê²½
 		}
 	}
 
 	// ***************************************************************
-	// Åø¹Ù »ı¼º
+	// íˆ´ë°” ìƒì„±
 	public void createToolBar() {
 		tb = new JToolBar("grade");
 		tb.setBackground(Color.LIGHT_GRAY);
 
 		JButton jb;
 
-		jb = new JButton(" ·Î±×ÀÎ ");
+		jb = new JButton(" ë¡œê·¸ì¸ ");
 		jb.setActionCommand("Login");
 		jb.addActionListener(this);
 		tb.add(jb);
 
-		jb = new JButton(" ·Î±×¾Æ¿ô ");
+		jb = new JButton(" ë¡œê·¸ì•„ì›ƒ ");
 		jb.setActionCommand("Logout");
 		jb.addActionListener(this);
 		tb.add(jb);
 		tb.addSeparator();
 
-		jb = new JButton(" Á¾·á ");
+		jb = new JButton(" ì¢…ë£Œ ");
 		jb.setActionCommand("Exit");
 		jb.addActionListener(this);
 		tb.add(jb);
@@ -238,7 +238,7 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 	}
 
 	// ***************************************************************
-	// ½º·¹µå ÀÛ¾÷(¼­¹ö¿¡¼­ Àü¼Û ¹ŞÀº µ¥ÀÌÅÍ¸¦ ¹Ş¾Æ °ÔÀÓ ¹× Ã¤ÆÃ Ã³¸®)
+	// ìŠ¤ë ˆë“œ ì‘ì—…(ì„œë²„ì—ì„œ ì „ì†¡ ë°›ì€ ë°ì´í„°ë¥¼ ë°›ì•„ ê²Œì„ ë° ì±„íŒ… ì²˜ë¦¬)
 	public void run() {
 		try {
 			while (bLogin) {
@@ -246,45 +246,45 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 				if (ob instanceof UserMsg) {
 					UserMsg user = (UserMsg) ob;
 					
-					if(user.getCode() == 1110) { // ·Î±×ÀÎ ¼º°ø
-						lblLogin.setText(userName+"´Ô ·Î±×ÀÎ");
+					if(user.getCode() == 1110) { // ë¡œê·¸ì¸ ì„±ê³µ
+						lblLogin.setText(userName+"ë‹˜ ë¡œê·¸ì¸");
 						lblGame.setText("");
 						tb.getComponent(0).setEnabled(false);
 						tb.getComponent(1).setEnabled(true);
 						
-					} else if (user.getCode() == 1111 || user.getCode() == 1112) { // ·Î±×ÀÎµÈ »ç¿ëÀÚ ¸®½ºÆ®
+					} else if (user.getCode() == 1111 || user.getCode() == 1112) { // ë¡œê·¸ì¸ëœ ì‚¬ìš©ì ë¦¬ìŠ¤íŠ¸
 						String[] ss=new String[2];
 						ss[0]=user.getUserName();
 						if(user.getGameState())
-							ss[1]=" °ÔÀÓÁß";
+							ss[1]=" ê²Œì„ì¤‘";
 						else
-							ss[1]=" ´ë±âÁß";
+							ss[1]=" ëŒ€ê¸°ì¤‘";
 						
 						((MyTableModel) table.getModel()).addRow(ss);
 
-					} else if (user.getCode() == 1120) { // ·Î±×¿¡ ½ÇÆĞ ÇÑ °æ¿ì
-						JOptionPane.showMessageDialog(this, "·Î±×ÀÎ¿¡ ½ÇÆĞ Çß½À´Ï´Ù.\n ´Ğ³×ÀÓÀ» Á¤È®È÷ ÀÔ·Â ÇÏ¼¼¿ä. !!!");
+					} else if (user.getCode() == 1120) { // ë¡œê·¸ì— ì‹¤íŒ¨ í•œ ê²½ìš°
+						JOptionPane.showMessageDialog(this, "ë¡œê·¸ì¸ì— ì‹¤íŒ¨ í–ˆìŠµë‹ˆë‹¤.\n ë‹‰ë„¤ì„ì„ ì •í™•íˆ ì…ë ¥ í•˜ì„¸ìš”. !!!");
 						disConnect();
 						break;
 						
-					} else if (user.getCode() == 1210) { // ·Î±×ÀÎ »ç¿ëÀÚÀÇ °ÔÀÓ »óÅÂ°¡ º¯°æ µÈ °æ¿ì
+					} else if (user.getCode() == 1210) { // ë¡œê·¸ì¸ ì‚¬ìš©ìì˜ ê²Œì„ ìƒíƒœê°€ ë³€ê²½ ëœ ê²½ìš°
 						for (int i = 0; i <table.getRowCount(); i++) {
 							String s=table.getValueAt(i, 0).toString().trim();
 							
 							if(s.equals(user.getUserName())) {
 								if(user.getGameState()) {
-									((MyTableModel) table.getModel()).setValueAt(" °ÔÀÓÁß", i, 1);
+									((MyTableModel) table.getModel()).setValueAt(" ê²Œì„ì¤‘", i, 1);
 								} else {
-									((MyTableModel) table.getModel()).setValueAt(" ´ë±âÁß", i, 1);
+									((MyTableModel) table.getModel()).setValueAt(" ëŒ€ê¸°ì¤‘", i, 1);
 								}
 								break;
 							}
 						}
 						
-					} else if (user.getCode() == 1211) { // »ó´ë¹æ¿¡°Ô °ÔÀÓÀ» ¿äÃ» ¹ŞÀº °æ¿ì
+					} else if (user.getCode() == 1211) { // ìƒëŒ€ë°©ì—ê²Œ ê²Œì„ì„ ìš”ì²­ ë°›ì€ ê²½ìš°
 						int result = JOptionPane.showConfirmDialog(
 								MainClient.this
-								, user.getUserName()+ "´ÔÀÌ °ÔÀÓÀ» ¿äÃ» Çß½À´Ï´Ù.\n ÇÑ°ÔÀÓ ÇÏ½Ã°Ú½À´Ï±î ?", "È®ÀÎ"
+								, user.getUserName()+ "ë‹˜ì´ ê²Œì„ì„ ìš”ì²­ í–ˆìŠµë‹ˆë‹¤.\n í•œê²Œì„ í•˜ì‹œê² ìŠµë‹ˆê¹Œ ?", "í™•ì¸"
 								, JOptionPane.YES_NO_OPTION
 								, JOptionPane.QUESTION_MESSAGE
 							);
@@ -296,12 +296,12 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 						
 						if(result==JOptionPane.YES_OPTION) {
 							u.setGameState(true);
-							// JTable º¯°æ
+							// JTable ë³€ê²½
 							for (int i = 0; i <table.getRowCount(); i++) {
 								String s=table.getValueAt(i, 0).toString().trim();
 								
 								if(s.equals(user.getUserName())) {
-									((MyTableModel) table.getModel()).setValueAt(" °ÔÀÓÁß", i, 1);
+									((MyTableModel) table.getModel()).setValueAt(" ê²Œì„ì¤‘", i, 1);
 									break;
 								}
 							}
@@ -312,10 +312,10 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 							bGameMe=true;
 							bGameOpponent=true;
 							
-							lblGame.setText(opponentUserName+"´Ô°ú °ÔÀÓÁß. µ¹:Èòµ¹");
+							lblGame.setText(opponentUserName+"ë‹˜ê³¼ ê²Œì„ì¤‘. ëŒ:í°ëŒ");
 							
 						} else {
-							// ½Â¶ôÇÏÁö ¾ÊÀº °æ¿ì
+							// ìŠ¹ë½í•˜ì§€ ì•Šì€ ê²½ìš°
 							opponentUserName=null;
 							dolColor=NONE;
 							bGameMe=false;
@@ -326,14 +326,14 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 						}
 						oos.writeObject(u);
 						
-					} else if (user.getCode() == 1212) { // »ó´ë¹æÀÌ °ÔÀÓ ¿äÃ»¿¡ ´ëÇÑ ½Â¶ô ¿©ºÎ
+					} else if (user.getCode() == 1212) { // ìƒëŒ€ë°©ì´ ê²Œì„ ìš”ì²­ì— ëŒ€í•œ ìŠ¹ë½ ì—¬ë¶€
 						if(user.getGameState()) {
-							// »ó´ë¹æÀÌ ¿äÃ»À» ½Â¶ô ÇÑ °æ¿ì
+							// ìƒëŒ€ë°©ì´ ìš”ì²­ì„ ìŠ¹ë½ í•œ ê²½ìš°
 							for (int i = 0; i <table.getRowCount(); i++) {
 								String s=table.getValueAt(i, 0).toString().trim();
 								
 								if(s.equals(user.getUserName())) {
-									((MyTableModel) table.getModel()).setValueAt(" °ÔÀÓÁß", i, 1);
+									((MyTableModel) table.getModel()).setValueAt(" ê²Œì„ì¤‘", i, 1);
 									break;
 								}
 							}							
@@ -343,10 +343,10 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 							bGameMe=true;
 							bGameOpponent=true;
 							
-							lblGame.setText(opponentUserName+"´Ô°ú °ÔÀÓÁß. µ¹:°ËÀºµ¹");
+							lblGame.setText(opponentUserName+"ë‹˜ê³¼ ê²Œì„ì¤‘. ëŒ:ê²€ì€ëŒ");
 						} else {
 							lblGame.setText("");
-							ta.append(user.getUserName() + "´ÔÀÌ °ÔÀÓÀ» °ÅÀı Çß½À´Ï´Ù.\n");
+							ta.append(user.getUserName() + "ë‹˜ì´ ê²Œì„ì„ ê±°ì ˆ í–ˆìŠµë‹ˆë‹¤.\n");
 							ta.setCaretPosition(ta.getDocument().getLength());
 							
 							opponentUserName=null;
@@ -355,18 +355,18 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 							bGameOpponent=false;
 						}
 						
-					} else if (user.getCode() == 1221) { // °ÔÀÓÀ» ´Ù½Ã ÇÑÆÇ¿¡ ´ëÇØ ¿äÃ» ¹ŞÀº °æ¿ì
+					} else if (user.getCode() == 1221) { // ê²Œì„ì„ ë‹¤ì‹œ í•œíŒì— ëŒ€í•´ ìš”ì²­ ë°›ì€ ê²½ìš°
 						if(user.getGameState()==false) { 
 							for (int i = 0; i <table.getRowCount(); i++) {
 								String s=table.getValueAt(i, 0).toString().trim();
 								
 								if(s.equals(opponentUserName)) {
-									((MyTableModel) table.getModel()).setValueAt(" ´ë±âÁß", i, 1);
+									((MyTableModel) table.getModel()).setValueAt(" ëŒ€ê¸°ì¤‘", i, 1);
 									break;
 								}
 							}
 							lblGame.setText("");
-							ta.append(opponentUserName + "´ÔÀÌ °ÔÀÓÀ» Á¾·á Çß½À´Ï´Ù.\n");
+							ta.append(opponentUserName + "ë‹˜ì´ ê²Œì„ì„ ì¢…ë£Œ í–ˆìŠµë‹ˆë‹¤.\n");
 							ta.setCaretPosition(ta.getDocument().getLength());
 							
 							bGameMe=false;
@@ -375,7 +375,7 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 						} else {
 							int result = JOptionPane.showConfirmDialog(
 									MainClient.this
-									, "ÇÑ °ÔÀÓ ´õ ÇÏ½Ã°Ú½À´Ï±î ?", "È®ÀÎ"
+									, "í•œ ê²Œì„ ë” í•˜ì‹œê² ìŠµë‹ˆê¹Œ ?", "í™•ì¸"
 									, JOptionPane.YES_NO_OPTION
 									, JOptionPane.QUESTION_MESSAGE
 								);
@@ -391,32 +391,32 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 								if(panjeong==dolColor) {
 									bWhTurn=false;
 									dolColor=WHITE;
-									lblGame.setText(opponentUserName+"´Ô°ú °ÔÀÓÁß. µ¹:Èòµ¹");
+									lblGame.setText(opponentUserName+"ë‹˜ê³¼ ê²Œì„ì¤‘. ëŒ:í°ëŒ");
 								} else {
 									bWhTurn=true;
 									dolColor=BLACK;
-									lblGame.setText(opponentUserName+"´Ô°ú °ÔÀÓÁß. µ¹:°ËÀºµ¹");
+									lblGame.setText(opponentUserName+"ë‹˜ê³¼ ê²Œì„ì¤‘. ëŒ:ê²€ì€ëŒ");
 								}
 								bGameMe=true;
 								bGameOpponent=true;
-								ta.append(opponentUserName + "´Ô°úÀÇ °ÔÀÓÀ» ´Ù½Ã ½ÃÀÛ ÇÕ´Ï´Ù.\n");
+								ta.append(opponentUserName + "ë‹˜ê³¼ì˜ ê²Œì„ì„ ë‹¤ì‹œ ì‹œì‘ í•©ë‹ˆë‹¤.\n");
 								ta.setCaretPosition(ta.getDocument().getLength());
 								
 							} else {
-								// ½Â¶ôÇÏÁö ¾ÊÀº °æ¿ì
+								// ìŠ¹ë½í•˜ì§€ ì•Šì€ ê²½ìš°
 								u.setGameState(false);
-								// JTable º¯°æ
+								// JTable ë³€ê²½
 								for (int i = 0; i <table.getRowCount(); i++) {
 									String s=table.getValueAt(i, 0).toString().trim();
 									
 									if(s.equals(opponentUserName)) {
-										((MyTableModel) table.getModel()).setValueAt(" ´ë±âÁß", i, 1);
+										((MyTableModel) table.getModel()).setValueAt(" ëŒ€ê¸°ì¤‘", i, 1);
 										break;
 									}
 								}
 								
 								lblGame.setText("");
-								ta.append(opponentUserName + "´Ô°úÀÇ °ÔÀÓÀ» Á¾·á Çß½À´Ï´Ù.\n");
+								ta.append(opponentUserName + "ë‹˜ê³¼ì˜ ê²Œì„ì„ ì¢…ë£Œ í–ˆìŠµë‹ˆë‹¤.\n");
 								ta.setCaretPosition(ta.getDocument().getLength());
 								
 								bGameMe=false;
@@ -429,18 +429,18 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 						gameInit();
 						gp.repaint();
 						
-					} else if (user.getCode() == 1222) { // °ÔÀÓÀ» ´Ù½Ã ÇÑÆÇ¿¡ ´ëÇØ ¿äÃ» ½Â¶ô ¿©ºÎ
+					} else if (user.getCode() == 1222) { // ê²Œì„ì„ ë‹¤ì‹œ í•œíŒì— ëŒ€í•´ ìš”ì²­ ìŠ¹ë½ ì—¬ë¶€
 						if(user.getGameState()==false) {
 							for (int i = 0; i <table.getRowCount(); i++) {
 								String s=table.getValueAt(i, 0).toString().trim();
 								
 								if(s.equals(opponentUserName)) {
-									((MyTableModel) table.getModel()).setValueAt(" ´ë±âÁß", i, 1);
+									((MyTableModel) table.getModel()).setValueAt(" ëŒ€ê¸°ì¤‘", i, 1);
 									break;
 								}
 							}
 							lblGame.setText("");
-							ta.append(opponentUserName + "´ÔÀÌ °ÔÀÓÀ» Á¾·á Çß½À´Ï´Ù.\n");
+							ta.append(opponentUserName + "ë‹˜ì´ ê²Œì„ì„ ì¢…ë£Œ í–ˆìŠµë‹ˆë‹¤.\n");
 							ta.setCaretPosition(ta.getDocument().getLength());
 							
 							bGameMe=false;
@@ -450,29 +450,29 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 							if(panjeong==dolColor) {
 								bWhTurn=false;
 								dolColor=WHITE;
-								lblGame.setText(opponentUserName+"´Ô°ú °ÔÀÓÁß. µ¹:Èòµ¹");
+								lblGame.setText(opponentUserName+"ë‹˜ê³¼ ê²Œì„ì¤‘. ëŒ:í°ëŒ");
 							} else {
 								bWhTurn=true;
 								dolColor=BLACK;
-								lblGame.setText(opponentUserName+"´Ô°ú °ÔÀÓÁß. µ¹:°ËÀºµ¹");
+								lblGame.setText(opponentUserName+"ë‹˜ê³¼ ê²Œì„ì¤‘. ëŒ:ê²€ì€ëŒ");
 							}
 							bGameMe=true;
 							bGameOpponent=true;
-							ta.append(opponentUserName + "´Ô°ú °ÔÀÓÀ» ´Ù½Ã ½ÃÀÛ ÇÕ´Ï´Ù.\n");
+							ta.append(opponentUserName + "ë‹˜ê³¼ ê²Œì„ì„ ë‹¤ì‹œ ì‹œì‘ í•©ë‹ˆë‹¤.\n");
 							ta.setCaretPosition(ta.getDocument().getLength());
 						}
 						
 						gameInit();
 						gp.repaint();
 						
-					} else if (user.getCode() == 1301) { // ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®°¡ ·Î±× ¾Æ¿ô ÇÑ °æ¿ì
+					} else if (user.getCode() == 1301) { // ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ê°€ ë¡œê·¸ ì•„ì›ƒ í•œ ê²½ìš°
 						if(table.getRowCount()<1)
 							return;
 						
-						// »ó´ë¹æÀÌ ·Î±×¾Æ¿ô ÇÑ °æ¿ì
+						// ìƒëŒ€ë°©ì´ ë¡œê·¸ì•„ì›ƒ í•œ ê²½ìš°
 						if(opponentUserName!=null&&user.getUserName().equals(opponentUserName)) {
 							lblGame.setText("");
-							ta.append(opponentUserName + "´ÔÀÌ ·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù.\n");
+							ta.append(opponentUserName + "ë‹˜ì´ ë¡œê·¸ì•„ì›ƒ ë˜ì—ˆìŠµë‹ˆë‹¤.\n");
 							ta.setCaretPosition(ta.getDocument().getLength());
 							
 							gameInit();
@@ -482,7 +482,7 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 							gp.repaint();
 						}
 						
-						// JTable¿¡¼­ ·Î±×¾Æ¿ô »ç¿ëÀÚ Á¦°Å
+						// JTableì—ì„œ ë¡œê·¸ì•„ì›ƒ ì‚¬ìš©ì ì œê±°
 						for (int i = 0; i <table.getRowCount(); i++) {
 							String s=table.getValueAt(i, 0).toString().trim();
 							
@@ -539,7 +539,7 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 				chat.setMsg(userName+"] "+s);
 				oos.writeObject(chat);
 				
-				ta.append("º¸³¿] "+s+"\n");
+				ta.append("ë³´ëƒ„] "+s+"\n");
 				ta.setCaretPosition(ta.getDocument().getLength());
 				
 				tf.setText("");
@@ -561,14 +561,14 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 		bLogin=false;
 		lblGame.setText("");
 		
-		JOptionPane.showMessageDialog(MainClient.this, "¼­¹ö¿¡ ¹®Á¦°¡ ¹ß»ıÇÏ¿© ÇÁ·Î±×·¥À» Á¾·á ÇÕ´Ï´Ù.\n Àá½ÃÈÄ ´Ù½Ã ½ÇÇà ÇÏ¼¼¿ä !!!");
+		JOptionPane.showMessageDialog(MainClient.this, "ì„œë²„ì— ë¬¸ì œê°€ ë°œìƒí•˜ì—¬ í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œ í•©ë‹ˆë‹¤.\n ì ì‹œí›„ ë‹¤ì‹œ ì‹¤í–‰ í•˜ì„¸ìš” !!!");
 		System.exit(0);
 	}
 	
 	// ***************************************************************
-	// ¸¶¿ì½º ÀÌº¥Æ® Ã³¸®
+	// ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸ ì²˜ë¦¬
 	class MouseHandler extends MouseAdapter {
-		// ¿À¸ñ°ÔÀÓ(¹ÙµÏÆÇÀ» Å¬¸¯ ÇÑ °æ¿ì)
+		// ì˜¤ëª©ê²Œì„(ë°”ë‘‘íŒì„ í´ë¦­ í•œ ê²½ìš°)
 		public void mousePressed(MouseEvent evt) {
 			if(evt.getSource()==gp) {
 				if (bGameMe == true && bGameOpponent == true) {
@@ -576,7 +576,7 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 					if (panjeong != NONE)
 						return;
 	
-					// µ¹ Â÷·Ê°¡ ¾Æ´Ñ °æ¿ì
+					// ëŒ ì°¨ë¡€ê°€ ì•„ë‹Œ ê²½ìš°
 					if (! bWhTurn)
 						return;
 	
@@ -589,7 +589,7 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 					if (board[ax][ay] != NONE)
 						return;
 	
-					// ¸¶¿ì½º ÁÂÇ¥ Àü¼Û
+					// ë§ˆìš°ìŠ¤ ì¢Œí‘œ ì „ì†¡
 					try {
 						PointMsg pm = new PointMsg();
 						pm.setCode(2101);
@@ -602,11 +602,11 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 						gamePlay(pm, dolColor, ta);
 						bWhTurn = !bWhTurn;
 						
-						// °ÔÀÓÀÌ ³¡³­ °æ¿ì Àç °ÔÀÓ ¿äÃ»
+						// ê²Œì„ì´ ëë‚œ ê²½ìš° ì¬ ê²Œì„ ìš”ì²­
 						if(panjeong!=NONE) {
 							int result = JOptionPane.showConfirmDialog(
 									MainClient.this
-									, "°ÔÀÓÀ» °è¼Ó ÇÏ½Ã°Ú½À´Ï±î ?", "È®ÀÎ"
+									, "ê²Œì„ì„ ê³„ì† í•˜ì‹œê² ìŠµë‹ˆê¹Œ ?", "í™•ì¸"
 									, JOptionPane.YES_NO_OPTION
 									, JOptionPane.QUESTION_MESSAGE
 								);
@@ -619,14 +619,14 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 							if(result==JOptionPane.YES_OPTION) {
 								u.setGameState(true);
 							} else {
-								// ½Â¶ôÇÏÁö ¾ÊÀº °æ¿ì
+								// ìŠ¹ë½í•˜ì§€ ì•Šì€ ê²½ìš°
 								u.setGameState(false);
-								// JTable º¯°æ
+								// JTable ë³€ê²½
 								for (int i = 0; i <table.getRowCount(); i++) {
 									String s=table.getValueAt(i, 0).toString().trim();
 									
 									if(s.equals(opponentUserName)) {
-										((MyTableModel) table.getModel()).setValueAt(" ´ë±âÁß", i, 1);
+										((MyTableModel) table.getModel()).setValueAt(" ëŒ€ê¸°ì¤‘", i, 1);
 										break;
 									}
 								}
@@ -648,7 +648,7 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 			} //end_if(evt.getSource()==gp)
 		} // end_public void mousePressed(MouseEvent evt)
 		
-		// JTable¿¡¼­ Ç×¸ñÀ» ´õºí Å¬¸¯ ÇÑ °æ¿ì
+		// JTableì—ì„œ í•­ëª©ì„ ë”ë¸” í´ë¦­ í•œ ê²½ìš°
 		public void mouseClicked(MouseEvent evt) {
 			if(evt.getSource()==table) {
 				if (table.getRowCount() < 1)
@@ -658,16 +658,16 @@ public class MainClient extends OmokFrame implements ActionListener, Runnable {
 					return;
 				
 				if ((evt.getModifiers() & InputEvent.BUTTON1_MASK) != 0) {
-					// ´õºíÅ¬¸¯ ÇÒ °æ¿ì ÆÄÀÏ ³»¿ë º¸±â ´ëÈ­»óÀÚ
+					// ë”ë¸”í´ë¦­ í•  ê²½ìš° íŒŒì¼ ë‚´ìš© ë³´ê¸° ëŒ€í™”ìƒì
 					if (evt.getClickCount() == 2) {
 						String s1=table.getValueAt(table.getSelectedRow(), 0).toString().trim();
 						String s2=table.getValueAt(table.getSelectedRow(), 1).toString().trim();
 						
-						if(s2.equals("°ÔÀÓÁß"))
+						if(s2.equals("ê²Œì„ì¤‘"))
 							return;
 						
 						try {
-							// °ÔÀÓ ¿äÃ»
+							// ê²Œì„ ìš”ì²­
 							UserMsg u = new UserMsg();
 							u.setCode(1211);
 							u.setGameState(true);

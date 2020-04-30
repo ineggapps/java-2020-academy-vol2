@@ -1,4 +1,4 @@
-package d200410;
+ï»¿package d200410;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -8,25 +8,25 @@ import java.util.stream.Stream;
 
 public class Ex13Stream {
 	public static void main(String[] args) {
-		List<String> list = Arrays.asList("ÀÚ¹Ù", "oracle", "À¥");
-		// ÀÌÅÍ·¹ÀÌÅÍ »ç¿ë
+		List<String> list = Arrays.asList("ìë°”", "oracle", "ì›¹");
+		// ì´í„°ë ˆì´í„° ì‚¬ìš©
 		Iterator<String> it = list.iterator();
 		while (it.hasNext()) {
 			String s = it.next();
 			System.out.println(s);
 		}
 		System.out.println("----------------------------");
-		// ½ºÆ®¸² »ç¿ë (´Ù¸¸ ½ºÆ®¸²Àº ÀĞ±âÀü¿ëÀÌ°í ÇÑ ¹ø¸¸ »ç¿ëÇÒ ¼ö ÀÖÀ½)
+		// ìŠ¤íŠ¸ë¦¼ ì‚¬ìš© (ë‹¤ë§Œ ìŠ¤íŠ¸ë¦¼ì€ ì½ê¸°ì „ìš©ì´ê³  í•œ ë²ˆë§Œ ì‚¬ìš©í•  ìˆ˜ ìˆìŒ)
 		Stream<String> stream = list.stream();
-		// forEach´Â ConsumerÀÎÅÍÆäÀÌ½ºÀÇ ¸Ş¼­µå¸¦ ±¸ÇöÇØ¾ß ÇÔ.
+		// forEachëŠ” Consumerì¸í„°í˜ì´ìŠ¤ì˜ ë©”ì„œë“œë¥¼ êµ¬í˜„í•´ì•¼ í•¨.
 		
-		// #1. ¶÷´Ù½Ä
+		// #1. ëŒë‹¤ì‹
 		stream.forEach(s -> System.out.println(s));
 		
-		// #2.¸Ş¼­µå ÂüÁ¶ Ç¥±â½Ä
+		// #2.ë©”ì„œë“œ ì°¸ì¡° í‘œê¸°ì‹
 //		stream.forEach(System.out::println);
 		
-		// #3. »ı·«ÇÏÁö ¾ÊÀ¸¸é?
+		// #3. ìƒëµí•˜ì§€ ì•Šìœ¼ë©´?
 //		stream.forEach(new Consumer<String>() {
 //			@Override
 //			public void accept(String t) {

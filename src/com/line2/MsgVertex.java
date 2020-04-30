@@ -1,8 +1,8 @@
-package com.line2;
+Ôªøpackage com.line2;
 
 import java.awt.Point;
 
-// º±±◊∏Æ±‚ ¡§¡°
+// ÏÑ†Í∑∏Î¶¨Í∏∞ Ï†ïÏ†ê
 public class MsgVertex extends MsgData {
 	private static final long serialVersionUID = 1L;
 	

@@ -1,4 +1,4 @@
-package db.pscore;
+ï»¿package db.pscore;
 
 import java.awt.Component;
 
@@ -7,11 +7,11 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-// Å×ÀÌºíÀÇ ¸ğµ¨À» Çü¼ºÇÏ±â À§ÇÑ Å¬·¡½º(Ãß°¡, »èÁ¦, °³¼öÈ®ÀÎ µîÀ» Áö¿ø)
+// í…Œì´ë¸”ì˜ ëª¨ë¸ì„ í˜•ì„±í•˜ê¸° ìœ„í•œ í´ë˜ìŠ¤(ì¶”ê°€, ì‚­ì œ, ê°œìˆ˜í™•ì¸ ë“±ì„ ì§€ì›)
 public class MyTableModel extends DefaultTableModel {
 	private static final long serialVersionUID = 1L;
 	
-	// Å×ÀÌºí Çì´õÀÇ Å¸ÀÌÆ²
+	// í…Œì´ë¸” í—¤ë”ì˜ íƒ€ì´í‹€
 	private String[] title;
 	
 	public MyTableModel(String[] title) {
@@ -20,7 +20,7 @@ public class MyTableModel extends DefaultTableModel {
 
 	@Override
 	public int getColumnCount() {
-		// ÄÃ·³¼ö(¿­¼ö)
+		// ì»¬ëŸ¼ìˆ˜(ì—´ìˆ˜)
 		if(title==null)
 			return 0;
 		
@@ -29,13 +29,13 @@ public class MyTableModel extends DefaultTableModel {
 
 	@Override
 	public String getColumnName(int column) {
-		// ÄÃ·³¸í
+		// ì»¬ëŸ¼ëª…
 		return title[column];
 	}
 
 	@Override
 	public boolean isCellEditable(int row, int column) {
-		// ´õºíÅ¬¸¯½Ã ÆíÁı ¸øÇÏ°Ô
+		// ë”ë¸”í´ë¦­ì‹œ í¸ì§‘ ëª»í•˜ê²Œ
 		return false;
 	}
 }

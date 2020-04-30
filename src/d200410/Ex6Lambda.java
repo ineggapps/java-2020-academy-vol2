@@ -1,12 +1,12 @@
-package d200410;
+ï»¿package d200410;
 
 public class Ex6Lambda {
 	public static void main(String[] args) {
-		//¸Å°³º¯¼ö°¡ ¾ø°í, ¹ÝÈ¯ÇüÀÌ voidÀÎ ¶÷´Ù½Ä...
-		Demo2 ob = () -> {//¼Ò½º°¡ ÀÌ·¸°Ô °£´ÜÇØÁú ¼ö ÀÖ´Ù´Ï!
-			System.out.println("¾È³ç ¶÷´Ù¾ß!");
-			//ÇÏÁö¸¸ ¶÷´Ù½ÄÀ» »ç¿ëÇÒ ¼ö ÀÖ´Â Á¶°ÇÀº Á¦ÇÑÀûÀÌ´Ù.
-			// ÀÎÅÍÆäÀÌ½º¿¡¼­ ¸Þ¼­µå´Â 1°³¸¸ Á¸ÀçÇØ¾ß ÇÑ´Ù.
+		//ë§¤ê°œë³€ìˆ˜ê°€ ì—†ê³ , ë°˜í™˜í˜•ì´ voidì¸ ëžŒë‹¤ì‹...
+		Demo2 ob = () -> {//ì†ŒìŠ¤ê°€ ì´ë ‡ê²Œ ê°„ë‹¨í•´ì§ˆ ìˆ˜ ìžˆë‹¤ë‹ˆ!
+			System.out.println("ì•ˆë…• ëžŒë‹¤ì•¼!");
+			//í•˜ì§€ë§Œ ëžŒë‹¤ì‹ì„ ì‚¬ìš©í•  ìˆ˜ ìžˆëŠ” ì¡°ê±´ì€ ì œí•œì ì´ë‹¤.
+			// ì¸í„°íŽ˜ì´ìŠ¤ì—ì„œ ë©”ì„œë“œëŠ” 1ê°œë§Œ ì¡´ìž¬í•´ì•¼ í•œë‹¤.
 		};
 		ob.write();
 	}

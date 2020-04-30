@@ -1,4 +1,4 @@
-package d200407;
+ï»¿package d200407;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -11,24 +11,24 @@ public class Ex9FilterStream {
 		
 		try {
 			FileOutputStream fos = new FileOutputStream("test.txt");
-			//DataOutputStreamÀ¸·Î ÀúÀåÇÑ ³»¿ëÀº DataInputStreamÀ¸·Î¸¸ ÀĞÀ» ¼ö ÀÖ´Ù.
+			//DataOutputStreamìœ¼ë¡œ ì €ì¥í•œ ë‚´ìš©ì€ DataInputStreamìœ¼ë¡œë§Œ ì½ì„ ìˆ˜ ìˆë‹¤.
 			DataOutputStream dos = new DataOutputStream(fos);
-			dos.writeUTF("´ëÇÑ¹Î±¹");
+			dos.writeUTF("ëŒ€í•œë¯¼êµ­");
 			dos.writeByte(10);
 			dos.writeChar('A');
 			dos.writeInt(5);
-			dos.writeUTF("¼­¿ï");
+			dos.writeUTF("ì„œìš¸");
 			dos.close();
-			//ºÒ·¯¿Ã ¶§µµ ÀúÀåÇÒ ¶§ÀÇ ¼ø¼­´ë·Î ÀĞ¾î¾ß ÇÑ´Ù.
+			//ë¶ˆëŸ¬ì˜¬ ë•Œë„ ì €ì¥í•  ë•Œì˜ ìˆœì„œëŒ€ë¡œ ì½ì–´ì•¼ í•œë‹¤.
 			FileInputStream fis = new FileInputStream("test.txt");
 			DataInputStream dis = new DataInputStream(fis);
 			
-			//ÀúÀåÇÑ ¼ø¼­´ë·Î ºÒ·¯µé¿©¾ß ÇÔ.
-			System.out.println(dis.readUTF());//´ëÇÑ¹Î±¹
+			//ì €ì¥í•œ ìˆœì„œëŒ€ë¡œ ë¶ˆëŸ¬ë“¤ì—¬ì•¼ í•¨.
+			System.out.println(dis.readUTF());//ëŒ€í•œë¯¼êµ­
 			System.out.println(dis.readByte());//10
 			System.out.println(dis.readChar());//A
 			System.out.println(dis.readInt());//5
-			System.out.println(dis.readUTF());//¼­¿ï
+			System.out.println(dis.readUTF());//ì„œìš¸
 
 			dis.close();
 		} catch (Exception e) {

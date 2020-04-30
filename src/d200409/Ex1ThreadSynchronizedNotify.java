@@ -1,4 +1,4 @@
-package d200409;
+ï»¿package d200409;
 
 public class Ex1ThreadSynchronizedNotify {
 	public static void main(String[] args) {
@@ -21,13 +21,13 @@ class MyThread implements Runnable {
 	}
 
 	public void drawMoney(int m) {
-		System.out.print(Thread.currentThread().getName() + " ¢º ");
+		System.out.print(Thread.currentThread().getName() + " â–¶ ");
 
 		if (getMoney() >= m) {
 			money -= m;
-			System.out.println("ÀÜ¾×: " + getMoney() + "¿ø");
+			System.out.println("ì”ì•¡: " + getMoney() + "ì›");
 		} else {
-			System.out.println("ÀÜ¾× ºÎÁ·... /_ \\");
+			System.out.println("ì”ì•¡ ë¶€ì¡±... /_ \\");
 		}
 	}
 
@@ -36,22 +36,22 @@ class MyThread implements Runnable {
 		synchronized (this) {
 			for (int i = 0; i < 10; i++) {
 				if (getMoney() <= 0) {
-					//#2. deadlock¿¡ °É¸®Áö ¾Êµµ·Ï ³ª¸ÓÁö Thread¸¦ ±ú¿ì´Â ÄÚµå
-					this.notifyAll();//´ë±â »óÅÂÀÎ Thread¸¦ ¸ğµÎ ±ú¿î´Ù...
+					//#2. deadlockì— ê±¸ë¦¬ì§€ ì•Šë„ë¡ ë‚˜ë¨¸ì§€ Threadë¥¼ ê¹¨ìš°ëŠ” ì½”ë“œ
+					this.notifyAll();//ëŒ€ê¸° ìƒíƒœì¸ Threadë¥¼ ëª¨ë‘ ê¹¨ìš´ë‹¤...
 					break;
 				}
 				drawMoney(1000);
 				if (getMoney() % 2000 == 0) {
 					try {
-						//#1. deadlock°É¸®´Â ÄÚµå... ¾ÆÁ÷ ±ú¾î³ªÁö ¾ÊÀº ½º·¹µå°¡ »ı±æ ¼ö ÀÖÀ½.
-						//±ú¾î³ªÁö ¾Ê´Â Thread´Â ¿µ¿øÈ÷ ´ë±âµÈ »óÅÂ¿¡¼­ ±ú¾î³ªÁö ¾ÊÀ½.
-						//¹«ÇÑ·çÇÁ¿¡ ºüÁø °Í°ú ¸¶Âù°¡ÁöÀÎ »óÅÂ...
-						this.wait();// 2000ÀÇ ¹è¼öÀÏ ¶§ wait.
+						//#1. deadlockê±¸ë¦¬ëŠ” ì½”ë“œ... ì•„ì§ ê¹¨ì–´ë‚˜ì§€ ì•Šì€ ìŠ¤ë ˆë“œê°€ ìƒê¸¸ ìˆ˜ ìˆìŒ.
+						//ê¹¨ì–´ë‚˜ì§€ ì•ŠëŠ” ThreadëŠ” ì˜ì›íˆ ëŒ€ê¸°ëœ ìƒíƒœì—ì„œ ê¹¨ì–´ë‚˜ì§€ ì•ŠìŒ.
+						//ë¬´í•œë£¨í”„ì— ë¹ ì§„ ê²ƒê³¼ ë§ˆì°¬ê°€ì§€ì¸ ìƒíƒœ...
+						this.wait();// 2000ì˜ ë°°ìˆ˜ì¼ ë•Œ wait.
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				} else {
-					this.notify(); // wait¸¦ ±ú¿î´Ù.
+					this.notify(); // waitë¥¼ ê¹¨ìš´ë‹¤.
 				}
 			}
 		}

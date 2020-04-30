@@ -1,4 +1,4 @@
-package d200407;
+ï»¿package d200407;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -12,17 +12,17 @@ public class Ex10FilterStream2 {
 			FileOutputStream fis = new FileOutputStream("test.txt");
 			DataOutputStream dos = new DataOutputStream(fis);
 
-			dos.writeUTF("È«±æµ¿");
+			dos.writeUTF("í™ê¸¸ë™");
 			dos.writeInt(80);
 			dos.writeInt(90);
 			dos.writeInt(70);
 
-			dos.writeUTF("½É½ÉÇØ");
+			dos.writeUTF("ì‹¬ì‹¬í•´");
 			dos.writeInt(70);
 			dos.writeInt(80);
 			dos.writeInt(90);
 
-			dos.writeUTF("¹è°íÆÄ");
+			dos.writeUTF("ë°°ê³ íŒŒ");
 			dos.writeInt(60);
 			dos.writeInt(70);
 			dos.writeInt(50);
@@ -50,7 +50,7 @@ public class Ex10FilterStream2 {
 
 		} 
 		catch(EOFException e) {
-			//DataInputStreamÀº ÆÄÀÏÀÇ ³¡¿¡ µµ´ŞÇÏ¸é EOFExceptionÀÌ ¹ß»ıÇÑ´Ù.
+			//DataInputStreamì€ íŒŒì¼ì˜ ëì— ë„ë‹¬í•˜ë©´ EOFExceptionì´ ë°œìƒí•œë‹¤.
 		}
 		catch (Exception e) {
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.File;
 
@@ -7,15 +7,15 @@ public class Ex14File6 {
 		String pathname = "test.txt";
 		File f = new File(pathname);
 		if (!f.exists()) {
-			System.out.println("Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù");
+			System.out.println("ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤");
 			return;
 		}
-		System.out.println("ÀüÃ¼ °æ·Î: " + f.getAbsolutePath());
+		System.out.println("ì „ì²´ ê²½ë¡œ: " + f.getAbsolutePath());
 
-		// ÀÌ¸§ º¯°æ
+		// ì´ë¦„ ë³€ê²½
 		String pathname2 = "test2.txt";
 		File f2 = new File(pathname2);
 		f.renameTo(f2);
-		System.out.println("ÆÄÀÏ ÀÌ¸§ÀÌ º¯°æµÇ¾ú½À´Ï´Ù."); //´ç¿¬È÷ ½ÇÇà ÈÄ¿¡ ÆÄÀÏ¸íÀÌ ¹Ù²î¾úÀ¸´Ï±î Àç½ÇÇà ½Ã test.txtÆÄÀÏÀÌ ¾øÀ¸¸é Á¸ÀçÇÏÁö ¾Ê´Â´Ù°í ÇÏ°ÚÁö?	
+		System.out.println("íŒŒì¼ ì´ë¦„ì´ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤."); //ë‹¹ì—°íˆ ì‹¤í–‰ í›„ì— íŒŒì¼ëª…ì´ ë°”ë€Œì—ˆìœ¼ë‹ˆê¹Œ ì¬ì‹¤í–‰ ì‹œ test.txtíŒŒì¼ì´ ì—†ìœ¼ë©´ ì¡´ì¬í•˜ì§€ ì•ŠëŠ”ë‹¤ê³  í•˜ê² ì§€?	
 	}
 }

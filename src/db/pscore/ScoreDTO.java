@@ -1,8 +1,8 @@
-package db.pscore;
+ï»¿package db.pscore;
 
 /*
- DTO(Data Transfer Object) : µ¥ÀÌÅÍ Àü¼Û°´Ã¼, VO(Value Object)¿Í À¯»ç
- DAO(Data Access Object) : µ¥ÀÌÅÍ Ã³¸®¸¦ ÁÖ ¸ñÀûÀ¸·ÎÇÏ´Â Å¬·¡½º
+ DTO(Data Transfer Object) : ë°ì´í„° ì „ì†¡ê°ì²´, VO(Value Object)ì™€ ìœ ì‚¬
+ DAO(Data Access Object) : ë°ì´í„° ì²˜ë¦¬ë¥¼ ì£¼ ëª©ì ìœ¼ë¡œí•˜ëŠ” í´ë˜ìŠ¤
  CRUD : Create(Insert), Retrieve(Select), Update, Delete 
 */
 

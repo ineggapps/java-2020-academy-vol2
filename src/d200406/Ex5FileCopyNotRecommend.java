@@ -1,4 +1,4 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -7,9 +7,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-//e.zipÆÄÀÏÀº ÀÌÅ¬¸³½º ÆÄÀÏÃ³·³ °í¿ë·® ÆÄÀÏÀ» ¹Ì¸® ¾Æ·¡ Æú´õ¿¡ °®´Ù µÎ°í ÀÌ Å¬·¡½º¸¦ ½ÇÇàÇØ º»´Ù.
-//c:\data Æú´õ ÀÌÇÏ e.zipÆÄÀÏÀ» º¹»çÇÏ´Â ÇÁ·Î±×·¥ ÀÛ¼º(ºñÈ¿À²Àû)
-//The most inefficient Program... (²Ï ¿À·¡ °É¸°´Ù)
+//e.zipíŒŒì¼ì€ ì´í´ë¦½ìŠ¤ íŒŒì¼ì²˜ëŸ¼ ê³ ìš©ëŸ‰ íŒŒì¼ì„ ë¯¸ë¦¬ ì•„ë˜ í´ë”ì— ê°–ë‹¤ ë‘ê³  ì´ í´ë˜ìŠ¤ë¥¼ ì‹¤í–‰í•´ ë³¸ë‹¤.
+//c:\data í´ë” ì´í•˜ e.zipíŒŒì¼ì„ ë³µì‚¬í•˜ëŠ” í”„ë¡œê·¸ë¨ ì‘ì„±(ë¹„íš¨ìœ¨ì )
+//The most inefficient Program... (ê½¤ ì˜¤ë˜ ê±¸ë¦°ë‹¤)
 public class Ex5FileCopyNotRecommend {
 	public static void main(String[] args) {
 		String pathname1, pathname2;
@@ -18,31 +18,31 @@ public class Ex5FileCopyNotRecommend {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int data;
 		try {
-			//ÄÚµùÀ» ÀÌ·± ½ÄÀ¸·Î ÇÏ¸é È¸»ç¿¡¼­ ¸Â°í ÂÑ°Ü³­´Ù. (½ÇÈ­)
-			System.out.print("¿øº»ÆÄÀÏ¸í? ");
+			//ì½”ë”©ì„ ì´ëŸ° ì‹ìœ¼ë¡œ í•˜ë©´ íšŒì‚¬ì—ì„œ ë§ê³  ì«“ê²¨ë‚œë‹¤. (ì‹¤í™”)
+			System.out.print("ì›ë³¸íŒŒì¼ëª…? ");
 			pathname1 = br.readLine();
-			System.out.print("º¹»çÇÒ »õ·Î¿î ÆÄÀÏ¸í? ");
+			System.out.print("ë³µì‚¬í•  ìƒˆë¡œìš´ íŒŒì¼ëª…? ");
 			pathname2 = br.readLine();
 
-			// ¿øº»À» ºÒ·¯µéÀÏ FileInputStream°´Ã¼ »ı¼º
+			// ì›ë³¸ì„ ë¶ˆëŸ¬ë“¤ì¼ FileInputStreamê°ì²´ ìƒì„±
 			fis = new FileInputStream(pathname1);
-			// »çº»À» ¸¸µé FileOutputStream°´Ã¼ »ı¼º
+			// ì‚¬ë³¸ì„ ë§Œë“¤ FileOutputStreamê°ì²´ ìƒì„±
 			fos = new FileOutputStream(pathname2);
 
 			long start = System.currentTimeMillis();
-			while ((data = fis.read()) != -1) {// ÀÔ·Â¹Ş¾Æ¼­
-				fos.write(data);// ¹Ù·Î FileOutputStream°´Ã¼·Î Ãâ·Â
+			while ((data = fis.read()) != -1) {// ì…ë ¥ë°›ì•„ì„œ
+				fos.write(data);// ë°”ë¡œ FileOutputStreamê°ì²´ë¡œ ì¶œë ¥
 			}
-			fos.flush();// ÀúÀå
+			fos.flush();// ì €ì¥
 			long end = System.currentTimeMillis();
-			System.out.println("º¹»ç ½Ã°£: " + (end - start) + "ms");//2MB ÆÄÀÏ ±âÁØ 8738ms ¼Ò¿ä (ÄÄ»ç¾ç µû¶ó ´Ş¶óÁú ¼ö ÀÖÀ½)
-			//°í¿ë·®ÀÎ °æ¿ì ½ÇÇà µµÁß¿¡ °­Á¦Á¾·áÇÒ °Í.
+			System.out.println("ë³µì‚¬ ì‹œê°„: " + (end - start) + "ms");//2MB íŒŒì¼ ê¸°ì¤€ 8738ms ì†Œìš” (ì»´ì‚¬ì–‘ ë”°ë¼ ë‹¬ë¼ì§ˆ ìˆ˜ ìˆìŒ)
+			//ê³ ìš©ëŸ‰ì¸ ê²½ìš° ì‹¤í–‰ ë„ì¤‘ì— ê°•ì œì¢…ë£Œí•  ê²ƒ.
 			
 		} catch (FileNotFoundException e) {
-			// ÆÄÀÏÀ» ºÒ·¯¿Ã ¶§ ÆÄÀÏ°æ·Î¿¡ ÇØ´çÇÏ´Â ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾ÊÀ» ¼öµµ ÀÖ´Ù.
+			// íŒŒì¼ì„ ë¶ˆëŸ¬ì˜¬ ë•Œ íŒŒì¼ê²½ë¡œì— í•´ë‹¹í•˜ëŠ” íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•Šì„ ìˆ˜ë„ ìˆë‹¤.
 			System.out.println(e.toString());
 		} catch (IOException e) {
-			// ÀÔÃâ·Â ½Ã ¿¹¿Ü°¡ ¹ß»ıÇÒ ¼ö ÀÖÀ½.
+			// ì…ì¶œë ¥ ì‹œ ì˜ˆì™¸ê°€ ë°œìƒí•  ìˆ˜ ìˆìŒ.
 			System.out.println(e.toString());
 		} catch (Exception e) {
 			e.printStackTrace();

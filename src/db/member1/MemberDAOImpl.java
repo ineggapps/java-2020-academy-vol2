@@ -1,4 +1,4 @@
-package db.member1;
+ï»¿package db.member1;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -39,7 +39,7 @@ public class MemberDAOImpl implements MemberDAO {
 			}
 			
 			/*
-			 ÇÑ ¹ø¿¡ insertÀÛ¾÷ ¼öÇàÇÏ±â
+			 í•œ ë²ˆì— insertì‘ì—… ìˆ˜í–‰í•˜ê¸°
 			StringBuilder sb=new StringBuilder();
 			sb.append("INSERT ALL ");
 			sb.append(" INTO member1(id,pwd,name) VALUES(");
@@ -59,8 +59,8 @@ public class MemberDAOImpl implements MemberDAO {
 			 */
 		} catch (Exception e) {
 			e.printStackTrace();
-			// ¸¸¾à¿¡ member1¿¡¼± ¼º°øÇßÁö¸¸ member2Å×ÀÌºí¿¡¼­ °á±£°ªÀ» ³Ö±â¸¦ ½ÇÆĞÇß´Ù¸é?
-			// member1Å×ÀÌºíÀÇ °ªµµ Áö¿öÁà¾ß°ÚÁö?
+			// ë§Œì•½ì— member1ì—ì„  ì„±ê³µí–ˆì§€ë§Œ member2í…Œì´ë¸”ì—ì„œ ê²°ê´ê°’ì„ ë„£ê¸°ë¥¼ ì‹¤íŒ¨í–ˆë‹¤ë©´?
+			// member1í…Œì´ë¸”ì˜ ê°’ë„ ì§€ì›Œì¤˜ì•¼ê² ì§€?
 			deleteMember(dto.getId());
 		} finally {
 			if (stmt != null) {

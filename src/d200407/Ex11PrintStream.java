@@ -1,4 +1,4 @@
-package d200407;
+ï»¿package d200407;
 
 import java.io.PrintStream;
 import java.util.Calendar;
@@ -7,8 +7,8 @@ public class Ex11PrintStream {
 	public static void main(String[] args) {
 		try {
 			PrintStream ps = new PrintStream("test.txt");
-			ps.printf("%1tF %1$tA %1$tT\n", Calendar.getInstance());// ¿ùÀÏ³â, ¿äÀÏ, ½Ã°£
-			ps.println("´ëÇÑ¹Î±¹");
+			ps.printf("%1tF %1$tA %1$tT\n", Calendar.getInstance());// ì›”ì¼ë…„, ìš”ì¼, ì‹œê°„
+			ps.println("ëŒ€í•œë¯¼êµ­");
 			ps.println(65);
 			ps.close();
 		} catch (Exception e) {

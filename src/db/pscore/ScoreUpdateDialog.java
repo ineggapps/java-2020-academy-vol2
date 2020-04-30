@@ -1,4 +1,4 @@
-package db.pscore;
+ï»¿package db.pscore;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -32,8 +32,8 @@ public class ScoreUpdateDialog extends JDialog implements ActionListener {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
 		setLayout(null);
-		String title[]={"ÇĞ¹ø :", "ÀÌ¸§ :", "»ı³â¿ùÀÏ :",
-				"±¹¾î :", "¿µ¾î :", "¼öÇĞ :"};
+		String title[]={"í•™ë²ˆ :", "ì´ë¦„ :", "ìƒë…„ì›”ì¼ :",
+				"êµ­ì–´ :", "ì˜ì–´ :", "ìˆ˜í•™ :"};
 		for(int i=0; i<title.length; i++) {
 			JLabel lbl=new JLabel(title[i]);
 			lbl.setBounds(20, (i+1)*30, 80, 22);
@@ -48,18 +48,18 @@ public class ScoreUpdateDialog extends JDialog implements ActionListener {
 		}
 		tf[0].setEnabled(false);
 		
-		btn1=new JButton("¼öÁ¤");
+		btn1=new JButton("ìˆ˜ì •");
 		btn1.addKeyListener(new KeyHandler());
 		btn1.addActionListener(this);
 		btn1.setBounds(30, 220, 80, 22);
 		add(btn1);
 		
-		btn2=new JButton("Á¾·á");
+		btn2=new JButton("ì¢…ë£Œ");
 		btn2.addActionListener(this);
 		btn2.setBounds(115, 220, 80, 22);
 		add(btn2);
 		
-		setTitle("ÀÚ·á ¼öÁ¤");
+		setTitle("ìë£Œ ìˆ˜ì •");
 		setSize(250, 300);
 		setLocationRelativeTo(this.frame);
 		setVisible(true);
@@ -87,7 +87,7 @@ public class ScoreUpdateDialog extends JDialog implements ActionListener {
 				}
 			}
 			
-			// Å×ÀÌºí³»¿ë ¼öÁ¤
+			// í…Œì´ë¸”ë‚´ìš© ìˆ˜ì •
 			ScoreDTO dto=new ScoreDTO();
 			dto.setHak(tf[0].getText().trim());
 			dto.setName(tf[1].getText().trim());
@@ -106,12 +106,12 @@ public class ScoreUpdateDialog extends JDialog implements ActionListener {
 			
 				// frame.listScoreAll();
 			} else {
-				JOptionPane.showMessageDialog(this, "µ¥ÀÌÅÍ°¡ Á¸ÀçÇÏÁö ¾Ê°Å³ª ³Îµ¥ÀÌÅÍ·Î ÀÎÇÏ¿© ¼öÁ¤ÀÌ ½ÇÆĞ Çß½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(this, "ë°ì´í„°ê°€ ì¡´ì¬í•˜ì§€ ì•Šê±°ë‚˜ ë„ë°ì´í„°ë¡œ ì¸í•˜ì—¬ ìˆ˜ì •ì´ ì‹¤íŒ¨ í–ˆìŠµë‹ˆë‹¤.");
 				return;
 			}
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(this, "µ¥ÀÌÅÍ ¼öÁ¤ÀÌ ½ÇÆĞ Çß½À´Ï´Ù.");
+			JOptionPane.showMessageDialog(this, "ë°ì´í„° ìˆ˜ì •ì´ ì‹¤íŒ¨ í–ˆìŠµë‹ˆë‹¤.");
 		}
 	}
 	

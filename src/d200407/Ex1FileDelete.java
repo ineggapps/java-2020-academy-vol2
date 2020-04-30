@@ -1,4 +1,4 @@
-package d200407;
+ï»¿package d200407;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,17 +8,17 @@ public class Ex1FileDelete {
 	public static void removeDir(String pathname) {
 		try {
 			File f = new File(pathname);
-			if (f.isDirectory()) { // Æú´õ¸é Æú´õ¸¦ ºó Æú´õ·Î ¸¸µé±â À§ÇØ ÇÏÀ§ Æú´õ ³»ÀÇ ³»¿ëÀ» ¸ğµÎ »èÁ¦ÇÏ·Á°í ½Ãµµ
-				removeSubDir(f.getPath());// Àç±ÍÈ£Ãâ
+			if (f.isDirectory()) { // í´ë”ë©´ í´ë”ë¥¼ ë¹ˆ í´ë”ë¡œ ë§Œë“¤ê¸° ìœ„í•´ í•˜ìœ„ í´ë” ë‚´ì˜ ë‚´ìš©ì„ ëª¨ë‘ ì‚­ì œí•˜ë ¤ê³  ì‹œë„
+				removeSubDir(f.getPath());// ì¬ê·€í˜¸ì¶œ
 			}
-			f.delete();// ÆÄÀÏ ¶Ç´Â Æú´õ Á¦°ÅÇÏ±â (´Ü, ºó Æú´õ¿¡ ÇÑÇÔ)
+			f.delete();// íŒŒì¼ ë˜ëŠ” í´ë” ì œê±°í•˜ê¸° (ë‹¨, ë¹ˆ í´ë”ì— í•œí•¨)
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	private static void removeSubDir(String pathname) {
-		// Æú´õ ¾ÈÀÇ ¸ğµç Æú´õ ¶Ç´Â ÆÄÀÏ ¸ñ·Ï
+		// í´ë” ì•ˆì˜ ëª¨ë“  í´ë” ë˜ëŠ” íŒŒì¼ ëª©ë¡
 		File[] ff = new File(pathname).listFiles();
 		if (ff.length == 0) {
 			return;
@@ -26,9 +26,9 @@ public class Ex1FileDelete {
 		try {
 			for (File f : ff) {
 				if (f.isDirectory()) {
-					removeSubDir(f.getPath());// Àç±ÍÈ£Ãâ
+					removeSubDir(f.getPath());// ì¬ê·€í˜¸ì¶œ
 				}
-				f.delete();// ÆÄÀÏ ¶Ç´Â Æú´õ Á¦°ÅÇÏ±â
+				f.delete();// íŒŒì¼ ë˜ëŠ” í´ë” ì œê±°í•˜ê¸°
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,11 +39,11 @@ public class Ex1FileDelete {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String pathname;
 		try {
-			System.out.print("»èÁ¦ÇÒ ÆÄÀÏ ¶Ç´Â °æ·Î ? ");
+			System.out.print("ì‚­ì œí•  íŒŒì¼ ë˜ëŠ” ê²½ë¡œ ? ");
 			pathname = br.readLine();
-			pathname = "c:\\data";// ¾ÈÀüÀåÄ¡
+			pathname = "c:\\data";// ì•ˆì „ì¥ì¹˜
 			removeDir(pathname);
-			System.out.println("»èÁ¦ ¿Ï·á...");
+			System.out.println("ì‚­ì œ ì™„ë£Œ...");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

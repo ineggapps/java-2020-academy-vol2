@@ -1,10 +1,10 @@
-package d200408;
+ï»¿package d200408;
 
 public class Ex8ThreadWithLambda {
 	public static void main(String[] args) {
-		Runnable r = () -> {//Lambda ¶÷´Ù½Ä ÇÔ¼ö 
-			//¶÷´Ù½Ä: JDK8ºÎÅÍ °¡´ÉÇÑ ÇÔ¼ö ÁöÇâÀûÀÎ ÀÍ¸íÇÔ¼ö ±¸Çö 
-			//javascriptÀÇ arrow function°ú ºñ½ÁÇÏ°Ô »ý°å±¸³ª!
+		Runnable r = () -> {//Lambda ëžŒë‹¤ì‹ í•¨ìˆ˜ 
+			//ëžŒë‹¤ì‹: JDK8ë¶€í„° ê°€ëŠ¥í•œ í•¨ìˆ˜ ì§€í–¥ì ì¸ ìµëª…í•¨ìˆ˜ êµ¬í˜„ 
+			//javascriptì˜ arrow functionê³¼ ë¹„ìŠ·í•˜ê²Œ ìƒê²¼êµ¬ë‚˜!
 			try {
 				for (int i = 1; i <= 20; i++) {
 					System.out.println(Thread.currentThread() + ": " + i);
@@ -17,6 +17,6 @@ public class Ex8ThreadWithLambda {
 
 		Thread t = new Thread(r);
 		t.start();
-		System.out.println("main() Á¾·á");
+		System.out.println("main() ì¢…ë£Œ");
 	}
 }

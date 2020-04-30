@@ -1,13 +1,13 @@
-package com.omok;
+ï»¿package com.omok;
 import java.io.Serializable;
 
-// °ÔÀÓÁß ¸¶¿ì½º ÁÂÇ¥ Àü¼ÛÀ» À§ÇÑ Å¬·¡½º. °´Ã¼¸¦ Àü¼ÛÇÏ±â À§ÇØ Á÷·ÄÈ­ÇÔ
+// ê²Œì„ì¤‘ ë§ˆìš°ìŠ¤ ì¢Œí‘œ ì „ì†¡ì„ ìœ„í•œ í´ë˜ìŠ¤. ê°ì²´ë¥¼ ì „ì†¡í•˜ê¸° ìœ„í•´ ì§ë ¬í™”í•¨
 public class PointMsg implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	// 2101:°ÔÀÓµ¹ Àü¼Û
+	// 2101:ê²Œì„ëŒ ì „ì†¡
 	private int code;
-	private String userName; // °ÔÀÓ »ó´ë
+	private String userName; // ê²Œì„ ìƒëŒ€
 	private int dol;
 	private int x, y;
 	

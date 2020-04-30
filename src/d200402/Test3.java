@@ -1,4 +1,4 @@
-package d200402;
+ï»¿package d200402;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,12 +14,12 @@ public class Test3 {
 		String sql;
 		try {
 			sql = "SELECT hak, name, birth, kor, eng, mat FROM score";
-			// SELECT * FROM score Ã³·³ »ç¿äÛ¸é ¼öÁ¤ÀÌ ºÒ°¡.
+			// SELECT * FROM score ì²˜ëŸ¼ ì‚¬ìš”Âè‚ª?ìˆ˜ì •ì´ ë¶ˆê°€.
 			stmt = conn.createStatement(
 					ResultSet.TYPE_SCROLL_SENSITIVE,
 					ResultSet.CONCUR_UPDATABLE);
 			rs = stmt.executeQuery(sql);
-			//Ã¹ ¹øÂ° µ¥ÀÌÅÍ
+			//ì²« ë²ˆì§¸ ë°ì´í„°
 			if(rs.next()) {
 				System.out.println(rs.getString(1)+"\t\t");
 				System.out.println(rs.getString(2)+"\t\t");
@@ -27,7 +27,7 @@ public class Test3 {
 				System.out.println(rs.getString(4)+"\t\t");
 				System.out.println(rs.getString(5)+"\t\t");
 				System.out.println(rs.getString(6)+"\t\t");
-				rs.updateString("name", "°í°í°í");
+				rs.updateString("name", "ê³ ê³ ê³ ");
 				rs.updateInt("kor",100);
 				rs.updateInt("eng",100);
 				rs.updateInt("mat",100);

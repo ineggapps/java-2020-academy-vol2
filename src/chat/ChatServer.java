@@ -1,4 +1,4 @@
-package chat;
+ï»¿package chat;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Vector;
 
-//1:N Åë½Å. ¼­¹ö¿ë...
+//1:N í†µì‹ . ì„œë²„ìš©...
 public class ChatServer {
 	private Vector<Socket> list = new Vector<Socket>();
 	private ServerSocket ss = null;
@@ -18,22 +18,22 @@ public class ChatServer {
 
 	}
 
-	// ³»ºÎ Å¬·¡½º
+	// ë‚´ë¶€ í´ë˜ìŠ¤
 	class WorkerThread extends Thread {
-		//½º·¹µå °´Ã¼ 1°³´ç ¼ÒÄÏ 1°³¸¦ ´ã´ç
+		//ìŠ¤ë ˆë“œ ê°ì²´ 1ê°œë‹¹ ì†Œì¼“ 1ê°œë¥¼ ë‹´ë‹¹
 		private Socket sc = null;
 
 		public WorkerThread(Socket sc) {
 			this.sc = sc;
 		}
 
-		// ¸ğµç Å¬¶óÀÌ¾ğÆ®¿¡°Ô ¸Ş½ÃÁö º¸³»´Â ¸Ş¼­µå
+		// ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ë©”ì‹œì§€ ë³´ë‚´ëŠ” ë©”ì„œë“œ
 		public void sendMessage(String s) {
-			//ÇØ´ç ¼ÒÄÏ¿¡¼­ ÀÔ,ÅğÀå ¹ß»ı È¤Àº ¸Ş½ÃÁö°¡ Àü¼ÛµÇ¸é ¼ÒÄÏ ¸®½ºÆ®¸¦ ºÒ·¯¿Í¼­ ÇÏ³ª¾¿ ¸Ş½ÃÁö¸¦ Àü´ŞÇÑ´Ù.
+			//í•´ë‹¹ ì†Œì¼“ì—ì„œ ì…,í‡´ì¥ ë°œìƒ í˜¹ì€ ë©”ì‹œì§€ê°€ ì „ì†¡ë˜ë©´ ì†Œì¼“ ë¦¬ìŠ¤íŠ¸ë¥¼ ë¶ˆëŸ¬ì™€ì„œ í•˜ë‚˜ì”© ë©”ì‹œì§€ë¥¼ ì „ë‹¬í•œë‹¤.
 			for (Socket sk : list) {
 				try {
 					if (sk == sc) {
-						continue; // ÀÚ½ÅÀº Á¦¿ÜÇÏ°í º¸³½´Ù.
+						continue; // ìì‹ ì€ ì œì™¸í•˜ê³  ë³´ë‚¸ë‹¤.
 					}
 					PrintWriter pw = new PrintWriter(sk.getOutputStream(), true);
 					pw.println(s);
@@ -45,32 +45,32 @@ public class ChatServer {
 
 		@Override
 		public void run() {
-			//1. ´ã´çÇÏ´Â ¼ÒÄÏÀ» list¿¡ ÀúÀå. 
-			//2. Á¢¼Ó »ç½ÇÀ» ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®¿¡°Ô ¾Ë¸²
-			//3. ´ã´çÇÏ´Â ¼ÒÄÏÀÌ ¿¬°áÀÌ ²÷¾îÁø´Ù¸é IOExceptionÀÌ ¹ß»ıÇÏ¹Ç·Î ¿©±â¼­ ÅğÀå Ã³¸®
+			//1. ë‹´ë‹¹í•˜ëŠ” ì†Œì¼“ì„ listì— ì €ì¥. 
+			//2. ì ‘ì† ì‚¬ì‹¤ì„ ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ì•Œë¦¼
+			//3. ë‹´ë‹¹í•˜ëŠ” ì†Œì¼“ì´ ì—°ê²°ì´ ëŠì–´ì§„ë‹¤ë©´ IOExceptionì´ ë°œìƒí•˜ë¯€ë¡œ ì—¬ê¸°ì„œ í‡´ì¥ ì²˜ë¦¬
 			String ip = null;
 			String s = null;
 			try {
 				BufferedReader br = new BufferedReader(new InputStreamReader(sc.getInputStream()));
 				ip = sc.getInetAddress().getHostAddress();
-				// Á¢¼ÓÇÑ Å¬¶óÀÌ¾ğÆ® ¼ÒÄÏÀ» º¤ÅÍ¿¡ ÀúÀåÇÑ´Ù. (±×·¡¾ß ³ªÁß¿¡ ¹İº¹¹®À¸·Î ¼øÈ¸ÇÏ¸é¼­ ¸ğµç Á¢¼ÓÇÑ »ç¿ëÀÚ¿¡°Ô ´ëÈ­³»¿ëÀ» Àü¼ÛÇØ ÁÖ°ÚÁö?)
+				// ì ‘ì†í•œ í´ë¼ì´ì–¸íŠ¸ ì†Œì¼“ì„ ë²¡í„°ì— ì €ì¥í•œë‹¤. (ê·¸ë˜ì•¼ ë‚˜ì¤‘ì— ë°˜ë³µë¬¸ìœ¼ë¡œ ìˆœíšŒí•˜ë©´ì„œ ëª¨ë“  ì ‘ì†í•œ ì‚¬ìš©ìì—ê²Œ ëŒ€í™”ë‚´ìš©ì„ ì „ì†¡í•´ ì£¼ê² ì§€?)
 				list.add(sc);
-				// ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®¿¡ Á¢¼Ó »ç½ÇÀ» ¾Ë¸°´Ù.
-				s = "[" + ip + "] ¿¡¼­ Á¢¼ÓÇÏ¼Ì½À´Ï´Ù.";
+				// ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ì— ì ‘ì† ì‚¬ì‹¤ì„ ì•Œë¦°ë‹¤.
+				s = "[" + ip + "] ì—ì„œ ì ‘ì†í•˜ì…¨ìŠµë‹ˆë‹¤.";
 				sendMessage(s);
 				System.out.println(s);
-				// Å¬¶óÀÌ¾ğÆ®°¡ º¸³½ Á¤º¸¸¦ ¹Ş´Â´Ù.
+				// í´ë¼ì´ì–¸íŠ¸ê°€ ë³´ë‚¸ ì •ë³´ë¥¼ ë°›ëŠ”ë‹¤.
 				while ((s = br.readLine()) != null) {
-					// ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®¿¡ ¸Ş½ÃÁö¸¦ Àü¼ÛÇÑ´Ù.
+					// ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ì— ë©”ì‹œì§€ë¥¼ ì „ì†¡í•œë‹¤.
 					sendMessage(s);
-					System.out.println(ip + "ÀÇ " + s + "¹«ÇÑ·çÇÁ!!!");
+					System.out.println(ip + "ì˜ " + s + "ë¬´í•œë£¨í”„!!!");
 				}
 			} catch (IOException e) {
-				// Å¬¶óÀÌ¾ğÆ® Á¢¼ÓÀÌ ÇØÁ¦µÇ¸é IOExceptionÀÌ ¹ß»ıÇÑ´Ù.
-				// Å¬¶óÀÌ¾ğÆ®°¡ ÅğÀåÇÑ »ç½ÇÀ» ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®¿¡ ¾Ë¸°´Ù.
-				s = "[" + ip + "] µµ¸Á°¨.";
+				// í´ë¼ì´ì–¸íŠ¸ ì ‘ì†ì´ í•´ì œë˜ë©´ IOExceptionì´ ë°œìƒí•œë‹¤.
+				// í´ë¼ì´ì–¸íŠ¸ê°€ í‡´ì¥í•œ ì‚¬ì‹¤ì„ ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ì— ì•Œë¦°ë‹¤.
+				s = "[" + ip + "] ë„ë§ê°.";
 				sendMessage(s);
-				// Å¬¶óÀÌ¾ğÆ®¸¦ º¤ÅÍ¿¡¼­ Á¦°ÅÇÏ³®.
+				// í´ë¼ì´ì–¸íŠ¸ë¥¼ ë²¡í„°ì—ì„œ ì œê±°í•˜ë‚Ÿ.
 				list.remove(sc);
 				sc = null;
 				System.out.println(s);
@@ -81,12 +81,12 @@ public class ChatServer {
 	public void serverStart() {
 		try {
 			ss = new ServerSocket(port);
-			System.out.println("¼­¹ö ½ÃÀÛ...");
+			System.out.println("ì„œë²„ ì‹œì‘...");
 			while (true) {
-				System.out.println("¼ÒÄÏ ´ë±â Áß");
+				System.out.println("ì†Œì¼“ ëŒ€ê¸° ì¤‘");
 				Socket sc = ss.accept();
-				System.out.println("¼ÒÄÏ ¿¬°áµÊ");
-				//¼ÒÄÏÀÌ ¿¬°áµÇ¸é ½º·¹µå°¡ »ı¼º (½º·¹µåº° °¢°¢ ¼ÒÄÏ 1°³¸¦ ´ã´çÇÏ¸é¼­ Ã¤ÆÃ ³»¿ëÀ» Àü¼ÛÇÑ´Ù°í º¸¸é µÊ)
+				System.out.println("ì†Œì¼“ ì—°ê²°ë¨");
+				//ì†Œì¼“ì´ ì—°ê²°ë˜ë©´ ìŠ¤ë ˆë“œê°€ ìƒì„± (ìŠ¤ë ˆë“œë³„ ê°ê° ì†Œì¼“ 1ê°œë¥¼ ë‹´ë‹¹í•˜ë©´ì„œ ì±„íŒ… ë‚´ìš©ì„ ì „ì†¡í•œë‹¤ê³  ë³´ë©´ ë¨)
 				WorkerThread t = new WorkerThread(sc);
 				t.start();
 			}

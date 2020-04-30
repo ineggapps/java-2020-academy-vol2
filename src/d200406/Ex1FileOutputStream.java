@@ -1,33 +1,33 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.FileOutputStream;
-//¹ÙÀÌÆ® ÀÔÃâ·Â ½ºÆ®¸² ¿¹Á¦
+//ë°”ì´íŠ¸ ì…ì¶œë ¥ ìŠ¤íŠ¸ë¦¼ ì˜ˆì œ
 public class Ex1FileOutputStream {
 	public static void main(String[] args) {
-		String pathname = "test.txt";//ÇÁ·ÎÁ§Æ®Æú´õ ÃÖ»ó´Ü¿¡ ¸¸µé¾îÁü!!
+		String pathname = "test.txt";//í”„ë¡œì íŠ¸í´ë” ìµœìƒë‹¨ì— ë§Œë“¤ì–´ì§!!
 		FileOutputStream fos = null;
 		int data;
 		try {
-			//File byte Ãâ·Â ½ºÆ®¸²
-			//ÆÄÀÏÀÌ ¾øÀ¸¸é ¸¸µé°í, Á¸ÀçÇÏ¸é µ¤¾î¾¸(Áö¿ì°í ¸¸µê)
+			//File byte ì¶œë ¥ ìŠ¤íŠ¸ë¦¼
+			//íŒŒì¼ì´ ì—†ìœ¼ë©´ ë§Œë“¤ê³ , ì¡´ì¬í•˜ë©´ ë®ì–´ì”€(ì§€ìš°ê³  ë§Œë“¦)
 			fos = new FileOutputStream(pathname);
 			
-			System.out.print("¹®ÀÚ¿­ ÀÔ·Â[Á¾·á:Ctrl+Z] > ");
+			System.out.print("ë¬¸ìì—´ ì…ë ¥[ì¢…ë£Œ:Ctrl+Z] > ");
 			while ((data = System.in.read()) != 13) {
 				System.out.println(data);
 				fos.write(data);
 			}
-			fos.flush();//ÀÚ¿øÀ» ´İ´Â ¼ø°£ flushµÇ±ä ÇÏÁö¸¸ ¸í½ÃÇÏ´Â °ÍÀÌ ÁÁ±â´Â ÇÔ!
+			fos.flush();//ìì›ì„ ë‹«ëŠ” ìˆœê°„ flushë˜ê¸´ í•˜ì§€ë§Œ ëª…ì‹œí•˜ëŠ” ê²ƒì´ ì¢‹ê¸°ëŠ” í•¨!
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			if (fos != null) {
 				try {
-					fos.close();//´İ´Â ¼ø°£¿¡ ±âº»ÀûÀ¸·Î flush()°¡ µÈ´Ù.
+					fos.close();//ë‹«ëŠ” ìˆœê°„ì— ê¸°ë³¸ì ìœ¼ë¡œ flush()ê°€ ëœë‹¤.
 				} catch (Exception e2) {
 				}
 			}
 		}
-		System.out.println("ÆÄÀÏ ÀúÀå ³¡!...");
+		System.out.println("íŒŒì¼ ì €ì¥ ë!...");
 	}
 }

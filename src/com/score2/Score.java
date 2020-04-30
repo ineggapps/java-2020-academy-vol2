@@ -1,4 +1,4 @@
-package com.score2;
+ï»¿package com.score2;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,60 +9,60 @@ public class Score {
 	private ScoreDAO dao = new ScoreDAOImpl();
 
 	public void insert() {
-		System.out.println("\nµ¥ÀÌÅÍ Ãß°¡...");
+		System.out.println("\në°ì´í„° ì¶”ê°€...");
 		ScoreDTO dto = new ScoreDTO();
 		try {
-			System.out.print("ÇĞ¹ø? ");
+			System.out.print("í•™ë²ˆ? ");
 			dto.setHak(br.readLine());
-			System.out.print("ÀÌ¸§? ");
+			System.out.print("ì´ë¦„? ");
 			dto.setName(br.readLine());
-			System.out.print("»ıÀÏ? ");
+			System.out.print("ìƒì¼? ");
 			dto.setBirth(br.readLine());
-			System.out.print("±¹¾î? ");
+			System.out.print("êµ­ì–´? ");
 			dto.setKor(Integer.parseInt(br.readLine()));
-			System.out.print("¿µ¾î? ");
+			System.out.print("ì˜ì–´? ");
 			dto.setEng(Integer.parseInt(br.readLine()));
-			System.out.print("¼öÇĞ? ");
+			System.out.print("ìˆ˜í•™? ");
 			dto.setMat(Integer.parseInt(br.readLine()));
-			// DB Äõ¸®¹® ½ÇÇà¿äÃ»
+			// DB ì¿¼ë¦¬ë¬¸ ì‹¤í–‰ìš”ì²­
 			int result = dao.insertScore(dto);
-			System.out.println(result + "ÇàÀÌ Ãß°¡µÇ¾ú½À´Ï´Ù.");
+			System.out.println(result + "í–‰ì´ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void update() {
-		System.out.println("\nµ¥ÀÌÅÍ ¼öÁ¤...");
+		System.out.println("\në°ì´í„° ìˆ˜ì •...");
 		try {
 			ScoreDTO dto = new ScoreDTO();
-			System.out.print("ÇĞ¹ø? ");
+			System.out.print("í•™ë²ˆ? ");
 			dto.setHak(br.readLine());
-			System.out.print("ÀÌ¸§: ");
+			System.out.print("ì´ë¦„: ");
 			dto.setName(br.readLine());
-			System.out.print("»ıÀÏ: ");
+			System.out.print("ìƒì¼: ");
 			dto.setBirth(br.readLine());
-			System.out.print("±¹¾î: ");
+			System.out.print("êµ­ì–´: ");
 			dto.setKor(Integer.parseInt(br.readLine()));
-			System.out.print("¿µ¾î: ");
+			System.out.print("ì˜ì–´: ");
 			dto.setEng(Integer.parseInt(br.readLine()));
-			System.out.print("¼öÇĞ: ");
+			System.out.print("ìˆ˜í•™: ");
 			dto.setMat(Integer.parseInt(br.readLine()));
 
 			int result = dao.updateScore(dto);
-			System.out.println(result + "ÇàÀÌ ¼öÁ¤µÇ¾ú½À´Ï´Ù.");
+			System.out.println(result + "í–‰ì´ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void delete() {
-		System.out.println("\nµ¥ÀÌÅÍ »èÁ¦...");
+		System.out.println("\në°ì´í„° ì‚­ì œ...");
 		try {
-			System.out.print("»èÁ¦ÇÒ ÇĞ¹ø? ");
+			System.out.print("ì‚­ì œí•  í•™ë²ˆ? ");
 			String hak = br.readLine();
 			int result = dao.deleteScore(hak);
-			System.out.println(result + "°³ ÇàÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù.");
+			System.out.println(result + "ê°œ í–‰ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,13 +70,13 @@ public class Score {
 
 	public void findByHak() {
 		ScoreDTO dto;
-		System.out.println("\nÇĞ¹ø °Ë»ö...");
+		System.out.println("\ní•™ë²ˆ ê²€ìƒ‰...");
 		try {
-			System.out.print("Á¶È¸ÇÒ ÇĞ¹ø? ");
+			System.out.print("ì¡°íšŒí•  í•™ë²ˆ? ");
 			String hak = br.readLine();
 			dto = dao.readScore(hak);
 			if (dto == null) {
-				System.out.println(hak+"... µî·ÏµÈ ÀÚ·á°¡ ¾ø½À´Ï´Ù.\n");
+				System.out.println(hak+"... ë“±ë¡ëœ ìë£Œê°€ ì—†ìŠµë‹ˆë‹¤.\n");
 				return;
 			}
 			System.out.print(dto.getHak() + "\t\t");
@@ -95,7 +95,7 @@ public class Score {
 	}
 
 	public void findByName() {
-		System.out.println("\nÀÌ¸§ °Ë»ö...");
+		System.out.println("\nì´ë¦„ ê²€ìƒ‰...");
 		try {
 			List<ScoreDTO> list = dao.listScore(br.readLine());
 			for (ScoreDTO dto : list) {
@@ -110,7 +110,7 @@ public class Score {
 				System.out.println();
 			}
 			if (list.size() == 0) {
-				System.out.println("°Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù.");
+				System.out.println("ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,7 +119,7 @@ public class Score {
 	}
 
 	public void listAll() {
-		System.out.println("\nÀüÃ¼ ¸®½ºÆ®...");
+		System.out.println("\nì „ì²´ ë¦¬ìŠ¤íŠ¸...");
 		List<ScoreDTO> list = dao.listScore();
 		for (ScoreDTO dto : list) {
 			System.out.print(dto.getHak() + "\t\t");

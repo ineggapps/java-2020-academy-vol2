@@ -1,9 +1,9 @@
-package com.omok;
+ï»¿package com.omok;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 
-// ¹ÙµÏÆÇ
+// ë°”ë‘‘íŒ
 public class BadukPan extends Canvas {
 	private static final long serialVersionUID = 1L;
 	private OmokFrame bp;
@@ -28,7 +28,7 @@ public class BadukPan extends Canvas {
 			for(y=0 ;y<19 ;y++)
 				bp.drawSite(x, y, bp.board[x][y]);
 		
-		// ÀÛÀºµ¹
+		// ì‘ì€ëŒ
 		if(bp.px!=-1&&bp.py!=-1)
 			bp.smallDrawSite(bp.px, bp.py, bp.board[bp.px][bp.py], false);
 		}

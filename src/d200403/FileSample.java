@@ -1,4 +1,4 @@
-package d200403;
+ï»¿package d200403;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,9 +19,9 @@ public class FileSample {
 			System.out.println("Create result = " + file.createNewFile());
 			/*
 			 canonical
-			1. (¼º°æÀÌ) Á¤º»¿¡ ¼ÓÇÏ´Â; (¹®ÇĞ ÀÛÇ°ÀÌ) °íÀüÀ¸·Î ¿©°ÜÁö´Â
-			2. ±³È¸¹ı¿¡ µû¸¥
-			3. (¼öÇĞ¿¡¼­) Ç¥ÁØÀÌ µÇ´Â
+			1. (ì„±ê²½ì´) ì •ë³¸ì— ì†í•˜ëŠ”; (ë¬¸í•™ ì‘í’ˆì´) ê³ ì „ìœ¼ë¡œ ì—¬ê²¨ì§€ëŠ”
+			2. êµíšŒë²•ì— ë”°ë¥¸
+			3. (ìˆ˜í•™ì—ì„œ) í‘œì¤€ì´ ë˜ëŠ”
 			*/
 			System.out.println("Absolute path = " + file.getAbsolutePath());
 			System.out.println("Absolute file = " + file.getAbsoluteFile());

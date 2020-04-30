@@ -1,4 +1,4 @@
-package d200409;
+ï»¿package d200409;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -10,11 +10,11 @@ public class Ex2Network {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String web, s;
 		try {
-			System.out.print("ÁÖ¼Ò[https://www.google.com] ? ");
+			System.out.print("ì£¼ì†Œ[https://www.google.com] ? ");
 			web = br.readLine();
 
 			URL url = new URL(web);
-			InputStream is = url.openStream();//ÀÔ·ÂÇÑ À¥»çÀÌÆ®¿¡ Á¢¼ÓÇÏ¿© ¾òÀº HTMLÄÚµå¸¦ °¡Á®¿Â´Ù.
+			InputStream is = url.openStream();//ì…ë ¥í•œ ì›¹ì‚¬ì´íŠ¸ì— ì ‘ì†í•˜ì—¬ ì–»ì€ HTMLì½”ë“œë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 			BufferedReader br2 = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 			while ((s = br2.readLine()) != null) {
 				System.out.println(s);

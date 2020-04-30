@@ -1,33 +1,33 @@
-package d200408;
+ï»¿package d200408;
 
 public class Ex16ThreadSynchronizedMethod {
 	public static void main(String[] args) {
-		// µ¿±âÈ­ÇÏÁö ¾ÊÀ¸¸é ¿¬»ê °á°ú°¡ ¿Ã¹Ù¸£Áö ¾Ê°Ô Ãâ·ÂµÈ´Ù.
+		// ë™ê¸°í™”í•˜ì§€ ì•Šìœ¼ë©´ ì—°ì‚° ê²°ê³¼ê°€ ì˜¬ë°”ë¥´ì§€ ì•Šê²Œ ì¶œë ¥ëœë‹¤.
 		ShareData1 sd = new ShareData1();
 		UpThread1 t1 = new UpThread1(sd, "up");
 		DownThread1 t2 = new DownThread1(sd, "down");
 
 		t1.start();
 		t2.start();
-		System.out.println("main() Á¾·á");
+		System.out.println("main() ì¢…ë£Œ");
 	}
 }
 
 class ShareData1 {
 	private int data = 100;
 
-//	public void up(String title) { //µ¿±âÈ­ÇÏÁö ¾ÊÀ¸¸é ¿Ã¹Ù¸£Áö ¾ÊÀº °á±£°ªÀ» Ãâ·Â
-	public synchronized void up(String title) { // µ¿±âÈ­ ¸Ş¼­µå »ç¿ë
+//	public void up(String title) { //ë™ê¸°í™”í•˜ì§€ ì•Šìœ¼ë©´ ì˜¬ë°”ë¥´ì§€ ì•Šì€ ê²°ê´ê°’ì„ ì¶œë ¥
+	public synchronized void up(String title) { // ë™ê¸°í™” ë©”ì„œë“œ ì‚¬ìš©
 		System.out.print(title + ": " + data);
 		data++;
-		System.out.println(" ¢º Áõ°¡ ÈÄ: " + data);
+		System.out.println(" â–¶ ì¦ê°€ í›„: " + data);
 	}
 
-//	public void down(String title) { //µ¿±âÈ­ÇÏÁö ¾ÊÀ¸¸é ¿Ã¹Ù¸£Áö ¾ÊÀº °á±£°ªÀ» Ãâ·Â
-	public synchronized void down(String title) { // µ¿±âÈ­ ¸Ş¼­µå »ç¿ë
+//	public void down(String title) { //ë™ê¸°í™”í•˜ì§€ ì•Šìœ¼ë©´ ì˜¬ë°”ë¥´ì§€ ì•Šì€ ê²°ê´ê°’ì„ ì¶œë ¥
+	public synchronized void down(String title) { // ë™ê¸°í™” ë©”ì„œë“œ ì‚¬ìš©
 		System.out.print(title + ": " + data);
 		data--;
-		System.out.println(" ¢º °¨¼Ò ÈÄ: " + data);
+		System.out.println(" â–¶ ê°ì†Œ í›„: " + data);
 	}
 }
 

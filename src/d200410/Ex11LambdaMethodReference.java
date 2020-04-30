@@ -1,24 +1,24 @@
-package d200410;
+ï»¿package d200410;
 
 public class Ex11LambdaMethodReference {
 	public static void main(String[] args) {
 		String s = String.valueOf(1);
 		System.out.println(s);
 
-		Conversion cc = (n) -> String.valueOf(n); // ¶÷´Ù½ÄÀ» ÀÌ¿ëÇÏ´Ï±î ÀÎÅÍÆäÀÌ½º ±¸ÇöÀÌ ÇÑ ÁÙ·Î È® ÁÙ¾úÀ½!
+		Conversion cc = (n) -> String.valueOf(n); // ëŒë‹¤ì‹ì„ ì´ìš©í•˜ë‹ˆê¹Œ ì¸í„°í˜ì´ìŠ¤ êµ¬í˜„ì´ í•œ ì¤„ë¡œ í™• ì¤„ì—ˆìŒ!
 		System.out.println(cc.convert(50));
 
-		Conversion cc2 = String::valueOf; // ¶÷´Ù½ÄÀ» ÀÌ¿ëÇßÁö¸¸ ¾îÂ÷ÇÇ ÇÏ³ªÀÇ ÇÔ¼ö¸¸ ºÒ·¯¼­ ¹İÈ¯Çß´Âµ¥.. ±×·³ ÀÌ·¸°Ô ´õ ÁÙ¿©¼­ ¾µ ¼ö ÀÖÀ½.
-		// ½ÉÁö¾î ¸Å°³º¯¼ö±îÁöµµ »ı·«ÀÌ °¡´ÉÇÏ³×? ¼îÅ·..
+		Conversion cc2 = String::valueOf; // ëŒë‹¤ì‹ì„ ì´ìš©í–ˆì§€ë§Œ ì–´ì°¨í”¼ í•˜ë‚˜ì˜ í•¨ìˆ˜ë§Œ ë¶ˆëŸ¬ì„œ ë°˜í™˜í–ˆëŠ”ë°.. ê·¸ëŸ¼ ì´ë ‡ê²Œ ë” ì¤„ì—¬ì„œ ì“¸ ìˆ˜ ìˆìŒ.
+		// ì‹¬ì§€ì–´ ë§¤ê°œë³€ìˆ˜ê¹Œì§€ë„ ìƒëµì´ ê°€ëŠ¥í•˜ë„¤? ì‡¼í‚¹..
 		System.out.println(cc2.convert(1010));
 
-		String s1 = convert(100, (n) -> String.valueOf(n)); // ¶÷´Ù½ÄÀ» ÀÌ¿ëÇÏ´Ï±î ÀÍ¸í Å¬·¡½º ±¸Çö ¹æ¹ıÀÌ °£°áÇØÁ³À½!
+		String s1 = convert(100, (n) -> String.valueOf(n)); // ëŒë‹¤ì‹ì„ ì´ìš©í•˜ë‹ˆê¹Œ ìµëª… í´ë˜ìŠ¤ êµ¬í˜„ ë°©ë²•ì´ ê°„ê²°í•´ì¡ŒìŒ!
 		System.out.println(s1);
 
-		String s2 = convert(200, String::valueOf); // ¾ÆÁÖ °£°áÇÏ°Ô ÁÙÀÎ °á°ú!!!!
+		String s2 = convert(200, String::valueOf); // ì•„ì£¼ ê°„ê²°í•˜ê²Œ ì¤„ì¸ ê²°ê³¼!!!!
 		System.out.println(s2);
 
-		// »ı·«µÈ ÄÚµå°¡ ¾î·Æ´Ù¸é. ³ª¿­ÇØ º»´Ù.
+		// ìƒëµëœ ì½”ë“œê°€ ì–´ë µë‹¤ë©´. ë‚˜ì—´í•´ ë³¸ë‹¤.
 		String s3 = convert(300, new Conversion() {
 			@Override
 			public String convert(Integer number) {

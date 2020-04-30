@@ -1,4 +1,4 @@
-package d200410;
+ï»¿package d200410;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,13 +8,13 @@ public class Ex14StreamOperation {
 	public static void main(String[] args) {
 		List<String> list = Arrays.asList("X", "A", "T", "A", "G", "T", "Y", "D", "K");
 		Stream<String> stream = list.stream();
-		// Áßº¹Á¦°Å, 3°³¸¸, Á¤·Ä Áß°£¿¬»êÀ» ÁöÁ¤
-		// ÃÖÁ¾ ¿¬»êÀÌ ¼öÇàµÇ±â Àü¿¡ Áß°£ ¿¬»êÀº ¼öÇàÀÌ µÇÁö ¾Ê´Â´Ù. (=> Áö¿¬ ¿¬»ê)
-		stream.distinct().limit(3).sorted().forEach(System.out::print);// ÃÖÁ¾¿¬»êÀº forEach
+		// ì¤‘ë³µì œê±°, 3ê°œë§Œ, ì •ë ¬ ì¤‘ê°„ì—°ì‚°ì„ ì§€ì •
+		// ìµœì¢… ì—°ì‚°ì´ ìˆ˜í–‰ë˜ê¸° ì „ì— ì¤‘ê°„ ì—°ì‚°ì€ ìˆ˜í–‰ì´ ë˜ì§€ ì•ŠëŠ”ë‹¤. (=> ì§€ì—° ì—°ì‚°)
+		stream.distinct().limit(3).sorted().forEach(System.out::print);// ìµœì¢…ì—°ì‚°ì€ forEach
 
-		// ÃÖÁ¾ ¿¬»êÀº ´Ü ÇÑ ¹ø¸¸ »ç¿ëÇÒ ¼ö ÀÖ´Ù.
-		// ÁÖ¼® Ç®°í ½ÇÇà: stream.forEach(System.out::println);// IllegalStateException
-		// ÃÖÁ¾¿¬»êÀ» ÀÌ¹Ì ¼öÇàÇÏ¿´À¸¹Ç·Î µ¥ÀÌÅÍ°¡ »ç¶óÁ³´Ù.
+		// ìµœì¢… ì—°ì‚°ì€ ë‹¨ í•œ ë²ˆë§Œ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤.
+		// ì£¼ì„ í’€ê³  ì‹¤í–‰: stream.forEach(System.out::println);// IllegalStateException
+		// ìµœì¢…ì—°ì‚°ì„ ì´ë¯¸ ìˆ˜í–‰í•˜ì˜€ìœ¼ë¯€ë¡œ ë°ì´í„°ê°€ ì‚¬ë¼ì¡Œë‹¤.
 		// stream has already been operated upon or closed.
 	}
 }

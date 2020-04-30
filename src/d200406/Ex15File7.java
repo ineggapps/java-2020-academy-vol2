@@ -1,17 +1,17 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.File;
 
-//getParentFile()¸Ş¼­µå¸¦ ¼³¸íÇÏ±â À§ÇÑ Å¬·¡½ºÀÓ!!!
+//getParentFile()ë©”ì„œë“œë¥¼ ì„¤ëª…í•˜ê¸° ìœ„í•œ í´ë˜ìŠ¤ì„!!!
 public class Ex15File7 {
 	public static void main(String[] args) {
 		String s = "c:" + File.separator + "data" + File.separator + "test.txt";
 		File f = new File(s);
-		//ÇöÀç File°´Ã¼´Â c:\data\test.txt À» °æ·Î·Î ÇÏ¿© »ı¼ºÇÏ¿´À½.
+		//í˜„ì¬ Fileê°ì²´ëŠ” c:\data\test.txt ì„ ê²½ë¡œë¡œ í•˜ì—¬ ìƒì„±í•˜ì˜€ìŒ.
 		
-		//µû¶ó¼­ test.txt¸¦ ±âÁØÀ¸·Î ParentFileÀº dataÆú´õ°¡ µÇ°í, ±× Æú´õÀÇ ÀÌ¸§Àº data°¡ µÈ´Ù.
+		//ë”°ë¼ì„œ test.txtë¥¼ ê¸°ì¤€ìœ¼ë¡œ ParentFileì€ dataí´ë”ê°€ ë˜ê³ , ê·¸ í´ë”ì˜ ì´ë¦„ì€ dataê°€ ëœë‹¤.
 		String s2 = f.getParentFile().getName();
-		//±×·¯¹Ç·Î "data"¹®ÀÚ¿­ÀÌ Ãâ·ÂµÈ´Ù.
+		//ê·¸ëŸ¬ë¯€ë¡œ "data"ë¬¸ìì—´ì´ ì¶œë ¥ëœë‹¤.
 		System.out.println(s2);
 	}
 }

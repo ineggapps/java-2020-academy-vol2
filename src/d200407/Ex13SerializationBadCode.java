@@ -1,4 +1,4 @@
-package d200407;
+ï»¿package d200407;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -10,23 +10,23 @@ public class Ex13SerializationBadCode {
 		try {
 			oos = new ObjectOutputStream(new FileOutputStream(pathname));
 
-			UserVO vo; // UserVO°¡ Á÷·ÄÈ­°¡ µÇ¾î ÀÖÁö ¾ÊÀ¸¹Ç·Î °´Ã¼¸¦ ÀúÀåÇÒ ¼ö ¾ø´Ù.
-			vo = new UserVO("È«±æµ¿", 30, "010-0000-0000");
+			UserVO vo; // UserVOê°€ ì§ë ¬í™”ê°€ ë˜ì–´ ìˆì§€ ì•Šìœ¼ë¯€ë¡œ ê°ì²´ë¥¼ ì €ì¥í•  ìˆ˜ ì—†ë‹¤.
+			vo = new UserVO("í™ê¸¸ë™", 30, "010-0000-0000");
 
-			// Á÷·ÄÈ­: JAVA(JVM) ¿ÜºÎ¿¡¼­µµ »ç¿ëµÉ ¼ö ÀÖµµ·Ï byte ÇüÅÂ·Î º¯È¯ÇÏ´Â ÀÛ¾÷ (Serialization)
-			// ¿ªÁ÷·ÄÈ­: byteÇüÅÂ·Î ÀúÀåµÈ JAVAÅ¬·¡½ºÀÇ °´Ã¼¸¦ ´Ù½Ã JVM ³»ºÎ¿¡¼­ »ç¿ëÇÒ ¼ö ÀÖµµ·Ï º¯È¯ÇØÁÖ´Â ÀÛ¾÷ (¿ªÀ¸·Î º¯È¯)
+			// ì§ë ¬í™”: JAVA(JVM) ì™¸ë¶€ì—ì„œë„ ì‚¬ìš©ë  ìˆ˜ ìˆë„ë¡ byte í˜•íƒœë¡œ ë³€í™˜í•˜ëŠ” ì‘ì—… (Serialization)
+			// ì—­ì§ë ¬í™”: byteí˜•íƒœë¡œ ì €ì¥ëœ JAVAí´ë˜ìŠ¤ì˜ ê°ì²´ë¥¼ ë‹¤ì‹œ JVM ë‚´ë¶€ì—ì„œ ì‚¬ìš©í•  ìˆ˜ ìˆë„ë¡ ë³€í™˜í•´ì£¼ëŠ” ì‘ì—… (ì—­ìœ¼ë¡œ ë³€í™˜)
 			
-			//±âº»ÀûÀ¸·Î Á÷·ÄÈ­°¡ µÇ´Â °Í
-			//1. ±âº»ÀÚ·áÇü (int, char, boolean ...)
-			//2. Serializable ÀÎÅÍÆäÀÌ½º¸¦ ±¸ÇöÇÑ Å¬·¡½ºÀÇ °´Ã¼
+			//ê¸°ë³¸ì ìœ¼ë¡œ ì§ë ¬í™”ê°€ ë˜ëŠ” ê²ƒ
+			//1. ê¸°ë³¸ìë£Œí˜• (int, char, boolean ...)
+			//2. Serializable ì¸í„°í˜ì´ìŠ¤ë¥¼ êµ¬í˜„í•œ í´ë˜ìŠ¤ì˜ ê°ì²´
 			
-			// java.io.NotSerializableException ¿¹¿Ü ¹ß»ı...
-			oos.writeObject(vo); // ¾ö¹ĞÈ÷ µûÁö¸é °´Ã¼ÀÇ ÁÖ¼Ú°ªÀ» ³Ñ°ÜÁÖ´Â °ÍÀÎµ¥... ÁÖ¼Ú°ªÀ» ÀúÀåÇÒ °Å?
+			// java.io.NotSerializableException ì˜ˆì™¸ ë°œìƒ...
+			oos.writeObject(vo); // ì—„ë°€íˆ ë”°ì§€ë©´ ê°ì²´ì˜ ì£¼ì†Ÿê°’ì„ ë„˜ê²¨ì£¼ëŠ” ê²ƒì¸ë°... ì£¼ì†Ÿê°’ì„ ì €ì¥í•  ê±°?
 
-			vo = new UserVO("½É½ÉÇØ", 10, "010-1111-1111");
+			vo = new UserVO("ì‹¬ì‹¬í•´", 10, "010-1111-1111");
 			oos.writeObject(vo);
 
-			System.out.println("°´Ã¼ ÀúÀå ¿Ï·á!");
+			System.out.println("ê°ì²´ ì €ì¥ ì™„ë£Œ!");
 
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package d200330;
+ï»¿package d200330;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,10 +19,10 @@ public class Test3SelectQuery {
 			sql = "SELECT name, birth, kor, eng, mat, kor+eng+mat tot FROM score WHERE hak = '1111'";
 			rs = stmt.executeQuery(sql);
 
-			if(rs.next()) {//°á±£°ªÀÌ 2°³ ÀÌ»óÀÌ¾îµµ 1°³¸¸ ¹İÈ¯µÈ´Ù.
-				String name = rs.getString("name");//¶Ç´Â rs.getString(1);
-//				String birth = rs.getString("birth");//³¯Â¥ÀÌÁö¸¸ StringÇüÀ¸·Îµµ º¯È¯µÇ¾î ÀúÀåÀÌ °¡´ÉÇÏ´Ù. rs.getString(2);
-				//Âü°í: getDate´Â java.sql.Date Å¬·¡½º¸¦ ÀÌ¿ëÇÑ´Ù.
+			if(rs.next()) {//ê²°ê´ê°’ì´ 2ê°œ ì´ìƒì´ì–´ë„ 1ê°œë§Œ ë°˜í™˜ëœë‹¤.
+				String name = rs.getString("name");//ë˜ëŠ” rs.getString(1);
+//				String birth = rs.getString("birth");//ë‚ ì§œì´ì§€ë§Œ Stringí˜•ìœ¼ë¡œë„ ë³€í™˜ë˜ì–´ ì €ì¥ì´ ê°€ëŠ¥í•˜ë‹¤. rs.getString(2);
+				//ì°¸ê³ : getDateëŠ” java.sql.Date í´ë˜ìŠ¤ë¥¼ ì´ìš©í•œë‹¤.
 				String birth = rs.getDate("birth").toString();
 				int kor = rs.getInt("kor");
 				int eng = rs.getInt("eng");

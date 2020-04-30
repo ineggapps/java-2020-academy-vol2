@@ -1,18 +1,18 @@
-package com.omok;
+ï»¿package com.omok;
 
 import javax.swing.table.DefaultTableModel;
 
-// Å×ÀÌºí »ı¼ºÈÄ Ãß°¡, »èÁ¦, °³¼öÈ®ÀÎµîÀ» À§ÇÑ ¸ğµ¨(¸ğ¾ç) Å¬·¡½º
+// í…Œì´ë¸” ìƒì„±í›„ ì¶”ê°€, ì‚­ì œ, ê°œìˆ˜í™•ì¸ë“±ì„ ìœ„í•œ ëª¨ë¸(ëª¨ì–‘) í´ë˜ìŠ¤
 public class MyTableModel extends DefaultTableModel {
 	private static final long serialVersionUID = 1L;
 	
-	protected String title[]; // Å×ÀÌºí Çì´õ
+	protected String title[]; // í…Œì´ë¸” í—¤ë”
 	
 	public MyTableModel(String[] title) {
 		this.title = title;
 	}
 
-	// ÄÃ·³ÀÇ °³¼ö
+	// ì»¬ëŸ¼ì˜ ê°œìˆ˜
 	@Override
 	public int getColumnCount() {
 		if(title == null)
@@ -21,7 +21,7 @@ public class MyTableModel extends DefaultTableModel {
 		return title.length;
 	}
 
-	// ÄÃ·³ÀÇ Çì´õ Á¦¸ñ
+	// ì»¬ëŸ¼ì˜ í—¤ë” ì œëª©
 	@Override
 	public String getColumnName(int column) {
 		if(title == null || title.length == 0)
@@ -30,7 +30,7 @@ public class MyTableModel extends DefaultTableModel {
 		return title[column];
 	}
 
-	// ¸¶¿ì½º ´õºíÅ¬¸¯½Ã ÆíÁıÇÏÁö ¸øÇÏ°Ô
+	// ë§ˆìš°ìŠ¤ ë”ë¸”í´ë¦­ì‹œ í¸ì§‘í•˜ì§€ ëª»í•˜ê²Œ
 	public boolean isCellEditable(int rowIndex, int columnIndex) {
 		return false;
 	}

@@ -1,6 +1,6 @@
-package com.line2;
+ï»¿package com.line2;
 
-// Ã¤ÆÃ ¸Þ½ÃÁö
+// ì±„íŒ… ë©”ì‹œì§€
 public class MsgChat extends MsgData {
 	private static final long serialVersionUID = 2L;
 	

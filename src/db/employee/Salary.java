@@ -1,4 +1,4 @@
-package db.employee;
+ï»¿package db.employee;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,9 +17,9 @@ public class Salary {
 	public void salaryManage() {
 		int ch;
 		while (true) {
-			System.out.println("\n[±Ş¿©°ü¸®]");
+			System.out.println("\n[ê¸‰ì—¬ê´€ë¦¬]");
 			do {
-				System.out.print("1.Áö±Ş 2.¼öÁ¤ 3.»èÁ¦ 4.¿ùº°¸®½ºÆ® 5.»ç¹ø°Ë»ö 6.¸®½ºÆ® 7.»ç¿ø¸®½ºÆ® 8.¿¬¿ùº° ±Ş¿©ÇöÈ² 9.ÇÇ¹ş 10.¸ŞÀÎ => ");
+				System.out.print("1.ì§€ê¸‰ 2.ìˆ˜ì • 3.ì‚­ì œ 4.ì›”ë³„ë¦¬ìŠ¤íŠ¸ 5.ì‚¬ë²ˆê²€ìƒ‰ 6.ë¦¬ìŠ¤íŠ¸ 7.ì‚¬ì›ë¦¬ìŠ¤íŠ¸ 8.ì—°ì›”ë³„ ê¸‰ì—¬í˜„í™© 9.í”¼ë²— 10.ë©”ì¸ => ");
 				ch = sc.nextInt();
 			} while (ch < 1 || ch > 10);
 
@@ -59,37 +59,37 @@ public class Salary {
 	}
 
 	public void payment() {
-		System.out.println("\n±Ş¿© Áö±Ş...");
+		System.out.println("\nê¸‰ì—¬ ì§€ê¸‰...");
 
 		try {
 			SalaryDTO dto = new SalaryDTO();
-			System.out.print("»ç¿ø¹øÈ£ ÀÔ·Â > ");
+			System.out.print("ì‚¬ì›ë²ˆí˜¸ ì…ë ¥ > ");
 			dto.setSabeon(sc.next());
 
-			System.out.print("±Ş¿©³â¿ù ÀÔ·Â > ");
+			System.out.print("ê¸‰ì—¬ë…„ì›” ì…ë ¥ > ");
 			dto.setPayDate(sc.next());
 
-			System.out.print("±İ¿©Áö±ŞÀÏÀÚÀÔ·Â > ");
+			System.out.print("ê¸ˆì—¬ì§€ê¸‰ì¼ìì…ë ¥ > ");
 			dto.setPaymentDate(sc.next());
 
-			System.out.print("±âº»±Ş ÀÔ·Â > ");
+			System.out.print("ê¸°ë³¸ê¸‰ ì…ë ¥ > ");
 			dto.setPay(sc.nextInt());
 
-			System.out.print("¼ö´ç ÀÔ·Â > ");
+			System.out.print("ìˆ˜ë‹¹ ì…ë ¥ > ");
 			dto.setSudang(sc.nextInt());
 
-			// ¼¼±İ °è»ê
+			// ì„¸ê¸ˆ ê³„ì‚°
 			int total = dto.getPay() + dto.getSudang();
 			dto.setTax(calculateTax(total));
 
-			System.out.print("¸Ş¸ğ»çÇ× ÀÔ·Â > ");
+			System.out.print("ë©”ëª¨ì‚¬í•­ ì…ë ¥ > ");
 			dto.setMemo(sc.next());
 
 			int result = dao.insertSalary(dto);
 			if (result >= 1) {
-				System.out.println("±Ş¿© »çÇ×ÀÌ ÀÔ·ÂµÇ¾ú½À´Ï´Ù.");
+				System.out.println("ê¸‰ì—¬ ì‚¬í•­ì´ ì…ë ¥ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			} else {
-				System.out.println("[½ÇÆĞ] ±Ş¿© »çÇ×ÀÌ ÀÔ·ÂµÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+				System.out.println("[ì‹¤íŒ¨] ê¸‰ì—¬ ì‚¬í•­ì´ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -98,41 +98,41 @@ public class Salary {
 	}
 
 	public void update() {
-		System.out.println("\n±Ş¿© ¼öÁ¤...");
+		System.out.println("\nê¸‰ì—¬ ìˆ˜ì •...");
 		try {
 
-			System.out.print("¼öÁ¤ÇÒ ±Ş¿©¹øÈ£ > ");
+			System.out.print("ìˆ˜ì •í•  ê¸‰ì—¬ë²ˆí˜¸ > ");
 			int salaryNum = sc.nextInt();
 			SalaryDTO dto = dao.readSalary(salaryNum);
 			if (dto == null) {
-				System.out.println("±Ş¿©¹øÈ£¸¦ Àß¸ø ÀÔ·ÂÇÏ¼Ì½À´Ï´Ù.");
+				System.out.println("ê¸‰ì—¬ë²ˆí˜¸ë¥¼ ì˜ëª» ì…ë ¥í•˜ì…¨ìŠµë‹ˆë‹¤.");
 				return;
 			}
 			printDTO(dto);
 
-			System.out.print("¼öÁ¤ÇÒ ±Ş¿©³â¿ù > ");
+			System.out.print("ìˆ˜ì •í•  ê¸‰ì—¬ë…„ì›” > ");
 			dto.setPayDate(sc.next());
 
-			System.out.print("¼öÁ¤ÇÒ ±Ş¿©Áö±ŞÀÏÀÚ > ");
+			System.out.print("ìˆ˜ì •í•  ê¸‰ì—¬ì§€ê¸‰ì¼ì > ");
 			dto.setPaymentDate(sc.next());
 
-			System.out.print("¼öÁ¤ÇÒ ±âº»±Ş > ");
+			System.out.print("ìˆ˜ì •í•  ê¸°ë³¸ê¸‰ > ");
 			dto.setPay(sc.nextInt());
 
-			System.out.print("¼öÁ¤ÇÒ ¼ö´ç > ");
+			System.out.print("ìˆ˜ì •í•  ìˆ˜ë‹¹ > ");
 			dto.setSudang(sc.nextInt());
 
 			int total = dto.getPay() + dto.getSudang();
 			dto.setTax(calculateTax(total));
 
-			System.out.print("¼öÁ¤ÇÒ ¸Ş¸ğ> ");
+			System.out.print("ìˆ˜ì •í•  ë©”ëª¨> ");
 			dto.setMemo(sc.next());
 
 			int result = dao.updateSalary(dto);
 			if (result >= 1) {
-				System.out.println("±Ş¿© Á¤º¸°¡ ¼öÁ¤µÇ¾ú½À´Ï´Ù.");
+				System.out.println("ê¸‰ì—¬ ì •ë³´ê°€ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			} else {
-				System.out.println("[½ÇÆĞ] ±Ş¿©Á¤º¸ ¼öÁ¤ ½ÇÆĞ");
+				System.out.println("[ì‹¤íŒ¨] ê¸‰ì—¬ì •ë³´ ìˆ˜ì • ì‹¤íŒ¨");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -150,15 +150,15 @@ public class Salary {
 	}
 
 	public void delete() {
-		System.out.println("\n±Ş¿© »èÁ¦...");
+		System.out.println("\nê¸‰ì—¬ ì‚­ì œ...");
 		try {
-			System.out.print("»èÁ¦ÇÒ ±Ş¿©¹øÈ£ > ");
+			System.out.print("ì‚­ì œí•  ê¸‰ì—¬ë²ˆí˜¸ > ");
 			int salaryNum = sc.nextInt();
 			int result = dao.deleteSalary(salaryNum);
 			if (result >= 1) {
-				System.out.println("ÇØ´ç ±Ş¿©³»¿ªÀÌ »èÁ¦µÇ¾ú½À´Ï´Ù");
+				System.out.println("í•´ë‹¹ ê¸‰ì—¬ë‚´ì—­ì´ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤");
 			} else {
-				System.out.println("[½ÇÆĞ] ±Ş¿©³»¿ª ¹øÈ£¸¦ ´Ù½Ã ÇÑ ¹ø ´õ È®ÀÎÇØ ÁÖ¼¼¿ä.");
+				System.out.println("[ì‹¤íŒ¨] ê¸‰ì—¬ë‚´ì—­ ë²ˆí˜¸ë¥¼ ë‹¤ì‹œ í•œ ë²ˆ ë” í™•ì¸í•´ ì£¼ì„¸ìš”.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -167,14 +167,14 @@ public class Salary {
 	}
 
 	public void searchSabeon() {
-		System.out.println("\n»ç¹ø °Ë»ö...");
+		System.out.println("\nì‚¬ë²ˆ ê²€ìƒ‰...");
 		List<SalaryDTO> list;
 		String sabeon;
 		String payDate;
 		try {
-			System.out.print("»ç¿ø¹øÈ£ ÀÔ·Â > ");
+			System.out.print("ì‚¬ì›ë²ˆí˜¸ ì…ë ¥ > ");
 			sabeon = sc.next();
-			System.out.print("±Ş¿©³â¿ù[yyyymm] ÀÔ·Â > ");
+			System.out.print("ê¸‰ì—¬ë…„ì›”[yyyymm] ì…ë ¥ > ");
 			payDate = sc.next();
 
 			Map<String, Object> map = new HashMap<String, Object>();
@@ -190,9 +190,9 @@ public class Salary {
 	}
 
 	public void monthList() {
-		System.out.println("\n¿ùº° ¸®½ºÆ®...");
+		System.out.println("\nì›”ë³„ ë¦¬ìŠ¤íŠ¸...");
 		try {
-			System.out.print("±Ş¿©³â¿ù ÀÔ·Â > ");
+			System.out.print("ê¸‰ì—¬ë…„ì›” ì…ë ¥ > ");
 			String payDate = sc.next();
 			printAllDTO(dao.listSalary(payDate));
 		} catch (Exception e) {
@@ -201,32 +201,32 @@ public class Salary {
 	}
 
 	public void list() {
-		System.out.println("\n±Ş¿© ¸®½ºÆ®...");
+		System.out.println("\nê¸‰ì—¬ ë¦¬ìŠ¤íŠ¸...");
 		printAllDTO(dao.listSalary());
 	}
 
 	public void listGroupBy() {
-		System.out.println("\n ¿¬µµ/¿ùº° ±Ş¿© ¸®½ºÆ®");
+		System.out.println("\n ì—°ë„/ì›”ë³„ ê¸‰ì—¬ ë¦¬ìŠ¤íŠ¸");
 		List<GroupByDTO> list = dao.listGroupBy();
 		for (GroupByDTO dto : list) {
 			System.out.print("[");
-			System.out.print(dto.getYear() + "³âµµ " + dto.getMonth() + "¿ù ±Ş¿© Á¤ºÎ ¢º ");
-			System.out.print("ÇÕ: " + dto.getSum() + ", ");
-			System.out.print("Æò±Õ: " + dto.getAverage() + "]");
+			System.out.print(dto.getYear() + "ë…„ë„ " + dto.getMonth() + "ì›” ê¸‰ì—¬ ì •ë¶€ â–¶ ");
+			System.out.print("í•©: " + dto.getSum() + ", ");
+			System.out.print("í‰ê· : " + dto.getAverage() + "]");
 			System.out.println();
 		}
 	}
 
 	public void listPivot() {
-		System.out.println("\n ¿¬µµº° ±Ş¿© ¸®½ºÆ® ÇÇ¹şÅ×ÀÌºí");
+		System.out.println("\n ì—°ë„ë³„ ê¸‰ì—¬ ë¦¬ìŠ¤íŠ¸ í”¼ë²—í…Œì´ë¸”");
 
 		try {
-			System.out.print("¿¬µµ ÀÔ·Â> ");
+			System.out.print("ì—°ë„ ì…ë ¥> ");
 			Map<String, Integer> map = dao.listPivot(sc.next());
 			for (int i = 1; i <= 12; i++) {
 				String key = String.format("M%02d", i);
 				Integer value = map.get(key);
-				System.out.println(i + "¿ù: " + value);
+				System.out.println(i + "ì›”: " + value);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

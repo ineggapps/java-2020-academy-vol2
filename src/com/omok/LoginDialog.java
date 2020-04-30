@@ -1,4 +1,4 @@
-package com.omok;
+ï»¿package com.omok;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-// ·Î±×ÀÎ ´ëÈ­»óÀÚ
+// ë¡œê·¸ì¸ ëŒ€í™”ìƒì
 public class LoginDialog extends JDialog {
 		private static final long serialVersionUID = 1L;
 
@@ -41,35 +41,35 @@ public class LoginDialog extends JDialog {
 			setLayout(null);
 			JLabel lbl;
 			
-			lbl= new JLabel("¼­¹öÁÖ¼Ò : ");
+			lbl= new JLabel("ì„œë²„ì£¼ì†Œ : ");
 			lbl.setBounds(20, 10, 70, 20);
 			add(lbl);
 			tfHost = new JTextField(host);
 			tfHost.setBounds(90, 10, 100, 20);
 			add(tfHost);
 			
-			lbl= new JLabel("´Ğ³×ÀÓ : ");
+			lbl= new JLabel("ë‹‰ë„¤ì„ : ");
 			lbl.setBounds(20, 40, 70, 20);
 			add(lbl);
 			tfName = new JTextField();
 			tfName.setBounds(90, 40, 100, 20);
 			add(tfName);
 			
-			but1 = new JButton("·Î±×ÀÎ");
+			but1 = new JButton("ë¡œê·¸ì¸");
 			but1.addActionListener(new ActionHandler());
 			but1.setBounds(25, 70, 80, 20);
 			add(but1);
 
-			but2 = new JButton("Ãë¼Ò");
+			but2 = new JButton("ì·¨ì†Œ");
 			but2.addActionListener(new ActionHandler());
 			but2.setBounds(110, 70, 80, 20);
 			add(but2);		
 			
 			setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			setTitle("·Î±×ÀÎ");
+			setTitle("ë¡œê·¸ì¸");
 			setSize(250, 150);
 			
-			// È­¸éÀÇ Áß¾Ó¿¡ ¹èÄ¡
+			// í™”ë©´ì˜ ì¤‘ì•™ì— ë°°ì¹˜
 			// setLocationRelativeTo(parent);
 	        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	        Dimension frameSize = getSize();
@@ -88,7 +88,7 @@ public class LoginDialog extends JDialog {
 				if(evt.getSource()==but1) {
 					host=tfHost.getText().trim();
 					if(host.length()==0) {
-						JOptionPane.showMessageDialog(LoginDialog.this, "¼­¹ö ÁÖ¼Ò¸¦ Á¤È®È÷ ÀÔ·Â ÇÏ¼¼¿ä.", "¿¡·¯",
+						JOptionPane.showMessageDialog(LoginDialog.this, "ì„œë²„ ì£¼ì†Œë¥¼ ì •í™•íˆ ì…ë ¥ í•˜ì„¸ìš”.", "ì—ëŸ¬",
 								JOptionPane.INFORMATION_MESSAGE);
 						tfHost.requestFocus();
 						return;
@@ -96,7 +96,7 @@ public class LoginDialog extends JDialog {
 					
 					userName=tfName.getText().trim();
 					if(userName.length()==0) {
-						JOptionPane.showMessageDialog(LoginDialog.this, "´Ğ³×ÀÓÀ» Á¤È®È÷ ÀÔ·Â ÇÏ¼¼¿ä.", "¿¡·¯",
+						JOptionPane.showMessageDialog(LoginDialog.this, "ë‹‰ë„¤ì„ì„ ì •í™•íˆ ì…ë ¥ í•˜ì„¸ìš”.", "ì—ëŸ¬",
 								JOptionPane.INFORMATION_MESSAGE);
 						tfName.requestFocus();
 						return;

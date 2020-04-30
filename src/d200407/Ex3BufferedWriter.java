@@ -1,4 +1,4 @@
-package d200407;
+ï»¿package d200407;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -10,16 +10,16 @@ public class Ex3BufferedWriter {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String pathname = "test.txt";
 		String s;
-		// BufferedWriter:¹öÆÛ Ãâ·Â ¹®ÀÚ ½ºÆ®¸²
+		// BufferedWriter:ë²„í¼ ì¶œë ¥ ë¬¸ì ìŠ¤íŠ¸ë¦¼
 		BufferedWriter bw = null;
 		try {
-			// FileWriter: ÆÄÀÏ Ãâ·Â ¹®ÀÚ ½ºÆ®¸²
+			// FileWriter: íŒŒì¼ ì¶œë ¥ ë¬¸ì ìŠ¤íŠ¸ë¦¼
 			bw = new BufferedWriter(new FileWriter(pathname));
-			System.out.println("¹®ÀÚ¿­ ÀÔ·Â[Á¾·á: Ctrl+Z]: ");
-			//readLine()Àº ¿£ÅÍ °ªÀ» ¹ö¸°´Ù.
+			System.out.println("ë¬¸ìì—´ ì…ë ¥[ì¢…ë£Œ: Ctrl+Z]: ");
+			//readLine()ì€ ì—”í„° ê°’ì„ ë²„ë¦°ë‹¤.
 			while ((s = br.readLine()) != null) {
 				bw.write(s);
-				bw.newLine();//¹ö¸° ¿£ÅÍ°ª ´ë½Å¿¡ »õ·Î ÁÙ¹Ù²ŞÀ» ÇØÁØ´Ù.
+				bw.newLine();//ë²„ë¦° ì—”í„°ê°’ ëŒ€ì‹ ì— ìƒˆë¡œ ì¤„ë°”ê¿ˆì„ í•´ì¤€ë‹¤.
 			}
 			bw.flush();
 		} catch (Exception e) {

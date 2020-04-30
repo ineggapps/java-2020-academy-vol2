@@ -1,4 +1,4 @@
-package d200407;
+ï»¿package d200407;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -70,7 +70,7 @@ public class Quiz1BufferedReaderWriter {
 				if (s.length() == 0) {
 					continue;
 				}
-				String[] line = s.split("\\s");//Á¤±ÔÇ¥Çö½Ä \\s´Â ½ºÆäÀÌ½º ,ÅÇ µîÀÇ ¸ğµç °ø¹é À¯Çü
+				String[] line = s.split("\\s");//ì •ê·œí‘œí˜„ì‹ \\sëŠ” ìŠ¤í˜ì´ìŠ¤ ,íƒ­ ë“±ì˜ ëª¨ë“  ê³µë°± ìœ í˜•
 				if (line.length != 4) {
 					continue;
 				}

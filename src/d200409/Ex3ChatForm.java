@@ -1,4 +1,4 @@
-package d200409;
+ï»¿package d200409;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -21,14 +21,14 @@ public class Ex3ChatForm extends JFrame implements Runnable, ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		ta.setEditable(false);
-		//½ºÅ©·Ñ¹Ù ¸¸µé±â
+		//ìŠ¤í¬ë¡¤ë°” ë§Œë“¤ê¸°
 		JScrollPane sp = new JScrollPane(ta);
 		add(sp, BorderLayout.CENTER);
 
 		tf.addActionListener(this);
 		add(tf, BorderLayout.SOUTH);
 
-		setTitle("Ã¤ÆÃ-");
+		setTitle("ì±„íŒ…-");
 		setSize(500, 500);
 		setResizable(false);
 		setVisible(true);
@@ -46,8 +46,8 @@ public class Ex3ChatForm extends JFrame implements Runnable, ActionListener {
 				return;
 			}
 			try {
-				// Àü¼Û
-				ta.append("³ª > " + s + "\n");
+				// ì „ì†¡
+				ta.append("ë‚˜ > " + s + "\n");
 				ta.setCaretPosition(ta.getDocument().getLength());
 				tf.setText("");
 				tf.requestFocus();

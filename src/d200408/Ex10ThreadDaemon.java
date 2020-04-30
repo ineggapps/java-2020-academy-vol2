@@ -1,4 +1,4 @@
-package d200408;
+ï»¿package d200408;
 
 public class Ex10ThreadDaemon {
 	public static void main(String[] args) {
@@ -6,9 +6,9 @@ public class Ex10ThreadDaemon {
 		MyThread6 t2 = new MyThread6();
 		MyThread6 t3 = new MyThread6();
 
-		// µ¶¸³ ½º·¹µå
-		// µ¥¸ó ½º·¹µå: ´Ù¸¥ ½º·¹µå¿¡ µµ¿òÀ» ÁÖ´Â ½º·¹µå
-		// µµ¿òÀ» ¹Ş´Â ½º·¹µå°¡ Á¾·áµÇ¸é µ¥¸ó ½º·¹µåµµ Á¾·á
+		// ë…ë¦½ ìŠ¤ë ˆë“œ
+		// ë°ëª¬ ìŠ¤ë ˆë“œ: ë‹¤ë¥¸ ìŠ¤ë ˆë“œì— ë„ì›€ì„ ì£¼ëŠ” ìŠ¤ë ˆë“œ
+		// ë„ì›€ì„ ë°›ëŠ” ìŠ¤ë ˆë“œê°€ ì¢…ë£Œë˜ë©´ ë°ëª¬ ìŠ¤ë ˆë“œë„ ì¢…ë£Œ
 		t1.setDaemon(true);
 		t2.setDaemon(true);
 		t3.setDaemon(true);
@@ -17,16 +17,16 @@ public class Ex10ThreadDaemon {
 		t2.start();
 		t3.start();
 
-		// joinÇÏÁö ¾ÊÀ» °æ¿ì¿¡´Â ÃÖ´ë 1¹ø¸¸ ½ÇÇàµÉ °ÍÀÓ
+		// joiní•˜ì§€ ì•Šì„ ê²½ìš°ì—ëŠ” ìµœëŒ€ 1ë²ˆë§Œ ì‹¤í–‰ë  ê²ƒì„
 		try {
-			t1.join();// ½º·¹µå°¡ Á¾·áµÉ ¶§±îÁö ´ë±âÇÏ±â
+			t1.join();// ìŠ¤ë ˆë“œê°€ ì¢…ë£Œë  ë•Œê¹Œì§€ ëŒ€ê¸°í•˜ê¸°
 //			t2.join();
 //			t3.join();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 
-		System.out.println("main() Á¾·á");
+		System.out.println("main() ì¢…ë£Œ");
 	}
 }
 

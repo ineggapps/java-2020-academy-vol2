@@ -1,4 +1,4 @@
-package db.pscore;
+ï»¿package db.pscore;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -30,8 +30,8 @@ public class ScoreInsertDialog extends JDialog implements ActionListener {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		
 		setLayout(null);
-		String title[]={"ÇĞ¹ø :", "ÀÌ¸§ :", "»ı³â¿ùÀÏ :",
-				"±¹¾î :", "¿µ¾î :", "¼öÇĞ :"};
+		String title[]={"í•™ë²ˆ :", "ì´ë¦„ :", "ìƒë…„ì›”ì¼ :",
+				"êµ­ì–´ :", "ì˜ì–´ :", "ìˆ˜í•™ :"};
 		for(int i=0; i<title.length; i++) {
 			JLabel lbl=new JLabel(title[i]);
 			lbl.setBounds(20, (i+1)*30, 80, 22);
@@ -43,22 +43,22 @@ public class ScoreInsertDialog extends JDialog implements ActionListener {
 			add(tf[i]);
 		}
 		
-		btn1=new JButton("Ãß°¡");
+		btn1=new JButton("ì¶”ê°€");
 		btn1.addKeyListener(new KeyHandler());
 		btn1.addActionListener(this);
 		btn1.setBounds(30, 220, 80, 22);
 		add(btn1);
 		
-		btn2=new JButton("Á¾·á");
+		btn2=new JButton("ì¢…ë£Œ");
 		btn2.addActionListener(this);
 		btn2.setBounds(115, 220, 80, 22);
 		add(btn2);
 		
-		setTitle("ÀÚ·á ÀÔ·Â");
+		setTitle("ìë£Œ ì…ë ¥");
 		setSize(250, 300);
-		// ¼ÒÀ¯Ã¢ Áß¾Ó¿¡
+		// ì†Œìœ ì°½ ì¤‘ì•™ì—
 		setLocationRelativeTo(this.frame);
-		// setLocationRelativeTo(null); // È­¸é Áß¾Ó¿¡
+		// setLocationRelativeTo(null); // í™”ë©´ ì¤‘ì•™ì—
 		setVisible(true);
 	}
 
@@ -83,7 +83,7 @@ public class ScoreInsertDialog extends JDialog implements ActionListener {
 				}
 			}
 			
-			// Å×ÀÌºí¿¡ µ¥ÀÌÅÍ Ãß°¡
+			// í…Œì´ë¸”ì— ë°ì´í„° ì¶”ê°€
 			ScoreDTO dto=new ScoreDTO();
 			dto.setHak(tf[0].getText().trim());
 			dto.setName(tf[1].getText().trim());
@@ -101,7 +101,7 @@ public class ScoreInsertDialog extends JDialog implements ActionListener {
 			
 				// frame.listScoreAll();
 			} else {
-				JOptionPane.showMessageDialog(this, "ÇĞ¹ø Áßº¹ ¶Ç´Â ³Îµ¥ÀÌÅÍ·Î ÀÎÇÏ¿© Ãß°¡°¡ ½ÇÆĞ Çß½À´Ï´Ù.");
+				JOptionPane.showMessageDialog(this, "í•™ë²ˆ ì¤‘ë³µ ë˜ëŠ” ë„ë°ì´í„°ë¡œ ì¸í•˜ì—¬ ì¶”ê°€ê°€ ì‹¤íŒ¨ í–ˆìŠµë‹ˆë‹¤.");
 				return;
 			}
 			
@@ -110,7 +110,7 @@ public class ScoreInsertDialog extends JDialog implements ActionListener {
 			tf[0].requestFocus();
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(this, "µ¥ÀÌÅÍ Ãß°¡°¡ ½ÇÆĞ Çß½À´Ï´Ù.");
+			JOptionPane.showMessageDialog(this, "ë°ì´í„° ì¶”ê°€ê°€ ì‹¤íŒ¨ í–ˆìŠµë‹ˆë‹¤.");
 		}
 	}
 	

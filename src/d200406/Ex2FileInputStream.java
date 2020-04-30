@@ -1,25 +1,25 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-//¹ÙÀÌÆ® ÀÔÃâ·Â ½ºÆ®¸² ¿¹Á¦
+//ë°”ì´íŠ¸ ì…ì¶œë ¥ ìŠ¤íŠ¸ë¦¼ ì˜ˆì œ
 public class Ex2FileInputStream {
 	public static void main(String[] args) {
 		String pathname = "test.txt";
 		FileInputStream fis = null;
 		int data;
 		try {
-			//ÆÄÀÏÀÔ·Â byte½ºÆ®¸²
-			fis = new FileInputStream(pathname);//ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì FileNotFoundException ¹ß»ı
-			System.out.println("ÆÄÀÏ ³»¿ë Ãâ·Â ½ÃÀÛ...");
+			//íŒŒì¼ì…ë ¥ byteìŠ¤íŠ¸ë¦¼
+			fis = new FileInputStream(pathname);//íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ê²½ìš° FileNotFoundException ë°œìƒ
+			System.out.println("íŒŒì¼ ë‚´ìš© ì¶œë ¥ ì‹œì‘...");
 			while ((data = fis.read()) != -1) {
-				//System.out.print() ¸Ş¼­µå´Â 2¹ÙÀÌÆ® ´ÜÀ§·Î ÀĞÀ¸¹Ç·Î(?) Ãâ·ÂÀÌ Á¦´ë·Î µÇÁö ¾Ê´Â´Ù.
-				System.out.write(data);//1¹ÙÀÌÆ®¸¦ ±×´ë·Î 1¹ÙÀÌÆ®·Î Ãâ·Â
+				//System.out.print() ë©”ì„œë“œëŠ” 2ë°”ì´íŠ¸ ë‹¨ìœ„ë¡œ ì½ìœ¼ë¯€ë¡œ(?) ì¶œë ¥ì´ ì œëŒ€ë¡œ ë˜ì§€ ì•ŠëŠ”ë‹¤.
+				System.out.write(data);//1ë°”ì´íŠ¸ë¥¼ ê·¸ëŒ€ë¡œ 1ë°”ì´íŠ¸ë¡œ ì¶œë ¥
 			}
-			System.out.flush();//¹öÆÛ°¡ Â÷Áö ¾ÊÀ¸¹Ç·Î ÀÔ·ÂÇÏÁö ¾ÊÀ¸¸é ³ª¿ÀÁö ¾ÊÀ» ¼öµµ ÀÖÀ½.
+			System.out.flush();//ë²„í¼ê°€ ì°¨ì§€ ì•Šìœ¼ë¯€ë¡œ ì…ë ¥í•˜ì§€ ì•Šìœ¼ë©´ ë‚˜ì˜¤ì§€ ì•Šì„ ìˆ˜ë„ ìˆìŒ.
 		} catch (FileNotFoundException e) {
-			//ºÒ·¯¿À°íÀÚ ÇÏ´Â ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì FileNotFoundExceptionÀ» CatchÇÏ°Ô µÈ´Ù.
+			//ë¶ˆëŸ¬ì˜¤ê³ ì í•˜ëŠ” íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ê²½ìš° FileNotFoundExceptionì„ Catchí•˜ê²Œ ëœë‹¤.
 			System.out.println(e.toString());
 		} catch (IOException e) {
 			e.printStackTrace();

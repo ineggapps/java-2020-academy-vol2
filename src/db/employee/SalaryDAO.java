@@ -1,4 +1,4 @@
-package db.employee;
+ï»¿package db.employee;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import com.util.DBConn;
 
 /*
  * desc salary
-ÀÌ¸§          ³Î?       À¯Çü             
+ì´ë¦„          ë„?       ìœ í˜•             
 ----------- -------- -------------- 
 SALARYNUM   NOT NULL NUMBER         
 SABEON      NOT NULL VARCHAR2(30)   
@@ -132,8 +132,8 @@ public class SalaryDAO {
 				dto.setPay(rs.getInt("pay"));
 				dto.setSudang(rs.getInt("sudang"));
 				dto.setTax(rs.getInt("tax"));
-				dto.setTot(dto.getPay() + dto.getSudang());// ½Ç±Ş¿©
-				dto.setAfterPay(dto.getTot() - dto.getTax());// ¼¼Á¦ÈÄ±Ş¿©
+				dto.setTot(dto.getPay() + dto.getSudang());// ì‹¤ê¸‰ì—¬
+				dto.setAfterPay(dto.getTot() - dto.getTax());// ì„¸ì œí›„ê¸‰ì—¬
 				dto.setMemo(rs.getString("memo"));
 			}
 		} catch (Exception e) {
@@ -175,8 +175,8 @@ public class SalaryDAO {
 				dto.setPay(rs.getInt("pay"));
 				dto.setSudang(rs.getInt("sudang"));
 				dto.setTax(rs.getInt("tax"));
-				dto.setTot(dto.getPay() + dto.getSudang());// ½Ç±Ş¿©
-				dto.setAfterPay(dto.getTot() - dto.getTax());// ¼¼Á¦ÈÄ±Ş¿©
+				dto.setTot(dto.getPay() + dto.getSudang());// ì‹¤ê¸‰ì—¬
+				dto.setAfterPay(dto.getTot() - dto.getTax());// ì„¸ì œí›„ê¸‰ì—¬
 				dto.setMemo(rs.getString("memo"));
 				list.add(dto);
 			}
@@ -220,8 +220,8 @@ public class SalaryDAO {
 				dto.setPay(rs.getInt("pay"));
 				dto.setSudang(rs.getInt("sudang"));
 				dto.setTax(rs.getInt("tax"));
-				dto.setTot(dto.getPay() + dto.getSudang());// ½Ç±Ş¿©
-				dto.setAfterPay(dto.getTot() - dto.getTax());// ¼¼Á¦ÈÄ±Ş¿©
+				dto.setTot(dto.getPay() + dto.getSudang());// ì‹¤ê¸‰ì—¬
+				dto.setAfterPay(dto.getTot() - dto.getTax());// ì„¸ì œí›„ê¸‰ì—¬
 				dto.setMemo(rs.getString("memo"));
 				list.add(dto);
 			}
@@ -262,8 +262,8 @@ public class SalaryDAO {
 				dto.setPay(rs.getInt("pay"));
 				dto.setSudang(rs.getInt("sudang"));
 				dto.setTax(rs.getInt("tax"));
-				dto.setTot(dto.getPay() + dto.getSudang());// ½Ç±Ş¿©
-				dto.setAfterPay(dto.getTot() - dto.getTax());// ¼¼Á¦ÈÄ±Ş¿©
+				dto.setTot(dto.getPay() + dto.getSudang());// ì‹¤ê¸‰ì—¬
+				dto.setAfterPay(dto.getTot() - dto.getTax());// ì„¸ì œí›„ê¸‰ì—¬
 				dto.setMemo(rs.getString("memo"));
 				list.add(dto);
 			}
@@ -286,7 +286,7 @@ public class SalaryDAO {
 		return list;
 	}
 
-	// ¿¬µµº° ¿ùº° ±Ş¿©º°
+	// ì—°ë„ë³„ ì›”ë³„ ê¸‰ì—¬ë³„
 	public List<GroupByDTO> listGroupBy() {
 		List<GroupByDTO> list = new ArrayList<GroupByDTO>();
 		PreparedStatement pstmt = null;
@@ -327,7 +327,7 @@ public class SalaryDAO {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		//ÁÙ¹Ù²Ş ¾ø¾Ö±â https://www.textfixer.com/tools/remove-line-breaks.php
+		//ì¤„ë°”ê¿ˆ ì—†ì• ê¸° https://www.textfixer.com/tools/remove-line-breaks.php
 		String sql = "SELECT * FROM ( SELECT SUBSTR(paydate, 5, 2) month, pay FROM salary WHERE substr(paydate,1,4)=?) PIVOT ( sum(pay) FOR month IN ( '01' AS \"M01\", '02' AS \"M02\", '03' AS \"M03\", '04' AS \"M04\", '05' AS \"M05\", '06' AS \"M06\", '07' AS \"M07\", '08' AS \"M08\", '09' AS \"M09\", '10' AS \"M10\", '11' AS \"M11\", '12' AS \"M12\" ) )";
 		try {
 			pstmt = conn.prepareStatement(sql);

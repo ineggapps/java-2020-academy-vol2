@@ -1,4 +1,4 @@
-package d200407;
+ï»¿package d200407;
 
 import java.io.RandomAccessFile;
 
@@ -6,17 +6,17 @@ public class Ex8RandomAccessFile {
 	public static void main(String[] args) {
 		byte b;
 		try {
-			//rw: read, write ¸ğµå RandomAccessFileÀº ÀĞ°í ¾²±â°¡ µ¿½Ã¿¡ °¡´ÉÇÏ´Ù.
+			//rw: read, write ëª¨ë“œ RandomAccessFileì€ ì½ê³  ì“°ê¸°ê°€ ë™ì‹œì— ê°€ëŠ¥í•˜ë‹¤.
 			RandomAccessFile raw = new RandomAccessFile("ex.txt", "rw");
 			for (int i = 65; i <= 90; i++) {
 				raw.write(i);
 			}
-			//ÀÎµ¦½º´Â 0ºÎÅÍ ½ÃÀÛ 0=A, 1=B, 2=C, 3=D, 4=E, 5=F...
-			raw.seek(5);//F¿¡ Ä¿¼­
+			//ì¸ë±ìŠ¤ëŠ” 0ë¶€í„° ì‹œì‘ 0=A, 1=B, 2=C, 3=D, 4=E, 5=F...
+			raw.seek(5);//Fì— ì»¤ì„œ
 			b = raw.readByte();
 			System.out.println((char)b);
 
-			raw.seek(10);//K¿¡ Ä¿¼­
+			raw.seek(10);//Kì— ì»¤ì„œ
 			b = raw.readByte();
 			System.out.println((char)b);
 

@@ -1,4 +1,4 @@
-package com.multi;
+ï»¿package com.multi;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,15 +13,15 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /*
- * ¾ö¹ĞÈ÷ º¸¸é SocketÀº 1:1À» 1:NÃ³·³ ±¸ÇöÇÑ °ÍÀÌ´Ù.
- * UDPÀÇ ¸ÖÆ¼Ä³½ºÆÃÀº ÁøÂ¥ 1:NÀÌ´Ù.
- * ´Ù¸¸, TCPÀÇ ÇÁ·ÎÅäÄİ ¹æ½Ä°ú´Â ´Ù¸£°Ô µ¥ÀÌÅÍÀÇ ¼Ò½ÇÀÌ ÀÖÀ» ¼öÀÖÀ¸¹Ç·Î ¼ö½ÅÇÏÁö ¸øÇÒ ¼öµµ ÀÖ´Ù.
+ * ì—„ë°€íˆ ë³´ë©´ Socketì€ 1:1ì„ 1:Nì²˜ëŸ¼ êµ¬í˜„í•œ ê²ƒì´ë‹¤.
+ * UDPì˜ ë©€í‹°ìºìŠ¤íŒ…ì€ ì§„ì§œ 1:Nì´ë‹¤.
+ * ë‹¤ë§Œ, TCPì˜ í”„ë¡œí† ì½œ ë°©ì‹ê³¼ëŠ” ë‹¤ë¥´ê²Œ ë°ì´í„°ì˜ ì†Œì‹¤ì´ ìˆì„ ìˆ˜ìˆìœ¼ë¯€ë¡œ ìˆ˜ì‹ í•˜ì§€ ëª»í•  ìˆ˜ë„ ìˆë‹¤.
  * 
- * DatagramSocket : UDP ¼ÒÄÏÀ¸·Î µ¥ÀÌÅÍ ±×·¥ ÆĞÅ¶À» Àü¼ÛÇÏ°Å³ª ¼ö½Å
- * DatagramPacket : UDP ÇÁ·ÎÅäÄİÀÀ ÅëÇØ¼­ Àü¼Û µÉ¼ö ÀÖ´Â µ¥ÀÌÅÍ
- * MulticastSocket : ÇÑ¹ø¿¡ ´Ù¼öÀÇ Å¬¶óÀÌ¾ğÆ®¿¡ µ¥ÀÌÅÍ±×·¥À» Àü¼Û
+ * DatagramSocket : UDP ì†Œì¼“ìœ¼ë¡œ ë°ì´í„° ê·¸ë¨ íŒ¨í‚·ì„ ì „ì†¡í•˜ê±°ë‚˜ ìˆ˜ì‹ 
+ * DatagramPacket : UDP í”„ë¡œí† ì½œì‘ í†µí•´ì„œ ì „ì†¡ ë ìˆ˜ ìˆëŠ” ë°ì´í„°
+ * MulticastSocket : í•œë²ˆì— ë‹¤ìˆ˜ì˜ í´ë¼ì´ì–¸íŠ¸ì— ë°ì´í„°ê·¸ë¨ì„ ì „ì†¡
  * 
- *  ±×·ì ¹üÀ§ ÁöÁ¤ : D class(224.0.0.0~239.255.255.255)
+ *  ê·¸ë£¹ ë²”ìœ„ ì§€ì • : D class(224.0.0.0~239.255.255.255)
  */
 public class ChatCS extends JFrame implements Runnable, ActionListener{
 	private static final long serialVersionUID = 1L;
@@ -31,7 +31,7 @@ public class ChatCS extends JFrame implements Runnable, ActionListener{
 	
 	private String host = "230.0.0.1";
 	private int port=5555;
-	private String userName="ÀÚ¹Ù";
+	private String userName="ìë°”";
 	
 	private JTextArea ta;
 	private JTextField tf;
@@ -48,7 +48,7 @@ public class ChatCS extends JFrame implements Runnable, ActionListener{
 		add(tf, BorderLayout.SOUTH);
 		tf.addActionListener(this);
 		
-		setTitle("¸ÖÆ¼Ä³½ºÆÃ Ã¤ÆÃ");
+		setTitle("ë©€í‹°ìºìŠ¤íŒ… ì±„íŒ…");
 		setSize(500, 550);
 		setResizable(false);
 		setVisible(true);
@@ -62,7 +62,7 @@ public class ChatCS extends JFrame implements Runnable, ActionListener{
 			
 			ms = new MulticastSocket(port);
 			
-			// Æ¯Á¤ ±×·ì¿¡ Æ÷ÇÔ
+			// íŠ¹ì • ê·¸ë£¹ì— í¬í•¨
 			ms.joinGroup(xGroup);
 
 			Thread t = new Thread(this);
@@ -74,7 +74,7 @@ public class ChatCS extends JFrame implements Runnable, ActionListener{
 	
 	public void disConnection() {
 		try {
-			// Æ¯Á¤ ±×·ì¿¡¼­ ºüÀú ³ª¿È
+			// íŠ¹ì • ê·¸ë£¹ì—ì„œ ë¹ ì € ë‚˜ì˜´
 			ms.leaveGroup(xGroup);
 			
 			ms.close();
@@ -93,10 +93,10 @@ public class ChatCS extends JFrame implements Runnable, ActionListener{
 			while(true){
 				byte [] buffer = new byte[256];
 				
-				// Àü¼Û ¹ŞÀ» ÆĞÅ¶
+				// ì „ì†¡ ë°›ì„ íŒ¨í‚·
 				DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
 				
-				// Àü¼Û ¹ŞÀ½
+				// ì „ì†¡ ë°›ìŒ
 				ms.receive(packet);
 				String str = new String(packet.getData()).trim();
 				ta.append(str + "\n");
@@ -121,10 +121,10 @@ public class ChatCS extends JFrame implements Runnable, ActionListener{
 		byte buffer[] = (userName + "] " + str).getBytes();
 		
 		try {
-			// Àü¼ÛÇÒ ÆĞÅ¶
+			// ì „ì†¡í•  íŒ¨í‚·
 			DatagramPacket packet = new DatagramPacket(buffer, buffer.length, xGroup, port);
 			
-			// Àü¼Û
+			// ì „ì†¡
 			ms.send(packet);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,27 +1,27 @@
-package com.omok;
+ï»¿package com.omok;
 
 import java.io.Serializable;
 
-// °¢Á¾ ¿äÃ»À» À§ÇÑ Å¬·¡½º. °´Ã¼¸¦ Àü¼ÛÇÏ±â À§ÇØ Á÷·ÄÈ­ÇÔ
+// ê°ì¢… ìš”ì²­ì„ ìœ„í•œ í´ë˜ìŠ¤. ê°ì²´ë¥¼ ì „ì†¡í•˜ê¸° ìœ„í•´ ì§ë ¬í™”í•¨
 
 /*
- * 1100  client -> server : ·Î±×ÀÎ ¿äÃ»
+ * 1100  client -> server : ë¡œê·¸ì¸ ìš”ì²­
  *  
- * 1110  server -> client : ·Î±×ÀÎ ¼º°ø
- * 1111  server -> client : ·Î±×ÀÎ ¼º°ø »ç¿ëÀÚ¿¡°Ô ·Î±×ÀÎµÈ ¸®½ºÆ® Àü¼Û
- * 1112  server -> client : ·Î±×ÀÎ »ç½ÇÀ» ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®¿¡°Ô ¾Ë¸²
- * 1120  server -> client : ·Î±×ÀÎ ½ÇÆĞ(´Ğ³×ÀÓ Áßº¹À¸·Î)
- * 1210  server -> client : ·Î±×ÀÎ »ç¿ëÀÚÁß °ÔÀÓ»óÅÂ Àü¼Û(º¯°æ)
- * 1211  client -> client(server) / client(server)->client : »ó´ë¹æ¿¡°Ô °ÔÀÓ ¿äÃ»
- * 1212  client -> client(server) / client(server)->client : »ó´ë¹æ¿¡°Ô °ÔÀÓ ¿äÃ» ½Â¶ô ¿©ºÎ
- * 1221  client -> client(server) / client(server)->client : »ó´ë¹æ¿¡°Ô °ÔÀÓÀ» ´Ù½Ã ÇÑ°ÔÀÓ ÇÒ °ÍÀÎÁö¸¦ Àü¼Û
- * 1222  client -> client(server) / client(server)->client : »ó´ë¹æ¿¡°Ô °ÔÀÓÀ» ´Ù½Ã ÇÑ°ÔÀÓ ÇÒ °ÍÀÎÁö¿¡ ´ëÇÑ ½Â¶ô ¿©ºÎ
- * 1300  client -> server : ·Î±×¾Æ¿ô
- * 1301  server -> client : ·Î±×¾Æ¿ô »ç½ÇÀ» ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®¿¡°Ô ¾Ë¸²
+ * 1110  server -> client : ë¡œê·¸ì¸ ì„±ê³µ
+ * 1111  server -> client : ë¡œê·¸ì¸ ì„±ê³µ ì‚¬ìš©ìì—ê²Œ ë¡œê·¸ì¸ëœ ë¦¬ìŠ¤íŠ¸ ì „ì†¡
+ * 1112  server -> client : ë¡œê·¸ì¸ ì‚¬ì‹¤ì„ ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ì•Œë¦¼
+ * 1120  server -> client : ë¡œê·¸ì¸ ì‹¤íŒ¨(ë‹‰ë„¤ì„ ì¤‘ë³µìœ¼ë¡œ)
+ * 1210  server -> client : ë¡œê·¸ì¸ ì‚¬ìš©ìì¤‘ ê²Œì„ìƒíƒœ ì „ì†¡(ë³€ê²½)
+ * 1211  client -> client(server) / client(server)->client : ìƒëŒ€ë°©ì—ê²Œ ê²Œì„ ìš”ì²­
+ * 1212  client -> client(server) / client(server)->client : ìƒëŒ€ë°©ì—ê²Œ ê²Œì„ ìš”ì²­ ìŠ¹ë½ ì—¬ë¶€
+ * 1221  client -> client(server) / client(server)->client : ìƒëŒ€ë°©ì—ê²Œ ê²Œì„ì„ ë‹¤ì‹œ í•œê²Œì„ í•  ê²ƒì¸ì§€ë¥¼ ì „ì†¡
+ * 1222  client -> client(server) / client(server)->client : ìƒëŒ€ë°©ì—ê²Œ ê²Œì„ì„ ë‹¤ì‹œ í•œê²Œì„ í•  ê²ƒì¸ì§€ì— ëŒ€í•œ ìŠ¹ë½ ì—¬ë¶€
+ * 1300  client -> server : ë¡œê·¸ì•„ì›ƒ
+ * 1301  server -> client : ë¡œê·¸ì•„ì›ƒ ì‚¬ì‹¤ì„ ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ì•Œë¦¼
  */
 
 public class UserMsg implements Serializable {
-	private static final long serialVersionUID = 1L; // staticÀº Á÷·ÄÈ­¿¡¼­ Á¦¿Ü
+	private static final long serialVersionUID = 1L; // staticì€ ì§ë ¬í™”ì—ì„œ ì œì™¸
 	
 	private int code;
 	private String userName, opponentUserName;

@@ -1,14 +1,14 @@
-package com.omok;
+ï»¿package com.omok;
 
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-// ¼­¹ö¿ë
-// Å¬¶óÀÌ¾ğÆ®ÀÇ ¼ÒÄÏ ¹× ´Ğ³×ÀÓ ÀúÀå¿ë Å¬·¡½º
+// ì„œë²„ìš©
+// í´ë¼ì´ì–¸íŠ¸ì˜ ì†Œì¼“ ë° ë‹‰ë„¤ì„ ì €ì¥ìš© í´ë˜ìŠ¤
 public class SocketInfo {
 	Socket sock;
-	String userName;        // ·Î±×ÀÎ ÀÌ¸§
-	String opponentName; // °ÔÀÓ »ó´ë¹æ ÀÌ¸§
-	boolean gameState;   // °ÔÀÓ»óÅÂ
+	String userName;        // ë¡œê·¸ì¸ ì´ë¦„
+	String opponentName; // ê²Œì„ ìƒëŒ€ë°© ì´ë¦„
+	boolean gameState;   // ê²Œì„ìƒíƒœ
 	ObjectOutputStream oos;
 }

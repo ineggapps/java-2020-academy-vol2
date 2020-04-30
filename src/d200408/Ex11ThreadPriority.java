@@ -1,4 +1,4 @@
-package d200408;
+ï»¿package d200408;
 
 public class Ex11ThreadPriority {
 	public static void main(String[] args) {
@@ -10,13 +10,13 @@ public class Ex11ThreadPriority {
 		} catch (Exception e) {
 		}
 
-//		t.stop();//½º·¹µå¸¦ ¿ÏÀüÈ÷ Á¾·á½ÃÅ´ (InterruptedException ¿¹¿Ü°¡ ¹ß»ıÇÏÁö ¾Ê´Â´Ù.)
-		//stop() ¸Ş¼­µå´Â »ç¿ëÀ» ±ÇÀåÇÏÁö ¾Ê´Â´Ù.
+//		t.stop();//ìŠ¤ë ˆë“œë¥¼ ì™„ì „íˆ ì¢…ë£Œì‹œí‚´ (InterruptedException ì˜ˆì™¸ê°€ ë°œìƒí•˜ì§€ ì•ŠëŠ”ë‹¤.)
+		//stop() ë©”ì„œë“œëŠ” ì‚¬ìš©ì„ ê¶Œì¥í•˜ì§€ ì•ŠëŠ”ë‹¤.
 		
-		// ½º·¹µå°¡ sleep(), join(), wait() »óÅÂÀÌ¸é InterruptedException ¿¹¿Ü°¡ ¹ß»ıÇÑ´Ù.
+		// ìŠ¤ë ˆë“œê°€ sleep(), join(), wait() ìƒíƒœì´ë©´ InterruptedException ì˜ˆì™¸ê°€ ë°œìƒí•œë‹¤.
 		t.interrupt();
 
-		System.out.println("main() Á¾·á");
+		System.out.println("main() ì¢…ë£Œ");
 
 	}
 }
@@ -31,7 +31,7 @@ class MyThread8 extends Thread {
 				sleep(500);
 			}
 		} catch (InterruptedException e) {
-			System.out.println("InterruptedException ¹ß»ı");
+			System.out.println("InterruptedException ë°œìƒ");
 		}
 		System.out.println("Thread end...");
 	}

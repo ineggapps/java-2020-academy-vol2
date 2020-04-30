@@ -1,4 +1,4 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,9 +8,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-//e.zipÆÄÀÏÀº ÀÌÅ¬¸³½º ÆÄÀÏÃ³·³ °í¿ë·® ÆÄÀÏÀ» ¹Ì¸® ¾Æ·¡ Æú´õ¿¡ °®´Ù µÎ°í ÀÌ Å¬·¡½º¸¦ ½ÇÇàÇØ º»´Ù.
-//c:\data Æú´õ ÀÌÇÏ e.zipÆÄÀÏÀ» º¹»çÇÏ´Â ÇÁ·Î±×·¥ ÀÛ¼º
-//¹Ù¶÷Á÷ÇÏ°Ô °íÃÄ º» ÄÚµå
+//e.zipíŒŒì¼ì€ ì´í´ë¦½ìŠ¤ íŒŒì¼ì²˜ëŸ¼ ê³ ìš©ëŸ‰ íŒŒì¼ì„ ë¯¸ë¦¬ ì•„ë˜ í´ë”ì— ê°–ë‹¤ ë‘ê³  ì´ í´ë˜ìŠ¤ë¥¼ ì‹¤í–‰í•´ ë³¸ë‹¤.
+//c:\data í´ë” ì´í•˜ e.zipíŒŒì¼ì„ ë³µì‚¬í•˜ëŠ” í”„ë¡œê·¸ë¨ ì‘ì„±
+//ë°”ëŒì§í•˜ê²Œ ê³ ì³ ë³¸ ì½”ë“œ
 public class Ex8FileCopyEnhanced {
 	public static void main(String[] args) {
 		String pathname1, pathname2;
@@ -20,53 +20,53 @@ public class Ex8FileCopyEnhanced {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		byte[] b = new byte[2048];
-		int len; // ÆÄÀÏ ÀüÃ¼ÀÇ ±æÀÌ¸¦
+		int len; // íŒŒì¼ ì „ì²´ì˜ ê¸¸ì´ë¥¼
 		try {
-			System.out.print("¿øº»ÆÄÀÏ¸í? ");
+			System.out.print("ì›ë³¸íŒŒì¼ëª…? ");
 			pathname1 = br.readLine();
-			System.out.print("º¹»çÇÒ »õ·Î¿î ÆÄÀÏ¸í? ");
+			System.out.print("ë³µì‚¬í•  ìƒˆë¡œìš´ íŒŒì¼ëª…? ");
 			pathname2 = br.readLine();
 
 			f1 = new File(pathname1);
 			if (!f1.exists()) {
-				System.out.println(pathname1 + " ÆÄÀÏÀÌ ¾ø½À´Ï´Ù.");
+				System.out.println(pathname1 + " íŒŒì¼ì´ ì—†ìŠµë‹ˆë‹¤.");
 				return;
 			}
 			char ch;
 			f2 = new File(pathname2);
 			if (f2.exists()) {
-				System.out.println("ÆÄÀÏÀÌ ÀÌ¹Ì Á¸ÀçÇÕ´Ï´Ù. µ¤¾î¾µ °Ç°¡¿ä(y/n) ?");
-				ch = (char) System.in.read();// 3ÀÚ°¡ µÈ´Ù. ¿£ÅÍ(2ÀÚ) Æ÷ÇÔ..
-				System.in.skip(2);// ¿£ÅÍ 2±ÛÀã°ªÀº ÀĞ¾î¼­ ¹ö¸®¶ó´Â ÀÌ¾ß±âÀÓ.
+				System.out.println("íŒŒì¼ì´ ì´ë¯¸ ì¡´ì¬í•©ë‹ˆë‹¤. ë®ì–´ì“¸ ê±´ê°€ìš”(y/n) ?");
+				ch = (char) System.in.read();// 3ìê°€ ëœë‹¤. ì—”í„°(2ì) í¬í•¨..
+				System.in.skip(2);// ì—”í„° 2ê¸€ì£ê°’ì€ ì½ì–´ì„œ ë²„ë¦¬ë¼ëŠ” ì´ì•¼ê¸°ì„.
 				if (ch == 'n' || ch == 'N') {
-					System.out.println("º¹»ç ÀÛ¾÷ÀÌ Ãë¼ÒµÇ¾ú½À´Ï´Ù.");
-					return; // nÀ» ¼±ÅÃÇÑ °æ¿ì Ãë¼Ò
+					System.out.println("ë³µì‚¬ ì‘ì—…ì´ ì·¨ì†Œë˜ì—ˆìŠµë‹ˆë‹¤.");
+					return; // nì„ ì„ íƒí•œ ê²½ìš° ì·¨ì†Œ
 				}
 			}
 
-			// ¿øº»À» ºÒ·¯µéÀÏ FileInputStream°´Ã¼ »ı¼º
-			fis = new FileInputStream(f1);// FileInputStream¿¡ File°´Ã¼¸¦ ³Ö¾îµµ »ı¼ºÀÌ µÈ´Ù.
-			// »çº»À» ¸¸µé FileOutputStream°´Ã¼ »ı¼º
-			fos = new FileOutputStream(f2);// FileInputStream¿¡ File°´Ã¼¸¦ ³Ö¾îµµ »ı¼ºÀÌ µÈ´Ù.
+			// ì›ë³¸ì„ ë¶ˆëŸ¬ë“¤ì¼ FileInputStreamê°ì²´ ìƒì„±
+			fis = new FileInputStream(f1);// FileInputStreamì— Fileê°ì²´ë¥¼ ë„£ì–´ë„ ìƒì„±ì´ ëœë‹¤.
+			// ì‚¬ë³¸ì„ ë§Œë“¤ FileOutputStreamê°ì²´ ìƒì„±
+			fos = new FileOutputStream(f2);// FileInputStreamì— Fileê°ì²´ë¥¼ ë„£ì–´ë„ ìƒì„±ì´ ëœë‹¤.
 
 			long start = System.currentTimeMillis();
-			// ÀÎÀÚ°¡ ¾ø´Â read°ªÀº 1byte¸¦ ÀĞ¾î¼­ ASCIIÄÚµå°ªÀ¸·Î ³Ñ±â´Â °ÍÀÌ´Ù.
-			// fis.read(b,0,b.length)´Â byteÇü¹è¿­ÀÎ b¸¦ 0ºÎÅÍ b±æÀÌÀÇ ³¡±îÁö ÀĞ¾î³½´Ù´Â ¶æÀÌ´Ù.
-			// lenÀº b±æÀÌÀÇ ³¡À» ÀúÀåÇÑ °Í.
-			// fis.read(b)¿Í °°Àº ÀÇ¹ÌÀÌ´Ù.
-			while ((len = fis.read(b, 0, b.length)) != -1) {// ÀÔ·Â¹Ş¾Æ¼­
-				fos.write(b, 0, len);// write½Ã¿¡´Â ÀÎÀÚ¸¦ 3°³¸¦ ³Ñ°Ü¾ß ÇÑ´Ù. ÆÄÀÏÀÇ ³¡Àº ²À ÁöÁ¤ÇÑ Å©±â·Î ³ª´² ¶³¾îÁöÁö ¾ÊÀ» ¼ö ÀÖÀ¸¹Ç·Î
-				// Å©±â¸¦ ÁöÁ¤ÇÏÁö ¾ÊÀ¸¸é ¾²·¹±ê°ª(-1)±îÁö Æ÷ÇÔµÇ¹Ç·Î ²À ÀÎÀÚ 3°³¸¦ ¾²µµ·Ï ÇÑ´Ù.
-				// b¸¦ 0ºÎÅÍ Á¤ÇØÁø ±æÀÌ(len)¸¸Å­À» ¹Ù·Î ÆÄÀÏ¿¡ ½á³½´Ù´Â ÀÇ¹ÌÀÌ´Ù.
+			// ì¸ìê°€ ì—†ëŠ” readê°’ì€ 1byteë¥¼ ì½ì–´ì„œ ASCIIì½”ë“œê°’ìœ¼ë¡œ ë„˜ê¸°ëŠ” ê²ƒì´ë‹¤.
+			// fis.read(b,0,b.length)ëŠ” byteí˜•ë°°ì—´ì¸ bë¥¼ 0ë¶€í„° bê¸¸ì´ì˜ ëê¹Œì§€ ì½ì–´ë‚¸ë‹¤ëŠ” ëœ»ì´ë‹¤.
+			// lenì€ bê¸¸ì´ì˜ ëì„ ì €ì¥í•œ ê²ƒ.
+			// fis.read(b)ì™€ ê°™ì€ ì˜ë¯¸ì´ë‹¤.
+			while ((len = fis.read(b, 0, b.length)) != -1) {// ì…ë ¥ë°›ì•„ì„œ
+				fos.write(b, 0, len);// writeì‹œì—ëŠ” ì¸ìë¥¼ 3ê°œë¥¼ ë„˜ê²¨ì•¼ í•œë‹¤. íŒŒì¼ì˜ ëì€ ê¼­ ì§€ì •í•œ í¬ê¸°ë¡œ ë‚˜ëˆ  ë–¨ì–´ì§€ì§€ ì•Šì„ ìˆ˜ ìˆìœ¼ë¯€ë¡œ
+				// í¬ê¸°ë¥¼ ì§€ì •í•˜ì§€ ì•Šìœ¼ë©´ ì“°ë ˆê¹ƒê°’(-1)ê¹Œì§€ í¬í•¨ë˜ë¯€ë¡œ ê¼­ ì¸ì 3ê°œë¥¼ ì“°ë„ë¡ í•œë‹¤.
+				// bë¥¼ 0ë¶€í„° ì •í•´ì§„ ê¸¸ì´(len)ë§Œí¼ì„ ë°”ë¡œ íŒŒì¼ì— ì¨ë‚¸ë‹¤ëŠ” ì˜ë¯¸ì´ë‹¤.
 			}
-			fos.flush();// ÀúÀå
+			fos.flush();// ì €ì¥
 			long end = System.currentTimeMillis();
-			System.out.println("º¹»ç ½Ã°£: " + (end - start) + "ms");
+			System.out.println("ë³µì‚¬ ì‹œê°„: " + (end - start) + "ms");
 		} catch (FileNotFoundException e) {
-			// ÆÄÀÏÀ» ºÒ·¯¿Ã ¶§ ÆÄÀÏ°æ·Î¿¡ ÇØ´çÇÏ´Â ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾ÊÀ» ¼öµµ ÀÖ´Ù.
+			// íŒŒì¼ì„ ë¶ˆëŸ¬ì˜¬ ë•Œ íŒŒì¼ê²½ë¡œì— í•´ë‹¹í•˜ëŠ” íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•Šì„ ìˆ˜ë„ ìˆë‹¤.
 			System.out.println(e.toString());
 		} catch (IOException e) {
-			// ÀÔÃâ·Â ½Ã ¿¹¿Ü°¡ ¹ß»ıÇÒ ¼ö ÀÖÀ½.
+			// ì…ì¶œë ¥ ì‹œ ì˜ˆì™¸ê°€ ë°œìƒí•  ìˆ˜ ìˆìŒ.
 			System.out.println(e.toString());
 		} catch (Exception e) {
 			e.printStackTrace();

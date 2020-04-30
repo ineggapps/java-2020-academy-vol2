@@ -1,4 +1,4 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -7,9 +7,9 @@ import java.io.InputStreamReader;
 public class Ex10File2 {
 	public static void dirList(String pathname) {
 		File f = new File(pathname);
-		File[] ff = f.listFiles();//ÇØ´ç °æ·Î¿¡ µé¾î ÀÖ´Â ¸ğµç ÆÄÀÏ°ú Æú´õ°´Ã¼ÀÎ FileÀ» List°´Ã¼¸¦ ÀÌ¿ëÇÏ¿© ÅëÂ°·Î ¹Ş¾Æ ¿Â´Ù.
+		File[] ff = f.listFiles();//í•´ë‹¹ ê²½ë¡œì— ë“¤ì–´ ìˆëŠ” ëª¨ë“  íŒŒì¼ê³¼ í´ë”ê°ì²´ì¸ Fileì„ Listê°ì²´ë¥¼ ì´ìš©í•˜ì—¬ í†µì§¸ë¡œ ë°›ì•„ ì˜¨ë‹¤.
 
-		// ÇöÀç °æ·Î¿¡ ÆÄÀÏÀÌ³ª Æú´õ°¡ Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì Ã¼Å©
+		// í˜„ì¬ ê²½ë¡œì— íŒŒì¼ì´ë‚˜ í´ë”ê°€ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ê²½ìš° ì²´í¬
 		if (ff == null || ff.length == 0) {
 			return;
 		}
@@ -17,12 +17,12 @@ public class Ex10File2 {
 		try {
 			for (File file : ff) {
 				if (file.isDirectory()) {
-					// ÇöÀç file°´Ã¼°¡ Æú´õ¸¦ °¡¸®Å°¸é?
-					System.out.println("Æú´õ¸í: " + file.getName());
-					dirList(file.getAbsolutePath()); //Àç±ÍÈ£Ãâ
+					// í˜„ì¬ fileê°ì²´ê°€ í´ë”ë¥¼ ê°€ë¦¬í‚¤ë©´?
+					System.out.println("í´ë”ëª…: " + file.getName());
+					dirList(file.getAbsolutePath()); //ì¬ê·€í˜¸ì¶œ
 				} else if (file.isFile()) {
-					// ÇöÀç file°´Ã¼°¡ ÆÄÀÏÀÌ¸é?
-					System.out.println("\tÆÄÀÏ¸í: " + file.getName());
+					// í˜„ì¬ fileê°ì²´ê°€ íŒŒì¼ì´ë©´?
+					System.out.println("\tíŒŒì¼ëª…: " + file.getName());
 				}
 			}
 		} catch (Exception e) {
@@ -34,12 +34,12 @@ public class Ex10File2 {
 	public static void main(String[] args) {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		try {
-			System.out.print("°æ·Î¸í ÀÔ·Â: "); // C:\windows ÀÔ·Â
+			System.out.print("ê²½ë¡œëª… ì…ë ¥: "); // C:\windows ì…ë ¥
 			String pathname = br.readLine();
 			if(pathname==null||pathname.length()==0) {
 				pathname = System.getProperty("user.dir");
 			}
-			//Á¤·ÄµÇÁö ¾ÊÀº »óÅÂ·Î Ãâ·ÂµÉ °ÍÀÓ!
+			//ì •ë ¬ë˜ì§€ ì•Šì€ ìƒíƒœë¡œ ì¶œë ¥ë  ê²ƒì„!
 			dirList(pathname);
 		} catch (Exception e) {
 			e.printStackTrace();

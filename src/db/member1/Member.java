@@ -1,4 +1,4 @@
-package db.member1;
+ï»¿package db.member1;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -15,39 +15,39 @@ public class Member {
 	}
 
 	public void insertMember() {
-		printTitle("È¸¿ø µî·Ï");
+		printTitle("íšŒì› ë“±ë¡");
 		MemberDTO dto = new MemberDTO();
 		try {
 
-			System.out.print("½Å±Ô ¾ÆÀÌµğ ÀÔ·Â > ");
+			System.out.print("ì‹ ê·œ ì•„ì´ë”” ì…ë ¥ > ");
 			String id = br.readLine();
 			dto.setId(id);
 
-			// ¾ÆÀÌµğ Áßº¹Ã¼Å©
+			// ì•„ì´ë”” ì¤‘ë³µì²´í¬
 			if (dao.readMember(dto.getId()) != null) {
-				System.out.println("£şªØ £ş " + id + "´Â »ç¿ëÇÏ½Ç ¼ö ¾ø½À´Ï´Ù.");
+				System.out.println("ï¿£ã¸ ï¿£ " + id + "ëŠ” ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 				System.out.println();
 				return;
 			}
 
-			System.out.print("ÀÌ¸§ ÀÔ·Â > ");
+			System.out.print("ì´ë¦„ ì…ë ¥ > ");
 			dto.setName(br.readLine());
 
-			System.out.print("ºñ¹Ğ¹øÈ£ ÀÔ·Â > ");
+			System.out.print("ë¹„ë°€ë²ˆí˜¸ ì…ë ¥ > ");
 			dto.setPwd(br.readLine());
 
-			System.out.print("»ı³â¿ùÀÏ ÀÔ·Â > ");
+			System.out.print("ìƒë…„ì›”ì¼ ì…ë ¥ > ");
 			dto.setBirth(br.readLine());
 
-			System.out.print("ÀÌ¸ŞÀÏ ÀÔ·Â > ");
+			System.out.print("ì´ë©”ì¼ ì…ë ¥ > ");
 			dto.setEmail(br.readLine());
 
-			System.out.print("ÀüÈ­¹øÈ£ ÀÔ·Â > ");
+			System.out.print("ì „í™”ë²ˆí˜¸ ì…ë ¥ > ");
 			dto.setTel(br.readLine());
 
 			int result = dao.insertMember(dto);
-//			System.out.println(result + "°Ç µî·Ï ¿Ï·á!");
-			System.out.println("¡Û( £ŞÙ©£Ş)ªÃ È¸¿ø µî·Ï ¼º°ø...");
+//			System.out.println(result + "ê±´ ë“±ë¡ ì™„ë£Œ!");
+			System.out.println("â—‹( ï¼¾çš¿ï¼¾)ã£ íšŒì› ë“±ë¡ ì„±ê³µ...");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -55,30 +55,30 @@ public class Member {
 
 	public void updateMember() {
 		MemberDTO dto = null;
-		printTitle("È¸¿ø ¼öÁ¤");
+		printTitle("íšŒì› ìˆ˜ì •");
 		try {
-			System.out.print("¼öÁ¤ÇÒ È¸¿ø ¾ÆÀÌµğ > ");
+			System.out.print("ìˆ˜ì •í•  íšŒì› ì•„ì´ë”” > ");
 			String id = br.readLine();
 			dto = dao.readMember(id);
 
 			if (dto == null) {
-				System.out.println("£şªØ £ş µî·ÏµÈ ¾ÆÀÌµğ°¡ ¾Æ´Õ´Ï´Ù.");
+				System.out.println("ï¿£ã¸ ï¿£ ë“±ë¡ëœ ì•„ì´ë””ê°€ ì•„ë‹™ë‹ˆë‹¤.");
 				return;
 			}
 			printDTO(dto);
 
-			System.out.println("##### º¯°æ ÀÛ¾÷À» ½ÃÀÛÇÕ´Ï´Ù.");
-			System.out.print("ºñ¹Ğ¹øÈ£ > ");
+			System.out.println("##### ë³€ê²½ ì‘ì—…ì„ ì‹œì‘í•©ë‹ˆë‹¤.");
+			System.out.print("ë¹„ë°€ë²ˆí˜¸ > ");
 			dto.setPwd(br.readLine());
-			System.out.print("»ıÀÏ > ");
+			System.out.print("ìƒì¼ > ");
 			dto.setBirth(br.readLine());
-			System.out.print("ÀÌ¸ŞÀÏ > ");
+			System.out.print("ì´ë©”ì¼ > ");
 			dto.setEmail(br.readLine());
-			System.out.print("ÀüÈ­¹øÈ£ > ");
+			System.out.print("ì „í™”ë²ˆí˜¸ > ");
 			dto.setTel(br.readLine());
 
 			int result = dao.updateMember(dto);
-			System.out.println("(^ìÑ^) È¸¿øÁ¤º¸°¡ º¯°æµÇ¾ú½À´Ï´Ù.");
+			System.out.println("(^äºº^) íšŒì›ì •ë³´ê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		} catch (
 
 		Exception e) {
@@ -87,17 +87,17 @@ public class Member {
 	}
 
 	public void deleteMember() {
-		printTitle("È¸¿ø »èÁ¦");
+		printTitle("íšŒì› ì‚­ì œ");
 
 		try {
-			System.out.print("»èÁ¦ÇÒ ¾ÆÀÌµğ ÀÔ·Â > ");
+			System.out.print("ì‚­ì œí•  ì•„ì´ë”” ì…ë ¥ > ");
 			String id = br.readLine();
 			int result = dao.deleteMember(id);
 			if (result == 0) {
-				System.out.println("£şªØ£ş ¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù. (" + id + ")");
+				System.out.println("ï¿£ã¸ï¿£ ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤. (" + id + ")");
 				return;
 			}
-			System.out.println(id + "d=====(£ş¡ä£ş*)b °èÁ¤À» »èÁ¦ÇÏ¿´½À´Ï´Ù.");
+			System.out.println(id + "d=====(ï¿£â–½ï¿£*)b ê³„ì •ì„ ì‚­ì œí•˜ì˜€ìŠµë‹ˆë‹¤.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -105,7 +105,7 @@ public class Member {
 	}
 
 	public void listMember() {
-		printTitle("È¸¿ø ¸ñ·Ï Á¶È¸");
+		printTitle("íšŒì› ëª©ë¡ ì¡°íšŒ");
 
 		List<MemberDTO> list = dao.listMember();
 		for (MemberDTO dto : list) {
@@ -114,13 +114,13 @@ public class Member {
 	}
 
 	public void findById() {
-		printTitle("¾ÆÀÌµğ·Î È¸¿ø °Ë»ö");
+		printTitle("ì•„ì´ë””ë¡œ íšŒì› ê²€ìƒ‰");
 		try {
-			System.out.print("¾ÆÀÌµğ > ");
+			System.out.print("ì•„ì´ë”” > ");
 			String id = br.readLine();
 			MemberDTO dto = dao.readMember(id);
 			if (dto == null) {
-				System.out.println("°Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù");
+				System.out.println("ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤");
 				return;
 			}
 			printDTO(dto);
@@ -130,16 +130,16 @@ public class Member {
 	}
 
 	public void findByName() {
-		printTitle("ÀÌ¸§À¸·Î È¸¿ø °Ë»ö");
+		printTitle("ì´ë¦„ìœ¼ë¡œ íšŒì› ê²€ìƒ‰");
 		try {
-			System.out.print("ÀÌ¸§ > ");
+			System.out.print("ì´ë¦„ > ");
 			String name = br.readLine();
 			List<MemberDTO> list = dao.listMember(name);
 			if (list.size() == 0) {
-				System.out.println("°Ë»ö °á°ú°¡ ¾ø½À´Ï´Ù");
+				System.out.println("ê²€ìƒ‰ ê²°ê³¼ê°€ ì—†ìŠµë‹ˆë‹¤");
 				return;
 			}
-			System.out.println(list.size() + "°³ÀÇ °Ë»ö °á°ú°¡ ÀÖ½À´Ï´Ù.");
+			System.out.println(list.size() + "ê°œì˜ ê²€ìƒ‰ ê²°ê³¼ê°€ ìˆìŠµë‹ˆë‹¤.");
 			for (MemberDTO dto : list) {
 				printDTO(dto);
 			}

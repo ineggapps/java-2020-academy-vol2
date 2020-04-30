@@ -1,4 +1,4 @@
-package com.omok;
+ï»¿package com.omok;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -12,14 +12,14 @@ public class OmokFrame extends JFrame {
 	protected static final int BLACK = 1;
 	protected static final int WHITE = 2;
 	protected int board[][] = new int[19][19];
-	protected int dolColor=NONE; // °ËÀºµ¹ÀÎÁö Èòµ¹ÀÎÁö
-	protected boolean bWhTurn; // µ¹À» ³õÀ» »óÅÂ
-	protected boolean bGameMe=false, bGameOpponent=false; // °ÔÀÓ»óÅÂ
+	protected int dolColor=NONE; // ê²€ì€ëŒì¸ì§€ í°ëŒì¸ì§€
+	protected boolean bWhTurn; // ëŒì„ ë†“ì„ ìƒíƒœ
+	protected boolean bGameMe=false, bGameOpponent=false; // ê²Œì„ìƒíƒœ
 	protected int panjeong;
 	protected String userName, opponentUserName;
 	protected BadukPan gp;
 	
-	protected int px, py; // ÀÌÀü µ¹ÀÇ ÁÂÇ¥
+	protected int px, py; // ì´ì „ ëŒì˜ ì¢Œí‘œ
 	
 	public OmokFrame() {
 		gameInit();
@@ -38,7 +38,7 @@ public class OmokFrame extends JFrame {
 	}
 
 	// ***************************************************************
-	// °ÔÀÓ ÇÃ·¹ÀÌ
+	// ê²Œì„ í”Œë ˆì´
 	public void gamePlay(PointMsg pm, int dol, JTextArea ta) {
 		int ax, ay;
 		ax = pm.getX();
@@ -55,10 +55,10 @@ public class OmokFrame extends JFrame {
 			return;
 
 		if (panjeong == dolColor) {
-			ta.append(userName+"´ÔÀÌ ½Â¸® Çß½À´Ï´Ù.\n");
+			ta.append(userName+"ë‹˜ì´ ìŠ¹ë¦¬ í–ˆìŠµë‹ˆë‹¤.\n");
 			
 		} else{
-			ta.append(userName+"´ÔÀÌ ÆĞ Çß½À´Ï´Ù.\n");
+			ta.append(userName+"ë‹˜ì´ íŒ¨ í–ˆìŠµë‹ˆë‹¤.\n");
 		}
 		
 		ta.setCaretPosition(ta.getDocument().getLength());
@@ -67,7 +67,7 @@ public class OmokFrame extends JFrame {
 	}
 
 	// ***************************************************************
-	// °ÔÀÓ ÆÇÁ¤
+	// ê²Œì„ íŒì •
 	public void gamePanjeong(int ax, int ay) {
 		int cnt;
 		int i;
@@ -165,11 +165,11 @@ public class OmokFrame extends JFrame {
 	}
 
 	// ***************************************************************
-	// µ¹ ±×¸®±â
+	// ëŒ ê·¸ë¦¬ê¸°
 	public void drawSite(int x, int y, int dol) {
 		Graphics g = gp.getGraphics();
 		
-		// µ¹±×¸®±â
+		// ëŒê·¸ë¦¬ê¸°
 		if (dol == NONE)
 			return;
 		
@@ -181,11 +181,11 @@ public class OmokFrame extends JFrame {
 		g.fillOval(x * 20 + 2, y * 20 + 2, 16, 16);
 	}
 	
-	// ÀÛÀºµ¹
+	// ì‘ì€ëŒ
 	public void smallDrawSite(int x, int y, int dol, boolean bDraw) {
 		Graphics g = gp.getGraphics();
 		
-		// ÀÌÀüµ¹ ´Ù½Ã ±×¸®±â
+		// ì´ì „ëŒ ë‹¤ì‹œ ê·¸ë¦¬ê¸°
 		if(bDraw && px!=-1 && py!=-1) {
 			if (dol == BLACK) {
 				g.setColor(new Color(255, 255, 255));
@@ -198,7 +198,7 @@ public class OmokFrame extends JFrame {
 		if (dol == NONE)
 			return;
 		
-		// µ¹¿¡ ÀÛÀº µ¹À» ±×¸®±â
+		// ëŒì— ì‘ì€ ëŒì„ ê·¸ë¦¬ê¸°
 		if (dol == BLACK) {
 			g.setColor(new Color(255, 255, 255));
 		} else {

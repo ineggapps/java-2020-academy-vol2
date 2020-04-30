@@ -1,4 +1,4 @@
-package com.score2;
+ï»¿package com.score2;
 
 import java.util.Scanner;
 
@@ -7,11 +7,11 @@ public class App {
 		Scanner sc = new Scanner(System.in);
 		int ch;
 		Score ss = new Score();
-		System.out.println("PreparedStatement ¿¹Á¦.");
+		System.out.println("PreparedStatement ì˜ˆì œ.");
 		try {
 			while (true) {
 				do {
-					System.out.print("1.Ãß°¡ 2.¼öÁ¤ 3.»èÁ¦ 4.ÇÐ¹ø°Ë»ö 5.ÀÌ¸§°Ë»ö 6.¸®½ºÆ® 7.Á¾·á > ");
+					System.out.print("1.ì¶”ê°€ 2.ìˆ˜ì • 3.ì‚­ì œ 4.í•™ë²ˆê²€ìƒ‰ 5.ì´ë¦„ê²€ìƒ‰ 6.ë¦¬ìŠ¤íŠ¸ 7.ì¢…ë£Œ > ");
 					ch = sc.nextInt();
 				} while (ch < 1 || ch > 7);
 

@@ -1,42 +1,42 @@
-package d200408;
+ï»¿package d200408;
 
 public class Ex15ThreadWithSynchronizedBlock {
 	public static void main(String[] args) {
 		DemoThread2 r = new DemoThread2();
 
-		// RunnableÀ» ±¸ÇöÇÑ Å¬·¡½º°´Ã¼¸¦ 1°³¸¦ »ı¼ºÇÏ¿© µÎ °³ÀÇ ½º·¹µå°¡ °øÀ¯ÇÔ.
+		// Runnableì„ êµ¬í˜„í•œ í´ë˜ìŠ¤ê°ì²´ë¥¼ 1ê°œë¥¼ ìƒì„±í•˜ì—¬ ë‘ ê°œì˜ ìŠ¤ë ˆë“œê°€ ê³µìœ í•¨.
 		Thread t1 = new Thread(r);
 		Thread t2 = new Thread(r);
 
 		t1.start();
 		t2.start();
 
-		System.out.println("main() Á¾·á");
+		System.out.println("main() ì¢…ë£Œ");
 	}
 }
 
 class DemoThread2 implements Runnable {
-	private int bank = 1000;// ÇöÀç ÀºÇàÀÇ ÅëÀå ÀÜ°í¿¡ 1000¿øÀÌ ÀúÃàµÇ¾î ÀÖ´Ù°í »ı°¢
+	private int bank = 1000;// í˜„ì¬ ì€í–‰ì˜ í†µì¥ ì”ê³ ì— 1000ì›ì´ ì €ì¶•ë˜ì–´ ìˆë‹¤ê³  ìƒê°
 
 	@Override
 	public void run() {
-		int m = 600;// ÀÎÃâÇÒ ±İ¾×
+		int m = 600;// ì¸ì¶œí•  ê¸ˆì•¡
 		int n = 0;
 		String msg = null;
 		try {
-			//µ¿±âÈ­ ºí·ÏÀ¸·Î µ¿½Ã¿¡ ¿©·¯ °³ÀÇ ½º·¹µå°¡ Á¢±ÙÇÏ¿© ¿¬»êÀ» ¸ÁÄ¡Áö ¾Êµµ·Ï °¨½Ñ´Ù. => Àü»ê¿ë¾î·Î »óÈ£¹èÁ¦¶ó°í ÇÔ!
+			//ë™ê¸°í™” ë¸”ë¡ìœ¼ë¡œ ë™ì‹œì— ì—¬ëŸ¬ ê°œì˜ ìŠ¤ë ˆë“œê°€ ì ‘ê·¼í•˜ì—¬ ì—°ì‚°ì„ ë§ì¹˜ì§€ ì•Šë„ë¡ ê°ì‹¼ë‹¤. => ì „ì‚°ìš©ì–´ë¡œ ìƒí˜¸ë°°ì œë¼ê³  í•¨!
 			synchronized (this) { 
-				if (getMoney() >= m) {// ÀºÇà¿¡¼­ Ãâ±İÇÒ ¼ö ÀÖ´Â °æ¿ì
+				if (getMoney() >= m) {// ì€í–‰ì—ì„œ ì¶œê¸ˆí•  ìˆ˜ ìˆëŠ” ê²½ìš°
 					Thread.sleep(300);
 					n = drawMoney(m);
-					msg = "ÀÎÃâ ¼º°ø...";
-				} else {// Ãâ±İÇÒ ¼ö ¾ø´Â °æ¿ì
+					msg = "ì¸ì¶œ ì„±ê³µ...";
+				} else {// ì¶œê¸ˆí•  ìˆ˜ ì—†ëŠ” ê²½ìš°
 					n = 0;
-					msg = "ÀÎÃâ ½ÇÆĞ.. ÀÜ¾×ÀÌ ºÎÁ·ÇÕ´Ï´Ù.";
+					msg = "ì¸ì¶œ ì‹¤íŒ¨.. ì”ì•¡ì´ ë¶€ì¡±í•©ë‹ˆë‹¤.";
 				}
 			}
 
-			System.out.println(msg + ", ÀÎÃâ±İ¾×: " + n + ", ÀÜ°í: " + getMoney());
+			System.out.println(msg + ", ì¸ì¶œê¸ˆì•¡: " + n + ", ì”ê³ : " + getMoney());
 
 		} catch (Exception e) {
 			e.printStackTrace();

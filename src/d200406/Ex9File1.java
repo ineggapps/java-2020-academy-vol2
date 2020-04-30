@@ -1,20 +1,20 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.File;
 
-//File°´Ã¼¸¦ ÀÌ¿ëÇÏ¿© ÆÄÀÏÀ» ÀúÀåÇÏ´Â ¹æ¹ı
+//Fileê°ì²´ë¥¼ ì´ìš©í•˜ì—¬ íŒŒì¼ì„ ì €ì¥í•˜ëŠ” ë°©ë²•
 public class Ex9File1 {
 	public static void main(String[] args) {
 		// d:\source\data\test.txt
 		String pathname = "d:" + File.separator + "source" + File.separator + "data" + File.separator + "test.txt";
 		String path = pathname.substring(0, pathname.lastIndexOf(File.separator));
-		System.out.println("ÆÄÀÏ¸í Æ÷ÇÔÇÏ¿© ÀüÃ¼ °æ·Î: " + pathname);
-		System.out.println("°æ·Î: " + path);
+		System.out.println("íŒŒì¼ëª… í¬í•¨í•˜ì—¬ ì „ì²´ ê²½ë¡œ: " + pathname);
+		System.out.println("ê²½ë¡œ: " + path);
 		
 		File dir = new File(path);
 		if(!dir.exists()) {
-			dir.mkdirs();//mkdir¸Ş¼­µå°¡ ¾Æ´Ï¶ó mkdirsÀÌ´Ù. (Á¸ÀçÇÏÁö ¾Ê´Â ¸ğµç Æú´õ¸¦ ´Ù ¸¸µé¾îÁÖ´Â ¸Ş¼­µå°¡ mkdirsÀÌ´Ù)
-			System.out.println("Æú´õ°¡ »ı¼ºµÇ¾ú½À´Ï´Ù.");
+			dir.mkdirs();//mkdirë©”ì„œë“œê°€ ì•„ë‹ˆë¼ mkdirsì´ë‹¤. (ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ëª¨ë“  í´ë”ë¥¼ ë‹¤ ë§Œë“¤ì–´ì£¼ëŠ” ë©”ì„œë“œê°€ mkdirsì´ë‹¤)
+			System.out.println("í´ë”ê°€ ìƒì„±ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		}
 	}
 }

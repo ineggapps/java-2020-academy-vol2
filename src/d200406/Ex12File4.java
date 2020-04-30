@@ -1,4 +1,4 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,13 +11,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 /*
- ÁöÁ¤ÇÑ Æú´õ(ÀÔ·Â ¿¹: c:\windows) ÀÌÇÏ¿¡ Á¸ÀçÇÏ´Â ÆÄÀÏ ¹× Æú´õ¸¦ 
- VO°´Ã¼·Î ¸¸µé¾î¼­ List°´Ã¼¿¡ ´ã°í ¾È¿¡ ÀÖ´Â ¸ğµç °´Ã¼µéÀ» Ãâ·Â
+ ì§€ì •í•œ í´ë”(ì…ë ¥ ì˜ˆ: c:\windows) ì´í•˜ì— ì¡´ì¬í•˜ëŠ” íŒŒì¼ ë° í´ë”ë¥¼ 
+ VOê°ì²´ë¡œ ë§Œë“¤ì–´ì„œ Listê°ì²´ì— ë‹´ê³  ì•ˆì— ìˆëŠ” ëª¨ë“  ê°ì²´ë“¤ì„ ì¶œë ¥
  to sort
  */
 public class Ex12File4 {
 	public static void dirList(String pathname) {
-		// ¾Ë°í¸®ÁòÀÌ º¯°æµÇ´Â ºÎºĞ (Ex10File2 ÂüÁ¶ => Ex12File4 ÄÚµå º¯Çü)
+		// ì•Œê³ ë¦¬ì¦˜ì´ ë³€ê²½ë˜ëŠ” ë¶€ë¶„ (Ex10File2 ì°¸ì¡° => Ex12File4 ì½”ë“œ ë³€í˜•)
 		File file = new File(pathname);
 		File[] ff = file.listFiles();
 
@@ -32,38 +32,38 @@ public class Ex12File4 {
 		try {
 			for (File f : ff) {
 				s = sdf.format(new Date(f.lastModified()));
-				if (f.isFile()) {// ÆÄÀÏÀÎ °æ¿ì
+				if (f.isFile()) {// íŒŒì¼ì¸ ê²½ìš°
 					DirVO vo = new DirVO();
 					vo.setName(f.getName());
 					vo.setModified(s);
-					vo.setPathType("ÆÄÀÏ");
+					vo.setPathType("íŒŒì¼");
 					vo.setType(1);
 					vo.setLength(f.length());
 					list.add(vo);
-				} else if (f.isDirectory()) {// Æú´õÀÎ °æ¿ì
+				} else if (f.isDirectory()) {// í´ë”ì¸ ê²½ìš°
 					DirVO vo = new DirVO();
 					vo.setName(f.getName());
 					vo.setModified(s);
-					vo.setPathType("Æú´õ");
+					vo.setPathType("í´ë”");
 					vo.setType(0);
 					list.add(vo);
 				}
 			}
 
-			// Á¤·Ä #1 ComparatorÀ» »ç¿ëÇÑ´Ù.
+			// ì •ë ¬ #1 Comparatorì„ ì‚¬ìš©í•œë‹¤.
 			Comparator<DirVO> comp = new Comparator<DirVO>() {
 				@Override
 				public int compare(DirVO o1, DirVO o2) {
-					//type=0 Æú´õ, type=1 ÆÄÀÏ
-					//1¼øÀ§: ÆÄÀÏ, Æú´õ Áß Æú´õ¸¦ ¸ÕÀú ³ª¿À°Ô Á¤·Ä
+					//type=0 í´ë”, type=1 íŒŒì¼
+					//1ìˆœìœ„: íŒŒì¼, í´ë” ì¤‘ í´ë”ë¥¼ ë¨¼ì € ë‚˜ì˜¤ê²Œ ì •ë ¬
 					if (o1.getType() > o2.getType()) {
 						return 1;
 					} else if (o2.getType() < o2.getType()) {
 						return -1;
 					} else {
-						//2¼øÀ§ A: ÆÄÀÏÀÇ ¿ë·®ÀÌ ÀÛÀº ¼øºÎÅÍ Á¤·Ä
+						//2ìˆœìœ„ A: íŒŒì¼ì˜ ìš©ëŸ‰ì´ ì‘ì€ ìˆœë¶€í„° ì •ë ¬
 //						return (int)(o1.getLength()-o2.getLength());
-						//2¼øÀ§ B: ÀÌ¸§¼øÀ¸·Î Á¤·ÄÇÏ±â
+						//2ìˆœìœ„ B: ì´ë¦„ìˆœìœ¼ë¡œ ì •ë ¬í•˜ê¸°
 						return o1.getName().compareTo(o2.getName());
 					}
 				}
@@ -71,12 +71,12 @@ public class Ex12File4 {
 			
 			Collections.sort(list, comp);
 
-			System.out.println("ÀÌ¸§, ¼öÁ¤³¯Â¥, À¯Çü, Å©±â");
+			System.out.println("ì´ë¦„, ìˆ˜ì •ë‚ ì§œ, ìœ í˜•, í¬ê¸°");
 			for (DirVO vo : list) {
 				System.out.print(vo.getName() + ", ");
 				System.out.print(vo.getModified() + ", ");
 				System.out.print(vo.getPathType() + ", ");
-				if (vo.getType() == 1) {// ÆÄÀÏÀÎ °æ¿ì¸¸ ±æÀÌ°¡ Á¸ÀçÇÏ¹Ç·Î...
+				if (vo.getType() == 1) {// íŒŒì¼ì¸ ê²½ìš°ë§Œ ê¸¸ì´ê°€ ì¡´ì¬í•˜ë¯€ë¡œ...
 					System.out.print(vo.getLength());
 				}
 				System.out.println();
@@ -89,7 +89,7 @@ public class Ex12File4 {
 	public static void main(String[] args) {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		try {
-			System.out.print("°æ·Î¸í ÀÔ·Â: "); // C:\windows ÀÔ·Â
+			System.out.print("ê²½ë¡œëª… ì…ë ¥: "); // C:\windows ì…ë ¥
 			String pathname = br.readLine();
 			if (pathname == null || pathname.length() == 0) {
 				pathname = System.getProperty("user.dir");

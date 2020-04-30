@@ -1,4 +1,4 @@
-package d200330;
+ï»¿package d200330;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,10 +19,10 @@ public class Test4SelectQuery {
 			sql = "SELECT name, birth, kor, eng, mat, kor+eng+mat tot, hak FROM score";
 			rs = stmt.executeQuery(sql);
 
-			while(rs.next()) {//°á±£°ª º¹¼ö °³ Ãâ·ÂÇÏ±â (Ä¿¼­ÀÇ °³³ä°ú À¯»çÇÏ´Ù)
+			while(rs.next()) {//ê²°ê´ê°’ ë³µìˆ˜ ê°œ ì¶œë ¥í•˜ê¸° (ì»¤ì„œì˜ ê°œë…ê³¼ ìœ ì‚¬í•˜ë‹¤)
 				String hak = rs.getString("hak");
-				String name = rs.getString("name");//¶Ç´Â rs.getString(1);
-				String birth = rs.getDate("birth").toString();//³¯Â¥ÀÌÁö¸¸ StringÇüÀ¸·Îµµ º¯È¯µÇ¾î ÀúÀåÀÌ °¡´ÉÇÏ´Ù. rs.getString(2);
+				String name = rs.getString("name");//ë˜ëŠ” rs.getString(1);
+				String birth = rs.getDate("birth").toString();//ë‚ ì§œì´ì§€ë§Œ Stringí˜•ìœ¼ë¡œë„ ë³€í™˜ë˜ì–´ ì €ì¥ì´ ê°€ëŠ¥í•˜ë‹¤. rs.getString(2);
 				int kor = rs.getInt("kor");
 				int eng = rs.getInt("eng");
 				int mat = rs.getInt("mat");

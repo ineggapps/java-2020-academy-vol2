@@ -1,13 +1,13 @@
-package d200410;
+ï»¿package d200410;
 
-//¶÷´Ù¿¡¼­ ¸Å°³º¯¼ö Á¢±ÙÇÏ´Â ¹æ¹ı ¾Ë¾Æº¸±â
+//ëŒë‹¤ì—ì„œ ë§¤ê°œë³€ìˆ˜ ì ‘ê·¼í•˜ëŠ” ë°©ë²• ì•Œì•„ë³´ê¸°
 public class Ex8LambdaParameter {
 	public static void main(String[] args) {
 		Demo4 u = (a, b) -> {
 			int c = a + b;
 			return a + b;
 		}; 
-		Demo4 v = (a, b) -> a + b; // ÇÑ ÁÙ ¾È¿¡¼­ ¹İÈ¯±îÁö ¸¶¹«¸®µÇ´Â °æ¿ì returnÀ» »ı·«
+		Demo4 v = (a, b) -> a + b; // í•œ ì¤„ ì•ˆì—ì„œ ë°˜í™˜ê¹Œì§€ ë§ˆë¬´ë¦¬ë˜ëŠ” ê²½ìš° returnì„ ìƒëµ
 		int x = u.add(5, 10);
 		System.out.println(x);
 		int z = v.add(10, 1);

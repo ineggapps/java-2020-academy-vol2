@@ -1,4 +1,4 @@
-package d200410;
+ï»¿package d200410;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,9 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 public class Ex2AnnotationTest {
-	@User2 // ¾Æ¹« ¿ªÇÒ ¾ø´Â ¾î³ëÅ×ÀÌ¼Ç
+	@User2 // ì•„ë¬´ ì—­í•  ì—†ëŠ” ì–´ë…¸í…Œì´ì…˜
 	public void execute() {
-		System.out.println("¾î³ëÅ×ÀÌ¼Ç »ç¿ë Å×½ºÆ®");
+		System.out.println("ì–´ë…¸í…Œì´ì…˜ ì‚¬ìš© í…ŒìŠ¤íŠ¸");
 	}
 
 	public static void main(String[] args) {
@@ -17,10 +17,10 @@ public class Ex2AnnotationTest {
 	}
 }
 
-//¾î³ëÅ×ÀÌ¼ÇÀ» ½ÇÁ¦·Î ¸¸µå´Â ÀÏÀº µå¹°Áö¸¸ ½ºÇÁ¸µ ÇÁ·¹ÀÓ¿öÅ©¿¡¼­ »ç¿ëµÇ´Â ¹æ½ÄÀÌ¹Ç·Î
-//¿ø¸®¸¦ ÀÌÇØÇÏµµ·Ï ÇÑ´Ù.
-//BuiltIn AnnotationÀ» »ğÀÔÇØ¾ß ÇÑ´Ù.
-@Target(ElementType.METHOD)//¸Ş¼­µå¿¡ ºÙÀÏ °Å¿¡¿ä
-@Retention(RetentionPolicy.RUNTIME)//·±Å¸ÀÓ ½ÇÇà ÁßÀÎ µ¿¾È ¾î³ëÅ×ÀÌ¼Ç Á¤º¸°¡ º¸°üµÇµµ·Ï ÇÏ°Ú½À´Ï´Ù.
-@interface User2 {// ³¡...
+//ì–´ë…¸í…Œì´ì…˜ì„ ì‹¤ì œë¡œ ë§Œë“œëŠ” ì¼ì€ ë“œë¬¼ì§€ë§Œ ìŠ¤í”„ë§ í”„ë ˆì„ì›Œí¬ì—ì„œ ì‚¬ìš©ë˜ëŠ” ë°©ì‹ì´ë¯€ë¡œ
+//ì›ë¦¬ë¥¼ ì´í•´í•˜ë„ë¡ í•œë‹¤.
+//BuiltIn Annotationì„ ì‚½ì…í•´ì•¼ í•œë‹¤.
+@Target(ElementType.METHOD)//ë©”ì„œë“œì— ë¶™ì¼ ê±°ì—ìš”
+@Retention(RetentionPolicy.RUNTIME)//ëŸ°íƒ€ì„ ì‹¤í–‰ ì¤‘ì¸ ë™ì•ˆ ì–´ë…¸í…Œì´ì…˜ ì •ë³´ê°€ ë³´ê´€ë˜ë„ë¡ í•˜ê² ìŠµë‹ˆë‹¤.
+@interface User2 {// ë...
 }

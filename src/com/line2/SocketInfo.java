@@ -1,10 +1,10 @@
-package com.line2;
+ï»¿package com.line2;
 
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-// ¼­¹ö¿ë
-// Å¬¶óÀÌ¾ğÆ®ÀÇ ¼ÒÄÏ Å¬·¡½º
+// ì„œë²„ìš©
+// í´ë¼ì´ì–¸íŠ¸ì˜ ì†Œì¼“ í´ë˜ìŠ¤
 public class SocketInfo {
 	String userName;
 	Socket sock;

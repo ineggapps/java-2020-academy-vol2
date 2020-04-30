@@ -1,4 +1,4 @@
-package d200407;
+ï»¿package d200407;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,21 +18,21 @@ public class Quiz1Answer {
 		s.loadFile("score1.txt");
 //		s.saveOrderByTot("score2.txt");
 		s.saveOrderByName("score2.txt");
-		System.out.println("ÀÛ¾÷ ¿Ï·á...");
+		System.out.println("ì‘ì—… ì™„ë£Œ...");
 	}
 }
 
-//¹®Á¦ score1.txtÆÄÀÏÀ» ÀĞ¾îµé¿© ÃÑÁ¡, Æò±ÕÀ» ±¸ÇÏ¿© ÃÑÁ¡ÀÌ ³ôÀº ¼øÀ¸·Î ³»¸²Â÷¼øÇÑ´Ù.
-//È«±æµ¿ 80 90 70
-//½É½ÉÇØ 90 90 90
-//¹Ú±æµ¿ 80 80 20
-//¾È½É½É 90 40 22
+//ë¬¸ì œ score1.txtíŒŒì¼ì„ ì½ì–´ë“¤ì—¬ ì´ì , í‰ê· ì„ êµ¬í•˜ì—¬ ì´ì ì´ ë†’ì€ ìˆœìœ¼ë¡œ ë‚´ë¦¼ì°¨ìˆœí•œë‹¤.
+//í™ê¸¸ë™ 80 90 70
+//ì‹¬ì‹¬í•´ 90 90 90
+//ë°•ê¸¸ë™ 80 80 20
+//ì•ˆì‹¬ì‹¬ 90 40 22
 
-//´ÙÀ½ÀÇ °á°ú¹°À» score2.txt¿¡ ÀúÀåÇÑ´Ù.
-//½É½ÉÇØ 90 90 90 270 90
-//È«±æµ¿ 80 90 70 240 80
-//¹Ú±æµ¿ 80 80 20 180 60
-//¾È½É½É 90 40 22 152 50
+//ë‹¤ìŒì˜ ê²°ê³¼ë¬¼ì„ score2.txtì— ì €ì¥í•œë‹¤.
+//ì‹¬ì‹¬í•´ 90 90 90 270 90
+//í™ê¸¸ë™ 80 90 70 240 80
+//ë°•ê¸¸ë™ 80 80 20 180 60
+//ì•ˆì‹¬ì‹¬ 90 40 22 152 50
 
 class Score {
 	private List<ScoreVO> list = new ArrayList<ScoreVO>();
@@ -51,7 +51,7 @@ class Score {
 				}
 				ScoreVO vo = new ScoreVO();
 				String[] ss = s.split("\\s");
-				// Á¤±ÔÇ¥Çö½Ä \\s´Â ½ºÆäÀÌ½º ,ÅÇ µîÀÇ ¸ğµç °ø¹é À¯Çü
+				// ì •ê·œí‘œí˜„ì‹ \\sëŠ” ìŠ¤í˜ì´ìŠ¤ ,íƒ­ ë“±ì˜ ëª¨ë“  ê³µë°± ìœ í˜•
 				if (ss.length != 4) {
 					continue;
 				}
@@ -62,7 +62,7 @@ class Score {
 				list.add(vo);
 			}
 		} catch (FileNotFoundException e) {
-			System.out.println(pathname + "Àº Á¸ÀçÇÏÁö ¾Ê´Â ÆÄÀÏÀÔ´Ï´Ù.");
+			System.out.println(pathname + "ì€ ì¡´ì¬í•˜ì§€ ì•ŠëŠ” íŒŒì¼ì…ë‹ˆë‹¤.");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -79,22 +79,22 @@ class Score {
 
 	public void saveOrderByTot(String pathname) {
 		if (list.size() == 0) {
-			System.out.println("µî·ÏµÈ ÀÚ·á°¡ ¾ø½À´Ï´Ù.");
+			System.out.println("ë“±ë¡ëœ ìë£Œê°€ ì—†ìŠµë‹ˆë‹¤.");
 			return;
 		}
 
 		BufferedWriter bw = null;
 		try {
 			bw = new BufferedWriter(new FileWriter(pathname));
-			// ÃÑÁ¡ ³»¸²Â÷¼ø Á¤·ÄÇÏ±â
-			// (+½ÉÈ­) ÃÑÁ¡ÀÌ °°À¸¸é ±¹¾î ³»¸²Â÷¼ø Á¤·ÄÇÏ±â
+			// ì´ì  ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬í•˜ê¸°
+			// (+ì‹¬í™”) ì´ì ì´ ê°™ìœ¼ë©´ êµ­ì–´ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬í•˜ê¸°
 			Comparator<ScoreVO> comp = new Comparator<ScoreVO>() {
 				@Override
 				public int compare(ScoreVO o1, ScoreVO o2) {
-					if (o1.getTot() != o2.getTot()) { // ÃÑÁ¡ÀÌ ´Ù¸£¸é...
-						return o2.getTot() - o1.getTot(); // ÃÑÁ¡ °¡Áö°í ºñ±³ÇÏ±â
-					} else {// ÃÑÁ¡ÀÌ µ¿Á¡ÀÌ¸é?
-						return o2.getKor() - o1.getKor(); // ±¹¾îÁ¡¼ö °¡Áö°í ºñ±³ÇÏ±â
+					if (o1.getTot() != o2.getTot()) { // ì´ì ì´ ë‹¤ë¥´ë©´...
+						return o2.getTot() - o1.getTot(); // ì´ì  ê°€ì§€ê³  ë¹„êµí•˜ê¸°
+					} else {// ì´ì ì´ ë™ì ì´ë©´?
+						return o2.getKor() - o1.getKor(); // êµ­ì–´ì ìˆ˜ ê°€ì§€ê³  ë¹„êµí•˜ê¸°
 					}
 				}
 			};
@@ -104,7 +104,7 @@ class Score {
 				s = vo.getName() + "\t" + vo.getKor() + "\t" + vo.getEng() + "\t" + vo.getMat() + "\t" + vo.getTot()
 						+ "\t" + vo.getAve() + "\n";
 				bw.write(s);
-				System.out.print(s);// µğ¹ö±ë
+				System.out.print(s);// ë””ë²„ê¹…
 			}
 			bw.flush();
 		} catch (IOException e) {
@@ -122,15 +122,15 @@ class Score {
 	}
 	public void saveOrderByName(String pathname) {
 		if (list.size() == 0) {
-			System.out.println("µî·ÏµÈ ÀÚ·á°¡ ¾ø½À´Ï´Ù.");
+			System.out.println("ë“±ë¡ëœ ìë£Œê°€ ì—†ìŠµë‹ˆë‹¤.");
 			return;
 		}
 
 		BufferedWriter bw = null;
 		try {
 			bw = new BufferedWriter(new FileWriter(pathname));
-			// ÃÑÁ¡ ³»¸²Â÷¼ø Á¤·ÄÇÏ±â
-			// (+½ÉÈ­) ÃÑÁ¡ÀÌ °°À¸¸é ±¹¾î ³»¸²Â÷¼ø Á¤·ÄÇÏ±â
+			// ì´ì  ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬í•˜ê¸°
+			// (+ì‹¬í™”) ì´ì ì´ ê°™ìœ¼ë©´ êµ­ì–´ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬í•˜ê¸°
 			Comparator<ScoreVO> comp = new Comparator<ScoreVO>() {
 				@Override
 				public int compare(ScoreVO o1, ScoreVO o2) {
@@ -143,7 +143,7 @@ class Score {
 				s = vo.getName() + "\t" + vo.getKor() + "\t" + vo.getEng() + "\t" + vo.getMat() + "\t" + vo.getTot()
 						+ "\t" + vo.getAve() + "\n";
 				bw.write(s);
-				System.out.print(s);// µğ¹ö±ë
+				System.out.print(s);// ë””ë²„ê¹…
 			}
 			bw.flush();
 		} catch (IOException e) {

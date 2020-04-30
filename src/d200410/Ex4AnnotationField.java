@@ -1,4 +1,4 @@
-package d200410;
+ï»¿package d200410;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -12,12 +12,12 @@ public class Ex4AnnotationField {
 		try {
 			User4 user = mc.get(User4.class);
 			/*
-			 MyContainer¿¡¼­ ¾î³ëÅ×ÀÌ¼ÇÀÇ value¼Ó¼ºÀ» ÀÌ¿ëÇÏ¿© StringÀÇ º¯¼ı°ª¸¸ ÁöÁ¤ÇØÁÖ¾ú´Ù.
-			 ±×·¯¹Ç·Î IntegerÇüÀÎ price¿¡´Â ¾Æ¹« °ªµµ µé¾îÀÖÁö ¾ÊÀ½.
-			 ¾î³ëÅ×ÀÌ¼ÇÀ» ¾î¶»°Ô »ç¿ëÇÏ´ÂÁö Á¤µµ¸¸ ÀÌÇØÇÏ¸é µÊ.
+			 MyContainerì—ì„œ ì–´ë…¸í…Œì´ì…˜ì˜ valueì†ì„±ì„ ì´ìš©í•˜ì—¬ Stringì˜ ë³€ìˆ«ê°’ë§Œ ì§€ì •í•´ì£¼ì—ˆë‹¤.
+			 ê·¸ëŸ¬ë¯€ë¡œ Integerí˜•ì¸ priceì—ëŠ” ì•„ë¬´ ê°’ë„ ë“¤ì–´ìˆì§€ ì•ŠìŒ.
+			 ì–´ë…¸í…Œì´ì…˜ì„ ì–´ë–»ê²Œ ì‚¬ìš©í•˜ëŠ”ì§€ ì •ë„ë§Œ ì´í•´í•˜ë©´ ë¨.
 			 * */
-			System.out.println(user.getSubject1());//ÀÚ¹Ù
-			System.out.println(user.getSubject2());//½ºÇÁ¸µ
+			System.out.println(user.getSubject1());//ìë°”
+			System.out.println(user.getSubject2());//ìŠ¤í”„ë§
 			System.out.println(user.getPrice());//null
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -28,14 +28,14 @@ public class Ex4AnnotationField {
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @interface MyAnno4 {
-	String value() default "ÀÚ¹Ù";
+	String value() default "ìë°”";
 }
 
 class User4 {
 	@MyAnno4
 	private String subject1;
 
-	@MyAnno4("½ºÇÁ¸µ")
+	@MyAnno4("ìŠ¤í”„ë§")
 	private String subject2;
 
 	@MyAnno4
@@ -61,16 +61,16 @@ class MyContainer {
 		for (Field f : ff) {
 			MyAnno4 ma = f.getAnnotation(MyAnno4.class);
 			if (ma != null && f.getType() == String.class) {
-				f.setAccessible(true);// private ÇÊµå³ª ¸Ş¼­µå Á¢±ÙÀÌ °¡´ÉÇÏµµ·Ï ¼³Á¤
+				f.setAccessible(true);// private í•„ë“œë‚˜ ë©”ì„œë“œ ì ‘ê·¼ì´ ê°€ëŠ¥í•˜ë„ë¡ ì„¤ì •
 				f.set(t, ma.value());
 			}
 		}
 		return t;
 	}
 
-	@SuppressWarnings("unchecked") //Á¦³×¸¯ Ä³½ºÆÃ °æ°í ¹«½Ã
+	@SuppressWarnings("unchecked") //ì œë„¤ë¦­ ìºìŠ¤íŒ… ê²½ê³  ë¬´ì‹œ
 	public <T> T get(Class<?> cls) throws InstantiationException, IllegalAccessException {
-		T t = (T) cls.newInstance(); //Á¦³×¸¯Àº Ä³½ºÆÃÀ» ¸ø ÇÏ´Âµ¥ ºÒ°¡ÇÇÇÑ °æ¿ì°¡ ¹ß»ıÇÒ ¼ö ÀÖÀ½.
+		T t = (T) cls.newInstance(); //ì œë„¤ë¦­ì€ ìºìŠ¤íŒ…ì„ ëª» í•˜ëŠ”ë° ë¶ˆê°€í”¼í•œ ê²½ìš°ê°€ ë°œìƒí•  ìˆ˜ ìˆìŒ.
 		t = invokeAnn(t);
 		return t;
 	}

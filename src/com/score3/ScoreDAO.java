@@ -1,4 +1,4 @@
-package com.score3;
+ï»¿package com.score3;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +12,6 @@ public interface ScoreDAO {
 	public List<ScoreDTO> listScore(String name);
 	public List<ScoreDTO> listScore();
 	
-	//±¹¿µ¼ö ÃÑÁ¡
+	//êµ­ì˜ìˆ˜ ì´ì 
 	public Map<String, Integer> averageScore();
 }

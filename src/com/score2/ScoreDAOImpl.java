@@ -1,4 +1,4 @@
-package com.score2;
+ï»¿package com.score2;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,15 +20,15 @@ public class ScoreDAOImpl implements ScoreDAO {
 		try {
 			sql = "INSERT INTO score(hak, name, birth, kor, eng, mat) VALUES(?, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
-			// IN ÆÄ¶ó¹ÌÅÍ °ª ¼³Á¤
+			// IN íŒŒë¼ë¯¸í„° ê°’ ì„¤ì •
 			pstmt.setString(1, dto.getHak());
 			pstmt.setString(2, dto.getName());
 			pstmt.setString(3, dto.getBirth());
 			pstmt.setInt(4, dto.getKor());
 			pstmt.setInt(5, dto.getEng());
 			pstmt.setInt(6, dto.getMat());
-			// Äõ¸® ½ÇÇà
-			result = pstmt.executeUpdate(/* Äõ¸® »ğÀÔÇÏÁö ¾Ê´Â´Ù */);
+			// ì¿¼ë¦¬ ì‹¤í–‰
+			result = pstmt.executeUpdate(/* ì¿¼ë¦¬ ì‚½ì…í•˜ì§€ ì•ŠëŠ”ë‹¤ */);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -45,7 +45,7 @@ public class ScoreDAOImpl implements ScoreDAO {
 	}
 
 	/*
-	 * ÀÌ¸§ ³Î? À¯Çü ----- -------- ------------ HAK NOT NULL VARCHAR2(30) NAME NOT NULL
+	 * ì´ë¦„ ë„? ìœ í˜• ----- -------- ------------ HAK NOT NULL VARCHAR2(30) NAME NOT NULL
 	 * VARCHAR2(30) BIRTH NOT NULL DATE KOR NOT NULL NUMBER(3) MAT NOT NULL
 	 * NUMBER(3) ENG NOT NULL NUMBER(3)
 	 */
@@ -58,14 +58,14 @@ public class ScoreDAOImpl implements ScoreDAO {
 		try {
 			sql = "UPDATE score SET name=?, birth=?, kor=?, eng=?, mat=? WHERE hak=?";
 			pstmt = conn.prepareStatement(sql);
-			// IN ÆÄ¶ó¹ÌÅÍ
+			// IN íŒŒë¼ë¯¸í„°
 			pstmt.setString(1, dto.getName());
 			pstmt.setString(2, dto.getBirth());
 			pstmt.setInt(3, dto.getKor());
 			pstmt.setInt(4, dto.getEng());
 			pstmt.setInt(5, dto.getMat());
 			pstmt.setString(6, dto.getHak());
-			// Äõ¸® ½ÇÇà
+			// ì¿¼ë¦¬ ì‹¤í–‰
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -157,7 +157,7 @@ public class ScoreDAOImpl implements ScoreDAO {
 		sb.append("FROM score ");
 		sb.append("WHERE INSTR(name, ?)=1");
 //		sb.append("WHERE name like ? || '%'");
-//		sb.append("WHERE name like '%' || ? || '%' "); // ÀÌ·¸°Ô ÀÛ¼ºÇÒ ¼öµµ ÀÖÀ½.
+//		sb.append("WHERE name like '%' || ? || '%' "); // ì´ë ‡ê²Œ ì‘ì„±í•  ìˆ˜ë„ ìˆìŒ.
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setString(1, name);
@@ -217,7 +217,7 @@ public class ScoreDAOImpl implements ScoreDAO {
 				dto.setTot(rs.getInt("tot"));
 				dto.setAve(rs.getInt("ave"));
 				dto.setRank(rs.getInt("rank"));
-				list.add(dto);// ArrayList¿¡ ÀúÀå
+				list.add(dto);// ArrayListì— ì €ì¥
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

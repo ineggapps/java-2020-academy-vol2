@@ -1,42 +1,42 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//FileÅ¬·¡½º
+//Fileí´ë˜ìŠ¤
 public class Ex7File {
 	public static void main(String[] args) {
-		String appDir = System.getProperty("user.dir");//ÇöÀç ÀÛ¾÷ÇÏ°í ÀÖ´Â °æ·Î¸¦ ¸»ÇÑ´Ù.
-		String pathname = appDir + File.separator + "test.txt";//File.separator Æú´õ¿Í ÆÄÀÏÀ» ±¸ºĞÇÏ´Â ±¸ºĞÀÚ
-		//Unix¿¡¼­´Â ÆÄÀÏ ±¸ºĞÀÚ°¡ /(½½·¡½Ã)ÀÌ°í Windows¸é \(¿ª½½·¡½Ã)ÀÌ¹Ç·Î Java°¡ ¿î¿µÃ¼Á¦º°·Î ¾Ë¾Æ¼­ ±¸ºĞÀÚ¸¦ ÁöÁ¤ÇØ ÁØ´Ù.
-		// String pathname = "test.txt";¿Í °°À½.
+		String appDir = System.getProperty("user.dir");//í˜„ì¬ ì‘ì—…í•˜ê³  ìˆëŠ” ê²½ë¡œë¥¼ ë§í•œë‹¤.
+		String pathname = appDir + File.separator + "test.txt";//File.separator í´ë”ì™€ íŒŒì¼ì„ êµ¬ë¶„í•˜ëŠ” êµ¬ë¶„ì
+		//Unixì—ì„œëŠ” íŒŒì¼ êµ¬ë¶„ìê°€ /(ìŠ¬ë˜ì‹œ)ì´ê³  Windowsë©´ \(ì—­ìŠ¬ë˜ì‹œ)ì´ë¯€ë¡œ Javaê°€ ìš´ì˜ì²´ì œë³„ë¡œ ì•Œì•„ì„œ êµ¬ë¶„ìë¥¼ ì§€ì •í•´ ì¤€ë‹¤.
+		// String pathname = "test.txt";ì™€ ê°™ìŒ.
 
-		// File: ÆÄÀÏ ¹× Æú´õ Á¤º¸¸¦ °ü¸®.
+		// File: íŒŒì¼ ë° í´ë” ì •ë³´ë¥¼ ê´€ë¦¬.
 		File f = new File(pathname);
 		try {
 			if (!f.exists()) {
-				System.out.println("Á¸ÀçÇÏÁö ¾Ê´Â ÆÄÀÏ(Æú´õ)");
+				System.out.println("ì¡´ì¬í•˜ì§€ ì•ŠëŠ” íŒŒì¼(í´ë”)");
 				return;
 			}
 
-			System.out.println("ÆÄÀÏ Á¤º¸ Ãâ·Â ...");
-			System.out.println("Çö ÀÛ¾÷°æ·Î: " + appDir);
-			System.out.println("ÆÄÀÏ¸í: " + f.getName());// ÆÄÀÏ¸í.È®ÀåÀÚ
-			System.out.println("ÆÄÀÏ ±æÀÌ(long): " + f.length());// ´ÜÀ§: byte
+			System.out.println("íŒŒì¼ ì •ë³´ ì¶œë ¥ ...");
+			System.out.println("í˜„ ì‘ì—…ê²½ë¡œ: " + appDir);
+			System.out.println("íŒŒì¼ëª…: " + f.getName());// íŒŒì¼ëª….í™•ì¥ì
+			System.out.println("íŒŒì¼ ê¸¸ì´(long): " + f.length());// ë‹¨ìœ„: byte
 
-			// Àı´ë°æ·Î, °æ·Î1, °æ·Î2ÀÇ °á±£°ªÀÌ ¸ğµÎ ¶È°°´Ù.
-			System.out.println("Àı´ë°æ·Î: " + f.getAbsolutePath());// °æ·Î\ÆÄÀÏ¸í.È®ÀåÀÚ
-			System.out.println("°æ·Î: " + f.getPath());//
-			System.out.println("Ç¥ÁØ °æ·Î: " + f.getCanonicalPath());// Ãß»ó°æ·Î¿¡ ´ëÇÑ ÀüÁ¦ °æ·Î¸¦ ¹İÈ¯
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");// ÁöÁ¤ÇÑ ³¯Â¥ Çü½Ä´ë·Î Date°´Ã¼ÀÇ °á±£°ªÀ» Ãâ·Â
-			System.out.println("ÆÄÀÏÀÛ¼ºÀÏ: " + new Date(f.lastModified()));
+			// ì ˆëŒ€ê²½ë¡œ, ê²½ë¡œ1, ê²½ë¡œ2ì˜ ê²°ê´ê°’ì´ ëª¨ë‘ ë˜‘ê°™ë‹¤.
+			System.out.println("ì ˆëŒ€ê²½ë¡œ: " + f.getAbsolutePath());// ê²½ë¡œ\íŒŒì¼ëª….í™•ì¥ì
+			System.out.println("ê²½ë¡œ: " + f.getPath());//
+			System.out.println("í‘œì¤€ ê²½ë¡œ: " + f.getCanonicalPath());// ì¶”ìƒê²½ë¡œì— ëŒ€í•œ ì „ì œ ê²½ë¡œë¥¼ ë°˜í™˜
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");// ì§€ì •í•œ ë‚ ì§œ í˜•ì‹ëŒ€ë¡œ Dateê°ì²´ì˜ ê²°ê´ê°’ì„ ì¶œë ¥
+			System.out.println("íŒŒì¼ì‘ì„±ì¼: " + new Date(f.lastModified()));
 			String s = sdf.format(new Date(f.lastModified()));
-			System.out.println("¸¸µç ³¯Â¥: " + s);
+			System.out.println("ë§Œë“  ë‚ ì§œ: " + s);
 
-			System.out.println("ÆÄÀÏ °æ·Î¸¸: " + f.getParent());
-			System.out.println("ÀĞ±â ¼Ó¼º: " + f.canRead());
-			System.out.println("¾²±â ¼Ó¼º: " + f.canWrite());
+			System.out.println("íŒŒì¼ ê²½ë¡œë§Œ: " + f.getParent());
+			System.out.println("ì½ê¸° ì†ì„±: " + f.canRead());
+			System.out.println("ì“°ê¸° ì†ì„±: " + f.canWrite());
 			
 		} catch (Exception e) {
 			e.printStackTrace();

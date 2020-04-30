@@ -1,4 +1,4 @@
-package d200409;
+ï»¿package d200409;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -13,9 +13,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-//1:1 Å¬¶óÀÌ¾ðÆ® 
-//Ex4ChatServer ¸ÕÀú ½ÇÇàÇÏ°í Ex5ChatClient½ÇÇà!
-//µÑ Áß¿¡ ÇÏ³ª Á¾·á ½Ã ÀüºÎ ²ô°í ´Ù½Ã ServerºÎÅÍ ½ÇÇàÇÏ±â
+//1:1 í´ë¼ì´ì–¸íŠ¸ 
+//Ex4ChatServer ë¨¼ì € ì‹¤í–‰í•˜ê³  Ex5ChatClientì‹¤í–‰!
+//ë‘˜ ì¤‘ì— í•˜ë‚˜ ì¢…ë£Œ ì‹œ ì „ë¶€ ë„ê³  ë‹¤ì‹œ Serverë¶€í„° ì‹¤í–‰í•˜ê¸°
 public class Ex5ChatClient extends JFrame implements Runnable, ActionListener {
 	/**
 	 * 
@@ -27,20 +27,20 @@ public class Ex5ChatClient extends JFrame implements Runnable, ActionListener {
 	private Socket sc = null;
 	private String host = "127.0.0.1";
 	private int port = 8000; 
-	private String nickName = "¶óÀÌ¾ð";
+	private String nickName = "ë¼ì´ì–¸";
 
 	public Ex5ChatClient() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		ta.setEditable(false);
-		// ½ºÅ©·Ñ¹Ù ¸¸µé±â
+		// ìŠ¤í¬ë¡¤ë°” ë§Œë“¤ê¸°
 		JScrollPane sp = new JScrollPane(ta);
 		add(sp, BorderLayout.CENTER);
 
 		tf.addActionListener(this);
 		add(tf, BorderLayout.SOUTH);
 
-		setTitle("Ã¤ÆÃ - Å¬¶óÀÌ¾ðÆ® (" + nickName + ")");
+		setTitle("ì±„íŒ… - í´ë¼ì´ì–¸íŠ¸ (" + nickName + ")");
 		setSize(500, 500);
 		setResizable(false);
 		setVisible(true);
@@ -51,15 +51,15 @@ public class Ex5ChatClient extends JFrame implements Runnable, ActionListener {
 	}
 
 	public void connect() {
-		// ¼­¹ö¿¡ ¿¬°á
+		// ì„œë²„ì— ì—°ê²°
 		try {
 			sc = new Socket(host, port);
-			ta.setText("¼­¹ö¿¡ Á¢¼Ó!!\n");
+			ta.setText("ì„œë²„ì— ì ‘ì†!!\n");
 			Thread t = new Thread(this);
 			t.start();
 		} catch (Exception e) {
 			sc = null;
-			System.out.println(e.toString());// ¼­¹ö°¡ Á×¾î ÀÖÀ» ¶§
+			System.out.println(e.toString());// ì„œë²„ê°€ ì£½ì–´ ìžˆì„ ë•Œ
 		}
 	}
 
@@ -71,15 +71,15 @@ public class Ex5ChatClient extends JFrame implements Runnable, ActionListener {
 				return;
 			}
 			try {
-				// Àü¼Û
+				// ì „ì†¡
 				if (sc == null) {
 					return;
 				}
-				// ¼­¹ö¿¡ Á¤º¸ º¸³»±â
+				// ì„œë²„ì— ì •ë³´ ë³´ë‚´ê¸°
 				PrintWriter pw = new PrintWriter(sc.getOutputStream(), true);
 				pw.println(nickName + " > " + s);
 
-				ta.append("³ª > " + s);
+				ta.append("ë‚˜ > " + s);
 				ta.setCaretPosition(ta.getDocument().getLength());
 				tf.setText("");
 				tf.requestFocus();
@@ -102,7 +102,7 @@ public class Ex5ChatClient extends JFrame implements Runnable, ActionListener {
 				ta.append(s + "\n");
 			}
 		} catch (Exception e) {
-			s = "¼­¹ö°¡ Àú½ÂÀ¸·Î °¡¼Ì½À´Ï´Ù.\n";
+			s = "ì„œë²„ê°€ ì €ìŠ¹ìœ¼ë¡œ ê°€ì…¨ìŠµë‹ˆë‹¤.\n";
 			ta.append(s);
 			sc = null;
 			System.out.println(e.toString());

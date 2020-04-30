@@ -1,4 +1,4 @@
-package com.line2;
+﻿package com.line2;
 
 import java.io.Serializable;
 

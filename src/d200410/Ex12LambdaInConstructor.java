@@ -1,10 +1,10 @@
-package d200410;
+ï»¿package d200410;
 
 import java.util.function.Supplier;
 
 public class Ex12LambdaInConstructor {
 	public static void main(String[] args) {
-		// SupplierÀº ¸Å°³º¯¼ö°¡ ¾ø°í ¹İÈ¯°ªÀÌ ÀÖÀ½. ÀÌ¹Ì Á¤ÀÇµÈ ¶÷´ÙÇü ÀÎÅÍÆäÀÌ½º (ÅÛÇÃ¸´ Á¤µµ·Î »ı°¢)
+		// Supplierì€ ë§¤ê°œë³€ìˆ˜ê°€ ì—†ê³  ë°˜í™˜ê°’ì´ ìˆìŒ. ì´ë¯¸ ì •ì˜ëœ ëŒë‹¤í˜• ì¸í„°í˜ì´ìŠ¤ (í…œí”Œë¦¿ ì •ë„ë¡œ ìƒê°)
 		Supplier<Object> o1 = () -> new Object();
 		/*
 		 public interface Supplier<T> {
@@ -14,9 +14,9 @@ public class Ex12LambdaInConstructor {
 		Object ob1 = o1.get();
 		System.out.println(ob1);
 
-		////////// ´õ °£´ÜÇÏ°Ô!!
-		// »ı¼ºÀÚ ¸Ş¼­µå ÂüÁ¶
-		Supplier<Object> o2 = Object::new;//À§ÀÇ ¼Ò½º ÄÚµå¸¦ ´õ °£´ÜÇÏ°Ô ÁÙ¿´³×!?
+		////////// ë” ê°„ë‹¨í•˜ê²Œ!!
+		// ìƒì„±ì ë©”ì„œë“œ ì°¸ì¡°
+		Supplier<Object> o2 = Object::new;//ìœ„ì˜ ì†ŒìŠ¤ ì½”ë“œë¥¼ ë” ê°„ë‹¨í•˜ê²Œ ì¤„ì˜€ë„¤!?
 		Object ob2 = o2.get();
 		System.out.println(ob2);
 	}

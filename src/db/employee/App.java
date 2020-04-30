@@ -1,4 +1,4 @@
-package db.employee;
+ï»¿package db.employee;
 
 import java.util.Scanner;
 
@@ -11,13 +11,13 @@ public class App {
 		Employee emp=new Employee();
 		Salary sal=new Salary(emp);
 		
-		System.out.println("ÀÎ»ç°ü¸® ÇÁ·Î±×·¥");
+		System.out.println("ì¸ì‚¬ê´€ë¦¬ í”„ë¡œê·¸ëž¨");
 		
 		int ch;
 		while(true) {
 			System.out.println("\n[Main]");
 			do {
-				System.out.print("1.»ç¿ø°ü¸® 2.±Þ¿©°ü¸® 3.Á¾·á => ");
+				System.out.print("1.ì‚¬ì›ê´€ë¦¬ 2.ê¸‰ì—¬ê´€ë¦¬ 3.ì¢…ë£Œ => ");
 				ch = sc.nextInt();
 			}while(ch<1||ch>3);
 			

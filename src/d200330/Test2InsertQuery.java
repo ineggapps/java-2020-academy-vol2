@@ -1,4 +1,4 @@
-package d200330;
+ï»¿package d200330;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -8,19 +8,19 @@ import com.util.DBConn;
 
 public class Test2InsertQuery {
 	public static void main(String[] args) {
-		Connection conn = DBConn.getConnection(); //sql developer³ª sqlplus¿¡¼­ ·Î±×ÀÎÇÏ´Â °úÁ¤ - DriverManager¿¡¼­ °¡Á®¿Â´Ù.
-		Statement stmt = null; //Äõ¸®¸¦ ½ÇÇàÇÏ´Â °´Ã¼
+		Connection conn = DBConn.getConnection(); //sql developerë‚˜ sqlplusì—ì„œ ë¡œê·¸ì¸í•˜ëŠ” ê³¼ì • - DriverManagerì—ì„œ ê°€ì ¸ì˜¨ë‹¤.
+		Statement stmt = null; //ì¿¼ë¦¬ë¥¼ ì‹¤í–‰í•˜ëŠ” ê°ì²´
 		String sql = "SELECT * FROM score";
 		int result = 0;
 		try {
-			stmt = conn.createStatement();//Connection°´Ã¼¿¡ Statement¸¦ °¡Áö°í ÀÖÀ½.
-			// sqlplus¿¡¼­ »ğÀÔÇÏµíÀÌ ¹®ÀÚ¿­ÀÇ °æ¿ì È¬µû¿ÈÇ¥('')·Î °¨½ÎÁÖ¾î¾ß ÇÑ´Ù.
+			stmt = conn.createStatement();//Connectionê°ì²´ì— Statementë¥¼ ê°€ì§€ê³  ìˆìŒ.
+			// sqlplusì—ì„œ ì‚½ì…í•˜ë“¯ì´ ë¬¸ìì—´ì˜ ê²½ìš° í™‘ë”°ì˜´í‘œ('')ë¡œ ê°ì‹¸ì£¼ì–´ì•¼ í•œë‹¤.
 			sql = "INSERT INTO score(hak,name,birth,kor,eng,mat) VALUES ";
-			sql += "('3333','½É½ÉÇØ','1999-01-10',80,90,70)"; //±¸¹® ³»¿¡ ';'Àº ³ÖÁö ¾Ê´Â´Ù.
-			// ¼¼¹ÌÄİ·ĞÀº sqlplus³ª sql developer¿¡¼­ ¸í·ÉÀÇ ³¡À» ±¸ºĞÇÏ±â À§ÇØ¼­ »ç¿ëÇÏ´Â °ÍÀÌ´Ù.
-			// ¼¼¹ÌÄİ·ĞÀ» »ğÀÔÇÏ¸é ORA-00933: SQL ¸í·É¾î°¡ ¿Ã¹Ù¸£°Ô Á¾·áµÇÁö ¾Ê¾Ò½À´Ï´Ù ¸Ş½ÃÁö°¡ Ãâ·Â.
-			result = stmt.executeUpdate(sql); //¹üÀ§¸¦ Àâ°í Äõ¸®¸¦ ½ÇÇàÇÏ´Â °úÁ¤ 
-			System.out.println(result + "ÇàÀÌ Ãß°¡µÇ¾ú½À´Ï´Ù.");
+			sql += "('3333','ì‹¬ì‹¬í•´','1999-01-10',80,90,70)"; //êµ¬ë¬¸ ë‚´ì— ';'ì€ ë„£ì§€ ì•ŠëŠ”ë‹¤.
+			// ì„¸ë¯¸ì½œë¡ ì€ sqlplusë‚˜ sql developerì—ì„œ ëª…ë ¹ì˜ ëì„ êµ¬ë¶„í•˜ê¸° ìœ„í•´ì„œ ì‚¬ìš©í•˜ëŠ” ê²ƒì´ë‹¤.
+			// ì„¸ë¯¸ì½œë¡ ì„ ì‚½ì…í•˜ë©´ ORA-00933: SQL ëª…ë ¹ì–´ê°€ ì˜¬ë°”ë¥´ê²Œ ì¢…ë£Œë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤ ë©”ì‹œì§€ê°€ ì¶œë ¥.
+			result = stmt.executeUpdate(sql); //ë²”ìœ„ë¥¼ ì¡ê³  ì¿¼ë¦¬ë¥¼ ì‹¤í–‰í•˜ëŠ” ê³¼ì • 
+			System.out.println(result + "í–‰ì´ ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {

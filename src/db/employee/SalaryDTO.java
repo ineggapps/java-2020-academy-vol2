@@ -1,11 +1,11 @@
-package db.employee;
+ï»¿package db.employee;
 
 public class SalaryDTO {
 	private int salaryNum;
 	private String sabeon;
 	private String name;
-	private String payDate;     // Áö±Ş³â¿ù
-	private String paymentDate; // Áö±ŞÀÏÀÚ
+	private String payDate;     // ì§€ê¸‰ë…„ì›”
+	private String paymentDate; // ì§€ê¸‰ì¼ì
 	private int pay;
 	private int sudang;
 	private int tot;

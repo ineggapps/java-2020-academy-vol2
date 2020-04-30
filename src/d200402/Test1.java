@@ -1,4 +1,4 @@
-package d200402;
+ï»¿package d200402;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,7 +10,7 @@ import com.util.DBConn;
 
 public class Test1 {
 	public static void main(String[] args) {
-		// Æ®·£Àè¼Ç ¿¹Á¦
+		// íŠ¸ëœì­ì…˜ ì˜ˆì œ
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Connection conn = DBConn.getConnection();
 		PreparedStatement pstmt = null;
@@ -18,20 +18,20 @@ public class Test1 {
 		String sql;
 		String id, name, birth, tel;
 		try {
-			System.out.print("¾ÆÀÌµğ ? ");
+			System.out.print("ì•„ì´ë”” ? ");
 			id = br.readLine();
-			System.out.print("ÀÌ¸§ ? ");
+			System.out.print("ì´ë¦„ ? ");
 			name = br.readLine();
-			System.out.print("»ıÀÏ ? ");
+			System.out.print("ìƒì¼ ? ");
 			birth = br.readLine();
-			System.out.print("ÀüÈ­¹øÈ£ ? ");
+			System.out.print("ì „í™”ë²ˆí˜¸ ? ");
 			tel = br.readLine();
 
-			// ¡á¡á¡á¡á¡á
-			// ÀÚµ¿ COMMIT µÇÁö ¾Êµµ·Ï ¼³Á¤(±âº»: ÀÚµ¿ commit)
+			// â– â– â– â– â– 
+			// ìë™ COMMIT ë˜ì§€ ì•Šë„ë¡ ì„¤ì •(ê¸°ë³¸: ìë™ commit)
 			conn.setAutoCommit(false);
 
-			// test1 Å×ÀÌºí »ğÀÔ
+			// test1 í…Œì´ë¸” ì‚½ì…
 			sql = "INSERT INTO test1(id, name) VALUES(?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -39,7 +39,7 @@ public class Test1 {
 			pstmt.executeUpdate();
 			pstmt.close();
 
-			// test2 Å×ÀÌºí »ğÀÔ
+			// test2 í…Œì´ë¸” ì‚½ì…
 			sql = "INSERT INTO test2(id, birth) VALUES(?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -47,7 +47,7 @@ public class Test1 {
 			pstmt.executeUpdate();
 			pstmt.close();
 
-			// test3 Å×ÀÌºí »ğÀÔ
+			// test3 í…Œì´ë¸” ì‚½ì…
 			sql = "INSERT INTO test3(id, tel) VALUES(?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -55,24 +55,24 @@ public class Test1 {
 			pstmt.executeUpdate();
 			pstmt = conn.prepareStatement(sql);
 
-			// ¡á¡á¡á¡á¡á COMMIT ¡á¡á¡á¡á¡á
+			// â– â– â– â– â–  COMMIT â– â– â– â– â– 
 			conn.commit();
-			System.out.println("Ãß°¡ ¼º°ø!");
+			System.out.println("ì¶”ê°€ ì„±ê³µ!");
 
 		} catch (SQLException e) {
-			// ¡á¡á¡á¡á¡á ROLLBACK ¡á¡á¡á¡á¡á
-			// Æ®·£Àè¼Ç Ã³¸® °ü·ÃµÈ ºÎºĞÀº ¹İµå½Ã SQLExceptionÀ¸·Î ¿¹¿Ü¸¦ Àâ¾ÆÁÖ¾î¾ß ÇÑ´Ù.
+			// â– â– â– â– â–  ROLLBACK â– â– â– â– â– 
+			// íŠ¸ëœì­ì…˜ ì²˜ë¦¬ ê´€ë ¨ëœ ë¶€ë¶„ì€ ë°˜ë“œì‹œ SQLExceptionìœ¼ë¡œ ì˜ˆì™¸ë¥¼ ì¡ì•„ì£¼ì–´ì•¼ í•œë‹¤.
 			try {
-				conn.rollback();// ½ÇÆĞ ½Ã ·Ñ¹éµµ ¼öµ¿À¸·Î Ã³¸®ÇØ¾ß ÇÑ´Ù.
+				conn.rollback();// ì‹¤íŒ¨ ì‹œ ë¡¤ë°±ë„ ìˆ˜ë™ìœ¼ë¡œ ì²˜ë¦¬í•´ì•¼ í•œë‹¤.
 			} catch (Exception e2) {
 			}
 //			e.printStackTrace();
-			System.out.println("Ãß°¡ ½ÇÆĞ " + e.getMessage());
+			System.out.println("ì¶”ê°€ ì‹¤íŒ¨ " + e.getMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {// ¡á¡á¡á¡á¡á
-				conn.setAutoCommit(true); // autocommit¼³Á¤À» ¿ø·¡´ë·Î º¹±¸ÇØ ÁÖ¾î¾ß ÇÑ´Ù.
+			try {// â– â– â– â– â– 
+				conn.setAutoCommit(true); // autocommitì„¤ì •ì„ ì›ë˜ëŒ€ë¡œ ë³µêµ¬í•´ ì£¼ì–´ì•¼ í•œë‹¤.
 			} catch (Exception e2) {
 			}
 			if (pstmt != null) {

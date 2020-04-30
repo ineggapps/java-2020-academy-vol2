@@ -1,7 +1,7 @@
-package com.score3;
+ï»¿package com.score3;
 /*
- 	- DTO(Data Transfer Object): µ¥ÀÌÅÍ Àü¼Û °´Ã¼, VO(Value Object)¿Í À¯»ç
- 	- DAO(Data Access Object): µ¥ÀÌÅÍ Ã³¸®¸¦ ÁÖ ¸ñÀûÀ¸·Î ÇÏ´Â Å¬·¡½º
+ 	- DTO(Data Transfer Object): ë°ì´í„° ì „ì†¡ ê°ì²´, VO(Value Object)ì™€ ìœ ì‚¬
+ 	- DAO(Data Access Object): ë°ì´í„° ì²˜ë¦¬ë¥¼ ì£¼ ëª©ì ìœ¼ë¡œ í•˜ëŠ” í´ë˜ìŠ¤
  	- CRUD: Create(Insert), Retrieve(Select) Update Delete
 */
 

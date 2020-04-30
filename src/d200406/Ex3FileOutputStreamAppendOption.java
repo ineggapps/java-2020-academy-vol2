@@ -1,17 +1,17 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.FileOutputStream;
-//¹ÙÀÌÆ® ÀÔÃâ·Â ½ºÆ®¸² ¿¹Á¦
+//ë°”ì´íŠ¸ ìž…ì¶œë ¥ ìŠ¤íŠ¸ë¦¼ ì˜ˆì œ
 public class Ex3FileOutputStreamAppendOption {
 	public static void main(String[] args) {
 		FileOutputStream fos = null;
 		int data;
 		try {
-//			±âÁ¸ ÆÄÀÏÀÌ Á¸ÀçÇÏ¸é µ¤¾î¾´´Ù. (Áö¿ì°í ´Ù½Ã ¸¸µê)
+//			ê¸°ì¡´ íŒŒì¼ì´ ì¡´ìž¬í•˜ë©´ ë®ì–´ì“´ë‹¤. (ì§€ìš°ê³  ë‹¤ì‹œ ë§Œë“¦)
 //			fos = new FileOutputStream("test.txt");
-//			±âÁ¸ ÆÄÀÏÀÌ ÀÖÀ¸¸é ÆÄÀÏ ³¡¿¡¼­ºÎÅÍ Ãß°¡ÇÑ´Ù
-			fos = new FileOutputStream("test.txt",true);//2¹øÂ° ¸Å°³º¯¼ö´Â boolean append ¿©ºÎÀÓ. true¸é µ¡ºÙ¿© ¾´´Ù.
-			System.out.print("³»¿ë ÀÔ·Â[Á¾·á: Ctrl+z] > ");
+//			ê¸°ì¡´ íŒŒì¼ì´ ìžˆìœ¼ë©´ íŒŒì¼ ëì—ì„œë¶€í„° ì¶”ê°€í•œë‹¤
+			fos = new FileOutputStream("test.txt",true);//2ë²ˆì§¸ ë§¤ê°œë³€ìˆ˜ëŠ” boolean append ì—¬ë¶€ìž„. trueë©´ ë§ë¶™ì—¬ ì“´ë‹¤.
+			System.out.print("ë‚´ìš© ìž…ë ¥[ì¢…ë£Œ: Ctrl+z] > ");
 			while ((data = System.in.read()) != 13) {
 				fos.write(data);
 			}

@@ -1,4 +1,4 @@
-package d200408;
+ï»¿package d200408;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -6,15 +6,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public class Ex2Deserialization {
-	@SuppressWarnings("unchecked") // ´Ü ¾Æ¹« ¶§³ª @SupressWarnings¸¦ ÀÔ·ÂÇÏÁö ¸» °Í.
+	@SuppressWarnings("unchecked") // ë‹¨ ì•„ë¬´ ë•Œë‚˜ @SupressWarningsë¥¼ ì…ë ¥í•˜ì§€ ë§ ê²ƒ.
 	public static void main(String[] args) {
 		HashMap<String, String> map;
 		ObjectInputStream ois = null;
-		String pathname = "test.txt"; //¹°·Ğ ÆÄÀÏÀÌ Á¸ÀçÇØ¾ß¸¸ °´Ã¼¸¦ ºÒ·¯¿Ã ¼ö ÀÖÀ½. (EX1¿¹Á¦ ½ÇÇà ÈÄ º» Å¬·¡½º ½ÇÇà)
+		String pathname = "test.txt"; //ë¬¼ë¡  íŒŒì¼ì´ ì¡´ì¬í•´ì•¼ë§Œ ê°ì²´ë¥¼ ë¶ˆëŸ¬ì˜¬ ìˆ˜ ìˆìŒ. (EX1ì˜ˆì œ ì‹¤í–‰ í›„ ë³¸ í´ë˜ìŠ¤ ì‹¤í–‰)
 		try {
-			// Ex1 Serialization ¿¹Á¦¿Í °°ÀÌ È®ÀÎÇÒ °Í.
+			// Ex1 Serialization ì˜ˆì œì™€ ê°™ì´ í™•ì¸í•  ê²ƒ.
 			ois = new ObjectInputStream(new FileInputStream(pathname));
-			map = (HashMap<String, String>) ois.readObject(); // Á¦³×¸¯Àº Ä³½ºÆÃÀÌ º»·¡ µÇÁö ¾ÊÁö¸¸ ÇöÀçÀÇ °æ¿ì¿¡´Â ¾îÂ¿ ¼ö ¾øÀÌ Ä³½ºÆÃÀÌ ÇÊ¿äÇÔ.
+			map = (HashMap<String, String>) ois.readObject(); // ì œë„¤ë¦­ì€ ìºìŠ¤íŒ…ì´ ë³¸ë˜ ë˜ì§€ ì•Šì§€ë§Œ í˜„ì¬ì˜ ê²½ìš°ì—ëŠ” ì–´ì©” ìˆ˜ ì—†ì´ ìºìŠ¤íŒ…ì´ í•„ìš”í•¨.
 			Iterator<String> it = map.keySet().iterator();
 			while (it.hasNext()) {
 				String key = it.next();

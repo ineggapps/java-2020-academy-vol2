@@ -1,4 +1,4 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -12,7 +12,7 @@ public class Ex13File5 {
 	}
 }
 
-//Á¤·Ä #2 FileFilterÀÎÅÍÆäÀÌ½ºÀÇ accept¸Ş¼­µå¸¦ ¿À¹ö¶óÀÌµùÇÏ¿© Á¤·ÄÇÑ´Ù.
+//ì •ë ¬ #2 FileFilterì¸í„°í˜ì´ìŠ¤ì˜ acceptë©”ì„œë“œë¥¼ ì˜¤ë²„ë¼ì´ë”©í•˜ì—¬ ì •ë ¬í•œë‹¤.
 class MyFileList implements FileFilter {
 	private File file;
 
@@ -25,32 +25,32 @@ class MyFileList implements FileFilter {
 			return;
 		}
 
-		System.out.println("Àı´ë°æ·Î: " + file.getAbsolutePath());
+		System.out.println("ì ˆëŒ€ê²½ë¡œ: " + file.getAbsolutePath());
 		if (file.isDirectory()) {
 			File[] ff = file.listFiles(this);
 			for (File f : ff) {
 				System.out.print(f.getName());
 				if (f.isFile()) {
-					// Æú´õ ÇÏÀ§¿¡ ÀÖ´Â ÆÄÀÏµé
+					// í´ë” í•˜ìœ„ì— ìˆëŠ” íŒŒì¼ë“¤
 					System.out.print("\t" + file.length());
 				}
 				System.out.println();
 			}
 		} else if (file.isFile()) {
-			// ÁöÁ¤ÇÑ °æ·Î °¡Àå ¹Ù±ù¿¡ Á¸ÀçÇÏ´Â ÆÄÀÏµé
+			// ì§€ì •í•œ ê²½ë¡œ ê°€ì¥ ë°”ê¹¥ì— ì¡´ì¬í•˜ëŠ” íŒŒì¼ë“¤
 			System.out.print("\t" + file.length());
 		}
 	}
 
 	@Override
 	public boolean accept(File pathname) {
-		// ÆÄÀÏ°ú µğ·ºÅÍ¸® ¸ğµÎ ¸®½ºÆ®¸¦ ¹İÈ¯ÇÑ´Ù.
+		// íŒŒì¼ê³¼ ë””ë ‰í„°ë¦¬ ëª¨ë‘ ë¦¬ìŠ¤íŠ¸ë¥¼ ë°˜í™˜í•œë‹¤.
 		return pathname.isFile() || pathname.isDirectory();
-		// ÆÄÀÏ¸¸ ¹İÈ¯ÇÑ´Ù.
+		// íŒŒì¼ë§Œ ë°˜í™˜í•œë‹¤.
 //		return pathname.isFile();
-		// µğ·ºÅÍ¸®¸¸ ¹İÈ¯ÇÑ´Ù.
+		// ë””ë ‰í„°ë¦¬ë§Œ ë°˜í™˜í•œë‹¤.
 //		return pathname.isDirectory();
-		// false´Â ¾Æ¹«°Íµµ °¡Á®¿ÀÁö ¾ÊÀ½
+		// falseëŠ” ì•„ë¬´ê²ƒë„ ê°€ì ¸ì˜¤ì§€ ì•ŠìŒ
 //		return false;
 	}
 

@@ -1,4 +1,4 @@
-package db.pscore;
+ï»¿package db.pscore;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,7 +22,7 @@ public class ScoreDAOImpl implements ScoreDAO {
 			sql = "INSERT INTO score(hak,name,birth,kor,eng,mat) VALUES(?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			
-			// IN ÆÄ¶ó¹ÌÅÍ°ª ¼³Á¤
+			// IN íŒŒë¼ë¯¸í„°ê°’ ì„¤ì •
 			pstmt.setString(1, dto.getHak());
 			pstmt.setString(2, dto.getName());
 			pstmt.setString(3, dto.getBirth());
@@ -30,9 +30,9 @@ public class ScoreDAOImpl implements ScoreDAO {
 			pstmt.setInt(5, dto.getEng());
 			pstmt.setInt(6, dto.getMat());
 			
-			// Äõ¸® ½ÇÇà
+			// ì¿¼ë¦¬ ì‹¤í–‰
 			result = pstmt.executeUpdate();
-			    // executeUpdate() ¾È¿¡ Äõ¸® »ğÀÔÇÏ¸é ¾ÈµÈ´Ù.
+			    // executeUpdate() ì•ˆì— ì¿¼ë¦¬ ì‚½ì…í•˜ë©´ ì•ˆëœë‹¤.
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

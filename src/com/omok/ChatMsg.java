@@ -1,7 +1,7 @@
-package com.omok;
+ï»¿package com.omok;
 import java.io.Serializable;
 
-// Ã¤ÆÃ ¸Ş½ÃÁö¿ë Å¬·¡½º. °´Ã¼¸¦ Àü¼ÛÇÏ±â À§ÇØ Á÷·ÄÈ­ÇÔ
+// ì±„íŒ… ë©”ì‹œì§€ìš© í´ë˜ìŠ¤. ê°ì²´ë¥¼ ì „ì†¡í•˜ê¸° ìœ„í•´ ì§ë ¬í™”í•¨
 public class ChatMsg implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

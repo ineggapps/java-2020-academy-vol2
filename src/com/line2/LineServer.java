@@ -1,4 +1,4 @@
-package com.line2;
+ï»¿package com.line2;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -13,7 +13,7 @@ public class LineServer {
 	public void serverStart() {
 		try {
 			ss = new ServerSocket(port);
-			System.out.println("¼­¹ö ½ÃÀÛ !!!");
+			System.out.println("ì„œë²„ ì‹œì‘ !!!");
 			
 			Socket sc = null;
 			while(true) {
@@ -32,7 +32,7 @@ public class LineServer {
 		ob.serverStart();
 	}
 	
-	// ÀÛ¾÷ÀÚ ½º·¹µå
+	// ì‘ì—…ì ìŠ¤ë ˆë“œ
 	class WorkerThread extends Thread {
 		private Socket sc;
 		public WorkerThread(Socket sc) {
@@ -46,12 +46,12 @@ public class LineServer {
 				ObjectOutputStream oos = new ObjectOutputStream(sc.getOutputStream());
 				oos.flush();
 				ObjectInputStream ois = new ObjectInputStream(sc.getInputStream());
-				System.out.println(sc.getInetAddress().getHostAddress() + "Á¢¼Ó !!! ");
+				System.out.println(sc.getInetAddress().getHostAddress() + "ì ‘ì† !!! ");
 				
 				Object data = null;
 				while((data = ois.readObject()) != null) {
 					if(data instanceof MsgLogin) {
-						// ·Î±×ÀÎ ¿äÃ»ÀÎ °æ¿ì¿¡ ·Î±×ÀÎ ¼º°ø ¶Ç´Â ½ÇÆĞ¸¦ Àü¼Û
+						// ë¡œê·¸ì¸ ìš”ì²­ì¸ ê²½ìš°ì— ë¡œê·¸ì¸ ì„±ê³µ ë˜ëŠ” ì‹¤íŒ¨ë¥¼ ì „ì†¡
 						MsgLogin login = (MsgLogin)data;
 						userName = login.getUserName();
 						if(login.getCode() == 100) {
@@ -64,7 +64,7 @@ public class LineServer {
 							}
 							
 							if(client.size()>=5) {
-								// Á¤¿ø ÃÊ°ú »ç½ÇÀ» ¾Ë·ÁÁÜ
+								// ì •ì› ì´ˆê³¼ ì‚¬ì‹¤ì„ ì•Œë ¤ì¤Œ
 								MsgLogin loginFail = new MsgLogin();
 								loginFail.setCode(121);
 								loginFail.setUserName(login.getUserName());
@@ -76,7 +76,7 @@ public class LineServer {
 							}
 							
 							if(flag || userName == null) {
-								// ·Î±×ÀÎ¿¡ ½ÇÆĞÇÑ »ç½ÇÀ» ¾Ë·ÁÁÜ
+								// ë¡œê·¸ì¸ì— ì‹¤íŒ¨í•œ ì‚¬ì‹¤ì„ ì•Œë ¤ì¤Œ
 								MsgLogin loginFail = new MsgLogin();
 								loginFail.setCode(120);
 								loginFail.setUserName(login.getUserName());
@@ -87,7 +87,7 @@ public class LineServer {
 								break;
 							}
 							
-							// ·Î±×ÀÎ¿¡ ¼º°øÇÑ »ç½ÇÀ» ¾Ë·ÁÁÜ
+							// ë¡œê·¸ì¸ì— ì„±ê³µí•œ ì‚¬ì‹¤ì„ ì•Œë ¤ì¤Œ
 							MsgLogin loginOk = new MsgLogin();
 							loginOk.setCode(110);
 							loginOk.setUserName(login.getUserName());
@@ -96,7 +96,7 @@ public class LineServer {
 							
 							for(SocketInfo si : client) {
 								if(si.bGame) {
-									// °ÔÀÓÁßÀÎ °æ¿ì °ÔÀÓÁßÀÎ »ç½ÇÀ» ¾Ë¸²
+									// ê²Œì„ì¤‘ì¸ ê²½ìš° ê²Œì„ì¤‘ì¸ ì‚¬ì‹¤ì„ ì•Œë¦¼
 									MsgGame ob=new MsgGame();
 									ob.setCode(210);
 									ob.setUserName(si.userName);
@@ -106,16 +106,16 @@ public class LineServer {
 								}
 							}
 							
-							// Å¬¶óÀÌ¾ğÆ® Á¤º¸ ÀúÀå
+							// í´ë¼ì´ì–¸íŠ¸ ì •ë³´ ì €ì¥
 							SocketInfo info = new SocketInfo();
 							info.userName = login.getUserName();
 							info.sock = sc;
 							info.oos = oos;
 							client.add(info);
 							
-							System.out.println(login.getUserName() + " ·Î±×ÀÎ Çã¿ë !!!");
+							System.out.println(login.getUserName() + " ë¡œê·¸ì¸ í—ˆìš© !!!");
 							
-							// ´Ù¸¥ ¸ğµç Å¬¶óÀÌ¾ğÆ®¿¡°Ô Á¢¼Ó »ç½Ç ¾Ë¸²
+							// ë‹¤ë¥¸ ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ì ‘ì† ì‚¬ì‹¤ ì•Œë¦¼
 							MsgLogin loginUser = new MsgLogin();
 							loginUser.setCode(111);
 							loginUser.setUserName(login.getUserName());
@@ -127,14 +127,14 @@ public class LineServer {
 					else if(data instanceof MsgChat) {
 						MsgChat chatMsg = (MsgChat)data;
 						
-						// ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®¿¡°Ô Ã¤ÆÃ ¸Ş½ÃÁö¸¦ Àü¼Û
+						// ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ì±„íŒ… ë©”ì‹œì§€ë¥¼ ì „ì†¡
 						sendMsg(chatMsg);
 					}
 					else if(data instanceof MsgGame) {
 						MsgGame game = (MsgGame)data;
 						
 						if(game.getCode()==101) {
-							// °ÔÀÓ ¿äÃ»À» ¹ŞÀº °æ¿ì
+							// ê²Œì„ ìš”ì²­ì„ ë°›ì€ ê²½ìš°
 							boolean flag = false;
 							for(SocketInfo si : client) {
 								if(si.bGame==true) {
@@ -144,25 +144,25 @@ public class LineServer {
 							}
 							
 							if(flag) {
-								// °ÔÀÓÁßÀÌ¶ó ¿äÃ» ½ÇÆĞ¸¦ Àü¼Û
+								// ê²Œì„ì¤‘ì´ë¼ ìš”ì²­ ì‹¤íŒ¨ë¥¼ ì „ì†¡
 								MsgGame ob=new MsgGame();
 								ob.setCode(202);
 								ob.setUserName(game.getUserName());
 								oos.writeObject(ob);
 							} else {
-								// °ÔÀÓ ¿äÃ» ¼º°øÀ» Àü¼Û
+								// ê²Œì„ ìš”ì²­ ì„±ê³µì„ ì „ì†¡
 								MsgGame ob=new MsgGame();
 								ob.setCode(201);
 								ob.setUserName(game.getUserName());
 								oos.writeObject(ob);
 								
-								// ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®¿¡°Ô °ÔÀÓ ½ÃÀÛÀ» ¾Ë¸²
+								// ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ê²Œì„ ì‹œì‘ì„ ì•Œë¦¼
 								ob.setCode(210);
 								sendMsg(ob);
 							}
 							
 						} else if(game.getCode()==110) {
-							// °ÔÀÓ Á¾·á¸¦ Àü¼Û ¹ŞÀº °æ¿ì
+							// ê²Œì„ ì¢…ë£Œë¥¼ ì „ì†¡ ë°›ì€ ê²½ìš°
 							for(SocketInfo si : client) {
 								if(si.sock==sc) {
 									si.bGame=false;
@@ -170,7 +170,7 @@ public class LineServer {
 								}
 							}
 							
-							// ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®¿¡°Ô °ÔÀÓ Á¾·á¸¦ Àü¼Û
+							// ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ê²Œì„ ì¢…ë£Œë¥¼ ì „ì†¡
 							MsgGame ob=new MsgGame();
 							ob.setCode(211);
 							ob.setUserName(game.getUserName());
@@ -182,20 +182,20 @@ public class LineServer {
 					else if(data instanceof MsgVertex) {
 						MsgVertex vtx = (MsgVertex)data;
 						
-						// ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®¿¡°Ô Á¤Á¡À» Àü¼Û
+						// ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ì •ì ì„ ì „ì†¡
 						sendMsg(vtx);
 					}
 					
 				} // while_end
 			} catch(Exception e) {
-				// ´Ù¸¥ ¸ğµç Å¬¶óÀÌ¾ğÆ®¿¡°Ô ·Î±×¾Æ¿ô »ç½Ç ¾Ë¸²
+				// ë‹¤ë¥¸ ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ë¡œê·¸ì•„ì›ƒ ì‚¬ì‹¤ ì•Œë¦¼
 				MsgLogin logoutUser = new MsgLogin();
 				logoutUser.setCode(201);
 				logoutUser.setUserName(userName);
 				
-				System.out.println(userName + " ÅğÀå !!!");
+				System.out.println(userName + " í‡´ì¥ !!!");
 				
-				// ÅğÀå »ç½ÇÀ» ´Ù¸¥ Å¬¶óÀÌ¾ğÆ®¿¡°Ô Àü¼Û
+				// í‡´ì¥ ì‚¬ì‹¤ì„ ë‹¤ë¥¸ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ì „ì†¡
 				sendMsg(logoutUser);
 				
 				SocketInfo info = null;

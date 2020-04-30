@@ -1,4 +1,4 @@
-package db.pscore;
+ï»¿package db.pscore;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -38,31 +38,31 @@ public class ScoreFrame extends JFrame implements ActionListener {
 		JPanel p=new JPanel();
 		p.setLayout(new GridLayout(5, 1));
 		
-		btn1=new JButton("Ãß°¡");
+		btn1=new JButton("ì¶”ê°€");
 		btn1.setBackground(Color.WHITE);
-		btn1.setOpaque(true); // ¹è°æ»öÀ» ÁÖ±âÀ§ÇØ(ºÒÅõ¸í¸ğµå)
+		btn1.setOpaque(true); // ë°°ê²½ìƒ‰ì„ ì£¼ê¸°ìœ„í•´(ë¶ˆíˆ¬ëª…ëª¨ë“œ)
 		btn1.addActionListener(this);
 		p.add(btn1);
 		
-		btn2=new JButton("¼öÁ¤");
+		btn2=new JButton("ìˆ˜ì •");
 		btn2.setBackground(Color.WHITE);
 		btn2.setOpaque(true);
 		btn2.addActionListener(this);
 		p.add(btn2);
 
-		btn3=new JButton("»èÁ¦");
+		btn3=new JButton("ì‚­ì œ");
 		btn3.setBackground(Color.WHITE);
 		btn3.setOpaque(true);
 		btn3.addActionListener(this);
 		p.add(btn3);
 		
-		btn4=new JButton("»õ·Î°íÄ§");
+		btn4=new JButton("ìƒˆë¡œê³ ì¹¨");
 		btn4.setBackground(Color.WHITE);
 		btn4.setOpaque(true);
 		btn4.addActionListener(this);
 		p.add(btn4);
 		
-		btn5=new JButton("Á¾·á");
+		btn5=new JButton("ì¢…ë£Œ");
 		btn5.setBackground(Color.WHITE);
 		btn5.setOpaque(true);
 		btn5.addActionListener(this);
@@ -71,7 +71,7 @@ public class ScoreFrame extends JFrame implements ActionListener {
 		add(p, BorderLayout.EAST);
 		
 		p=new JPanel();
-		String []data={"ÇĞ¹ø°Ë»ö", "ÀÌ¸§°Ë»ö"};
+		String []data={"í•™ë²ˆê²€ìƒ‰", "ì´ë¦„ê²€ìƒ‰"};
 		cb=new JComboBox<String>(data);
 		cb.setBackground(Color.WHITE);
 		cb.setOpaque(true);
@@ -89,7 +89,7 @@ public class ScoreFrame extends JFrame implements ActionListener {
 		        BorderFactory.createEmptyBorder(3, 3, 3, 3)));
 		p.add(tf);
 		
-		btnSearch=new JButton(" °Ë»ö ");
+		btnSearch=new JButton(" ê²€ìƒ‰ ");
 		btnSearch.setBackground(Color.WHITE);
 		btnSearch.setOpaque(true);
 		btnSearch.addActionListener(this);
@@ -97,30 +97,30 @@ public class ScoreFrame extends JFrame implements ActionListener {
 		
 		add(p, BorderLayout.SOUTH);
 		
-		// Å×ÀÌºí Ãß°¡
+		// í…Œì´ë¸” ì¶”ê°€
 		addTable();
 		
 		listScoreAll();
 		
-		setTitle("¼ºÀûÃ³¸®");
+		setTitle("ì„±ì ì²˜ë¦¬");
 		setSize(670, 500);
 		setResizable(false);
 		setVisible(true);
 	}
 	
 	private void addTable() {
-		String[] title={"ÇĞ¹ø", "ÀÌ¸§", "»ı³â¿ùÀÏ",
-				"±¹¾î", "¿µ¾î", "¼öÇĞ", "ÃÑÁ¡", "Æò±Õ"};
+		String[] title={"í•™ë²ˆ", "ì´ë¦„", "ìƒë…„ì›”ì¼",
+				"êµ­ì–´", "ì˜ì–´", "ìˆ˜í•™", "ì´ì ", "í‰ê· "};
 		
 		MyTableModel model=new MyTableModel(title);
 		table=new JTable(model);
 		JScrollPane sp=new JScrollPane(table);
 		add(sp, BorderLayout.CENTER);
 		
-		// ÀÚµ¿ Å©±â º¯°æ OFF
+		// ìë™ í¬ê¸° ë³€ê²½ OFF
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		
-		// ÄÃ·³Æø º¯°æ
+		// ì»¬ëŸ¼í­ ë³€ê²½
 		for(int i=0; i<title.length; i++) {
 			TableColumn col=
 					table.getColumnModel().getColumn(i);
@@ -132,7 +132,7 @@ public class ScoreFrame extends JFrame implements ActionListener {
 				col.setPreferredWidth(60);
 		}
 		
-		// ÄÃ·³ Á¤·Ä ¹æ½Ä º¯°æ
+		// ì»¬ëŸ¼ ì •ë ¬ ë°©ì‹ ë³€ê²½
 		MyTableCellRenderer render = new MyTableCellRenderer();
 		table.setDefaultRenderer(table.getColumnClass(0), render);
 	}
@@ -142,12 +142,12 @@ public class ScoreFrame extends JFrame implements ActionListener {
 	}
 	
 	public void tableInsertRow(String[] items) {
-		// Å×ÀÌºí¿¡ ÀÚ·á Ãß°¡
+		// í…Œì´ë¸”ì— ìë£Œ ì¶”ê°€
 		((MyTableModel)table.getModel()).addRow(items);
 	}
 
 	public void tableInsertRow(ScoreDTO dto) {
-		// Å×ÀÌºí¿¡ ÀÚ·á Ãß°¡
+		// í…Œì´ë¸”ì— ìë£Œ ì¶”ê°€
 		String[] items=new String[8];
 		
 		items[0]=dto.getHak();
@@ -163,14 +163,14 @@ public class ScoreFrame extends JFrame implements ActionListener {
 	}
 	
 	public void tableUpdateRow(String[] items, int row) {
-		// ÇØ´ç ÇàÀÇ µ¥ÀÌÅÍ ¼öÁ¤
+		// í•´ë‹¹ í–‰ì˜ ë°ì´í„° ìˆ˜ì •
 		for(int i=0; i<items.length; i++) {
 			((MyTableModel)table.getModel()).setValueAt(items[i], row, i);
 		}
 	}
 
 	public void tableUpdateRow(ScoreDTO dto, int row) {
-		// ÇØ´ç ÇàÀÇ µ¥ÀÌÅÍ ¼öÁ¤
+		// í•´ë‹¹ í–‰ì˜ ë°ì´í„° ìˆ˜ì •
 		String[] items=new String[8];
 		
 		items[0]=dto.getHak();
@@ -188,19 +188,19 @@ public class ScoreFrame extends JFrame implements ActionListener {
 	}
 	
 	public void tableRemoveRow(int row) {
-		// Å×ÀÌºíÀÇ Æ¯Á¤ Çà Áö¿ì±â
+		// í…Œì´ë¸”ì˜ íŠ¹ì • í–‰ ì§€ìš°ê¸°
 		((MyTableModel)table.getModel()).removeRow(row);
 	}
 	
 	public void tableRemoveAll() {
-		// Å×ÀÌºíÀÇ ¸ğµç Çà Áö¿ì±â
+		// í…Œì´ë¸”ì˜ ëª¨ë“  í–‰ ì§€ìš°ê¸°
 		int size=table.getRowCount();
 		for(int i=0; i<size; i++)
 			((MyTableModel)table.getModel()).removeRow(0);
 	}
 	
 	public void tableInsertList(List<ScoreDTO> list) {
-		// Å×ÀÌºíÀÇ ¸ğµç ÀÚ·á¸¦ Áö¿ì°í List µ¥ÀÌÅÍ¸¦ Ãß°¡ÇÏ±â
+		// í…Œì´ë¸”ì˜ ëª¨ë“  ìë£Œë¥¼ ì§€ìš°ê³  List ë°ì´í„°ë¥¼ ì¶”ê°€í•˜ê¸°
 		tableRemoveAll();
 	
 		for(ScoreDTO dto : list) {
@@ -216,15 +216,15 @@ public class ScoreFrame extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btn1) {
-			// Ãß°¡
+			// ì¶”ê°€
 			new ScoreInsertDialog(this);
 			
 		} else if(e.getSource()==btn2) {
-			// ¼öÁ¤
+			// ìˆ˜ì •
 			int idx=table.getSelectedRow();
 			if(idx==-1) {
 				JOptionPane.showMessageDialog(this,
-						"¼öÁ¤ÇÒ ÀÚ·á¸¦ ¸ÕÀú ¼±ÅÃÇÏ¼¼¿ä.");
+						"ìˆ˜ì •í•  ìë£Œë¥¼ ë¨¼ì € ì„ íƒí•˜ì„¸ìš”.");
 				return;
 			}
 			
@@ -236,45 +236,45 @@ public class ScoreFrame extends JFrame implements ActionListener {
 			new ScoreUpdateDialog(this, items, idx);
 			
 		} else if(e.getSource()==btn3) {
-			// »èÁ¦
+			// ì‚­ì œ
 			int idx=table.getSelectedRow();
 			if(idx==-1) {
 				JOptionPane.showMessageDialog(this,
-						"»èÁ¦ÇÒ ÀÚ·á¸¦ ¸ÕÀú ¼±ÅÃÇÏ¼¼¿ä.");
+						"ì‚­ì œí•  ìë£Œë¥¼ ë¨¼ì € ì„ íƒí•˜ì„¸ìš”.");
 				return;
 			}
 			
 			int result;
 			result=JOptionPane.showConfirmDialog(this,
-					"¼±ÅÃÇÑ ÀÚ·á¸¦ »èÁ¦ÇÏ½Ã°Ú½À´Ï±î ?",
-					"È®ÀÎ",
+					"ì„ íƒí•œ ìë£Œë¥¼ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ ?",
+					"í™•ì¸",
 					JOptionPane.YES_NO_OPTION,
 					JOptionPane.QUESTION_MESSAGE);
 			if(result==JOptionPane.YES_OPTION) {
-				// Å×ÀÌºí ³»¿ë Áö¿ì±â
+				// í…Œì´ë¸” ë‚´ìš© ì§€ìš°ê¸°
 				String hak=table.getValueAt(idx, 0).toString();
 				dao.deleteScore(hak);
 				tableRemoveRow(idx);
 			}
 			
 		} else if(e.getSource()==btn4) {
-			// »õ·Î °íÄ§
+			// ìƒˆë¡œ ê³ ì¹¨
 			listScoreAll();
 			
 			cb.setSelectedIndex(0);
 			tf.setText("");
 			
 		} else if(e.getSource()==btn5) {
-			// Á¾·á
+			// ì¢…ë£Œ
 			int result = JOptionPane.showConfirmDialog(this,
-					"Á¾·áÇÏ½Ã°Ú½À´Ï±î ?", "È®ÀÎ",
+					"ì¢…ë£Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ ?", "í™•ì¸",
 					JOptionPane.YES_NO_OPTION,
 					JOptionPane.QUESTION_MESSAGE);
 			if (result == JOptionPane.YES_OPTION) {
 				System.exit(0);
 			}			
 		} else if(e.getSource()==btnSearch) {
-			// °Ë»ö
+			// ê²€ìƒ‰
 			String searchValue;
 			
 			int idx=cb.getSelectedIndex();
@@ -284,7 +284,7 @@ public class ScoreFrame extends JFrame implements ActionListener {
 				return;
 
 			if(idx==0) {
-				// ÇĞ¹ø°Ë»ö
+				// í•™ë²ˆê²€ìƒ‰
 				ScoreDTO dto=dao.readScore(searchValue);
 				tableRemoveAll();
 
@@ -292,7 +292,7 @@ public class ScoreFrame extends JFrame implements ActionListener {
 					tableInsertRow(dto);
 				}
 			} else {
-				// ÀÌ¸§°Ë»ö
+				// ì´ë¦„ê²€ìƒ‰
 				List<ScoreDTO> list=dao.listScore(searchValue);
 				tableInsertList(list);
 			}

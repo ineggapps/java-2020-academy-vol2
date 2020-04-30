@@ -1,4 +1,4 @@
-package d200408;
+ï»¿package d200408;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -10,18 +10,18 @@ public class Ex1Serialization {
 		ObjectOutputStream oos = null;
 		String pathname = "test.txt";
 		try {
-			//¡Ø º»ÀÎ ÁÖ°ü ¾Æ´Ô...
-			map.put("java","¾î·Á¿ö");
-			map.put("html","½±Áö¾Ê¾Æ");
-			map.put("css","µ¹¾Æ¹ö·Á");
-			map.put("javascript","¸ô¶ó");
+			//â€» ë³¸ì¸ ì£¼ê´€ ì•„ë‹˜...
+			map.put("java","ì–´ë ¤ì›Œ");
+			map.put("html","ì‰½ì§€ì•Šì•„");
+			map.put("css","ëŒì•„ë²„ë ¤");
+			map.put("javascript","ëª°ë¼");
 			
-			// ObjectOutputStream: »ó´Ü¿¡ Å¬·¡½º Á¤º¸¸¦ ÀúÀåÇÏ¹Ç·Î append¸¦ ÇÏ¸é Å¬·¡½º Á¤º¸°¡ ¶Ç ÀúÀåµÇ¹Ç·Î ÆÄÀÏÀ» ÀĞÀ» ¼ö ¾ø´Ù.
-			// µû¶ó¼­ appendÇÏÁö ¾Ê´Â´Ù.
+			// ObjectOutputStream: ìƒë‹¨ì— í´ë˜ìŠ¤ ì •ë³´ë¥¼ ì €ì¥í•˜ë¯€ë¡œ appendë¥¼ í•˜ë©´ í´ë˜ìŠ¤ ì •ë³´ê°€ ë˜ ì €ì¥ë˜ë¯€ë¡œ íŒŒì¼ì„ ì½ì„ ìˆ˜ ì—†ë‹¤.
+			// ë”°ë¼ì„œ appendí•˜ì§€ ì•ŠëŠ”ë‹¤.
 			oos = new ObjectOutputStream(new FileOutputStream(pathname));
 			oos.writeObject(map);
 			
-			System.out.println("ÆÄÀÏ ÀúÀå ¿Ï·á");
+			System.out.println("íŒŒì¼ ì €ì¥ ì™„ë£Œ");
 			oos.flush();
 		} catch (Exception e) {
 			e.printStackTrace();

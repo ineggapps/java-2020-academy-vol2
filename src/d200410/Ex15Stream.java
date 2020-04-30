@@ -1,4 +1,4 @@
-package d200410;
+ï»¿package d200410;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,43 +9,43 @@ import java.util.stream.Stream;
 public class Ex15Stream {
 	public static void main(String[] args) {
 		List<String> list = Arrays.asList("A", "B", "C");
-		Stream<String> s1 = list.stream();// ¸®½ºÆ®¿¡¼­ ½ºÆ®¸²À» »ı¼ºÇÑ´Ù.
+		Stream<String> s1 = list.stream();// ë¦¬ìŠ¤íŠ¸ì—ì„œ ìŠ¤íŠ¸ë¦¼ì„ ìƒì„±í•œë‹¤.
 		s1.forEach(System.out::print);
 		System.out.println();
 
-		// ¹è¿­¿¡¼­ ½ºÆ®¸² »ı¼º
+		// ë°°ì—´ì—ì„œ ìŠ¤íŠ¸ë¦¼ ìƒì„±
 		Stream<String> s2 = Stream.of(new String[] { "A", "B", "C" });
 		s2.forEach(System.out::print);
 		System.out.println();
 
-		// Æ¯Á¤ ¹üÀ§
+		// íŠ¹ì • ë²”ìœ„
 		IntStream s3 = IntStream.range(1, 9);// 12345678
 //		IntStream.range(startInclusive, endExclusive)
 		s3.forEach(System.out::print);
 		System.out.println();
 
-		// Æ¯Á¤ ¹üÀ§
+		// íŠ¹ì • ë²”ìœ„
 		IntStream s4 = IntStream.rangeClosed(1, 9);// 123456789 (endInclud)
 //		IntStream.rangeClosed(startInclusive, endInclusive)
 		s4.forEach(System.out::print);
 		System.out.println();
 
-		// RandomÅ¬·¡½º ÀÌ¿ë
-		IntStream s5 = new Random().ints(); // << ¹«ÇÑ °³ÀÇ ¹«ÀÛÀ§ Á¤¼ö »ı¼º
+		// Randomí´ë˜ìŠ¤ ì´ìš©
+		IntStream s5 = new Random().ints(); // << ë¬´í•œ ê°œì˜ ë¬´ì‘ìœ„ ì •ìˆ˜ ìƒì„±
 		s5.limit(5).forEach(System.out::println);
 		System.out.println();
 
-		IntStream s6 = new Random().ints(5); // << 5°³ÀÇ ¹«ÀÛÀ§ Á¤¼ö »ı¼º
+		IntStream s6 = new Random().ints(5); // << 5ê°œì˜ ë¬´ì‘ìœ„ ì •ìˆ˜ ìƒì„±
 		s6.limit(5).forEach(System.out::println);
 		System.out.println();
 
-		IntStream s7 = new Random().ints(5, 1, 10); // 1¿¡¼­ 9±îÁöÀÇ ¼ö Áß¿¡¼­ ¹«ÀÛÀ§·Î 5°³ ¹İÈ¯ (½ºÆ®¸²À¸·Î)
+		IntStream s7 = new Random().ints(5, 1, 10); // 1ì—ì„œ 9ê¹Œì§€ì˜ ìˆ˜ ì¤‘ì—ì„œ ë¬´ì‘ìœ„ë¡œ 5ê°œ ë°˜í™˜ (ìŠ¤íŠ¸ë¦¼ìœ¼ë¡œ)
 //		new Random().ints(streamSize, randomNumberOrigin, randomNumberBound)
 		s7.forEach(System.out::print);
 		System.out.println();
 		
-		Stream<Integer> s8 = Stream.iterate(0, n->n+2);//¹«ÇÑ·çÇÁ·Î ºüÁö´Â ÇÔ¼öÀÓ
-		s8.limit(4).forEach(System.out::print);//limitÇßÀ¸´Ï±î ±¦Âú¾Æ!
+		Stream<Integer> s8 = Stream.iterate(0, n->n+2);//ë¬´í•œë£¨í”„ë¡œ ë¹ ì§€ëŠ” í•¨ìˆ˜ì„
+		s8.limit(4).forEach(System.out::print);//limití–ˆìœ¼ë‹ˆê¹Œ ê´œì°®ì•„!
 
 	}
 }

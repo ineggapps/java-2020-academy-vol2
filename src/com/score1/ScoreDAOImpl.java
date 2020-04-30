@@ -1,4 +1,4 @@
-package com.score1;
+ï»¿package com.score1;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -25,9 +25,9 @@ public class ScoreDAOImpl implements ScoreDAO {
 			sb.append(dto.getKor() + ", ");
 			sb.append(dto.getEng() + ", ");
 			sb.append(dto.getMat() + ")");
-			stmt = conn.createStatement(); // Äõ¸®¹®À» ½ÇÇàÇÏ´Â °´Ã¼
-			result = stmt.executeUpdate(sb.toString()); // ½ÇÇàÀ» ¿äÃ»ÇÏ°í ¹İ¿µµÈ °á±£°ª(intÇü)À» °¡Á®¿Â´Ù.
-			// executeUpdate(sql); ½ÇÇà => insert, update, delete, create, alter, drop µî
+			stmt = conn.createStatement(); // ì¿¼ë¦¬ë¬¸ì„ ì‹¤í–‰í•˜ëŠ” ê°ì²´
+			result = stmt.executeUpdate(sb.toString()); // ì‹¤í–‰ì„ ìš”ì²­í•˜ê³  ë°˜ì˜ëœ ê²°ê´ê°’(intí˜•)ì„ ê°€ì ¸ì˜¨ë‹¤.
+			// executeUpdate(sql); ì‹¤í–‰ => insert, update, delete, create, alter, drop ë“±
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -108,7 +108,7 @@ public class ScoreDAOImpl implements ScoreDAO {
 		sb.append("FROM score ");
 		sb.append("WHERE INSTR(name, '"+name+"')=1");
 //		sb.append("WHERE name like '"+name+"%'");
-//		sb.append("WHERE name like '%' || '"+name+"' || '%' "); // ÀÌ·¸°Ô ÀÛ¼ºÇÒ ¼öµµ ÀÖÀ½.
+//		sb.append("WHERE name like '%' || '"+name+"' || '%' "); // ì´ë ‡ê²Œ ì‘ì„±í•  ìˆ˜ë„ ìˆìŒ.
 		try(Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sb.toString())) {
 			while(rs.next()) {
 				ScoreDTO dto = new ScoreDTO();
@@ -152,7 +152,7 @@ public class ScoreDAOImpl implements ScoreDAO {
 				dto.setTot(rs.getInt("tot"));
 				dto.setAve(rs.getInt("ave"));
 				dto.setRank(rs.getInt("rank"));
-				list.add(dto);// ArrayList¿¡ ÀúÀå
+				list.add(dto);// ArrayListì— ì €ì¥
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

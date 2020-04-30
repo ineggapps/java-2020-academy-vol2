@@ -1,4 +1,4 @@
-package d200406;
+ï»¿package d200406;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -6,36 +6,36 @@ import java.io.FileWriter;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-//½Ç¹«¿¡¼­´Â ¹®ÀÚ¸¸À» Ã³¸®ÇÏ´Â ¹®ÀÚ ½ºÆ®¸²(2byte¾¿ ÀĞ¾îµéÀÓ)À» ¸¹ÀÌ »ç¿ëÇÏÁö ¾Ê´Â´Ù.
+//ì‹¤ë¬´ì—ì„œëŠ” ë¬¸ìë§Œì„ ì²˜ë¦¬í•˜ëŠ” ë¬¸ì ìŠ¤íŠ¸ë¦¼(2byteì”© ì½ì–´ë“¤ì„)ì„ ë§ì´ ì‚¬ìš©í•˜ì§€ ì•ŠëŠ”ë‹¤.
 public class Ex4FileWriterFileReader {
 	public static void main(String[] args) {
 		Reader rd = new InputStreamReader(System.in);
 		int data;
 		String pathname = "test.txt";
 		try {
-//			OutputStreamWriter´Â ¹ÙÀÌÆ®½ºÆ®¸²À» ¹®ÀÚ Ãâ·Â½ºÆ®¸²À¸·Î °íÄ¡´Â °ÍÀÌ´Ù.
-//			WriterÅ¬·¡½º´Â ÃÖ»óÀ§ Ãß»ó Å¬·¡½ºÀÌ´Ù.
+//			OutputStreamWriterëŠ” ë°”ì´íŠ¸ìŠ¤íŠ¸ë¦¼ì„ ë¬¸ì ì¶œë ¥ìŠ¤íŠ¸ë¦¼ìœ¼ë¡œ ê³ ì¹˜ëŠ” ê²ƒì´ë‹¤.
+//			Writerí´ë˜ìŠ¤ëŠ” ìµœìƒìœ„ ì¶”ìƒ í´ë˜ìŠ¤ì´ë‹¤.
 //			Writer out = new OutputStreamWriter(new FileOutputStream(pathname));
-//			À§Ã³·³ º¹ÀâÇÏ°Ô ÄÚµå¸¦ ÀÛ¼ºÇÒ ÇÊ¿ä ¾øÀÌ Á¦°øµÇ´Â FileWriter¸¦ ¾²¸é 
-//			ÆÄÀÏ Ãâ·Â ¹®ÀÚ Ãâ·Â½ºÆ®¸²À» ´Ü¹ø¿¡ »ı¼ºÇÒ ¼ö ÀÖ´Ù.
-			System.out.println("ÆÄÀÏ ÀÚÃ¼¸¦ ¹®ÀÚ¿­·Î ÀúÀåÇÏ´Â ¿¹Á¦");
+//			ìœ„ì²˜ëŸ¼ ë³µì¡í•˜ê²Œ ì½”ë“œë¥¼ ì‘ì„±í•  í•„ìš” ì—†ì´ ì œê³µë˜ëŠ” FileWriterë¥¼ ì“°ë©´ 
+//			íŒŒì¼ ì¶œë ¥ ë¬¸ì ì¶œë ¥ìŠ¤íŠ¸ë¦¼ì„ ë‹¨ë²ˆì— ìƒì„±í•  ìˆ˜ ìˆë‹¤.
+			System.out.println("íŒŒì¼ ìì²´ë¥¼ ë¬¸ìì—´ë¡œ ì €ì¥í•˜ëŠ” ì˜ˆì œ");
 			FileWriter out = new FileWriter(pathname);
-			System.out.print("¹®ÀÚ¿­ ÀÔ·Â [Ctrl+Z] > ");
+			System.out.print("ë¬¸ìì—´ ì…ë ¥ [Ctrl+Z] > ");
 			while ((data = rd.read()) != -1) {
-				out.write(data);// 2byte´ÜÀ§·Î Ãâ·Â
+				out.write(data);// 2byteë‹¨ìœ„ë¡œ ì¶œë ¥
 			}
-			out.flush();// »ı·«ÀÌ °¡´ÉÇÏ´Ù.
-			out.close();// closeÇØ¹ö¸®¸é À§ÀÇ flushÄÚµå´Â »ı·«ÀÌ °¡´ÉÇÏ´Ù.
-			System.out.println("ÆÄÀÏ ÀúÀå ¿Ï·á...\n");
-			// ÆÄÀÏ ÀÔ·Â "¹®ÀÚ" ½ºÆ®¸²
-//			InputStreamReader(FileInputStreamÀÌ ¹ÙÀÌÆ®½ºÆ®¸²) => ÃÖÁ¾ ¹®ÀÚ ½ºÆ®¸²
+			out.flush();// ìƒëµì´ ê°€ëŠ¥í•˜ë‹¤.
+			out.close();// closeí•´ë²„ë¦¬ë©´ ìœ„ì˜ flushì½”ë“œëŠ” ìƒëµì´ ê°€ëŠ¥í•˜ë‹¤.
+			System.out.println("íŒŒì¼ ì €ì¥ ì™„ë£Œ...\n");
+			// íŒŒì¼ ì…ë ¥ "ë¬¸ì" ìŠ¤íŠ¸ë¦¼
+//			InputStreamReader(FileInputStreamì´ ë°”ì´íŠ¸ìŠ¤íŠ¸ë¦¼) => ìµœì¢… ë¬¸ì ìŠ¤íŠ¸ë¦¼
 //			Reader reader = new InputStreamReader(new FileInputStream(pathname));
-			// À§Ã³·³ º¹ÀâÇÏ°Ô ÄÚµå¸¦ ÀÛ¼ºÇÒ ÇÊ¿ä ¾øÀÌ Á¦°øµÇ´Â FilteReader¸¦ »ç¿ëÇÏ¸é µÈ´Ù.
-			// ÀĞ¾îµéÀÏ ¶§ ÆÄÀÏÀÌ ¾øÀ¸¸é FileNotFoundExceptionÀÌ ¹ß»ıÇÑ´Ù
+			// ìœ„ì²˜ëŸ¼ ë³µì¡í•˜ê²Œ ì½”ë“œë¥¼ ì‘ì„±í•  í•„ìš” ì—†ì´ ì œê³µë˜ëŠ” FilteReaderë¥¼ ì‚¬ìš©í•˜ë©´ ëœë‹¤.
+			// ì½ì–´ë“¤ì¼ ë•Œ íŒŒì¼ì´ ì—†ìœ¼ë©´ FileNotFoundExceptionì´ ë°œìƒí•œë‹¤
 			FileReader fr = new FileReader(pathname);
-			System.out.println("ÆÄÀÏ¿¡ ÀúÀåµÈ ³»¿ë...");
+			System.out.println("íŒŒì¼ì— ì €ì¥ëœ ë‚´ìš©...");
 			while ((data = fr.read()) != -1) {
-				System.out.print((char) data); // º¯È¯ÇÏÁö ¾ÊÀ¸¸é ASCII ÄÚµå°¡ Ãâ·ÂµÈ´Ù
+				System.out.print((char) data); // ë³€í™˜í•˜ì§€ ì•Šìœ¼ë©´ ASCII ì½”ë“œê°€ ì¶œë ¥ëœë‹¤
 			}
 			fr.close();
 		} catch (FileNotFoundException e) {
